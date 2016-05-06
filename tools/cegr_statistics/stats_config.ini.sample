@@ -1,0 +1,9 @@
+# Configuration file for the CEGR Galaxy ChIP-exo statistics tools.
+
+[defaults]
+
+# This section contains default settings for command line parameters that
+# can be overridden when they are passed to executed scripts.
+
+PEGR_API_KEY = 0YG9B2LPLLDPP4B1LQQ0BB1LH75L8A3P
+PEGR_URL = http://172.29.0.70:8090/pegr/api/stats

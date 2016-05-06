@@ -1,0 +1,26 @@
+diff --git a/lib/galaxy/workflow/modules.py b/lib/galaxy/workflow/modules.py
+index 839b76e..7f100de 100644
+--- a/lib/galaxy/workflow/modules.py
++++ b/lib/galaxy/workflow/modules.py
+@@ -518,7 +518,7 @@ class ToolModule( WorkflowModule ):
+         if module.tool is not None:
+             if d.get('tool_version', 'Unspecified') != module.get_tool_version():
+                 message = "%s: using version '%s' instead of version '%s' indicated in this workflow." % ( tool_id, d.get( 'tool_version', 'Unspecified' ), module.get_tool_version() )
+-                log.debug(message)
++                #log.debug(message)
+                 module.version_changes.append(message)
+             if d[ "tool_state" ]:
+                 module.state.decode( d[ "tool_state" ], module.tool, module.trans.app, secure=secure )
+@@ -1085,8 +1085,10 @@ def populate_module_and_state( trans, workflow, param_map, allow_tool_state_corr
+         step_errors = module_injector.inject( step, step_args=step_args, source="json" )
+         if step.type == 'tool' or step.type is None:
+             if step_errors:
+-                message = "Workflow cannot be run because of validation errors in some steps: %s" % step_errors
+-                raise exceptions.MessageException( message )
++                if 'reference_genome_cond' not in step_errors:
++                    message = "Workflow cannot be run because of validation errors in some steps: %s" % step_errors
++                    raise exceptions.MessageException( message )
++                
+             if step.upgrade_messages:
+                 if allow_tool_state_corrections:
+                     log.debug( 'Workflow step "%i" had upgrade messages: %s', step.id, step.upgrade_messages )

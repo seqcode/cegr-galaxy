@@ -1,0 +1,42 @@
+<tool id="mark_duplicates_bam_output_stats" name="Mark Duplicates BAM output statistics" version="1.0.0">
+    <description></description>
+    <requirements>
+        <requirement type="package">samtools</requirement>
+    </requirements>
+    <command>
+        <![CDATA[
+            #set history_name = $input.history.name
+            python $__tool_directory__/mark_duplicates_bam_output_stats.py
+            --config_file $__tool_directory__/stats_config.ini
+            --input "$input"
+            --dbkey "$input.metadata.dbkey"
+            --history_name "$history_name"
+            --output "$output"
+        ]]>
+    </command>
+    <inputs>
+        <param name="input" type="data" format="bam" label="BAM input" />
+    </inputs>
+    <outputs>
+        <data name="output" format="txt" />
+    </outputs>
+    <tests>
+    </tests>
+    <help>
+**What it does**
+
+Generates statistics on the output of the **MarkDuplicates** tool in the **CEGR Galaxy ChIP-exo** pipeline.  These
+statistics include mapped reads, uniquely mapped reads, uniquely mapped de-duplicated reads and total reads.  Samtools
+is used to generate these statistics using the following commands:
+
+- mapped reads: **samtools view -f 0x40 -F 4 -c**
+- uniquely mapped reads: **samtools view -f 0x40 -F 4 -q 5 -c**
+- uniquely mapped de-duplicated reads: **samtools view -f 0x43 -F 0x404 -q 5 -c**
+- total reads: **samtools view -f 0x40 -c**
+
+A JSON dictionary containing the run, sample and genome reference, along with the above statistics is sent
+via a POST to the PEGR REST API where the information is stored to support the CEGR ChIP-exo statistics reports.
+    </help>
+    <citations>
+    </citations>
+</tool>

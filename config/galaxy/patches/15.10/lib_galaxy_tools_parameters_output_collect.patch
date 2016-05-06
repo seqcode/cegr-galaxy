@@ -1,0 +1,44 @@
+diff --git a/lib/galaxy/tools/parameters/output_collect.py b/lib/galaxy/tools/parameters/output_collect.py
+index 7403705..5d49f03 100644
+--- a/lib/galaxy/tools/parameters/output_collect.py
++++ b/lib/galaxy/tools/parameters/output_collect.py
+@@ -53,6 +53,7 @@ def collect_dynamic_collections(
+                 collection,
+                 collection_builder,
+                 output_collection_def,
++                inp_data
+             )
+             collection_builder.populate()
+         except Exception:
+@@ -86,7 +87,7 @@ class JobContext( object ):
+             filenames[ path ] = extra_file_collector
+         return filenames
+ 
+-    def populate_collection_elements( self, collection, root_collection_builder, output_collection_def ):
++    def populate_collection_elements( self, collection, root_collection_builder, output_collection_def, inp_data ):
+         # TODO: allow configurable sorting.
+         #    <sort by="lexical" /> <!-- default -->
+         #    <sort by="reverse_lexical" />
+@@ -95,6 +96,13 @@ class JobContext( object ):
+         dataset_collectors = output_collection_def.dataset_collectors
+         filenames = self.find_files( collection, dataset_collectors )
+ 
++        inp_data_dbkey = None
++        for data_assoc_name, data_assoc in inp_data.items():
++            if hasattr(data_assoc, 'metadata') and hasattr(data_assoc.metadata, 'dbkey'):
++                if data_assoc.metadata.dbkey not in ['?', None]:
++                    inp_data_dbkey = data_assoc.metadata.dbkey
++                    break
++
+         for filename, extra_file_collector in filenames.iteritems():
+             fields_match = extra_file_collector.match( collection, os.path.basename( filename ) )
+             if not fields_match:
+@@ -107,6 +115,8 @@ class JobContext( object ):
+             visible = fields_match.visible
+             ext = fields_match.ext
+             dbkey = fields_match.dbkey
++            if dbkey is None and inp_data_dbkey is not None:
++                dbkey = inp_data_dbkey
+             # Create new primary dataset
+             name = fields_match.name or designation
+ 

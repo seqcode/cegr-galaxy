@@ -1,0 +1,13 @@
+diff --git a/lib/galaxy/workflow/run_request.py b/lib/galaxy/workflow/run_request.py
+index a27d383..3d536b4 100644
+--- a/lib/galaxy/workflow/run_request.py
++++ b/lib/galaxy/workflow/run_request.py
+@@ -167,7 +167,7 @@ def build_workflow_run_config( trans, workflow, payload ):
+     param_map = payload.get( 'parameters', {} )
+     param_map = normalize_step_parameters( workflow.steps, param_map )
+     inputs = payload.get( 'inputs', None )
+-    inputs_by = payload.get( 'inputs_by', None )
++    inputs_by = payload.get( 'inputs_by', 'step_id' )
+     if inputs is None:
+         # Default to legacy behavior - read ds_map and reference steps
+         # by unencoded step id (a raw database id).

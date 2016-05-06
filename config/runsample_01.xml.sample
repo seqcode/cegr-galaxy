@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<workflow>
+    <dbkey>phiX</dbkey>
+    <parameters>
+        <step id="3">
+            <!-- toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.4.2 -->
+            <param>
+                <name>reference_source_selector</name>
+                <value>cached</value>
+            </param>
+            <param>
+                <name>ref_file</name>
+                <value>sacCer3_cegr</value>
+            </param>
+        </step>
+        <step id="12">
+            <!-- toolshed.g2.bx.psu.edu/repos/iuc/extract_genomic_dna/Extract genomic DNA 1/3.0.1 -->
+            <param>
+                <name>reference_genome_source</name>
+                <value>cached</value>
+            </param>
+            <param>
+                <name>reference_genome</name>
+                <value>sacCer3_cegr</value>
+            </param>
+        </step>
+        <step id="13">
+            <!-- toolshed.g2.bx.psu.edu/repos/iuc/extract_genomic_dna/Extract genomic DNA 1/3.0.1 -->
+            <param>
+                <name>reference_genome_source</name>
+                <value>cached</value>
+            </param>
+            <param>
+                <name>reference_genome</name>
+                <value>sacCer3_cegr</value>
+            </param>
+        </step>
+   </parameters>
+</workflow>

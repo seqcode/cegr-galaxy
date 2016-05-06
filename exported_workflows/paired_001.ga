@@ -1,0 +1,790 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "Initial version of the ChI\nP-exo pipeline for the sacCer3_cegr build.", 
+    "format-version": "0.1", 
+    "name": "paired_001", 
+    "steps": {
+        "0": {
+            "annotation": "Fastqsanger input 1", 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "Fastqsanger input 1", 
+                    "name": "R1"
+                }
+            ], 
+            "label": null, 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 199.72900390625, 
+                "top": 318.0668296813965
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"R1\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "user_outputs": [], 
+            "uuid": "45d551a9-e579-4de7-9dcb-3c9a86c9cd70"
+        }, 
+        "1": {
+            "annotation": "Fastqsanger input 2", 
+            "id": 1, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "Fastqsanger input 2", 
+                    "name": "R2"
+                }
+            ], 
+            "label": null, 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 338.7265625, 
+                "top": 727.0729026794434
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"R2\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "user_outputs": [], 
+            "uuid": "3fc8f5fd-5fa6-4eb2-bd3b-8ca8b27afccd"
+        }, 
+        "2": {
+            "annotation": "Blacklist filter", 
+            "id": 2, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "Blacklist filter", 
+                    "name": "blacklist"
+                }
+            ], 
+            "label": null, 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 1046.723388671875, 
+                "top": 625.0655174255371
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"blacklist\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "user_outputs": [], 
+            "uuid": "1691e144-6de9-45f7-a4cf-f7b75a7981bf"
+        }, 
+        "3": {
+            "annotation": "", 
+            "id": 3, 
+            "input_connections": {
+                "input_file": {
+                    "id": 0, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "FastQC", 
+            "outputs": [
+                {
+                    "name": "html_file", 
+                    "type": "html"
+                }, 
+                {
+                    "name": "text_file", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 521.723388671875, 
+                "top": 195.0633659362793
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.64", 
+            "tool_state": "{\"__page__\": 0, \"limits\": \"null\", \"input_file\": \"null\", \"__rerun_remap_job_id__\": null, \"contaminants\": \"null\", \"chromInfo\": \"\\\"/nfs/brubeck.bx.psu.edu/scratch5/galaxy-pugh/galaxy/tool-data/shared/ucsc/chrom/sacCer3.len\\\"\"}", 
+            "tool_version": "0.64", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "320d34d4-9b7f-44a8-b431-50bd45cdbd49"
+        }, 
+        "4": {
+            "annotation": "", 
+            "id": 4, 
+            "input_connections": {
+                "input_file": {
+                    "id": 1, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "FastQC", 
+            "outputs": [
+                {
+                    "name": "html_file", 
+                    "type": "html"
+                }, 
+                {
+                    "name": "text_file", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 520.7252197265625, 
+                "top": 407.06423568725586
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.64", 
+            "tool_state": "{\"__page__\": 0, \"limits\": \"null\", \"input_file\": \"null\", \"__rerun_remap_job_id__\": null, \"contaminants\": \"null\", \"chromInfo\": \"\\\"/nfs/brubeck.bx.psu.edu/scratch5/galaxy-pugh/galaxy/tool-data/shared/ucsc/chrom/sacCer3.len\\\"\"}", 
+            "tool_version": "0.64", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "f6c08e47-695a-4fed-ae99-1f828942f7dc"
+        }, 
+        "5": {
+            "annotation": "", 
+            "id": 5, 
+            "input_connections": {
+                "fastq_input|fastq_input1": {
+                    "id": 0, 
+                    "output_name": "output"
+                }, 
+                "fastq_input|fastq_input2": {
+                    "id": 1, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Map with BWA-MEM", 
+            "outputs": [
+                {
+                    "name": "bam_output", 
+                    "type": "bam"
+                }
+            ], 
+            "position": {
+                "left": 359.7225341796875, 
+                "top": 899.0672264099121
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.4.2", 
+            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"rg\": \"{\\\"rg_selector\\\": \\\"do_not_set\\\", \\\"__current_case__\\\": 3}\", \"fastq_input\": \"{\\\"iset_stats\\\": \\\"\\\", \\\"fastq_input2\\\": null, \\\"fastq_input_selector\\\": \\\"paired\\\", \\\"__current_case__\\\": 0, \\\"fastq_input1\\\": null}\", \"analysis_type\": \"{\\\"analysis_type_selector\\\": \\\"full\\\", \\\"algorithmic_options\\\": {\\\"algorithmic_options_selector\\\": \\\"do_not_set\\\", \\\"__current_case__\\\": 1}, \\\"io_options\\\": {\\\"a\\\": \\\"False\\\", \\\"C\\\": \\\"False\\\", \\\"__current_case__\\\": 0, \\\"h\\\": \\\"5\\\", \\\"M\\\": \\\"True\\\", \\\"T\\\": \\\"30\\\", \\\"io_options_selector\\\": \\\"set\\\", \\\"V\\\": \\\"False\\\", \\\"Y\\\": \\\"False\\\"}, \\\"__current_case__\\\": 2, \\\"scoring_options\\\": {\\\"scoring_options_selector\\\": \\\"do_not_set\\\", \\\"__current_case__\\\": 1}}\", \"reference_source\": \"{\\\"ref_file\\\": \\\"sacCer3\\\", \\\"reference_source_selector\\\": \\\"cached\\\", \\\"__current_case__\\\": 0}\"}", 
+            "tool_version": "0.4.2", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "bb14200c-8f43-4596-ba3e-2c4922a2922d"
+        }, 
+        "6": {
+            "annotation": "", 
+            "id": 6, 
+            "input_connections": {
+                "inputFile": {
+                    "id": 5, 
+                    "output_name": "bam_output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "MarkDuplicates", 
+            "outputs": [
+                {
+                    "name": "metrics_file", 
+                    "type": "txt"
+                }, 
+                {
+                    "name": "outFile", 
+                    "type": "bam"
+                }
+            ], 
+            "position": {
+                "left": 611.3502197265625, 
+                "top": 875.2282371520996
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_MarkDuplicates/1.136.0", 
+            "tool_state": "{\"duplicate_scoring_strategy\": \"\\\"SUM_OF_BASE_QUALITIES\\\"\", \"remove_duplicates\": \"\\\"False\\\"\", \"read_name_regex\": \"\\\"[a-zA-Z0-9]+:[0-9]:([0-9]+):([0-9]+):([0-9]+).*.\\\"\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"optical_duplicate_pixel_distance\": \"\\\"100\\\"\", \"comments\": \"[]\", \"assume_sorted\": \"\\\"True\\\"\", \"validation_stringency\": \"\\\"LENIENT\\\"\", \"inputFile\": \"null\"}", 
+            "tool_version": "1.136.0", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "76f465d9-9b2c-4dde-b0f0-9f27b6752126"
+        }, 
+        "7": {
+            "annotation": "", 
+            "id": 7, 
+            "input_connections": {
+                "input1": {
+                    "id": 6, 
+                    "output_name": "outFile"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Filter SAM or BAM, output SAM or BAM", 
+            "outputs": [
+                {
+                    "name": "output1", 
+                    "type": "sam"
+                }
+            ], 
+            "position": {
+                "left": 742.719482421875, 
+                "top": 655.2195701599121
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/samtool_filter2/samtool_filter2/1.1.1", 
+            "tool_state": "{\"__page__\": 0, \"bed_file\": \"null\", \"input1\": \"null\", \"__rerun_remap_job_id__\": null, \"outputtype\": \"\\\"bam\\\"\", \"library\": \"\\\"\\\"\", \"regions\": \"\\\"\\\"\", \"header\": \"\\\"-h\\\"\", \"flag\": \"{\\\"filter\\\": \\\"yes\\\", \\\"skipBits\\\": [\\\"0x0004\\\", \\\"0x0400\\\"], \\\"__current_case__\\\": 1, \\\"reqBits\\\": [\\\"0x0001\\\"]}\", \"mapq\": \"\\\"5\\\"\", \"read_group\": \"\\\"\\\"\"}", 
+            "tool_version": "1.1.1", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "1aa4ede4-0e07-4af0-8831-30208e9eceb2"
+        }, 
+        "8": {
+            "annotation": "", 
+            "id": 8, 
+            "input_connections": {
+                "input_bam": {
+                    "id": 7, 
+                    "output_name": "output1"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Convert BAM to ScIdx", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "scidx"
+                }
+            ], 
+            "position": {
+                "left": 876.7255859375, 
+                "top": 443.0668296813965
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/bam_to_scidx/bam_to_scidx/1.0.0", 
+            "tool_state": "{\"__page__\": 0, \"read\": \"\\\"0\\\"\", \"chromInfo\": \"\\\"/nfs/brubeck.bx.psu.edu/scratch5/galaxy-pugh/galaxy/tool-data/shared/ucsc/chrom/sacCer3.len\\\"\", \"__rerun_remap_job_id__\": null, \"min_insert_size\": \"\\\"\\\"\", \"require_proper_mate_pairing\": \"\\\"1\\\"\", \"max_insert_size\": \"\\\"\\\"\", \"input_bam\": \"null\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "1077a169-ac10-4187-b3bb-634c8192a3a2"
+        }, 
+        "9": {
+            "annotation": "", 
+            "id": 9, 
+            "input_connections": {
+                "input_format_cond|input": {
+                    "id": 8, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "GeneTrack", 
+            "outputs": [
+                {
+                    "name": "genetrack_output", 
+                    "type": "input"
+                }
+            ], 
+            "position": {
+                "left": 1131.727783203125, 
+                "top": 451.063777923584
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/genetrack/genetrack/1.0.0", 
+            "tool_state": "{\"__page__\": 0, \"exclusion\": \"\\\"10\\\"\", \"input_format_cond\": \"{\\\"input\\\": null, \\\"input_format\\\": \\\"scidx\\\", \\\"__current_case__\\\": 0}\", \"__rerun_remap_job_id__\": null, \"down_width\": \"\\\"5\\\"\", \"up_width\": \"\\\"5\\\"\", \"filter\": \"\\\"0\\\"\", \"sigma\": \"\\\"5\\\"\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "b3ac6c63-fd15-48e2-8ea3-2a28e0656bca"
+        }, 
+        "10": {
+            "annotation": "", 
+            "id": 10, 
+            "input_connections": {
+                "inputA": {
+                    "id": 9, 
+                    "output_name": "genetrack_output"
+                }, 
+                "inputB": {
+                    "id": 2, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Intersect interval files", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "bed"
+                }
+            ], 
+            "position": {
+                "left": 1351.7255859375, 
+                "top": 457.06420516967773
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/bedtools/bedtools_intersectbed/2.22.0", 
+            "tool_state": "{\"count\": \"\\\"False\\\"\", \"__page__\": 0, \"reciprocal\": \"\\\"False\\\"\", \"overlap_mode\": \"[\\\"-wa\\\"]\", \"invert\": \"\\\"True\\\"\", \"inputB\": \"null\", \"header\": \"\\\"False\\\"\", \"inputA\": \"null\", \"split\": \"\\\"False\\\"\", \"fraction\": \"\\\"\\\"\", \"__rerun_remap_job_id__\": null, \"strand\": \"\\\"\\\"\", \"once\": \"\\\"False\\\"\"}", 
+            "tool_version": "2.22.0", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "8ed36390-5150-424d-995a-4cbdfce8e32c"
+        }, 
+        "11": {
+            "annotation": "", 
+            "id": 11, 
+            "input_connections": {
+                "input": {
+                    "id": 10, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "CWPair2", 
+            "outputs": [
+                {
+                    "name": "H", 
+                    "type": "input"
+                }, 
+                {
+                    "name": "D", 
+                    "type": "input"
+                }, 
+                {
+                    "name": "O", 
+                    "type": "input"
+                }, 
+                {
+                    "name": "MP", 
+                    "type": "input"
+                }, 
+                {
+                    "name": "statistics_output", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 1694.7268676757812, 
+                "top": 448.06899642944336
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/cwpair2/cwpair2/1.0.0", 
+            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"threshold_format_cond\": \"{\\\"relative_threshold\\\": \\\"0.0\\\", \\\"threshold_format\\\": \\\"relative_threshold\\\", \\\"__current_case__\\\": 0}\", \"binsize\": \"\\\"2\\\"\", \"up_distance\": \"\\\"0\\\"\", \"input\": \"null\", \"down_distance\": \"\\\"80\\\"\", \"chromInfo\": \"\\\"/nfs/brubeck.bx.psu.edu/scratch5/galaxy-pugh/galaxy/tool-data/shared/ucsc/chrom/sacCer3.len\\\"\", \"method\": \"\\\"mode\\\"\", \"output_files\": \"\\\"all\\\"\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "65065665-ac75-45b5-b0a1-0d721308779b"
+        }, 
+        "12": {
+            "annotation": "", 
+            "id": 12, 
+            "input_connections": {
+                "input": {
+                    "id": 11, 
+                    "output_name": "MP"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Sort", 
+            "outputs": [
+                {
+                    "name": "out_file1", 
+                    "type": "input"
+                }
+            ], 
+            "position": {
+                "left": 1967.719482421875, 
+                "top": 486.06811141967773
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "sort1", 
+            "tool_state": "{\"__page__\": 0, \"style\": \"\\\"num\\\"\", \"column\": \"\\\"6\\\"\", \"__rerun_remap_job_id__\": null, \"order\": \"\\\"DESC\\\"\", \"input|__identifier__\": \"\\\"data_MP_mode_f0u0d80_on_data_15.gff\\\"\", \"input\": \"null\", \"chromInfo\": \"\\\"/nfs/brubeck.bx.psu.edu/scratch5/galaxy-pugh/galaxy/tool-data/shared/ucsc/chrom/?.len\\\"\", \"column_set\": \"[]\"}", 
+            "tool_version": "1.0.3", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "c242aaa2-4937-4fcb-a90a-036dd86f97f6"
+        }, 
+        "13": {
+            "annotation": "", 
+            "id": 13, 
+            "input_connections": {
+                "input": {
+                    "id": 12, 
+                    "output_name": "out_file1"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Resize coordinate window", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "gff"
+                }
+            ], 
+            "position": {
+                "left": 2210.4277954101562, 
+                "top": 467.177059173584
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/resize_coordinate_window/resize_coordinate_window/1.0.1", 
+            "tool_state": "{\"__page__\": 0, \"extend_existing\": \"\\\"midpoint\\\"\", \"start_coordinate\": \"\\\"1\\\"\", \"__rerun_remap_job_id__\": null, \"region_boundaries\": \"\\\"discard\\\"\", \"subtract_from_start\": \"\\\"30\\\"\", \"input\": \"null\", \"add_to_end\": \"\\\"30\\\"\"}", 
+            "tool_version": "1.0.1", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "4291a649-b2b7-41c3-bb3f-829add5e8b3f"
+        }, 
+        "14": {
+            "annotation": "", 
+            "id": 14, 
+            "input_connections": {
+                "input": {
+                    "id": 13, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Select first", 
+            "outputs": [
+                {
+                    "name": "out_file1", 
+                    "type": "input"
+                }
+            ], 
+            "position": {
+                "left": 2483.7242279052734, 
+                "top": 356.06594467163086
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "Show beginning1", 
+            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"lineNum\": \"\\\"500\\\"\", \"input\": \"null\", \"chromInfo\": \"\\\"/nfs/brubeck.bx.psu.edu/scratch5/galaxy-pugh/galaxy/tool-data/shared/ucsc/chrom/?.len\\\"\", \"input|__identifier__\": \"\\\"data_MP_mode_f0u0d80_on_data_15.gff\\\"\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "02273cf5-0e23-43db-a63d-ae927bab2ab9"
+        }, 
+        "15": {
+            "annotation": "", 
+            "id": 15, 
+            "input_connections": {
+                "input": {
+                    "id": 13, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Extract Genomic DNA", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "gff"
+                }
+            ], 
+            "position": {
+                "left": 2875.0545043945312, 
+                "top": 610.6666526794434
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/extract_genomic_dna/Extract genomic DNA 1/3.0.2", 
+            "tool_state": "{\"__page__\": 0, \"output_format_cond\": \"{\\\"fasta_header_type_cond\\\": {\\\"fasta_header_type\\\": \\\"bedtools_getfasta_default\\\", \\\"__current_case__\\\": 0}, \\\"output_format\\\": \\\"fasta\\\", \\\"__current_case__\\\": 0}\", \"interpret_features\": \"\\\"yes\\\"\", \"__rerun_remap_job_id__\": null, \"reference_genome_cond\": \"{\\\"reference_genome\\\": \\\"sacCer3\\\", \\\"reference_genome_source\\\": \\\"cached\\\", \\\"__current_case__\\\": 0}\", \"input\": \"null\"}", 
+            "tool_version": "3.0.2", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "24ed0dcc-764e-4324-9ad3-451fda1b08b7"
+        }, 
+        "16": {
+            "annotation": "", 
+            "id": 16, 
+            "input_connections": {
+                "input": {
+                    "id": 14, 
+                    "output_name": "out_file1"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "Extract Genomic DNA", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "gff"
+                }
+            ], 
+            "position": {
+                "left": 2694.7376708984375, 
+                "top": 425.02212142944336
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/extract_genomic_dna/Extract genomic DNA 1/3.0.2", 
+            "tool_state": "{\"__page__\": 0, \"output_format_cond\": \"{\\\"fasta_header_type_cond\\\": {\\\"fasta_header_type\\\": \\\"bedtools_getfasta_default\\\", \\\"__current_case__\\\": 0}, \\\"output_format\\\": \\\"fasta\\\", \\\"__current_case__\\\": 0}\", \"interpret_features\": \"\\\"yes\\\"\", \"__rerun_remap_job_id__\": null, \"reference_genome_cond\": \"{\\\"reference_genome\\\": \\\"sacCer3\\\", \\\"reference_genome_source\\\": \\\"cached\\\", \\\"__current_case__\\\": 0}\", \"input\": \"null\"}", 
+            "tool_version": "3.0.2", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "f69e3eeb-62f0-4abe-8ca2-73a85fd318d8"
+        }, 
+        "17": {
+            "annotation": "", 
+            "id": 17, 
+            "input_connections": {
+                "query": {
+                    "id": 15, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "RepeatMasker", 
+            "outputs": [
+                {
+                    "name": "output_std", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "output_mask", 
+                    "type": "fasta"
+                }, 
+                {
+                    "name": "output_summary", 
+                    "type": "txt"
+                }, 
+                {
+                    "name": "output_html", 
+                    "type": "html"
+                }, 
+                {
+                    "name": "output_gff", 
+                    "type": "gff"
+                }
+            ], 
+            "position": {
+                "left": 3107.8236083984375, 
+                "top": 681.2287254333496
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput_gff": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output_gff"
+                }, 
+                "HideDatasetActionoutput_html": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output_html"
+                }, 
+                "HideDatasetActionoutput_mask": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output_mask"
+                }, 
+                "HideDatasetActionoutput_std": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output_std"
+                }, 
+                "HideDatasetActionoutput_summary": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output_summary"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/repeat_masker/repeatmasker_wrapper/0.1.2", 
+            "tool_state": "{\"nolow\": \"\\\"False\\\"\", \"__page__\": 0, \"noint\": \"\\\"False\\\"\", \"adv_opts\": \"{\\\"adv_opts_selector\\\": \\\"basic\\\", \\\"__current_case__\\\": 0}\", \"__rerun_remap_job_id__\": null, \"norna\": \"\\\"False\\\"\", \"query\": \"null\", \"species\": \"\\\"-species fungi\\\"\"}", 
+            "tool_version": "0.1.2", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "38d008c0-3929-43b0-a503-8a68daea32d2"
+        }, 
+        "18": {
+            "annotation": "", 
+            "id": 18, 
+            "input_connections": {
+                "query": {
+                    "id": 16, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "RepeatMasker", 
+            "outputs": [
+                {
+                    "name": "output_std", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "output_mask", 
+                    "type": "fasta"
+                }, 
+                {
+                    "name": "output_summary", 
+                    "type": "txt"
+                }, 
+                {
+                    "name": "output_html", 
+                    "type": "html"
+                }, 
+                {
+                    "name": "output_gff", 
+                    "type": "gff"
+                }
+            ], 
+            "position": {
+                "left": 2735.442108154297, 
+                "top": 144.95833206176758
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput_gff": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output_gff"
+                }, 
+                "HideDatasetActionoutput_html": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output_html"
+                }, 
+                "HideDatasetActionoutput_mask": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output_mask"
+                }, 
+                "HideDatasetActionoutput_std": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output_std"
+                }, 
+                "HideDatasetActionoutput_summary": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output_summary"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/repeat_masker/repeatmasker_wrapper/0.1.2", 
+            "tool_state": "{\"nolow\": \"\\\"False\\\"\", \"__page__\": 0, \"noint\": \"\\\"False\\\"\", \"adv_opts\": \"{\\\"adv_opts_selector\\\": \\\"basic\\\", \\\"__current_case__\\\": 0}\", \"__rerun_remap_job_id__\": null, \"norna\": \"\\\"False\\\"\", \"query\": \"null\", \"species\": \"\\\"-species fungi\\\"\"}", 
+            "tool_version": "0.1.2", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "bae6f05c-de1b-4d50-922c-0ad8a7072a84"
+        }, 
+        "19": {
+            "annotation": "", 
+            "id": 19, 
+            "input_connections": {
+                "input1": {
+                    "id": 18, 
+                    "output_name": "output_mask"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "MEME", 
+            "outputs": [
+                {
+                    "name": "html_outfile", 
+                    "type": "html"
+                }, 
+                {
+                    "name": "txt_outfile", 
+                    "type": "txt"
+                }, 
+                {
+                    "name": "xml_outfile", 
+                    "type": "memexml"
+                }
+            ], 
+            "position": {
+                "left": 2968.7393798828125, 
+                "top": 313.02126693725586
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/meme_meme/meme_meme/4.11.0.1", 
+            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"input1\": \"null\", \"non_commercial_use\": \"\\\"True\\\"\", \"options_type\": \"{\\\"distance\\\": \\\"0.001\\\", \\\"bfile\\\": null, \\\"options_type_selector\\\": \\\"advanced\\\", \\\"maxiter\\\": \\\"50\\\", \\\"mod_type\\\": {\\\"motif_occurrence_type\\\": {\\\"motif_occurrence_type_selector\\\": \\\"default\\\", \\\"__current_case__\\\": 0}, \\\"mod_type_selector\\\": \\\"zoops\\\", \\\"__current_case__\\\": 1}, \\\"nmotifs\\\": \\\"3\\\", \\\"wnsites\\\": \\\"0.8\\\", \\\"pspfile\\\": null, \\\"branching_type\\\": {\\\"branching_type_selector\\\": \\\"no_x_branch\\\", \\\"__current_case__\\\": 0}, \\\"__current_case__\\\": 1, \\\"motif_width_type\\\": {\\\"motif_width_type_selector\\\": \\\"range\\\", \\\"maxw\\\": \\\"50\\\", \\\"__current_case__\\\": 1, \\\"minw\\\": \\\"8\\\"}, \\\"motif_trim_type\\\": {\\\"wg\\\": \\\"11\\\", \\\"motif_trim_type_selector\\\": \\\"trim\\\", \\\"noendgaps\\\": \\\"False\\\", \\\"ws\\\": \\\"1\\\", \\\"__current_case__\\\": 1}, \\\"alphabet_type\\\": {\\\"prior_type\\\": {\\\"plib\\\": null, \\\"prior_b\\\": \\\"0.01\\\", \\\"prior_type_selector\\\": \\\"dirichlet\\\", \\\"__current_case__\\\": 0}, \\\"__current_case__\\\": 1, \\\"revcomp\\\": \\\"True\\\", \\\"spmap_type\\\": {\\\"spfuzz\\\": \\\"0.5\\\", \\\"spmap_type_selector\\\": \\\"uni\\\", \\\"__current_case__\\\": 0}, \\\"pal\\\": \\\"False\\\", \\\"alphabet_type_selector\\\": \\\"dna\\\"}, \\\"evt\\\": \\\"0.0\\\", \\\"sf\\\": \\\"Galaxy FASTA Input\\\"}\"}", 
+            "tool_version": "4.11.0.1", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "fc339f44-7f30-4daa-8357-39c60b906b74"
+        }, 
+        "20": {
+            "annotation": "", 
+            "id": 20, 
+            "input_connections": {
+                "fasta_type|input_database": {
+                    "id": 17, 
+                    "output_name": "output_mask"
+                }, 
+                "input_motifs": {
+                    "id": 19, 
+                    "output_name": "xml_outfile"
+                }
+            }, 
+            "inputs": [], 
+            "label": null, 
+            "name": "FIMO", 
+            "outputs": [
+                {
+                    "name": "html_outfile", 
+                    "type": "html"
+                }, 
+                {
+                    "name": "txt_outfile", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "gff_outfile", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "xml_outfile", 
+                    "type": "cisml"
+                }, 
+                {
+                    "name": "interval_outfile", 
+                    "type": "interval"
+                }
+            ], 
+            "position": {
+                "left": 3338.7263793945312, 
+                "top": 343.0668296813965
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/meme_fimo/meme_fimo/4.11.0.1", 
+            "tool_state": "{\"__page__\": 0, \"input_database|__identifier__\": \"\\\"data_MP_mode_f0u0d80_on_data_15.gff\\\"\", \"__rerun_remap_job_id__\": null, \"input_motifs\": \"null\", \"non_commercial_use\": \"\\\"True\\\"\", \"options_type\": \"{\\\"prior_dist_cond\\\": {\\\"prior_dist_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 0}, \\\"psp_cond\\\": {\\\"__current_case__\\\": 0, \\\"psp_selector\\\": \\\"no\\\"}, \\\"options_type_selector\\\": \\\"advanced\\\", \\\"no_qvalue\\\": \\\"True\\\", \\\"qv_thresh\\\": \\\"False\\\", \\\"motifs_cond\\\": {\\\"motifs_selector\\\": \\\"yes\\\", \\\"__current_case__\\\": 0}, \\\"bgfile_type\\\": {\\\"bgfile_type_selector\\\": \\\"default\\\", \\\"__current_case__\\\": 1}, \\\"norc\\\": \\\"False\\\", \\\"max_strand\\\": \\\"False\\\", \\\"thresh\\\": \\\"0.0001\\\", \\\"__current_case__\\\": 1, \\\"max_stored_scores\\\": \\\"100000\\\", \\\"alpha\\\": \\\"1.0\\\", \\\"motif_pseudo\\\": \\\"0.1\\\", \\\"parse_genomic_coord\\\": \\\"False\\\"}\", \"fasta_type\": \"{\\\"input_database\\\": null, \\\"fasta_type_selector\\\": \\\"history\\\", \\\"__current_case__\\\": 1}\", \"input_motifs|__identifier__\": \"\\\"data_MP_mode_f0u0d80_on_data_15.gff\\\"\", \"chromInfo\": \"\\\"/nfs/brubeck.bx.psu.edu/scratch5/galaxy-pugh/galaxy/tool-data/shared/ucsc/chrom/sacCer3.len\\\"\"}", 
+            "tool_version": "4.11.0.1", 
+            "type": "tool", 
+            "user_outputs": [], 
+            "uuid": "2ee5eae4-73be-4ddc-aaa5-1f929cfe9fe8"
+        }
+    }, 
+    "uuid": "4d033cd9-c6bf-4a3f-8115-7a6e66f1a32d"
+}
