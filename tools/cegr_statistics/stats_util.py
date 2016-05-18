@@ -16,6 +16,16 @@ def check_samtools():
         stop_err('Attempting to use functionality requiring samtools, but it cannot be located on Galaxy\'s PATH.')
 
 
+def get(url):
+    print "#########################"
+    print url
+    try:
+        return json.loads(urlopen(url).read())
+    except ValueError as e:
+        stop_err("URL did not return JSON data: %s" % e)
+        sys.exit(1)
+
+
 def get_base_json_dict(dbkey, history_name):
     d = {}
     d['genome'] = dbkey
@@ -38,9 +48,19 @@ def get_deduplicated_uniquely_mapped_reads(file_path):
     return get_reads(cmd)
 
 
+def get_galaxy_url(config_file):
+    defaults = get_config_settings(config_file)
+    return make_url(defaults['GALAXY_API_KEY'], defaults['GALAXY_URL'])
+
+
 def get_mapped_reads(file_path):
     cmd = "samtools view -f 0x40 -F 4 -c %s" % file_path
     return get_reads(cmd)
+
+
+def get_pegr_url(config_file):
+    defaults = get_config_settings(config_file)
+    return make_url(defaults['PEGR_API_KEY'], defaults['PEGR_URL'])
 
 
 def get_reads(cmd):
@@ -81,9 +101,26 @@ def get_uniquely_mapped_reads(file_path):
     return get_reads(cmd)
 
 
-def get_url(config_file):
+def get_workflow_id(config_file, history_name):
+    workflow_name = get_workflow_name_from_history_name(history_name)
     defaults = get_config_settings(config_file)
-    return make_url(defaults['PEGR_API_KEY'], defaults['PEGR_URL'])
+    base_url = '%s/workflows' % defaults['GALAXY_URL']
+    url = make_url(defaults['GALAXY_API_KEY'], base_url)
+    workflow_dicts = get(url)
+    for workflow_dict in workflow_dicts:
+        if workflow_dict.get('name', None) == workflow_name:
+            return workflow_dict.get('id', None)
+    return None
+
+
+def get_workflow_name_from_history_name(history_name):
+    # Example: paired_001-199-10749.001
+    items = history_name.split('-')
+    try:
+        workflow_name = items[0]
+    except Exception, e:
+        stop_err(str(e))
+    return workflow_name
 
 
 def make_url(api_key, url, args=None):

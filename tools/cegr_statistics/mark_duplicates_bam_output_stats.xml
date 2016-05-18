@@ -6,12 +6,28 @@
     <command>
         <![CDATA[
             #set history_name = $input.history.name
+            #for joa in $input.creating_job_associations:
+                #if $joa.dataset_id == $input.dataset_id: 
+                    #set job_output_assoc = $joa
+                #end if
+            #end for
+            #set job = $job_output_assoc.job
+            #set tool_id = $job.tool_id
+            #set tool_parameters = ""
+            #for p in $job.parameters:
+                #set tool_parameters = $tool_parameters + "," + $p.name
+                #set tool_parameters = $tool_parameters + "," + $p.value
+            #end for
+            #set command_line = $job.command_line
             python $__tool_directory__/mark_duplicates_bam_output_stats.py
             --config_file $__tool_directory__/stats_config.ini
             --input "$input"
             --dbkey "$input.metadata.dbkey"
             --history_name "$history_name"
             --output "$output"
+            --tool_id "$tool_id"
+            --tool_parameters "$tool_parameters"
+            --command_line "$command_line"
         ]]>
     </command>
     <inputs>

@@ -5,5 +5,9 @@
 # This section contains default settings for command line parameters that
 # can be overridden when they are passed to executed scripts.
 
-PEGR_API_KEY = 0YG9B2LPLLDPP4B1LQQ0BB1LH75L8A3P
+PEGR_API_KEY = somekey
+#PEGR_URL = http://francline.vmhost.psu.edu:8080/pegr/api/stats
 PEGR_URL = http://172.29.0.70:8090/pegr/api/stats
+
+GALAXY_API_KEY = somekey
+GALAXY_URL = http://localhost:8763/api
