@@ -93,7 +93,7 @@ with open(cegr_run_info_file, 'r') as fh:
             # into the sample folder within the data library.  The bcl2fastq step created
             # file names like this: 62401_S1_R1_001.fastq.gz
             for f in os.listdir(prep_directory):
-                if f.startswith('%s%s' % (run, sample)) and f.endswith('.fastq.gz'):
+                if f.startswith('%s-%s' % (run, sample)) and f.endswith('.fastq.gz'):
                     fpath = os.path.join(prep_directory, f)
                     # Import the dataset into the folder using fpath - don't set dbkey
                     # since samples are not associated with a genome until mapping.

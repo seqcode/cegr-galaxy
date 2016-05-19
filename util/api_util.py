@@ -290,7 +290,7 @@ def get_run_from_sample_sheet(sample_sheet):
         # [Data]
         # SampleID,SampleName,index
         # 1,198-10674,ATCACGCGATGT
-        for line in ssfh:
+        for line in fh:
             line = line.strip()
             if line.startswith('[Data]') or line.startswith('SampleID'):
                 continue
