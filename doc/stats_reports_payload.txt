@@ -1,0 +1,27 @@
+# The following is the layout of the payload for the
+# Galaxy -> PEGR statistics reports API.
+{‘run’: integer,
+ ‘sample’: integer,
+ ‘genome’: ‘string’,
+ ‘toolId’: ‘string’,
+ ‘workflowId’: ‘string’,
+ ‘toolCategory’: ‘string’,
+ 'parameters’: ‘string’,
+ ‘statistics’: {‘fastqFile’: ‘string’,
+                ‘fastqcReport’: ‘string’,
+                ‘indexMismatch’: integer,
+                ‘adapterCount’: integer,
+                ‘totalReads’: integer,
+                ‘bamFile’: ‘string’,
+                ‘peHistogram’: ‘string’,
+                ‘mappedReads’: integer,
+                ‘uniquelyMappedReads’: integer,
+                ‘dedupUniquelyMappedReads’: integer,
+                ‘seqDuplicationLevel’: integer,
+                ‘avgInsertSize’: integer,
+                ‘stdDevInsertSize’: integer,
+                ‘genomeCoverage’: integer},
+ ‘datasets’ [{‘uri’: ‘string’,
+              ‘type’: ‘string’}...]
+}
+
