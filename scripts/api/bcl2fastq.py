@@ -22,7 +22,9 @@ parser.add_argument("-r", "--raw_data_directory", dest="raw_data_directory", def
 parser.add_argument("-s", "--sample_sheet", dest="sample_sheet", default=None, help="The csv version of cegr_run_info.txt required by bcl2fastq")
 args = parser.parse_args()
 
-bcl2fastq_binary = api_util.get_value_or_default(args.bcl2fastq_binary, 'BCL2FASTQ_BINARY', is_path=True)
+# The bcl2fastq binary must be available on the $PATH.  This is handled
+# via modules on the ICS clusters, so this should not be sent as a path.
+bcl2fastq_binary = api_util.get_value_or_default(args.bcl2fastq_binary, 'BCL2FASTQ_BINARY')
 cegr_run_info_file = api_util.get_value_or_default(args.cegr_run_info_file, 'RUN_INFO_FILE', is_path=True)
 current_run_dir = api_util.get_current_run_directory(cegr_run_info_file)
 current_run_folder = os.path.basename(current_run_dir)
