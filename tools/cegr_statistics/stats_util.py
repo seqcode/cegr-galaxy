@@ -8,6 +8,7 @@ import sys
 from ConfigParser import ConfigParser
 from six.moves.urllib.error import HTTPError
 from six.moves.urllib.request import Request, urlopen
+from bioblend import galaxy
 
 
 def check_samtools():
@@ -16,14 +17,16 @@ def check_samtools():
         stop_err('Attempting to use functionality requiring samtools, but it cannot be located on Galaxy\'s PATH.')
 
 
-def get(url):
-    print "#########################"
-    print url
-    try:
-        return json.loads(urlopen(url).read())
-    except ValueError as e:
-        stop_err("URL did not return JSON data: %s" % e)
-        sys.exit(1)
+def format_tool_parameters(parameters):
+    s = parameters.lstrip(',')
+    items = s.split(',')
+    params = ''
+    param_index = 0
+    for i in range(len(items)/2):
+        param = '%s=%s' % (items[param_index], items[param_index + 1])
+        params = '%s,%s' % (params, param)
+        param_index += 2
+    return params
 
 
 def get_base_json_dict(dbkey, history_name):
@@ -34,12 +37,15 @@ def get_base_json_dict(dbkey, history_name):
     return d
 
 
-def get_config_settings(config_file):
+def get_config_settings(config_file, section='defaults'):
     d = {}
     config_parser = ConfigParser()
     config_parser.read(config_file)
-    for key, value in config_parser.items('defaults'):
-        d[string.upper(key)] = value
+    for key, value in config_parser.items(section):
+        if section == 'defaults':
+            d[string.upper(key)] = value
+        else:
+            d[key] = value
     return d
 
 
@@ -48,8 +54,12 @@ def get_deduplicated_uniquely_mapped_reads(file_path):
     return get_reads(cmd)
 
 
+def get_galaxy_instance(api_key, url):
+    return galaxy.GalaxyInstance(url=url, key=api_key)
+
+
 def get_galaxy_url(config_file):
-    defaults = get_config_settings(config_file)
+    defaults = get_config_settings(config_file, section='defaults')
     return make_url(defaults['GALAXY_API_KEY'], defaults['GALAXY_URL'])
 
 
@@ -91,6 +101,11 @@ def get_sample_from_history_name(history_name):
     return sample
 
 
+def get_tool_category(config_file, tool_id):
+    category_map = get_config_settings(config_file, section='tool_categories')
+    return category_map.get(tool_id, 'Unknown')
+
+
 def get_total_reads(file_path):
     cmd = "samtools view -f 0x40 -c %s" % file_path
     return get_reads(cmd)
@@ -104,13 +119,12 @@ def get_uniquely_mapped_reads(file_path):
 def get_workflow_id(config_file, history_name):
     workflow_name = get_workflow_name_from_history_name(history_name)
     defaults = get_config_settings(config_file)
-    base_url = '%s/workflows' % defaults['GALAXY_URL']
-    url = make_url(defaults['GALAXY_API_KEY'], base_url)
-    workflow_dicts = get(url)
-    for workflow_dict in workflow_dicts:
-        if workflow_dict.get('name', None) == workflow_name:
-            return workflow_dict.get('id', None)
-    return None
+    gi = get_galaxy_instance(defaults['GALAXY_API_KEY'], defaults['GALAXY_BASE_URL'])
+    workflow_info_dicts = gi.workflows.get_workflows(name=workflow_name)
+    if len(workflow_info_dicts) == 0:
+        return None
+    wf_info_dict = workflow_info_dicts[0]
+    return wf_info_dict['id']
 
 
 def get_workflow_name_from_history_name(history_name):
