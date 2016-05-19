@@ -6,8 +6,12 @@
 # can be overridden when they are passed to executed scripts.
 
 PEGR_API_KEY = somekey
-#PEGR_URL = http://francline.vmhost.psu.edu:8080/pegr/api/stats
-PEGR_URL = http://172.29.0.70:8090/pegr/api/stats
+PEGR_URL = http://localhost:8090/pegr/api/stats
 
 GALAXY_API_KEY = somekey
-GALAXY_URL = http://localhost:8763/api
+GALAXY_BASE_URL = http://localhost:8763
+
+
+[tool_categories]
+
+upload1 = testOne

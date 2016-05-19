@@ -18,7 +18,6 @@
                 #set tool_parameters = $tool_parameters + "," + $p.name
                 #set tool_parameters = $tool_parameters + "," + $p.value
             #end for
-            #set command_line = $job.command_line
             python $__tool_directory__/mark_duplicates_bam_output_stats.py
             --config_file $__tool_directory__/stats_config.ini
             --input "$input"
@@ -27,7 +26,6 @@
             --output "$output"
             --tool_id "$tool_id"
             --tool_parameters "$tool_parameters"
-            --command_line "$command_line"
         ]]>
     </command>
     <inputs>
