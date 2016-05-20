@@ -1,27 +1,29 @@
 # The following is the layout of the payload for the
 # Galaxy -> PEGR statistics reports API.
-{‘run’: integer,
- ‘sample’: integer,
+{
+ ‘datasets’: [{‘uri’: ‘string’,
+               ‘type’: ‘string’}...]
  ‘genome’: ‘string’,
+ ‘run’: integer,
+ ‘sample’: integer,
+ 'parameters’: ‘string’,
+ ‘toolCategory’: ‘string’,
  ‘toolId’: ‘string’,
  ‘workflowId’: ‘string’,
- ‘toolCategory’: ‘string’,
- 'parameters’: ‘string’,
- ‘statistics’: {‘fastqFile’: ‘string’,
-                ‘fastqcReport’: ‘string’,
-                ‘indexMismatch’: integer,
-                ‘adapterCount’: integer,
-                ‘totalReads’: integer,
+ ‘statistics’: {
+                ‘adapterCount’: float,                  # precision is 2 decimal places
+                ‘avgInsertSize’: float,                 # precision is 4 decimal places
                 ‘bamFile’: ‘string’,
+                ‘dedupUniquelyMappedReads’: float,      # precision is 2 decimal places
+                ‘fastqFile’: ‘string’,
+                ‘fastqcReport’: ‘string’,
+                ‘genomeCoverage’: float                 # precision is 4 decimal places
+                ‘indexMismatch’: integer,
+                ‘mappedReads’: float,                   # precision is 2 decimal places
                 ‘peHistogram’: ‘string’,
-                ‘mappedReads’: integer,
-                ‘uniquelyMappedReads’: integer,
-                ‘dedupUniquelyMappedReads’: integer,
-                ‘seqDuplicationLevel’: integer,
-                ‘avgInsertSize’: integer,
-                ‘stdDevInsertSize’: integer,
-                ‘genomeCoverage’: integer},
- ‘datasets’ [{‘uri’: ‘string’,
-              ‘type’: ‘string’}...]
+                ‘seqDuplicationLevel’: float,           # precision is 4 decimal places
+                ‘stdDevInsertSize’: float,              # precision is 4 decimal places
+                ‘totalReads’: float,                    # precision is 2 decimal places
+                ‘uniquelyMappedReads’: float,           # precision is 2 decimal places
+                },
 }
-
