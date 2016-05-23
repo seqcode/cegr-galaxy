@@ -21,6 +21,8 @@
             python $__tool_directory__/mark_duplicates_bam_output_stats.py
             --config_file $__tool_directory__/stats_config.ini
             --input "$input"
+            --input_id "$__app__.security.encode_id($input.id)"
+            --input_datatype "$input.ext"
             --dbkey "$input.metadata.dbkey"
             --history_name "$history_name"
             --output "$output"
