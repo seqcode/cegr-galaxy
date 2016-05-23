@@ -8,7 +8,24 @@ import sys
 from ConfigParser import ConfigParser
 from six.moves.urllib.error import HTTPError
 from six.moves.urllib.request import Request, urlopen
+from six import string_types
 from bioblend import galaxy
+
+
+# Allows characters that are escaped to be un-escaped.
+MAPPED_CHARS = {'>': '__gt__',
+                '<': '__lt__',
+                "'": '__sq__',
+                '"': '__dq__',
+                '[': '__ob__',
+                ']': '__cb__',
+                '{': '__oc__',
+                '}': '__cc__',
+                '@': '__at__',
+                '\n': '__cn__',
+                '\r': '__cr__',
+                '\t': '__tc__',
+                '#': '__pd__'}
 
 
 def check_samtools():
@@ -23,17 +40,33 @@ def format_tool_parameters(parameters):
     params = ''
     param_index = 0
     for i in range(len(items)/2):
-        param = '%s=%s' % (items[param_index], items[param_index + 1])
+        param = '%s=%s' % (restore_text(items[param_index]), restore_text(items[param_index + 1]))
         params = '%s,%s' % (params, param)
         param_index += 2
     return params
 
 
-def get_base_json_dict(dbkey, history_name):
+def get_adapter_count(file_path):
+    pass
+
+
+def get_avg_insert_size(file_path):
+    pass
+
+
+def get_bam_file(file_path):
+    pass
+
+
+def get_base_json_dict(config_file, dbkey, history_name, tool_id, tool_parameters):
     d = {}
     d['genome'] = dbkey
+    d['parameters'] = format_tool_parameters(tool_parameters)
     d['run'] = get_run_from_history_name(history_name)
+    d['toolCategory'] = get_tool_category(config_file, tool_id)
     d['sample'] = get_sample_from_history_name(history_name)
+    d['toolId'] = tool_id
+    d['workflowId'] = get_workflow_id(config_file, history_name)
     return d
 
 
@@ -49,9 +82,27 @@ def get_config_settings(config_file, section='defaults'):
     return d
 
 
+def get_datasets(config_file, ids, datatypes):
+    # http://localhost:8763/datasets/eca0af6fb47bf90c/display/?preview=True
+    defaults = get_config_settings(config_file, section='defaults')
+    d = {}
+    for i, t in zip(listify(ids), listify(datatypes)):
+        d['type'] = t
+        d['uri'] = '%s/datasets/%s/display?preview=True' % (defaults['GALAXY_BASE_URL'], i)
+    return d
+
+
 def get_deduplicated_uniquely_mapped_reads(file_path):
     cmd = "samtools view -f 0x43 -F 0x404 -q 5 -c %s" % file_path
     return get_reads(cmd)
+
+
+def get_fastq_file(file_path):
+    pass
+
+
+def get_fastqc_report(file_path):
+    pass
 
 
 def get_galaxy_instance(api_key, url):
@@ -60,12 +111,24 @@ def get_galaxy_instance(api_key, url):
 
 def get_galaxy_url(config_file):
     defaults = get_config_settings(config_file, section='defaults')
-    return make_url(defaults['GALAXY_API_KEY'], defaults['GALAXY_URL'])
+    return make_url(defaults['GALAXY_API_KEY'], defaults['GALAXY_BASE_URL'])
+
+
+def get_genome_coverage(file_path):
+    pass
+
+
+def get_index_mismatch(file_path):
+    pass
 
 
 def get_mapped_reads(file_path):
     cmd = "samtools view -f 0x40 -F 4 -c %s" % file_path
     return get_reads(cmd)
+
+
+def get_pe_histogram(file_path):
+    pass
 
 
 def get_pegr_url(config_file):
@@ -99,6 +162,49 @@ def get_sample_from_history_name(history_name):
     except Exception, e:
         stop_err(str(e))
     return sample
+
+
+def get_seq_duplication_level(file_path):
+    pass
+
+
+def get_statistics(file_path, stats):
+    # ['dedupUniquelyMappedReads', 'mappedReads', 'totalReads', 'uniquelyMappedReads']
+    s = {}
+    for k in stats:
+        if k == 'adapterCount':
+            s[k] = get_adapter_count(file_path)
+        elif k == 'avgInsertSize':
+            s[k] = get_avg_insert_size(file_path)
+        elif k == 'bamFile':
+            s[k] = get_bam_file(file_path)
+        elif k == 'dedupUniquelyMappedReads':
+            s[k] = get_deduplicated_uniquely_mapped_reads(file_path)
+        elif k == 'fastqFile':
+            s[k] = get_fastq_file(file_path)
+        elif k == 'fastqcReport':
+            s[k] = get_fastqc_report(file_path)
+        elif k == 'genomeCoverage':
+            s[k] = get_genome_coverage(file_path)
+        elif k == 'indexMismatch':
+            s[k] = get_index_mismatch(file_path)
+        elif k == 'mappedReads':
+            s[k] = get_mapped_reads(file_path)
+        elif k == 'peHistogram':
+            s[k] = get_pe_histogram(file_path)
+        elif k == 'seqDuplicationLevel':
+            s[k] = get_seq_duplication_level(file_path)
+        elif k == 'stdDevInsertSize':
+            s[k] = get_std_dev_insert_size(file_path)
+        elif k == 'totalReads':
+            s[k] = get_total_reads(file_path)
+        elif k == 'uniquelyMappedReads':
+            s[k] = get_uniquely_mapped_reads(file_path)
+    return s
+
+
+def get_std_dev_insert_size(file_path):
+    pass
 
 
 def get_tool_category(config_file, tool_id):
@@ -137,6 +243,24 @@ def get_workflow_name_from_history_name(history_name):
     return workflow_name
 
 
+def listify(item, do_strip=False):
+    """
+    Make a single item a single item list, or return a list if passed a
+    list.  Passing a None returns an empty list.
+    """
+    if not item:
+        return []
+    elif isinstance(item, list):
+        return item
+    elif isinstance(item, string_types) and item.count(','):
+        if do_strip:
+            return [token.strip() for token in item.split(',')]
+        else:
+            return item.split(',')
+    else:
+        return [item]
+
+
 def make_url(api_key, url, args=None):
     """
     Adds the API Key to the URL if it's not already there.
@@ -155,6 +279,15 @@ def post(api_key, url, data):
     url = make_url(api_key, url)
     response = Request(url, headers={'Content-Type': 'application/json'}, data=json.dumps(data))
     return json.loads(urlopen(response).read())
+
+
+def restore_text(text, character_map=MAPPED_CHARS):
+    """Restores sanitized text"""
+    if not text:
+        return text
+    for key, value in character_map.items():
+        text = text.replace(value, key)
+    return text
 
 
 def stop_err(msg):

@@ -3,11 +3,15 @@ import argparse
 import json
 import stats_util
 
+STATS = ['dedupUniquelyMappedReads', 'mappedReads', 'totalReads', 'uniquelyMappedReads']
+
 stats_util.check_samtools()
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--config_file', dest='config_file', help='stats_config.ini')
 parser.add_argument('--input', dest='input', help='Input dataset')
+parser.add_argument('--input_id', dest='input_id', help='Encoded input dataset id')
+parser.add_argument('--input_datatype', dest='input_datatype', help='Input dataset datatype')
 parser.add_argument('--dbkey', dest='dbkey', help='Input dbkey')
 parser.add_argument('--history_name', dest='history_name', help='History name')
 parser.add_argument('--output', dest='output', help='Output dataset')
@@ -16,27 +20,17 @@ parser.add_argument('--tool_parameters', dest='tool_parameters', help='Tool para
 args = parser.parse_args()
 
 # Create the payload.
-payload = stats_util.get_base_json_dict(args.dbkey, args.history_name)
-payload['toolId'] = args.tool_id
-payload['workflowId'] = stats_util.get_workflow_id(args.config_file, args.history_name)
-payload['toolCategory'] = stats_util.get_tool_category(args.config_file, args.tool_id)
-payload['parameters'] = stats_util.format_tool_parameters(args.tool_parameters)
-statistics_dict = {}
-statistics_dict['dedupUniquelyMappedReads'] = stats_util.get_deduplicated_uniquely_mapped_reads(args.input)
-statistics_dict['mappedReads'] = stats_util.get_mapped_reads(args.input)
-statistics_dict['totalReads'] = stats_util.get_total_reads(args.input)
-statistics_dict['uniquelyMappedReads'] = stats_util.get_uniquely_mapped_reads(args.input)
-payload['statistics'] = statistics_dict
-datasets_dict = {}
-# TODO: finish this...
-payload['datasets'] = datasets_dict
+payload = stats_util.get_base_json_dict(args.config_file, args.dbkey, args.history_name, args.tool_id, args.tool_parameters)
+# Generate teh statistics.
+payload['statistics'] = stats_util.get_statistics(args.input, STATS)
+payload['datasets'] = stats_util.get_datasets(args.config_file, args.input_id, args.input_datatype)
 
 pegr_url = stats_util.get_pegr_url(args.config_file)
 
-#response = stats_util.submit(args.config_file, payload)
+response = stats_util.submit(args.config_file, payload)
 
 with open(args.output, 'w') as fh:
     fh.write("pegr_url:\n%s\n\n" % pegr_url)
     fh.write("payload:\n%s\n\n" % json.dumps(payload))
-    #fh.write("response:\n%s\n" % str(response))
+    fh.write("response:\n%s\n" % str(response))
     fh.close()
