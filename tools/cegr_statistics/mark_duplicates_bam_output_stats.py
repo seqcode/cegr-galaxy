@@ -19,18 +19,15 @@ parser.add_argument('--tool_id', dest='tool_id', help='Tool that was executed to
 parser.add_argument('--tool_parameters', dest='tool_parameters', help='Tool parameters that were set when producing the input dataset')
 args = parser.parse_args()
 
-# Create the payload.
+# Initialize the payload.
 payload = stats_util.get_base_json_dict(args.config_file, args.dbkey, args.history_name, args.tool_id, args.tool_parameters)
-# Generate teh statistics.
+# Generate the statistics and datasets.
 payload['statistics'] = stats_util.get_statistics(args.input, STATS)
 payload['datasets'] = stats_util.get_datasets(args.config_file, args.input_id, args.input_datatype)
-
+# Send the payload to PEGR.
 pegr_url = stats_util.get_pegr_url(args.config_file)
-
 response = stats_util.submit(args.config_file, payload)
-
-with open(args.output, 'w') as fh:
-    fh.write("pegr_url:\n%s\n\n" % pegr_url)
-    fh.write("payload:\n%s\n\n" % json.dumps(payload))
-    fh.write("response:\n%s\n" % str(response))
-    fh.close()
+# Make sure all is well.
+stats_util.check_response(pegr_url, payload, response)
+# If all is well, store the results in the output.
+stats_util.store_results(args.output, pegr_url, payload, response)

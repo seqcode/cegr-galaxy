@@ -15,8 +15,8 @@
             #set tool_id = $job.tool_id
             #set tool_parameters = ""
             #for p in $job.parameters:
-                #set tool_parameters = $tool_parameters + "," + $p.name
-                #set tool_parameters = $tool_parameters + "," + $p.value
+                #set tool_parameters = $tool_parameters + "__SeP__" + $p.name
+                #set tool_parameters = $tool_parameters + "__SeP__" + $p.value
             #end for
             python $__tool_directory__/mark_duplicates_bam_output_stats.py
             --config_file $__tool_directory__/stats_config.ini
