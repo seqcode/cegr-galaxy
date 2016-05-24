@@ -28,6 +28,23 @@ MAPPED_CHARS = {'>': '__gt__',
                 '#': '__pd__'}
 
 
+def check_response(pegr_url, payload, response):
+    try:
+        print "response: ", response
+        s = json.dumps(payload)
+        d = json.loads(response)
+        response_code = d.get('response_code', None)
+        message = d.get('message', None)
+        if response_code not in ['200']:
+            err_msg = 'Error sending statistics to PEGR!\n\nPEGR URL:\n%s\n\n' % str(pegr_url)
+            err_msg += 'Payload:\n%s\n\nResponse:\n%s\n' % (s, str(response))
+            stop_err(err_msg)
+    except Exception, e:
+        err_msg = 'Error handling response from PEGR!\n\nException:\n%s\n\n' % str(e)
+        err_msg += 'PEGR URL:\n%s\n\nPayload:\n%s\n\nResponse:\n%s\n' % (pegr_url, s, str(response))
+        stop_err(err_msg)
+
+
 def check_samtools():
     samtools_exec = which('samtools')
     if not samtools_exec:
@@ -35,8 +52,8 @@ def check_samtools():
 
 
 def format_tool_parameters(parameters):
-    s = parameters.lstrip(',')
-    items = s.split(',')
+    s = parameters.lstrip('__SeP__')
+    items = s.split('__SeP__')
     params = ''
     param_index = 0
     for i in range(len(items)/2):
@@ -44,7 +61,6 @@ def format_tool_parameters(parameters):
         params = '%s,%s' % (params, param)
         param_index += 2
     return params
-
 
 def get_adapter_count(file_path):
     pass
@@ -173,33 +189,33 @@ def get_statistics(file_path, stats):
     s = {}
     for k in stats:
         if k == 'adapterCount':
-            s[k] = get_adapter_count(file_path)
+            s[k] = '%.2f' % get_adapter_count(file_path)
         elif k == 'avgInsertSize':
-            s[k] = get_avg_insert_size(file_path)
+            s[k] = '%.4f' % get_avg_insert_size(file_path)
         elif k == 'bamFile':
             s[k] = get_bam_file(file_path)
         elif k == 'dedupUniquelyMappedReads':
-            s[k] = get_deduplicated_uniquely_mapped_reads(file_path)
+            s[k] = '%.2f' % get_deduplicated_uniquely_mapped_reads(file_path)
         elif k == 'fastqFile':
             s[k] = get_fastq_file(file_path)
         elif k == 'fastqcReport':
             s[k] = get_fastqc_report(file_path)
         elif k == 'genomeCoverage':
-            s[k] = get_genome_coverage(file_path)
+            s[k] = '%.4f' % get_genome_coverage(file_path)
         elif k == 'indexMismatch':
             s[k] = get_index_mismatch(file_path)
         elif k == 'mappedReads':
-            s[k] = get_mapped_reads(file_path)
+            s[k] = '%.2f' % get_mapped_reads(file_path)
         elif k == 'peHistogram':
             s[k] = get_pe_histogram(file_path)
         elif k == 'seqDuplicationLevel':
-            s[k] = get_seq_duplication_level(file_path)
+            s[k] = '%.4f' % get_seq_duplication_level(file_path)
         elif k == 'stdDevInsertSize':
-            s[k] = get_std_dev_insert_size(file_path)
+            s[k] = '%.4f' % get_std_dev_insert_size(file_path)
         elif k == 'totalReads':
-            s[k] = get_total_reads(file_path)
+            s[k] = '%.2f' % get_total_reads(file_path)
         elif k == 'uniquelyMappedReads':
-            s[k] = get_uniquely_mapped_reads(file_path)
+            s[k] = '%.2f' % get_uniquely_mapped_reads(file_path)
     return s
 
 
@@ -293,6 +309,14 @@ def restore_text(text, character_map=MAPPED_CHARS):
 def stop_err(msg):
     sys.stderr.write(msg)
     sys.exit()
+
+
+def store_results(file_path, pegr_url, payload, response):
+    with open(file_path, 'w') as fh:
+        fh.write("pegr_url:\n%s\n\n" % str(pegr_url))
+        fh.write("payload:\n%s\n\n" % json.dumps(payload))
+        fh.write("response:\n%s\n" % str(response))
+        fh.close()
 
 
 def submit(config_file, data):
