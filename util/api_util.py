@@ -226,12 +226,45 @@ def generate_sample_sheet(cegr_run_info_file, sample_sheet_path, lh):
                 lh.write('%s\n' % line)
                 continue
             indexes_str = str(txt_items[2]).strip()
+            # Here are all possible permutations of indexes_str:
+            # 1. ATCACG-CGATGT,AGTAGA-TTTAGC
+            # 2. CGATGTTTAGGC,TTAGGC
+            # 3. TTAGGCTGACCA
+            # 4. ATCACG-CGATGT
+            # 5.  ATCACG-CGATGT,ACAGTGGCCAAT
             indexes = indexes_str.split(',')
-            for index in indexes:
+            # Here are all possible permutations of indexes:
+            # 1. ['ATCACG-CGATGT', 'AGTAGA-TTTAGC']
+            # 2. ['CGATGTTTAGGC', 'TTAGGC']
+            # 3. ['TTAGGCTGACCA']
+            # 4. ['ATCACG-CGATGT']
+            # 5. [' ATCACG-CGATGT', 'ACAGTGGCCAAT']
+            if len(indexes) > 0:
                 index_increment += 1
-                csv_items = [str(index_increment), '%d-%d' % (run, sample), index]
-                csv_str = ','.join(csv_items)
-                sh.write('%s\n' % csv_str)
+                for index in indexes:
+                    if index.find('-') > 0:
+                        # If we're handling case 1 above, this must be generated:
+                        # 1,200-10708,ATCACG,CGATGT
+                        # 1,200-10708,AGTAGA,TTTAGC
+                        # If we're handling case 4 above, this must be generated:
+                        # 4,200-10711,ATCACG,CGATGT
+                        # If we're handling case 5 above, this must be generated:
+                        # 5,200-10712,ATCACG,CGATGT
+                        # 5,200-10712,ACAGTGGCCAAT
+                        index_str = index.replace('-', ',')
+                    else:
+                        # If we're handling case 2 above, this must be generated:
+                        # 2,200-10709,CGATGTTTAGGC
+                        # 2,200-10709,TTAGGC
+                        # If we're handling case 3 above, this must be generated:
+                        # 3,200-10710,TTAGGCTGACCA
+                        # If we're handling case 5 above, this must be generated:
+                        # 5,200-10712,ATCACG,CGATGT
+                        # 5,200-10712,ACAGTGGCCAAT
+                        index_str = index
+                    csv_items = [str(index_increment), '%d-%d' % (run, sample), index_str]
+                    csv_str = ','.join(csv_items)
+                    sh.write('%s\n' % csv_str)
     sh.close()
 
 
