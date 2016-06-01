@@ -1,3 +1,4 @@
+import fileinput
 import json
 import os
 import shlex
@@ -26,6 +27,8 @@ MAPPED_CHARS = {'>': '__gt__',
                 '\r': '__cr__',
                 '\t': '__tc__',
                 '#': '__pd__'}
+# Maximum value of a signed 32 bit integer (2**31 - 1).
+MAX_CHROM_LEN = 2147483647
 
 
 def check_response(pegr_url, payload, response):
@@ -37,7 +40,7 @@ def check_response(pegr_url, payload, response):
             err_msg = 'Error sending statistics to PEGR!\n\nPEGR URL:\n%s\n\n' % str(pegr_url)
             err_msg += 'Payload:\n%s\n\nResponse:\n%s\n' % (s, str(response))
             stop_err(err_msg)
-    except Exception, e:
+    except Exception as e:
         err_msg = 'Error handling response from PEGR!\n\nException:\n%s\n\n' % str(e)
         err_msg += 'PEGR URL:\n%s\n\nPayload:\n%s\n\nResponse:\n%s\n' % (pegr_url, s, str(response))
         stop_err(err_msg)
@@ -84,6 +87,20 @@ def get_base_json_dict(config_file, dbkey, history_name, tool_id, tool_parameter
     return d
 
 
+def get_chrom_lengths(chrom_len_file):
+    # Determine the length of each chromosome
+    # and add it to the chrom_lengths dictionary.
+    chrom_lengths = dict()
+    len_file = fileinput.FileInput(chrom_len_file)
+    try:
+        for line in len_file:
+            fields = line.split("\t")
+            chrom_lengths[fields[0]] = int(fields[1])
+    except Exception as e:
+        stop_err('Error reading chromosome length file:\n%s\nException:\n%s\n' % (chrom_len_file, str(e)))
+    return chrom_lengths
+
+
 def get_config_settings(config_file, section='defaults'):
     d = {}
     config_parser = ConfigParser()
@@ -128,8 +145,18 @@ def get_galaxy_url(config_file):
     return make_url(defaults['GALAXY_API_KEY'], defaults['GALAXY_BASE_URL'])
 
 
-def get_genome_coverage(file_path):
-    pass
+def get_genome_coverage(file_path, dbkey, chrom_lengths_file):
+    """
+    Generate the genomce coverage for the dataset located at file_path.
+    """
+    lines_in_input = get_number_of_lines(file_path)
+    chrom_lengths = get_chrom_lengths(chrom_lengths_file)
+    chrom_length = chrom_lengths.get(dbkey, None)
+    if chrom_length is None:
+        # Throw an exception?
+        chrom_length = MAX_CHROM_LEN
+    genome_coverage = '%.4f' % float(lines_in_input / chrom_length)
+    return float(genome_coverage)
 
 
 def get_index_mismatch(file_path):
@@ -139,6 +166,13 @@ def get_index_mismatch(file_path):
 def get_mapped_reads(file_path):
     cmd = "samtools view -f 0x40 -F 4 -c %s" % file_path
     return get_reads(cmd)
+
+
+def get_number_of_lines(file_path):
+    with open(file_path) as fh:
+        for i, l in enumerate(fh):
+            pass
+    return i + 1
 
 
 def get_pe_histogram(file_path):
@@ -154,7 +188,7 @@ def get_reads(cmd):
     try:
         reads = '%.2f' % float(subprocess.check_output(shlex.split(cmd)))
         return float(reads)
-    except Exception, e:
+    except Exception as e:
         stop_err(str(e))
 
 
@@ -162,7 +196,7 @@ def get_run_from_history_name(history_name):
     # Example: paired_001-199-10749.001
     try:
         run = int(history_name.split('-')[1])
-    except Exception, e:
+    except Exception as e:
         stop_err(str(e))
     return run
 
@@ -172,7 +206,7 @@ def get_sample_from_history_name(history_name):
     items = history_name.split('-')
     try:
         sample = int(items[2].split('.')[0])
-    except Exception, e:
+    except Exception as e:
         stop_err(str(e))
     return sample
 
@@ -214,7 +248,7 @@ def get_statistics(file_path, stats):
                 s[k] = get_total_reads(file_path)
             elif k == 'uniquelyMappedReads':
                 s[k] = get_uniquely_mapped_reads(file_path)
-    except Exception, e:
+    except Exception as e:
         stop_err(str(e))
     return s
 
@@ -254,7 +288,7 @@ def get_workflow_name_from_history_name(history_name):
     items = history_name.split('-')
     try:
         workflow_name = items[0]
-    except Exception, e:
+    except Exception as e:
         stop_err(str(e))
     return workflow_name
 
