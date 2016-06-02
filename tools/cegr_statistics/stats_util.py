@@ -215,7 +215,7 @@ def get_seq_duplication_level(file_path):
     pass
 
 
-def get_statistics(file_path, stats):
+def get_statistics(file_path, stats, **kwd):
     # ['dedupUniquelyMappedReads', 'mappedReads', 'totalReads', 'uniquelyMappedReads']
     s = {}
     try:
@@ -233,7 +233,13 @@ def get_statistics(file_path, stats):
             elif k == 'fastqcReport':
                 s[k] = get_fastqc_report(file_path)
             elif k == 'genomeCoverage':
-                s[k] = get_genome_coverage(file_path)
+                dbkey = kwd.get('dbkey', None)
+                if dbkey is None:
+                    stop_err('Required dbkey parameter not received!')
+                chrom_lengths_file = kwd.get('chrom_lengths_file', None)
+                if chrom_lengths_file is None:
+                    stop_err('Required chrom_lengths_file parameter not received!')
+                s[k] = get_genome_coverage(file_path, dbkey, chrom_lengths_file)
             elif k == 'indexMismatch':
                 s[k] = get_index_mismatch(file_path)
             elif k == 'mappedReads':
