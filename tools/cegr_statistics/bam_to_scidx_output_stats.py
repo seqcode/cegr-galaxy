@@ -22,7 +22,7 @@ args = parser.parse_args()
 # Initialize the payload.
 payload = stats_util.get_base_json_dict(args.config_file, args.dbkey, args.history_name, args.tool_id, args.tool_parameters)
 # Generate the statistics and datasets.
-payload['genomeCoverage'] = stats_util.get_genome_coverage(args.input, args.dbkey, args.chrom_len_file)
+payload['statistics'] = stats_util.get_statistics(args.input, STATS, dbkey=args.dbkey, chrom_lengths_file=args.chrom_len_file)
 payload['datasets'] = stats_util.get_datasets(args.config_file, args.input_id, args.input_datatype)
 # Send the payload to PEGR.
 pegr_url = stats_util.get_pegr_url(args.config_file)
