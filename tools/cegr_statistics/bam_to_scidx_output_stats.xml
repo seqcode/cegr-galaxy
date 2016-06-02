@@ -1,4 +1,4 @@
-<tool id="mark_duplicates_bam_output_stats" name="Bam to ScIdx output statistics" version="1.0.0">
+<tool id="bam_to_scidx_output_stats" name="Bam to ScIdx output statistics" version="1.0.0">
     <description></description>
     <macros>
         <import>macros.xml</import>
