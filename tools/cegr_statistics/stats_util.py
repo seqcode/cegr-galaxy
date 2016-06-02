@@ -34,9 +34,6 @@ MAX_CHROM_LEN = 2147483647
 def check_response(pegr_url, payload, response):
     try:
         s = json.dumps(payload)
-        # FIX PEGR - PEGR returns a string on failure.
-        if isinstance(response, basestring):
-            response = json.loads(response)
         response_code = response.get('response_code', None)
         message = response.get('message', None)
         if response_code not in ['200']:
@@ -364,9 +361,11 @@ def submit(config_file, data):
     defaults = get_config_settings(config_file)
     try:
         r = post(defaults['PEGR_API_KEY'], defaults['PEGR_URL'], data)
-        return r
     except HTTPError as e:
-        return str(e.read(2048))
+        r = dict()
+        r['response_code'] = str(e.code)
+        r['message'] = e.read()
+    return r
 
 
 def which(file):
