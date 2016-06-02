@@ -26,9 +26,8 @@ payload['genomeCoverage'] = stats_util.get_genome_coverage(args.input, args.dbke
 payload['datasets'] = stats_util.get_datasets(args.config_file, args.input_id, args.input_datatype)
 # Send the payload to PEGR.
 pegr_url = stats_util.get_pegr_url(args.config_file)
-#response = stats_util.submit(args.config_file, payload)
+response = stats_util.submit(args.config_file, payload)
 # Make sure all is well.
-#stats_util.check_response(pegr_url, payload, response)
+stats_util.check_response(pegr_url, payload, response)
 # If all is well, store the results in the output.
-response = "hello..."
 stats_util.store_results(args.output, pegr_url, payload, response)
