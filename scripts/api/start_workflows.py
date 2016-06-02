@@ -1,4 +1,18 @@
 #!/usr/bin/env python
+import sys
+sys.path.insert(0, '../../util')
+import api_util
+import data_library_util
+import history_util
+import workflow_util
+import argparse
+import os
+import time
+# If this Galaxy instance uses a virtual environment,
+# activate it so we can import Galaxy from bioblend.
+api_util.activate_virtual_env('PREP_VIRTUAL_ENV')
+from bioblend import galaxy
+
 """
 This script parses the cegr_run_info.txt file to automatically execute a
 selected workflow for each dbkey defined for every sample in the defined run.
@@ -29,20 +43,6 @@ This script requires the following conditions to function as expected.
 
 Example of use: start_workflow.py
 """
-
-import sys
-sys.path.insert(0, '../../util')
-import api_util
-import data_library_util
-import history_util
-import workflow_util
-import argparse
-import os
-import time
-# If this Galaxy instance uses a virtual environment,
-# activate it so we can import Galaxy from bioblend.
-api_util.activate_virtual_env('PREP_VIRTUAL_ENV')
-from bioblend import galaxy
 
 SCRIPT_NAME = 'start_workflows.py'
 
@@ -191,6 +191,12 @@ with open(cegr_run_info_file, 'r') as fh:
                                                                                          lh)
                     lh.write("Sleeping for 10 seconds...\n")
                     time.sleep(10)
+                history_input_datasets = history_util.update_dataset(gi,
+                                                                     dbkey,
+                                                                     history_id,
+                                                                     history_name,
+                                                                     history_input_datasets,
+                                                                     lh)
 
                 # Map the history datasets to the input datasets for the workflow.
                 inputs = workflow_util.get_workflow_input_datasets(history_name,
