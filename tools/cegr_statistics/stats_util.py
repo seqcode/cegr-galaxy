@@ -34,6 +34,9 @@ MAX_CHROM_LEN = 2147483647
 def check_response(pegr_url, payload, response):
     try:
         s = json.dumps(payload)
+        # FIX PEGR - PEGR returns a string on failure.
+        if isinstance(response, basestring):
+            response = json.loads(response)
         response_code = response.get('response_code', None)
         message = response.get('message', None)
         if response_code not in ['200']:
