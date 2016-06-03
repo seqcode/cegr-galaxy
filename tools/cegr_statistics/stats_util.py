@@ -366,12 +366,11 @@ def submit(config_file, data):
     """
     defaults = get_config_settings(config_file)
     try:
-        r = post(defaults['PEGR_API_KEY'], defaults['PEGR_URL'], data)
+        return post(defaults['PEGR_API_KEY'], defaults['PEGR_URL'], data)
     except HTTPError as e:
-        r = dict()
-        r['response_code'] = str(e.code)
-        r['message'] = e.read()
-    return r
+        return json.loads(e.read())
+    except Exception as e:
+        return dict(response_code=None, message=e.read())
 
 
 def which(file):
