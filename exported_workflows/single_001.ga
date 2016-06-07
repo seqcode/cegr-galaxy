@@ -185,8 +185,51 @@
         }, 
         "4": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_MarkDuplicates/1.136.0", 
+            "content_id": "fastqc_output_stats", 
             "id": 4, 
+            "input_connections": {
+                "input": {
+                    "id": 2, 
+                    "output_name": "html_file"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool FastQC output statistics", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "FastQC output statistics", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 654.890625, 
+                "top": 305.65625
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "fastqc_output_stats", 
+            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "02053374-4f07-4c8e-9119-d611bae5cb91", 
+            "workflow_outputs": []
+        }, 
+        "5": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_MarkDuplicates/1.136.0", 
+            "id": 5, 
             "input_connections": {
                 "inputFile": {
                     "id": 3, 
@@ -241,13 +284,13 @@
                 }
             ]
         }, 
-        "5": {
+        "6": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/samtool_filter2/samtool_filter2/1.1.2", 
-            "id": 5, 
+            "id": 6, 
             "input_connections": {
                 "input1": {
-                    "id": 4, 
+                    "id": 5, 
                     "output_name": "outFile"
                 }
             }, 
@@ -294,13 +337,13 @@
                 }
             ]
         }, 
-        "6": {
+        "7": {
             "annotation": "", 
             "content_id": "mark_duplicates_bam_output_stats", 
-            "id": 6, 
+            "id": 7, 
             "input_connections": {
                 "input": {
-                    "id": 4, 
+                    "id": 5, 
                     "output_name": "outFile"
                 }
             }, 
@@ -337,13 +380,13 @@
                 }
             ]
         }, 
-        "7": {
+        "8": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/bam_to_scidx/bam_to_scidx/1.0.0", 
-            "id": 7, 
+            "id": 8, 
             "input_connections": {
                 "input_bam": {
-                    "id": 5, 
+                    "id": 6, 
                     "output_name": "output1"
                 }
             }, 
@@ -386,13 +429,13 @@
                 }
             ]
         }, 
-        "8": {
+        "9": {
             "annotation": "", 
             "content_id": "bam_to_scidx_output_stats", 
-            "id": 8, 
+            "id": 9, 
             "input_connections": {
                 "input": {
-                    "id": 7, 
+                    "id": 8, 
                     "output_name": "output"
                 }
             }, 
@@ -429,13 +472,13 @@
             "uuid": "cdf1269f-d590-4a29-b021-aaf2a6c857d6", 
             "workflow_outputs": []
         }, 
-        "9": {
+        "10": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/genetrack/genetrack/1.0.0", 
-            "id": 9, 
+            "id": 10, 
             "input_connections": {
                 "input_format_cond|input": {
-                    "id": 7, 
+                    "id": 8, 
                     "output_name": "output"
                 }
             }, 
@@ -478,13 +521,13 @@
                 }
             ]
         }, 
-        "10": {
+        "11": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/bedtools/bedtools_intersectbed/2.24.0", 
-            "id": 10, 
+            "id": 11, 
             "input_connections": {
                 "inputA": {
-                    "id": 9, 
+                    "id": 10, 
                     "output_name": "genetrack_output"
                 }, 
                 "inputB": {
@@ -535,13 +578,13 @@
                 }
             ]
         }, 
-        "11": {
+        "12": {
             "annotation": "", 
             "content_id": "Filter1", 
-            "id": 11, 
+            "id": 12, 
             "input_connections": {
                 "input": {
-                    "id": 10, 
+                    "id": 11, 
                     "output_name": "output"
                 }
             }, 
@@ -578,13 +621,13 @@
                 }
             ]
         }, 
-        "12": {
+        "13": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/cwpair2/cwpair2/1.0.0", 
-            "id": 12, 
+            "id": 13, 
             "input_connections": {
                 "input": {
-                    "id": 11, 
+                    "id": 12, 
                     "output_name": "out_file1"
                 }
             }, 
@@ -648,8 +691,8 @@
                 }, 
                 {
                     "label": null, 
-                    "output_name": "D", 
-                    "uuid": "cc51e8f7-51a1-45e3-b5b2-742e194a980c"
+                    "output_name": "MP", 
+                    "uuid": "9c0e1d96-1395-402d-a723-54257801bb1b"
                 }, 
                 {
                     "label": null, 
@@ -658,18 +701,18 @@
                 }, 
                 {
                     "label": null, 
-                    "output_name": "MP", 
-                    "uuid": "9c0e1d96-1395-402d-a723-54257801bb1b"
+                    "output_name": "D", 
+                    "uuid": "cc51e8f7-51a1-45e3-b5b2-742e194a980c"
                 }
             ]
         }, 
-        "13": {
+        "14": {
             "annotation": "", 
             "content_id": "sort1", 
-            "id": 13, 
+            "id": 14, 
             "input_connections": {
                 "input": {
-                    "id": 12, 
+                    "id": 13, 
                     "output_name": "MP"
                 }
             }, 
@@ -706,13 +749,13 @@
                 }
             ]
         }, 
-        "14": {
+        "15": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/resize_coordinate_window/resize_coordinate_window/1.0.1", 
-            "id": 14, 
+            "id": 15, 
             "input_connections": {
                 "input": {
-                    "id": 13, 
+                    "id": 14, 
                     "output_name": "out_file1"
                 }
             }, 
@@ -755,13 +798,13 @@
                 }
             ]
         }, 
-        "15": {
+        "16": {
             "annotation": "", 
             "content_id": "Show beginning1", 
-            "id": 15, 
+            "id": 16, 
             "input_connections": {
                 "input": {
-                    "id": 14, 
+                    "id": 15, 
                     "output_name": "output"
                 }
             }, 
@@ -798,13 +841,13 @@
                 }
             ]
         }, 
-        "16": {
+        "17": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/extract_genomic_dna/Extract genomic DNA 1/3.0.2", 
-            "id": 16, 
+            "id": 17, 
             "input_connections": {
                 "input": {
-                    "id": 14, 
+                    "id": 15, 
                     "output_name": "output"
                 }
             }, 
@@ -847,13 +890,13 @@
                 }
             ]
         }, 
-        "17": {
+        "18": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/extract_genomic_dna/Extract genomic DNA 1/3.0.2", 
-            "id": 17, 
+            "id": 18, 
             "input_connections": {
                 "input": {
-                    "id": 15, 
+                    "id": 16, 
                     "output_name": "out_file1"
                 }
             }, 
@@ -896,13 +939,13 @@
                 }
             ]
         }, 
-        "18": {
+        "19": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/repeat_masker/repeatmasker_wrapper/0.1.2", 
-            "id": 18, 
+            "id": 19, 
             "input_connections": {
                 "query": {
-                    "id": 16, 
+                    "id": 17, 
                     "output_name": "output"
                 }
             }, 
@@ -982,13 +1025,13 @@
                 }
             ]
         }, 
-        "19": {
+        "20": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/repeat_masker/repeatmasker_wrapper/0.1.2", 
-            "id": 19, 
+            "id": 20, 
             "input_connections": {
                 "query": {
-                    "id": 17, 
+                    "id": 18, 
                     "output_name": "output"
                 }
             }, 
@@ -1068,13 +1111,13 @@
                 }
             ]
         }, 
-        "20": {
+        "21": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/meme_meme/meme_meme/4.11.0.1", 
-            "id": 20, 
+            "id": 21, 
             "input_connections": {
                 "input1": {
-                    "id": 19, 
+                    "id": 20, 
                     "output_name": "output_mask"
                 }
             }, 
@@ -1128,13 +1171,13 @@
             "workflow_outputs": [
                 {
                     "label": null, 
-                    "output_name": "html_outfile", 
-                    "uuid": "bfa25048-7cb7-46ab-8de5-ae4c764cc989"
+                    "output_name": "txt_outfile", 
+                    "uuid": "a9444b0b-dbd9-455c-9b62-c915ee4576e2"
                 }, 
                 {
                     "label": null, 
-                    "output_name": "txt_outfile", 
-                    "uuid": "a9444b0b-dbd9-455c-9b62-c915ee4576e2"
+                    "output_name": "html_outfile", 
+                    "uuid": "bfa25048-7cb7-46ab-8de5-ae4c764cc989"
                 }, 
                 {
                     "label": null, 
@@ -1143,17 +1186,17 @@
                 }
             ]
         }, 
-        "21": {
+        "22": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/meme_fimo/meme_fimo/4.11.0.2", 
-            "id": 21, 
+            "id": 22, 
             "input_connections": {
                 "fasta_type|input_database": {
-                    "id": 18, 
+                    "id": 19, 
                     "output_name": "output_mask"
                 }, 
                 "input_motifs": {
-                    "id": 20, 
+                    "id": 21, 
                     "output_name": "xml_outfile"
                 }
             }, 
@@ -1211,8 +1254,8 @@
             "workflow_outputs": [
                 {
                     "label": null, 
-                    "output_name": "html_outfile", 
-                    "uuid": "52c5db17-aaf7-45f2-9342-725e7cbaef1b"
+                    "output_name": "interval_outfile", 
+                    "uuid": "eb7a7328-8b00-492f-9e59-6fd30dd6e072"
                 }, 
                 {
                     "label": null, 
@@ -1226,8 +1269,8 @@
                 }, 
                 {
                     "label": null, 
-                    "output_name": "interval_outfile", 
-                    "uuid": "eb7a7328-8b00-492f-9e59-6fd30dd6e072"
+                    "output_name": "html_outfile", 
+                    "uuid": "52c5db17-aaf7-45f2-9342-725e7cbaef1b"
                 }, 
                 {
                     "label": null, 
@@ -1237,5 +1280,5 @@
             ]
         }
     }, 
-    "uuid": "1f66ccb8-6f28-4632-aead-9295e5cd3042"
+    "uuid": "64321862-7ecd-4562-a5cc-9c8ae448a725"
 }
