@@ -1,0 +1,62 @@
+<tool id="genetrack_output_stats" name="Genetrack output statistics" version="1.0.0">
+    <description></description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+
+    <command>
+        <![CDATA[
+            #set history_name = $input.history.name
+            #for joa in $input.creating_job_associations:
+                #if $joa.dataset_id == $input.dataset_id: 
+                    #set job_output_assoc = $joa
+                #end if
+            #end for
+            #set job = $job_output_assoc.job
+            #set tool_id = $job.tool_id
+            #set tool_parameters = ""
+            #for p in $job.parameters:
+                #set tool_parameters = $tool_parameters + "__SeP__" + $p.name
+                #set tool_parameters = $tool_parameters + "__SeP__" + $p.value
+            #end for
+            python $__tool_directory__/genetrack_output_stats.py
+            --config_file $__tool_directory__/stats_config.ini
+            --input "$input"
+            --input_id "$__app__.security.encode_id($input.id)"
+            --input_datatype "$input.ext"
+            --dbkey "$input.metadata.dbkey"
+            --history_name "$history_name"
+            --tool_id "$tool_id"
+            --tool_parameters "$tool_parameters"
+            --output "$output"
+        ]]>
+    </command>
+    <inputs>
+        <param name="input" type="data" format="gff" label="Gff input" >
+            <validator type="dataset_ok_validator" />
+        </param>
+    </inputs>
+    <outputs>
+        <data name="output" format="txt" />
+    </outputs>
+    <tests>
+    </tests>
+    <help>
+**What it does**
+
+Generates statistics on the output of the **Genetrack peak predictor** tool in the **CEGR Galaxy ChIP-exo** pipeline.  These
+statistics include the following.
+
+- **numberOfPeaks** -number of lines in input dataset
+- **peakMean** - mean value of input column 6
+- **peakMeanStd** - mean value of input column 9
+- **peakMedian** - median value of input column 6
+- **peakMedianStd** - median value of input column 9
+- **medioanTagSingletons** - median value of input column 6 where input column 9 has stddev = 0.0
+
+
+A JSON dictionary containing the run, sample and genome reference, along with the above statistics is sent
+via a POST to the PEGR REST API where the information is stored to support the CEGR ChIP-exo statistics reports.
+    </help>
+    <expand macro="citations" />
+</tool>
