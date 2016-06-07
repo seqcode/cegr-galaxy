@@ -43,7 +43,7 @@
     <help>
 **What it does**
 
-Gets the display URI for the HTML output of the **FastQC Read Quality reports ** tool in the **CEGR Galaxy ChIP-exo**
+Gets the display URI for the HTML output of the **FastQC Read Quality reports** tool in the **CEGR Galaxy ChIP-exo**
 pipeline.  A JSON dictionary containing the run, sample and and this URI is sent via a POST to the PEGR REST API where
 the information is stored to support the CEGR ChIP-exo statistics reports.
     </help>
