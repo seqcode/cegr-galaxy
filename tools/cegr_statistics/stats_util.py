@@ -1,10 +1,12 @@
 import fileinput
 import json
+import numpy
 import os
 import shlex
 import string
 import subprocess
 import sys
+import tempfile
 
 from ConfigParser import ConfigParser
 from six.moves.urllib.error import HTTPError
@@ -35,7 +37,6 @@ def check_response(pegr_url, payload, response):
     try:
         s = json.dumps(payload)
         response_code = response.get('response_code', None)
-        message = response.get('message', None)
         if response_code not in ['200']:
             err_msg = 'Error sending statistics to PEGR!\n\nPEGR URL:\n%s\n\n' % str(pegr_url)
             err_msg += 'Payload:\n%s\n\nResponse:\n%s\n' % (s, str(response))
@@ -57,11 +58,12 @@ def format_tool_parameters(parameters):
     items = s.split('__SeP__')
     params = ''
     param_index = 0
-    for i in range(len(items)/2):
+    for i in range(len(items) / 2):
         param = '%s=%s' % (restore_text(items[param_index]), restore_text(items[param_index + 1]))
         params = '%s,%s' % (params, param)
         param_index += 2
     return params
+
 
 def get_adapter_count(file_path):
     pass
@@ -172,7 +174,49 @@ def get_number_of_lines(file_path):
     with open(file_path) as fh:
         for i, l in enumerate(fh):
             pass
+    fh.close()
     return i + 1
+
+
+def get_peak_stats(file_path):
+    """
+    The received file_path must point to a gff file and
+    we'll return peak stats discovered in the dataset.
+    """
+    peak_stats = dict(numberOfPeaks=0,
+                      peakMean=0,
+                      peakMeanStd=0,
+                      peakMedian=0,
+                      peakMedianStd=0,
+                      medianTagSingletons=0)
+    stddevs = []
+    peak_singleton_scores = []
+    scores = []
+    with open(file_path) as fh:
+        for i, line in enumerate(fh):
+            items = line.split('\t')
+            # Gff column 6 is score.
+            score = float(items[5])
+            scores.append(score)
+            # Gff column 9 is a semicolon-separated list.
+            attributes = items[8].split(';')
+            for attribute in attributes:
+                if attribute.startswith('stddev'):
+                    val = float(attribute.split('=')[1])
+                    stddevs.append(val)
+                    if val == 0.0:
+                        # We have a peakSingleton.
+                        peak_singleton_scores.append(score)
+                    break
+    fh.close()
+    # The number of lines in the file is the number of peaks.
+    peak_stats['numberOfPeaks'] = i + 1
+    peak_stats['peakMean'] = numpy.mean(scores)
+    peak_stats['peakMeanStd'] = numpy.mean(stddevs)
+    peak_stats['peakMedian'] = numpy.median(scores)
+    peak_stats['peakMedianStd'] = numpy.median(stddevs)
+    peak_stats['medianTagSingletons'] = numpy.median(peak_singleton_scores)
+    return peak_stats
 
 
 def get_pe_histogram(file_path):
@@ -244,6 +288,8 @@ def get_statistics(file_path, stats, **kwd):
                 s[k] = get_index_mismatch(file_path)
             elif k == 'mappedReads':
                 s[k] = get_mapped_reads(file_path)
+            elif k == 'peakStats':
+                return get_peak_stats(file_path)
             elif k == 'peHistogram':
                 s[k] = get_pe_histogram(file_path)
             elif k == 'seqDuplicationLevel':
@@ -261,6 +307,12 @@ def get_statistics(file_path, stats, **kwd):
 
 def get_std_dev_insert_size(file_path):
     pass
+
+
+def get_tmp_filename(dir=None, suffix=None):
+    fd, name = tempfile.mkstemp(suffix=suffix, dir=dir)
+    os.close(fd)
+    return name
 
 
 def get_tool_category(config_file, tool_id):
