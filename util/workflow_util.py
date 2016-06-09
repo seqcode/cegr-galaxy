@@ -4,7 +4,7 @@ import os
 import xml_util
 
 
-def get_workflow(gi, name, lh):
+def get_workflow(gi, name, lh, galaxy_base_url=None, api_key=None, for_inputs=False):
     lh.write('Searching for workflow named %s.\n' % name)
     workflow_info_dicts = gi.workflows.get_workflows(name=name)
     if len(workflow_info_dicts) == 0:
@@ -12,7 +12,14 @@ def get_workflow(gi, name, lh):
     wf_info_dict = workflow_info_dicts[0]
     workflow_id = wf_info_dict['id']
     # Get the complete workflow.
-    workflow_dict = gi.workflows.show_workflow(workflow_id)
+    if for_inputs:
+        # Bioblend does not provides this end
+        # point so we need to get it from Galaxy.
+        base_url = '%s/api/workflows/%s/download' % (galaxy_base_url, workflow_id)
+        url = api_util.make_url(api_key, base_url)
+        workflow_dict = api_util.get(url)
+    else:
+        workflow_dict = gi.workflows.show_workflow(workflow_id)
     lh.write('Found workflow named %s.\n' % name)
     return workflow_id, workflow_dict
 
@@ -23,22 +30,30 @@ def get_workflow_config_files(workflow_config_directory, wf_config_files_str):
     return [os.path.join(workflow_config_directory, wf_config_file) for wf_config_file in wf_config_files]
 
 
-def get_workflow_input_datasets(history_name, history_input_datasets, workflow_name, workflow_dict, dbkey, lh):
+def get_workflow_input_datasets(gi, history_name, history_input_datasets, workflow_name, dbkey, galaxy_base_url, api_key, lh):
     # Map the history datasets to the input datasets for the workflow.
-    inputs = {}
+    workflow_id, workflow_dict = get_workflow(gi, workflow_name, lh, galaxy_base_url=galaxy_base_url, api_key=api_key, for_inputs=True)
+    workflow_inputs = {}
     lh.write('\nMapping datasets from history %s to input datasets in workflow %s.\n' % (history_name, workflow_name))
-    for input_index, input_dataset_dict in workflow_dict['inputs'].items():
-        label = input_dataset_dict['label']
-        for input_hda_name, input_hda_dict in history_input_datasets.items():
-            # This requires the workflow input dataset label to be a string
-            # (e.g., R1) that is contained in the name of the input dataset
-            # (e.g., 60642_R1.fq).  The blacklist filter dataset must have
-            # the exact label "blacklist" (without the quotes).
-            if input_hda_name.find(label) >= 0 or (label == 'blacklist' and input_hda_name.find(dbkey) >= 0):
-                inputs[input_index] = {'src': 'hda', 'id': input_hda_dict['id']}
-                lh.write('Mapped dataset %s from history to workflow input dataset with label %s.\n' % (input_hda_name, label))
-                break
-    return inputs
+    steps_dict = workflow_dict.get('steps', None)
+    if steps_dict is not None:
+        for step_index, step_dict in steps_dict.items():
+            inputs = step_dict.get('inputs', None)
+            if inputs is not None:
+                # inputs is a list.
+                for input_dict in inputs:
+                    name = input_dict.get('name', None)
+                    if name is not None:
+                        for input_hda_name, input_hda_dict in history_input_datasets.items():
+                            # This requires the workflow input dataset label to be a string
+                            # (e.g., R1) that is contained in the name of the input dataset
+                            # (e.g., 60642_R1.fq).  The blacklist filter dataset must have
+                            # the exact label "blacklist" (without the quotes).
+                            if input_hda_name.find(name) >= 0 or (name == 'blacklist' and input_hda_name.find(dbkey) >= 0):
+                                workflow_inputs[step_index] = {'src': 'hda', 'id': input_hda_dict['id']}
+                                lh.write('Mapped dataset %s from history to workflow input dataset with name %s.\n' % (input_hda_name, name))
+                                break
+    return workflow_inputs
 
 
 def parse_workflow_config(wf_config_file, lh):
@@ -105,6 +120,7 @@ def start_workflow(gi, workflow_id, workflow_name, inputs, params, history_id, l
     lh.write('\nExecuting workflow %s.\n' % workflow_name)
     lh.write('inputs:\n%s\n\n' % str(inputs))
     lh.write('params:\n%s\n\n' % str(params))
+    lh.write('history_id:\n%s\n\n' % str(history_id))
     workflow_invocation_dict = gi.workflows.invoke_workflow(workflow_id,
                                                             inputs=inputs,
                                                             params=params,

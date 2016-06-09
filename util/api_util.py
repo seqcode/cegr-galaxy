@@ -9,6 +9,7 @@ default values must be set appropriately for the environment within which this
 pipeline is run.
 """
 import datetime
+import json
 import os
 import pipes
 import shutil
@@ -17,6 +18,7 @@ import subprocess
 import sys
 import tempfile
 from ConfigParser import ConfigParser
+from six.moves.urllib.request import urlopen
 from time import gmtime, strftime
 
 BUFF_SIZE = 1048576
@@ -268,6 +270,13 @@ def generate_sample_sheet(cegr_run_info_file, sample_sheet_path, lh):
     sh.close()
 
 
+def get(url):
+    try:
+        return json.loads(urlopen(url).read())
+    except ValueError as e:
+        stop_err(str(e))
+
+
 def get_config_settings(config_file=None, type='defaults'):
     # Current types: defaults, workflow_invocation, workflows
     if config_file is None:
@@ -314,6 +323,11 @@ def get_current_run_directory(cegr_run_info_file):
 
 def get_current_time():
     return strftime('%a, %d %b %Y %H:%M:%S', gmtime())
+
+
+def get_galaxy_url(config_file):
+    defaults = get_config_settings(config_file, section='defaults')
+    return make_url(defaults['GALAXY_API_KEY'], defaults['GALAXY_BASE_URL'])
 
 
 def get_run_from_sample_sheet(sample_sheet):
@@ -414,6 +428,20 @@ def log_results(cmd, rc, tmp_serr_file, tmp_sout_file, lh):
             for line in open(tmp_serr_file):
                 lh.write('%s\n' % line)
     lh.write('\n\n')
+
+
+def make_url(api_key, url, args=None):
+    """
+    Adds the API Key to the URL if it's not already there.
+    """
+    if args is None:
+        args = []
+    argsep = '&'
+    if '?' not in url:
+        argsep = '?'
+    if '?key=' not in url and '&key=' not in url:
+        args.insert(0, ('key', api_key))
+    return url + argsep + '&'.join(['='.join(t) for t in args])
 
 
 def open_log_file(log_file, script_name):

@@ -147,7 +147,7 @@ with open(cegr_run_info_file, 'r') as fh:
 
                 # Get the workflow.
                 workflow_id, workflow_dict = workflow_util.get_workflow(gi, workflow_name, lh)
-                if workflow_name is None:
+                if workflow_id is None:
                     lh.write('Skipping invalid line %d, it contains workflow config %s with invalid workflow name %s.\n' % (i, wf_config_file, workflow_name))
                     continue
 
@@ -199,12 +199,15 @@ with open(cegr_run_info_file, 'r') as fh:
                                                                      lh)
 
                 # Map the history datasets to the input datasets for the workflow.
-                inputs = workflow_util.get_workflow_input_datasets(history_name,
+                inputs = workflow_util.get_workflow_input_datasets(gi,
+                                                                   history_name,
                                                                    history_input_datasets,
                                                                    workflow_name,
-                                                                   workflow_dict,
                                                                    dbkey,
+                                                                   galaxy_base_url,
+                                                                   api_key,
                                                                    lh)
+                lh.write("inputs:\n%s\n" % str(inputs))
                 lh.write("Sleeping for 10 seconds...\n")
                 time.sleep(10)
 
