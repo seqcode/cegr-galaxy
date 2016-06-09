@@ -10,6 +10,7 @@
  ‘toolCategory’: ‘string’,
  ‘toolId’: ‘string’,
  ‘workflowId’: ‘string’,
+ 'historyId': 'string',
  ‘statistics’: {
                 ‘adapterCount’: float,                  # precision is 2 decimal places
                 ‘avgInsertSize’: float,                 # precision is 4 decimal places
