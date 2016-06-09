@@ -77,9 +77,10 @@ def get_bam_file(file_path):
     pass
 
 
-def get_base_json_dict(config_file, dbkey, history_name, tool_id, tool_parameters):
+def get_base_json_dict(config_file, dbkey, history_id, history_name, tool_id, tool_parameters):
     d = {}
     d['genome'] = dbkey
+    d['historyId'] = history_id
     d['parameters'] = format_tool_parameters(tool_parameters)
     d['run'] = get_run_from_history_name(history_name)
     d['toolCategory'] = get_tool_category(config_file, tool_id)

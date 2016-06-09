@@ -8,6 +8,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--chrom_len_file', dest='chrom_len_file', help="File names of .len files for chromosome lengths")
 parser.add_argument('--config_file', dest='config_file', help='stats_config.ini')
 parser.add_argument('--dbkey', dest='dbkey', help='Input dbkey')
+parser.add_argument('--history_id', dest='history_id', help='History id')
 parser.add_argument('--history_name', dest='history_name', help='History name')
 parser.add_argument('--input', dest='input', help='Input dataset')
 parser.add_argument('--input_datatype', dest='input_datatype', help='Input dataset datatype')
@@ -18,7 +19,7 @@ parser.add_argument('--tool_parameters', dest='tool_parameters', help='Tool para
 args = parser.parse_args()
 
 # Initialize the payload.
-payload = stats_util.get_base_json_dict(args.config_file, args.dbkey, args.history_name, args.tool_id, args.tool_parameters)
+payload = stats_util.get_base_json_dict(args.config_file, args.dbkey, args.history_id, args.history_name, args.tool_id, args.tool_parameters)
 # Generate the statistics and datasets.
 payload['statistics'] = stats_util.get_statistics(args.input, STATS, dbkey=args.dbkey, chrom_lengths_file=args.chrom_len_file)
 payload['datasets'] = stats_util.get_datasets(args.config_file, args.input_id, args.input_datatype)
