@@ -5,6 +5,12 @@
     </macros>
     <command>
         <![CDATA[
+            #import time
+            #set non_ready_states = ['new', 'queued', 'running', 'setting_metadata', 'upload']
+            #while $input.dataset.state in $non_ready_states:
+                time.sleep(60)
+            #end while
+            #set history_id = $__app__.security.encode_id($input.history.id)
             #set history_name = $input.history.name
             #for joa in $input.creating_job_associations:
                 #if $joa.dataset_id == $input.dataset_id: 
@@ -24,6 +30,7 @@
             --input_id "$__app__.security.encode_id($input.id)"
             --input_datatype "$input.ext"
             --dbkey "$input.metadata.dbkey"
+            --history_id "$history_id"
             --history_name "$history_name"
             --tool_id "$tool_id"
             --tool_parameters "$tool_parameters"
