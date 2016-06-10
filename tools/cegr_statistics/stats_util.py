@@ -179,6 +179,10 @@ def get_number_of_lines(file_path):
     return i + 1
 
 
+def get_peak_pair_wis(file_path):
+    return get_number_of_lines(file_path)
+
+
 def get_peak_stats(file_path):
     """
     The received file_path must point to a gff file and
@@ -289,6 +293,8 @@ def get_statistics(file_path, stats, **kwd):
                 s[k] = get_index_mismatch(file_path)
             elif k == 'mappedReads':
                 s[k] = get_mapped_reads(file_path)
+            elif k == 'peakPairWis':
+                s[k] = get_peak_pair_wis(file_path)
             elif k == 'peakStats':
                 return get_peak_stats(file_path)
             elif k == 'peHistogram':
