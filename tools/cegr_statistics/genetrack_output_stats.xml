@@ -10,7 +10,6 @@
             #set non_ready_states = ['new', 'queued', 'running', 'setting_metadata', 'upload']
             #set history_id = None
             #set history_name = None
-            #set job_output_assoc = None
             #for $i in $input:
                 #while $i.dataset.state in $non_ready_states:
                     time.sleep(60)
@@ -23,12 +22,7 @@
                     #set history_name = $i.history.name
                 #end if
                 --input "${i}" "${i.hid}" "$__app__.security.encode_id($i.id)" "$i.ext" "$i.metadata.dbkey"
-                #for joa in $i.creating_job_associations:
-                    #if $joa.dataset_id == $i.dataset_id: 
-                        #set job_output_assoc = $joa
-                    #end if
-                #end for
-                #set job = $job_output_assoc.job
+                #set job = $i.creating_job
                 #set tool_id = $job.tool_id
                 #set tool_parameters = ""
                 #for p in $job.parameters:
