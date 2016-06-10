@@ -13,12 +13,7 @@
             #end while
             #set history_id = $__app__.security.encode_id($input.history.id)
             #set history_name = $input.history.name
-            #for joa in $input.creating_job_associations:
-                #if $joa.dataset_id == $input.dataset_id: 
-                    #set job_output_assoc = $joa
-                #end if
-            #end for
-            #set job = $job_output_assoc.job
+            #set job = $input.creating_job
             #set tool_id = $job.tool_id
             #set tool_parameters = ""
             #for p in $job.parameters:
