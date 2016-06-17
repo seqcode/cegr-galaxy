@@ -19,8 +19,8 @@
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
-                "left": 131.88336181640625, 
-                "top": 541.8333129882812
+                "left": 131.883544921875, 
+                "top": 541.8333435058594
             }, 
             "tool_errors": null, 
             "tool_id": null, 
@@ -51,8 +51,8 @@
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
-                "left": 958.8833465576172, 
-                "top": 602.8333129882812
+                "left": 958.8834228515625, 
+                "top": 602.8333435058594
             }, 
             "tool_errors": null, 
             "tool_id": null, 
@@ -105,8 +105,8 @@
                 }
             ], 
             "position": {
-                "left": 378.88336181640625, 
-                "top": 367.83331298828125
+                "left": 378.883544921875, 
+                "top": 367.8333435058594
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -159,8 +159,8 @@
                 }
             ], 
             "position": {
-                "left": 354.88336181640625, 
-                "top": 624.8333129882812
+                "left": 354.883544921875, 
+                "top": 624.8333435058594
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -208,7 +208,7 @@
                 }
             ], 
             "position": {
-                "left": 654.8833618164062, 
+                "left": 654.883544921875, 
                 "top": 305.6499938964844
             }, 
             "post_job_actions": {}, 
@@ -255,8 +255,8 @@
                 }
             ], 
             "position": {
-                "left": 387.66668701171875, 
-                "top": 751.13330078125
+                "left": 387.666748046875, 
+                "top": 751.1333312988281
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -314,7 +314,7 @@
             ], 
             "position": {
                 "left": 665.5, 
-                "top": 636.5
+                "top": 636.4999694824219
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -362,8 +362,8 @@
                 }
             ], 
             "position": {
-                "left": 740.5, 
-                "top": 847
+                "left": 740.5001220703125, 
+                "top": 846.9999694824219
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -405,8 +405,8 @@
                 }
             ], 
             "position": {
-                "left": 708.8833618164062, 
-                "top": 465.83331298828125
+                "left": 708.8834228515625, 
+                "top": 465.8333435058594
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -454,7 +454,7 @@
                 }
             ], 
             "position": {
-                "left": 907.0500183105469, 
+                "left": 907.050048828125, 
                 "top": 326
             }, 
             "post_job_actions": {}, 
@@ -497,8 +497,8 @@
                 }
             ], 
             "position": {
-                "left": 953.8833465576172, 
-                "top": 461.83331298828125
+                "left": 953.8834228515625, 
+                "top": 461.8333435058594
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -546,8 +546,8 @@
                 }
             ], 
             "position": {
-                "left": 1199.8166809082031, 
-                "top": 326.83331298828125
+                "left": 1199.8167724609375, 
+                "top": 326.8333435058594
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -597,8 +597,8 @@
                 }
             ], 
             "position": {
-                "left": 1183.8833465576172, 
-                "top": 451.83331298828125
+                "left": 1183.8834228515625, 
+                "top": 451.8333435058594
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -646,8 +646,8 @@
                 }
             ], 
             "position": {
-                "left": 1510.8833618164062, 
-                "top": 472.83331298828125
+                "left": 1510.8834228515625, 
+                "top": 472.8333435058594
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -705,8 +705,8 @@
                 }
             ], 
             "position": {
-                "left": 1737.8833618164062, 
-                "top": 485.83331298828125
+                "left": 1737.8834228515625, 
+                "top": 485.8333435058594
             }, 
             "post_job_actions": {
                 "HideDatasetActionH": {
@@ -760,7 +760,12 @@
                     "output_name": "MP"
                 }
             }, 
-            "inputs": [], 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool CWPair2 output statistics", 
+                    "name": "input"
+                }
+            ], 
             "label": null, 
             "name": "CWPair2 output statistics", 
             "outputs": [
@@ -770,13 +775,13 @@
                 }
             ], 
             "position": {
-                "left": 1984.1666870117188, 
+                "left": 1984.166748046875, 
                 "top": 422.5
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
             "tool_id": "cwpair2_output_stats", 
-            "tool_state": "{\"input\": \"null\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
+            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
             "uuid": "e1e40f3a-9948-4208-8e43-4bcd50617b5e", 
@@ -813,8 +818,8 @@
                 }
             ], 
             "position": {
-                "left": 2021.8833618164062, 
-                "top": 540.8333129882812
+                "left": 2021.8834228515625, 
+                "top": 540.8333435058594
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -856,7 +861,7 @@
                 }
             ], 
             "position": {
-                "left": 2223.6000366210938, 
+                "left": 2223.60009765625, 
                 "top": 526
             }, 
             "post_job_actions": {}, 
@@ -905,8 +910,8 @@
                 }
             ], 
             "position": {
-                "left": 2475.8833618164062, 
-                "top": 456.83331298828125
+                "left": 2475.8834533691406, 
+                "top": 456.8333435058594
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -948,8 +953,8 @@
                 }
             ], 
             "position": {
-                "left": 2919.5499877929688, 
-                "top": 609.86669921875
+                "left": 2919.5501098632812, 
+                "top": 609.8666687011719
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -997,7 +1002,7 @@
                 }
             ], 
             "position": {
-                "left": 2690.5499877929688, 
+                "left": 2690.5501098632812, 
                 "top": 463.8666687011719
             }, 
             "post_job_actions": {}, 
@@ -1062,8 +1067,8 @@
                 }
             ], 
             "position": {
-                "left": 3209.8500366210938, 
-                "top": 608.0833129882812
+                "left": 3209.85009765625, 
+                "top": 608.0833435058594
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput_gff": {
@@ -1148,7 +1153,7 @@
                 }
             ], 
             "position": {
-                "left": 2947.6166381835938, 
+                "left": 2947.6167755126953, 
                 "top": 306.51666259765625
             }, 
             "post_job_actions": {
@@ -1234,14 +1239,14 @@
                 }
             ], 
             "position": {
-                "left": 3214.5499877929688, 
-                "top": 282.8666687011719
+                "left": 3214.5501098632812, 
+                "top": 282.8666534423828
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/meme_meme/meme_meme/4.11.0.1", 
             "tool_shed_repository": {
-                "changeset_revision": "34c794383f81", 
+                "changeset_revision": "62d1fae3b7d3", 
                 "name": "meme_meme", 
                 "owner": "iuc", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
@@ -1270,13 +1275,9 @@
         }, 
         "24": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/meme_fimo/meme_fimo/4.11.0.2", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/meme_fimo/meme_fimo/4.11.0.3", 
             "id": 24, 
             "input_connections": {
-                "fasta_type|input_database": {
-                    "id": 21, 
-                    "output_name": "output_mask"
-                }, 
                 "input_motifs": {
                     "id": 23, 
                     "output_name": "xml_outfile"
@@ -1285,16 +1286,16 @@
             "inputs": [
                 {
                     "description": "runtime parameter for tool FIMO", 
-                    "name": "fasta_type"
-                }, 
-                {
-                    "description": "runtime parameter for tool FIMO", 
                     "name": "input_motifs"
                 }
             ], 
             "label": null, 
             "name": "FIMO", 
             "outputs": [
+                {
+                    "name": "motifs", 
+                    "type": "input"
+                }, 
                 {
                     "name": "html_outfile", 
                     "type": "html"
@@ -1317,50 +1318,55 @@
                 }
             ], 
             "position": {
-                "left": 3462.5499877929688, 
-                "top": 441.8666687011719
+                "left": 3464.533447265625, 
+                "top": 429.6499938964844
             }, 
-            "post_job_actions": {}, 
+            "post_job_actions": {
+                "HideDatasetActiongff_outfile": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "gff_outfile"
+                }, 
+                "HideDatasetActionhtml_outfile": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "html_outfile"
+                }, 
+                "HideDatasetActioninterval_outfile": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "interval_outfile"
+                }, 
+                "HideDatasetActionmotifs": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "motifs"
+                }, 
+                "HideDatasetActiontxt_outfile": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "txt_outfile"
+                }, 
+                "HideDatasetActionxml_outfile": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "xml_outfile"
+                }
+            }, 
             "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/meme_fimo/meme_fimo/4.11.0.2", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/meme_fimo/meme_fimo/4.11.0.3", 
             "tool_shed_repository": {
-                "changeset_revision": "cd54079f0f72", 
+                "changeset_revision": "eca84de658b0", 
                 "name": "meme_fimo", 
                 "owner": "iuc", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"input_motifs\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"non_commercial_use\": \"\\\"true\\\"\", \"options_type\": \"{\\\"prior_dist_cond\\\": {\\\"prior_dist_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 0}, \\\"psp_cond\\\": {\\\"__current_case__\\\": 0, \\\"psp_selector\\\": \\\"no\\\"}, \\\"options_type_selector\\\": \\\"advanced\\\", \\\"no_qvalue\\\": \\\"true\\\", \\\"qv_thresh\\\": \\\"false\\\", \\\"motifs_cond\\\": {\\\"motifs_selector\\\": \\\"yes\\\", \\\"__current_case__\\\": 0}, \\\"bgfile_type\\\": {\\\"bgfile_type_selector\\\": \\\"default\\\", \\\"__current_case__\\\": 1}, \\\"norc\\\": \\\"false\\\", \\\"max_strand\\\": \\\"false\\\", \\\"thresh\\\": \\\"0.0001\\\", \\\"__current_case__\\\": 1, \\\"max_stored_scores\\\": \\\"100000\\\", \\\"alpha\\\": \\\"1.0\\\", \\\"motif_pseudo\\\": \\\"0.1\\\", \\\"parse_genomic_coord\\\": \\\"false\\\"}\", \"fasta_type\": \"{\\\"input_database\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"fasta_type_selector\\\": \\\"history\\\", \\\"__current_case__\\\": 1}\"}", 
-            "tool_version": "4.11.0.2", 
+            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"input_motifs\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"non_commercial_use\": \"\\\"true\\\"\", \"options_type\": \"{\\\"prior_dist_cond\\\": {\\\"prior_dist_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 0}, \\\"qv_thresh\\\": \\\"false\\\", \\\"psp_cond\\\": {\\\"__current_case__\\\": 0, \\\"psp_selector\\\": \\\"no\\\"}, \\\"options_type_selector\\\": \\\"advanced\\\", \\\"no_qvalue\\\": \\\"true\\\", \\\"output_separate_motifs\\\": \\\"yes\\\", \\\"parse_genomic_coord_cond\\\": {\\\"remove_duplicate_coords\\\": \\\"true\\\", \\\"__current_case__\\\": 0, \\\"parse_genomic_coord\\\": \\\"yes\\\"}, \\\"motifs_cond\\\": {\\\"motifs_selector\\\": \\\"yes\\\", \\\"__current_case__\\\": 0}, \\\"bgfile_type\\\": {\\\"bgfile_type_selector\\\": \\\"default\\\", \\\"__current_case__\\\": 1}, \\\"norc\\\": \\\"false\\\", \\\"max_strand\\\": \\\"false\\\", \\\"thresh\\\": \\\"0.0001\\\", \\\"__current_case__\\\": 1, \\\"max_stored_scores\\\": \\\"100000\\\", \\\"alpha\\\": \\\"1.0\\\", \\\"motif_pseudo\\\": \\\"0.1\\\"}\", \"fasta_type\": \"{\\\"input_database\\\": \\\"bosTau7\\\", \\\"fasta_type_selector\\\": \\\"cached\\\", \\\"__current_case__\\\": 0}\"}", 
+            "tool_version": "4.11.0.3", 
             "type": "tool", 
-            "uuid": "326b524e-83f5-4173-a67f-cb47d257b1e6", 
-            "workflow_outputs": [
-                {
-                    "label": null, 
-                    "output_name": "html_outfile", 
-                    "uuid": "52c5db17-aaf7-45f2-9342-725e7cbaef1b"
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "txt_outfile", 
-                    "uuid": "4bf65fb1-c889-4a22-bbda-10c9f3c5f095"
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "xml_outfile", 
-                    "uuid": "6cc44155-bbf7-447f-93cc-50fef03aeb16"
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "interval_outfile", 
-                    "uuid": "eb7a7328-8b00-492f-9e59-6fd30dd6e072"
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "gff_outfile", 
-                    "uuid": "4e087327-3498-4c81-9c5b-c9245b50c616"
-                }
-            ]
+            "uuid": "b037fc76-09f0-4c16-8391-07fb1af275d3", 
+            "workflow_outputs": []
         }
     }, 
-    "uuid": "4324eca8-99f1-49ad-b330-93fbfe0bcc5c"
+    "uuid": "4c2ce27f-4642-4a48-8f88-2b210a618c7e"
 }

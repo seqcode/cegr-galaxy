@@ -19,8 +19,8 @@
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
-                "left": 199.99993896484375, 
-                "top": 349
+                "left": 200, 
+                "top": 440.8833312988281
             }, 
             "tool_errors": null, 
             "tool_id": null, 
@@ -51,8 +51,8 @@
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
-                "left": 338.99993896484375, 
-                "top": 758
+                "left": 339, 
+                "top": 849.8833312988281
             }, 
             "tool_errors": null, 
             "tool_id": null, 
@@ -83,8 +83,8 @@
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
-                "left": 1046.9665985107422, 
-                "top": 656
+                "left": 1046.9666748046875, 
+                "top": 747.8833312988281
             }, 
             "tool_errors": null, 
             "tool_id": null, 
@@ -137,8 +137,8 @@
                 }
             ], 
             "position": {
-                "left": 481.96661376953125, 
-                "top": 182
+                "left": 481.966552734375, 
+                "top": 273.8833312988281
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -203,8 +203,8 @@
                 }
             ], 
             "position": {
-                "left": 489.99993896484375, 
-                "top": 391
+                "left": 490, 
+                "top": 482.8833312988281
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -265,8 +265,8 @@
                 }
             ], 
             "position": {
-                "left": 358.96661376953125, 
-                "top": 929
+                "left": 358.966552734375, 
+                "top": 1020.8833312988281
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -314,8 +314,8 @@
                 }
             ], 
             "position": {
-                "left": 764.9999389648438, 
-                "top": 226.5
+                "left": 765, 
+                "top": 318.3833312988281
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -357,8 +357,8 @@
                 }
             ], 
             "position": {
-                "left": 773.9999389648438, 
-                "top": 361.5
+                "left": 774, 
+                "top": 453.3833312988281
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -405,7 +405,7 @@
             ], 
             "position": {
                 "left": 622.63330078125, 
-                "top": 915.13330078125
+                "top": 1007.0166931152344
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -462,8 +462,8 @@
                 }
             ], 
             "position": {
-                "left": 742.9666137695312, 
-                "top": 686.13330078125
+                "left": 742.966552734375, 
+                "top": 778.0166931152344
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -511,8 +511,8 @@
                 }
             ], 
             "position": {
-                "left": 945.7999420166016, 
-                "top": 869.9166870117188
+                "left": 945.800048828125, 
+                "top": 961.8000183105469
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -554,8 +554,8 @@
                 }
             ], 
             "position": {
-                "left": 876.9999389648438, 
-                "top": 474
+                "left": 877, 
+                "top": 565.8833312988281
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -603,8 +603,8 @@
                 }
             ], 
             "position": {
-                "left": 1112.0666046142578, 
-                "top": 337.433349609375
+                "left": 1112.066650390625, 
+                "top": 429.3166809082031
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -646,8 +646,8 @@
                 }
             ], 
             "position": {
-                "left": 1131.9999389648438, 
-                "top": 482
+                "left": 1132, 
+                "top": 573.8833312988281
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -703,8 +703,8 @@
                 }
             ], 
             "position": {
-                "left": 1351.9999389648438, 
-                "top": 488
+                "left": 1352, 
+                "top": 579.8833312988281
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -752,8 +752,8 @@
                 }
             ], 
             "position": {
-                "left": 1419.3999328613281, 
-                "top": 361.5
+                "left": 1419.4000244140625, 
+                "top": 453.3833312988281
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -811,8 +811,8 @@
                 }
             ], 
             "position": {
-                "left": 1694.9999389648438, 
-                "top": 479
+                "left": 1695, 
+                "top": 570.8833312988281
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -840,8 +840,8 @@
                 }, 
                 {
                     "label": null, 
-                    "output_name": "MP", 
-                    "uuid": "8334cbf6-0f92-498a-b0c5-2322c380f6fc"
+                    "output_name": "D", 
+                    "uuid": "f2c1b8cb-d663-4d70-87ca-86e6373034f0"
                 }, 
                 {
                     "label": null, 
@@ -850,8 +850,8 @@
                 }, 
                 {
                     "label": null, 
-                    "output_name": "D", 
-                    "uuid": "f2c1b8cb-d663-4d70-87ca-86e6373034f0"
+                    "output_name": "MP", 
+                    "uuid": "8334cbf6-0f92-498a-b0c5-2322c380f6fc"
                 }
             ]
         }, 
@@ -865,7 +865,12 @@
                     "output_name": "MP"
                 }
             }, 
-            "inputs": [], 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool CWPair2 output statistics", 
+                    "name": "input"
+                }
+            ], 
             "label": null, 
             "name": "CWPair2 output statistics", 
             "outputs": [
@@ -876,22 +881,22 @@
             ], 
             "position": {
                 "left": 1949.5166015625, 
-                "top": 404.5
+                "top": 496.3833312988281
             }, 
-            "post_job_actions": {
-                "HideDatasetActioncwpair2_output_stats": {
-                    "action_arguments": {}, 
-                    "action_type": "HideDatasetAction", 
-                    "output_name": "cwpair2_output_stats"
-                }
-            }, 
+            "post_job_actions": {}, 
             "tool_errors": null, 
             "tool_id": "cwpair2_output_stats", 
-            "tool_state": "{\"input\": \"null\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
+            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
             "uuid": "630b7bb6-cb84-49c3-ba3b-845608b3ca28", 
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "cwpair2_output_stats", 
+                    "uuid": "d77ac861-99e2-433e-b6b6-2bd5bd272cc7"
+                }
+            ]
         }, 
         "18": {
             "annotation": "", 
@@ -918,8 +923,8 @@
                 }
             ], 
             "position": {
-                "left": 1967.9666137695312, 
-                "top": 517
+                "left": 1967.9666748046875, 
+                "top": 608.8833312988281
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -961,8 +966,8 @@
                 }
             ], 
             "position": {
-                "left": 2210.6832275390625, 
-                "top": 498.0999755859375
+                "left": 2210.683349609375, 
+                "top": 589.9833068847656
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1010,8 +1015,8 @@
                 }
             ], 
             "position": {
-                "left": 2483.966552734375, 
-                "top": 387
+                "left": 2483.9666748046875, 
+                "top": 478.8833312988281
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1053,8 +1058,8 @@
                 }
             ], 
             "position": {
-                "left": 2875.3499755859375, 
-                "top": 641.5833129882812
+                "left": 2875.3500061035156, 
+                "top": 733.4667053222656
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1103,7 +1108,7 @@
             ], 
             "position": {
                 "left": 2695, 
-                "top": 455.933349609375
+                "top": 547.8166809082031
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1167,8 +1172,8 @@
                 }
             ], 
             "position": {
-                "left": 3162.64990234375, 
-                "top": 568.433349609375
+                "left": 3162.6499938964844, 
+                "top": 660.3166809082031
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput_gff": {
@@ -1253,8 +1258,8 @@
                 }
             ], 
             "position": {
-                "left": 2932.64990234375, 
-                "top": 323.433349609375
+                "left": 2932.6499938964844, 
+                "top": 415.3166809082031
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput_gff": {
@@ -1340,13 +1345,13 @@
             ], 
             "position": {
                 "left": 3187, 
-                "top": 254.933349609375
+                "top": 346.8166809082031
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/meme_meme/meme_meme/4.11.0.1", 
             "tool_shed_repository": {
-                "changeset_revision": "34c794383f81", 
+                "changeset_revision": "62d1fae3b7d3", 
                 "name": "meme_meme", 
                 "owner": "iuc", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
@@ -1358,13 +1363,13 @@
             "workflow_outputs": [
                 {
                     "label": null, 
-                    "output_name": "txt_outfile", 
-                    "uuid": "a2a42314-b129-48f7-a2f7-1d2ab591fe96"
+                    "output_name": "html_outfile", 
+                    "uuid": "93c9840e-c150-46c2-8e3b-89d349c536c5"
                 }, 
                 {
                     "label": null, 
-                    "output_name": "html_outfile", 
-                    "uuid": "93c9840e-c150-46c2-8e3b-89d349c536c5"
+                    "output_name": "txt_outfile", 
+                    "uuid": "a2a42314-b129-48f7-a2f7-1d2ab591fe96"
                 }, 
                 {
                     "label": null, 
@@ -1375,13 +1380,9 @@
         }, 
         "26": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/meme_fimo/meme_fimo/4.11.0.2", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/meme_fimo/meme_fimo/4.11.0.3", 
             "id": 26, 
             "input_connections": {
-                "fasta_type|input_database": {
-                    "id": 23, 
-                    "output_name": "output_mask"
-                }, 
                 "input_motifs": {
                     "id": 25, 
                     "output_name": "xml_outfile"
@@ -1391,15 +1392,15 @@
                 {
                     "description": "runtime parameter for tool FIMO", 
                     "name": "input_motifs"
-                }, 
-                {
-                    "description": "runtime parameter for tool FIMO", 
-                    "name": "fasta_type"
                 }
             ], 
             "label": null, 
             "name": "FIMO", 
             "outputs": [
+                {
+                    "name": "motifs", 
+                    "type": "input"
+                }, 
                 {
                     "name": "html_outfile", 
                     "type": "html"
@@ -1422,50 +1423,55 @@
                 }
             ], 
             "position": {
-                "left": 3418, 
-                "top": 440
+                "left": 3458.2166748046875, 
+                "top": 450.8833312988281
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/meme_fimo/meme_fimo/4.11.0.2", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/meme_fimo/meme_fimo/4.11.0.3", 
             "tool_shed_repository": {
-                "changeset_revision": "cd54079f0f72", 
+                "changeset_revision": "eca84de658b0", 
                 "name": "meme_fimo", 
                 "owner": "iuc", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": 0, \"input_database|__identifier__\": \"\\\"data_MP_mode_f0u0d80_on_data_15.gff\\\"\", \"__rerun_remap_job_id__\": null, \"input_motifs\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"non_commercial_use\": \"\\\"true\\\"\", \"options_type\": \"{\\\"prior_dist_cond\\\": {\\\"prior_dist_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 0}, \\\"psp_cond\\\": {\\\"__current_case__\\\": 0, \\\"psp_selector\\\": \\\"no\\\"}, \\\"options_type_selector\\\": \\\"advanced\\\", \\\"no_qvalue\\\": \\\"true\\\", \\\"qv_thresh\\\": \\\"false\\\", \\\"motifs_cond\\\": {\\\"motifs_selector\\\": \\\"yes\\\", \\\"__current_case__\\\": 0}, \\\"bgfile_type\\\": {\\\"bgfile_type_selector\\\": \\\"default\\\", \\\"__current_case__\\\": 1}, \\\"norc\\\": \\\"false\\\", \\\"max_strand\\\": \\\"false\\\", \\\"thresh\\\": \\\"0.0001\\\", \\\"__current_case__\\\": 1, \\\"max_stored_scores\\\": \\\"100000\\\", \\\"alpha\\\": \\\"1.0\\\", \\\"motif_pseudo\\\": \\\"0.1\\\", \\\"parse_genomic_coord\\\": \\\"false\\\"}\", \"fasta_type\": \"{\\\"input_database\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"fasta_type_selector\\\": \\\"history\\\", \\\"__current_case__\\\": 1}\", \"input_motifs|__identifier__\": \"\\\"data_MP_mode_f0u0d80_on_data_15.gff\\\"\", \"chromInfo\": \"\\\"/gpfs/cyberstar/pughhpc/galaxy-cegr/galaxy/tool-data/shared/ucsc/chrom/sacCer3.len\\\"\"}", 
-            "tool_version": "4.11.0.2", 
+            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"input_motifs\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"non_commercial_use\": \"\\\"true\\\"\", \"options_type\": \"{\\\"prior_dist_cond\\\": {\\\"prior_dist_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 0}, \\\"qv_thresh\\\": \\\"false\\\", \\\"psp_cond\\\": {\\\"__current_case__\\\": 0, \\\"psp_selector\\\": \\\"no\\\"}, \\\"options_type_selector\\\": \\\"advanced\\\", \\\"no_qvalue\\\": \\\"true\\\", \\\"output_separate_motifs\\\": \\\"yes\\\", \\\"parse_genomic_coord_cond\\\": {\\\"remove_duplicate_coords\\\": \\\"true\\\", \\\"__current_case__\\\": 0, \\\"parse_genomic_coord\\\": \\\"yes\\\"}, \\\"motifs_cond\\\": {\\\"motifs_selector\\\": \\\"yes\\\", \\\"__current_case__\\\": 0}, \\\"bgfile_type\\\": {\\\"bgfile_type_selector\\\": \\\"default\\\", \\\"__current_case__\\\": 1}, \\\"norc\\\": \\\"false\\\", \\\"max_strand\\\": \\\"false\\\", \\\"thresh\\\": \\\"0.0001\\\", \\\"__current_case__\\\": 1, \\\"max_stored_scores\\\": \\\"100000\\\", \\\"alpha\\\": \\\"1.0\\\", \\\"motif_pseudo\\\": \\\"0.1\\\"}\", \"fasta_type\": \"{\\\"input_database\\\": \\\"bosTau7\\\", \\\"fasta_type_selector\\\": \\\"cached\\\", \\\"__current_case__\\\": 0}\"}", 
+            "tool_version": "4.11.0.3", 
             "type": "tool", 
-            "uuid": "2ee5eae4-73be-4ddc-aaa5-1f929cfe9fe8", 
+            "uuid": "287c65b7-b2e9-4441-ae76-c5fe68b70475", 
             "workflow_outputs": [
                 {
                     "label": null, 
-                    "output_name": "interval_outfile", 
-                    "uuid": "25a4adf5-2057-421c-8899-5d65b138efc4"
+                    "output_name": "html_outfile", 
+                    "uuid": "99ae9861-6068-4062-9344-5dd6c51ce7c3"
                 }, 
                 {
                     "label": null, 
                     "output_name": "txt_outfile", 
-                    "uuid": "a3237918-f054-4ece-97c8-7a8a55aba7d9"
+                    "uuid": "7e987fd1-9c91-4d8a-82ad-e31410c0beba"
                 }, 
                 {
                     "label": null, 
                     "output_name": "xml_outfile", 
-                    "uuid": "7cd6797f-cda1-4a50-9df3-1832ca436891"
+                    "uuid": "b2bbf165-8066-4a96-9b50-3b2aeebd565f"
                 }, 
                 {
                     "label": null, 
-                    "output_name": "html_outfile", 
-                    "uuid": "08f5e5fc-7668-48be-a058-dfe4e0d8d584"
+                    "output_name": "interval_outfile", 
+                    "uuid": "df351225-69f3-483e-8331-48dc6b1c4425"
+                }, 
+                {
+                    "label": null, 
+                    "output_name": "motifs", 
+                    "uuid": "92304c59-ae7f-4065-a0d5-d4ab4a980416"
                 }, 
                 {
                     "label": null, 
                     "output_name": "gff_outfile", 
-                    "uuid": "e5336585-bd56-4c7d-81e0-909371df861e"
+                    "uuid": "45b00d0d-3e1b-4f65-bda8-50ea31b84a77"
                 }
             ]
         }
     }, 
-    "uuid": "300ae8c7-6643-4bc6-817b-098068f2eee9"
+    "uuid": "cfe62364-6bc0-4296-8659-ec925985bdad"
 }
