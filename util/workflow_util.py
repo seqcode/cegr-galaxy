@@ -192,12 +192,13 @@ def update_workflow_params(dbkey, workflow_dict, original_parameters, lh):
         elif tool_id.find('repeat_masker') > 0:
             # RepeatMasker.
             new_species_value = api_util.GENOME_SPECIES_MAP.get(dbkey, None)
+            lh.write("new_species_value:\n%s\n\n" % str(new_species_value))
             if new_species_value in [None, '?']:
                 # TODO: throw an exception?
                 lh.write('Cannot update species setting for dbkey %s in step_id %s because that dbkey has no mapped species value.\n' % (dbkey, step_id))
             else:
                 species = tool_inputs_dict.get('species', None)
-                if species is not None and species.startswith('-species'):
+                if species is not None:
                     # "-species fungi"
                     updated_step_dict = parameter_updates.get(step_id, {})
                     updated_step_dict['species'] = '-species %s' % new_species_value
