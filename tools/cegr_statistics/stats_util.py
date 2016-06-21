@@ -238,7 +238,7 @@ def get_reads(cmd):
         reads = '%.2f' % float(subprocess.check_output(shlex.split(cmd)))
         return float(reads)
     except Exception as e:
-        stop_err(str(e))
+        stop_err('Error getting reads: %s' % str(e))
 
 
 def get_run_from_history_name(history_name):
@@ -246,7 +246,7 @@ def get_run_from_history_name(history_name):
     try:
         run = int(history_name.split('-')[1])
     except Exception as e:
-        stop_err(str(e))
+        stop_err('History name is likely invalid, it does not contain a run: %s' % str(e))
     return run
 
 
@@ -256,7 +256,7 @@ def get_sample_from_history_name(history_name):
     try:
         sample = int(items[2].split('.')[0])
     except Exception as e:
-        stop_err(str(e))
+        stop_err('History name is likely invalid, it does not contain a sample: %s' % str(e))
     return sample
 
 
@@ -354,7 +354,7 @@ def get_workflow_name_from_history_name(history_name):
     try:
         workflow_name = items[0]
     except Exception as e:
-        stop_err(str(e))
+        stop_err('History name is likely invalid, it does not contain a workflow name: %s' % str(e))
     return workflow_name
 
 
