@@ -37,7 +37,7 @@
         ]]>
     </command>
     <inputs>
-        <param name="input" type="data_collection" collection_type="list" format="memexml" label="MEME XML input" >
+        <param name="input" type="data_collection" collection_type="list" format="txt" label="Text input" >
             <validator type="dataset_ok_validator" />
         </param>
     </inputs>
