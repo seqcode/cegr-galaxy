@@ -42,7 +42,7 @@
         </param>
     </inputs>
     <outputs>
-        <meme_meme_output_stats" type="list" label="Meme statistics on ${on_string}">
+        <collection name="meme_meme_output_stats" type="list" label="Meme statistics on ${on_string}">
             <discover_datasets pattern="(?P&lt;designation&gt;.*)" directory="output" ext="txt" visible="false" />
         </collection>
     </outputs>
