@@ -1,0 +1,54 @@
+<tool id="fasta_nucleotide_color_plot_output_stats" name="Fasta nucleotide color plot output statistics" version="1.0.0">
+    <description></description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <command>
+        <![CDATA[
+            #set non_ready_states = ['new', 'queued', 'running', 'setting_metadata', 'upload']
+            #while $input.dataset.state in $non_ready_states:
+                time.sleep(60)
+            #end while
+            #set history_id = $__app__.security.encode_id($input.history.id)
+            #set history_name = $input.history.name
+            #set job = $input.creating_job
+            #set tool_id = $job.tool_id
+            #set tool_parameters = ""
+            #for p in $job.parameters:
+                #set tool_parameters = $tool_parameters + "__SeP__" + $p.name
+                #set tool_parameters = $tool_parameters + "__SeP__" + $p.value
+            #end for
+            python $__tool_directory__/fasta_nucleotide_color_plot_output_stats.py
+            --config_file $__tool_directory__/stats_config.ini
+            --input "$input"
+            --input_id "$__app__.security.encode_id($input.id)"
+            --input_datatype "$input.ext"
+            --dbkey "$input.metadata.dbkey"
+            --chrom_len_file ${chromInfo}
+            --history_id "$history_id"
+            --history_name "$history_name"
+            --tool_id "$tool_id"
+            --tool_parameters "$tool_parameters"
+            --output "$output"
+        ]]>
+    </command>
+    <inputs>
+        <param name="input" type="data" format="png" label="PNG input" >
+            <validator type="dataset_ok_validator" />
+        </param>
+    </inputs>
+    <outputs>
+        <data name="output" format="txt" />
+    </outputs>
+    <tests>
+    </tests>
+    <help>
+**What it does**
+
+Gets the display URI for the Gff and XML outputs of the **Fasta nucleotide color plot** tool in the
+**CEGR Galaxy ChIP-exo** pipeline.  A JSON dictionary containing the run, sample and and this URI is
+sent via a POST to the PEGR REST API where the information is stored to support the CEGR ChIP-exo
+statistics reports.
+    </help>
+    <expand macro="citations" />
+</tool>
