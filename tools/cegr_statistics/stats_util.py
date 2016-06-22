@@ -9,7 +9,7 @@ import sys
 import tempfile
 
 from ConfigParser import ConfigParser
-from six.moves.urllib.error import HTTPError
+from six.moves.urllib.error import HTTPError, URLError
 from six.moves.urllib.request import Request, urlopen
 from six import string_types
 from bioblend import galaxy
@@ -426,10 +426,13 @@ def submit(config_file, data):
     defaults = get_config_settings(config_file)
     try:
         return post(defaults['PEGR_API_KEY'], defaults['PEGR_URL'], data)
-    except HTTPError as e:
-        return json.loads(e.read())
+    except URLError as e:
+        return dict(response_code=None, message=str(e))
     except Exception as e:
-        return dict(response_code=None, message=e.read())
+        try:
+            return dict(response_code=None, message=e.read())
+        except:
+            return dict(response_code=None, message=str(e))
 
 
 def which(file):
