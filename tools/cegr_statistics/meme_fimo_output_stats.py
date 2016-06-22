@@ -31,6 +31,7 @@ for input in args.input_gffs:
     stats_util.check_response(pegr_url, payload, response)
     # If all is well, store the results in the output.
     stats_util.store_results(output_name, pegr_url, payload, response)
+
 for input in args.input_xmls:
     file_path, hid, input_id, input_datatype, dbkey = input
     output_name = os.path.join('output_xml', 'statistics_on_data_%s.txt' % hid)
