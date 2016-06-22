@@ -20,7 +20,7 @@
             "outputs": [], 
             "position": {
                 "left": 200, 
-                "top": 504.183349609375
+                "top": 367.00001525878906
             }, 
             "tool_errors": null, 
             "tool_id": null, 
@@ -52,7 +52,7 @@
             "outputs": [], 
             "position": {
                 "left": 339, 
-                "top": 913.183349609375
+                "top": 776.0000152587891
             }, 
             "tool_errors": null, 
             "tool_id": null, 
@@ -84,7 +84,7 @@
             "outputs": [], 
             "position": {
                 "left": 1379.933349609375, 
-                "top": 919.183349609375
+                "top": 782.0000152587891
             }, 
             "tool_errors": null, 
             "tool_id": null, 
@@ -138,7 +138,7 @@
             ], 
             "position": {
                 "left": 481.933349609375, 
-                "top": 337.183349609375
+                "top": 200
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -204,7 +204,7 @@
             ], 
             "position": {
                 "left": 490, 
-                "top": 546.183349609375
+                "top": 409.00001525878906
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -266,7 +266,7 @@
             ], 
             "position": {
                 "left": 358.933349609375, 
-                "top": 1084.183349609375
+                "top": 947.0000152587891
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -315,7 +315,7 @@
             ], 
             "position": {
                 "left": 765, 
-                "top": 381.683349609375
+                "top": 244.50001525878906
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -358,7 +358,7 @@
             ], 
             "position": {
                 "left": 774, 
-                "top": 516.683349609375
+                "top": 379.50001525878906
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -405,7 +405,7 @@
             ], 
             "position": {
                 "left": 622.63330078125, 
-                "top": 1070.316650390625
+                "top": 933.1333160400391
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -463,7 +463,7 @@
             ], 
             "position": {
                 "left": 742.933349609375, 
-                "top": 841.316650390625
+                "top": 704.1333160400391
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -512,7 +512,7 @@
             ], 
             "position": {
                 "left": 938.800048828125, 
-                "top": 1087.0999755859375
+                "top": 949.9166412353516
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -555,7 +555,7 @@
             ], 
             "position": {
                 "left": 877, 
-                "top": 629.183349609375
+                "top": 492.00001525878906
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -604,7 +604,7 @@
             ], 
             "position": {
                 "left": 1080.566650390625, 
-                "top": 807.75
+                "top": 670.5666656494141
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -651,7 +651,7 @@
             ], 
             "position": {
                 "left": 1074.25, 
-                "top": 937.433349609375
+                "top": 800.2500152587891
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -705,7 +705,7 @@
             ], 
             "position": {
                 "left": 1112.066650390625, 
-                "top": 492.61669921875
+                "top": 355.43333435058594
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -748,7 +748,7 @@
             ], 
             "position": {
                 "left": 1132, 
-                "top": 637.183349609375
+                "top": 500.00001525878906
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -797,7 +797,7 @@
             ], 
             "position": {
                 "left": 1308.066650390625, 
-                "top": 1023.75
+                "top": 886.5666656494141
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -848,7 +848,7 @@
             ], 
             "position": {
                 "left": 1352, 
-                "top": 643.183349609375
+                "top": 506.00001525878906
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -897,7 +897,7 @@
             ], 
             "position": {
                 "left": 1419.38330078125, 
-                "top": 516.683349609375
+                "top": 379.50001525878906
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -956,7 +956,7 @@
             ], 
             "position": {
                 "left": 1695, 
-                "top": 634.183349609375
+                "top": 497.00001525878906
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -984,8 +984,8 @@
                 }, 
                 {
                     "label": null, 
-                    "output_name": "D", 
-                    "uuid": "f2c1b8cb-d663-4d70-87ca-86e6373034f0"
+                    "output_name": "MP", 
+                    "uuid": "8334cbf6-0f92-498a-b0c5-2322c380f6fc"
                 }, 
                 {
                     "label": null, 
@@ -994,8 +994,8 @@
                 }, 
                 {
                     "label": null, 
-                    "output_name": "MP", 
-                    "uuid": "8334cbf6-0f92-498a-b0c5-2322c380f6fc"
+                    "output_name": "D", 
+                    "uuid": "f2c1b8cb-d663-4d70-87ca-86e6373034f0"
                 }
             ]
         }, 
@@ -1025,7 +1025,7 @@
             ], 
             "position": {
                 "left": 1949.5166015625, 
-                "top": 559.683349609375
+                "top": 422.50001525878906
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1068,7 +1068,7 @@
             ], 
             "position": {
                 "left": 1967.933349609375, 
-                "top": 672.183349609375
+                "top": 535.0000152587891
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1111,7 +1111,7 @@
             ], 
             "position": {
                 "left": 2210.6500244140625, 
-                "top": 652.25
+                "top": 515.0666656494141
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1160,7 +1160,7 @@
             ], 
             "position": {
                 "left": 2483.933349609375, 
-                "top": 542.183349609375
+                "top": 405.00001525878906
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1203,7 +1203,7 @@
             ], 
             "position": {
                 "left": 2875.3499755859375, 
-                "top": 796.7333374023438
+                "top": 659.5500030517578
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1252,7 +1252,7 @@
             ], 
             "position": {
                 "left": 2695, 
-                "top": 611.11669921875
+                "top": 473.93333435058594
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1316,8 +1316,8 @@
                 }
             ], 
             "position": {
-                "left": 3401.633331298828, 
-                "top": 896.61669921875
+                "left": 3401.63330078125, 
+                "top": 759.4333038330078
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput_gff": {
@@ -1387,7 +1387,7 @@
             ], 
             "position": {
                 "left": 2995.2833251953125, 
-                "top": 674.433349609375
+                "top": 537.2500152587891
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1446,7 +1446,7 @@
             ], 
             "position": {
                 "left": 3110.63330078125, 
-                "top": 419.6166687011719
+                "top": 282.43333435058594
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput_gff": {
@@ -1516,7 +1516,7 @@
             ], 
             "position": {
                 "left": 3336.7833251953125, 
-                "top": 766.433349609375
+                "top": 629.2500152587891
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1575,7 +1575,7 @@
             ], 
             "position": {
                 "left": 3401, 
-                "top": 500.11669921875
+                "top": 362.93333435058594
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1593,13 +1593,13 @@
             "workflow_outputs": [
                 {
                     "label": null, 
-                    "output_name": "html_outfile", 
-                    "uuid": "93c9840e-c150-46c2-8e3b-89d349c536c5"
+                    "output_name": "txt_outfile", 
+                    "uuid": "a2a42314-b129-48f7-a2f7-1d2ab591fe96"
                 }, 
                 {
                     "label": null, 
-                    "output_name": "txt_outfile", 
-                    "uuid": "a2a42314-b129-48f7-a2f7-1d2ab591fe96"
+                    "output_name": "html_outfile", 
+                    "uuid": "93c9840e-c150-46c2-8e3b-89d349c536c5"
                 }, 
                 {
                     "label": null, 
@@ -1634,7 +1634,7 @@
             ], 
             "position": {
                 "left": 3631.6000061035156, 
-                "top": 503.29998779296875
+                "top": 366.1166534423828
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1704,8 +1704,8 @@
                 }
             ], 
             "position": {
-                "left": 3642.449996948242, 
-                "top": 646.2999877929688
+                "left": 3642.4500122070312, 
+                "top": 509.1166534423828
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1779,7 +1779,7 @@
             ], 
             "position": {
                 "left": 3863.4166717529297, 
-                "top": 661.2999877929688
+                "top": 524.1166534423828
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1804,8 +1804,68 @@
         }, 
         "34": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/extract_genomic_dna/Extract genomic DNA 1/3.0.2", 
+            "content_id": "meme_fimo_output_stats", 
             "id": 34, 
+            "input_connections": {
+                "input_gff": {
+                    "id": 32, 
+                    "output_name": "motifs"
+                }, 
+                "input_xml": {
+                    "id": 32, 
+                    "output_name": "xml_outfile"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool FIMO output statistics", 
+                    "name": "input_gff"
+                }, 
+                {
+                    "description": "runtime parameter for tool FIMO output statistics", 
+                    "name": "input_xml"
+                }
+            ], 
+            "label": null, 
+            "name": "FIMO output statistics", 
+            "outputs": [
+                {
+                    "name": "meme_fimo_gff_output_stats", 
+                    "type": "input"
+                }, 
+                {
+                    "name": "meme_fimo_xml_output_stats", 
+                    "type": "input"
+                }
+            ], 
+            "position": {
+                "left": 3893.5, 
+                "top": 639.0000152587891
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "meme_fimo_output_stats", 
+            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"input_gff\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input_xml\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "64787e06-570a-49d6-9bcf-259c03deb872", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "meme_fimo_gff_output_stats", 
+                    "uuid": "7ea7cee8-9d66-4b7b-a6f3-e94de969e6bb"
+                }, 
+                {
+                    "label": null, 
+                    "output_name": "meme_fimo_xml_output_stats", 
+                    "uuid": "2145171d-0f7d-4f80-83a1-abc1b5d66c1d"
+                }
+            ]
+        }, 
+        "35": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/extract_genomic_dna/Extract genomic DNA 1/3.0.2", 
+            "id": 35, 
             "input_connections": {
                 "input": {
                     "id": 33, 
@@ -1827,8 +1887,8 @@
                 }
             ], 
             "position": {
-                "left": 4119.916687011719, 
-                "top": 657.9833374023438
+                "left": 4119.91667175293, 
+                "top": 520.8000030517578
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1851,13 +1911,13 @@
                 }
             ]
         }, 
-        "35": {
+        "36": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/fasta_nucleotide_color_plot/fasta_nucleotide_color_plot/1.0.0", 
-            "id": 35, 
+            "id": 36, 
             "input_connections": {
                 "input": {
-                    "id": 34, 
+                    "id": 35, 
                     "output_name": "output"
                 }
             }, 
@@ -1877,7 +1937,7 @@
             ], 
             "position": {
                 "left": 4374.983337402344, 
-                "top": 669.36669921875
+                "top": 532.1833038330078
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1899,7 +1959,50 @@
                     "uuid": "fcd3812b-a7a5-4f1d-8ec2-14926292ad37"
                 }
             ]
+        }, 
+        "37": {
+            "annotation": "", 
+            "content_id": "fasta_nucleotide_color_plot_output_stats", 
+            "id": 37, 
+            "input_connections": {
+                "input": {
+                    "id": 36, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Fasta nucleotide color plot output statistics", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "Fasta nucleotide color plot output statistics", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 4646, 
+                "top": 517.3333282470703
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "fasta_nucleotide_color_plot_output_stats", 
+            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "a01683a1-3e45-4730-82a8-a6d965eb74f3", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output", 
+                    "uuid": "e3e157fa-d608-4624-8b9a-f48063ef551c"
+                }
+            ]
         }
     }, 
-    "uuid": "1902c30f-b23a-4037-9a62-5aaf7fbf313d"
+    "uuid": "fd8d2d8e-c2cb-44e7-9e86-ee4866b65477"
 }
