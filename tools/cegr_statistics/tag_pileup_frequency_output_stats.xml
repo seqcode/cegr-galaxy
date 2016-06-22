@@ -1,0 +1,67 @@
+<tool id="tag_pileup_frequency_output_stats" name="Tag pileup frequency output statistics" version="1.0.0">
+    <description></description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <command>
+        <![CDATA[
+            #import time
+            #set non_ready_states = ['new', 'queued', 'running', 'setting_metadata', 'upload']
+            #for $i in $input_heatmaps:
+                #while $i.dataset.state in $non_ready_states:
+                    time.sleep(60)
+                #end while
+            #end for
+            #while $input_tabular.dataset.state in $non_ready_states:
+                time.sleep(60)
+            #end while
+            #set history_id = $__app__.security.encode_id($input_tabular.history.id)
+            #set history_name = $input_tabular.history.name
+            python $__tool_directory__/tag_pileup_frequency_output_stats.py
+            #for $i in $input_heatmaps:
+                --input_heatmap "${i}" "${i.hid}" "$__app__.security.encode_id($i.id)" "$i.ext" "$i.metadata.dbkey"
+                #set job = $i.creating_job
+                #set tool_id = $job.tool_id
+                #set tool_parameters = ""
+                #for p in $job.parameters:
+                    #set tool_parameters = $tool_parameters + "__SeP__" + $p.name
+                    #set tool_parameters = $tool_parameters + "__SeP__" + $p.value
+                #end for
+            #end for
+            --input_tabular "$input_tabular"
+            --input_tabular_id "$__app__.security.encode_id($input_tabular.id)"
+            --input_tabular_datatype "$input_tabular.ext"
+            --dbkey "$input_tabular.metadata.dbkey"
+            --config_file $__tool_directory__/stats_config.ini
+            --history_id "$history_id"
+            --history_name "$history_name"
+            --tool_id "$tool_id"
+            --tool_parameters "$tool_parameters"
+            --output "$output"
+        ]]>
+    </command>
+    <inputs>
+        <param name="input_heatmaps" type="data_collection" collection_type="list" format="tabular" label="Tabular inputs" >
+            <validator type="dataset_ok_validator" />
+        </param>
+        <param name="input_tabular" type="data" format="tabular" label="Tabular input" >
+            <validator type="dataset_ok_validator" />
+        </param>
+    </inputs>
+    <outputs>
+        <collection name="heatmap_output_stats" type="list" label="Tag pileup frequency statistics on ${on_string}">
+            <discover_datasets pattern="(?P&lt;designation&gt;.*)" directory="heatmap" ext="txt" visible="false" />
+        </collection>
+        <data name="output" format="txt" />
+    </outputs>
+    <tests>
+    </tests>
+    <help>
+**What it does**
+
+Gets the display URI for the HTML output of the **Tag pileup frequency** tool in the **CEGR Galaxy ChIP-exo**
+pipeline.  A JSON dictionary containing the run, sample and and this URI is sent via a POST to the PEGR REST
+API where the information is stored to support the CEGR ChIP-exo statistics reports.
+    </help>
+    <expand macro="citations" />
+</tool>
