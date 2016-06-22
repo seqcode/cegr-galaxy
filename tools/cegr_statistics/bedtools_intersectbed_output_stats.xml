@@ -1,0 +1,70 @@
+<tool id="bedtools_intersectbed_output_stats" name="Intersect intervals output statistics" version="1.0.0">
+    <description></description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+
+    <command>
+        <![CDATA[
+            #import time
+            #set non_ready_states = ['new', 'queued', 'running', 'setting_metadata', 'upload']
+            #set history_id = None
+            #set history_name = None
+            #for $i in $input:
+                #while $i.dataset.state in $non_ready_states:
+                    time.sleep(60)
+                #end while
+            #end for
+            python $__tool_directory__/bedtools_intersectbed_output_stats.py
+            #for $i in $input:
+                #if history_id is None:
+                    #set history_id = $__app__.security.encode_id($i.history.id)
+                    #set history_name = $i.history.name
+                #end if
+                --input "${i}" "${i.hid}" "$__app__.security.encode_id($i.id)" "$i.ext" "$i.metadata.dbkey"
+                #set job = $i.creating_job
+                #set tool_id = $job.tool_id
+                #set tool_parameters = ""
+                #for p in $job.parameters:
+                    #set tool_parameters = $tool_parameters + "__SeP__" + $p.name
+                    #set tool_parameters = $tool_parameters + "__SeP__" + $p.value
+                #end for
+            #end for
+            --config_file $__tool_directory__/stats_config.ini
+            --history_id "$history_id"
+            --history_name "$history_name"
+            --tool_id "$tool_id"
+            --tool_parameters "$tool_parameters"
+        ]]>
+    </command>
+    <inputs>
+        <param name="input" type="data" format="gff" multiple="true" label="Gff input">
+            <validator type="dataset_ok_validator" />
+        </param>
+    </inputs>
+    <outputs>
+        <collection name="bedtools_intersectbed_output_stats" type="list" label="Intersect intervals statistics on ${on_string}">
+            <discover_datasets pattern="(?P&lt;designation&gt;.*)" directory="output" ext="txt" visible="false" />
+        </collection>
+    </outputs>
+    <tests>
+    </tests>
+    <help>
+**What it does**
+
+Generates statistics on the output of the **Intersect intervals** tool in the **CEGR Galaxy ChIP-exo** pipeline.  These
+statistics include the following.
+
+- **numberOfPeaks** -number of lines in input dataset
+- **peakMean** - mean value of input column 6
+- **peakMeanStd** - mean value of input column 9
+- **peakMedian** - median value of input column 6
+- **peakMedianStd** - median value of input column 9
+- **medioanTagSingletons** - median value of input column 6 where input column 9 has stddev = 0.0
+
+
+A JSON dictionary containing the run, sample and genome reference, along with the above statistics is sent
+via a POST to the PEGR REST API where the information is stored to support the CEGR ChIP-exo statistics reports.
+    </help>
+    <expand macro="citations" />
+</tool>
