@@ -49,9 +49,6 @@
         </param>
     </inputs>
     <outputs>
-        <collection name="heatmap_output_stats" type="list" label="Tag pileup frequency statistics on ${on_string}">
-            <discover_datasets pattern="(?P&lt;designation&gt;.*)" directory="heatmap" ext="txt" visible="false" />
-        </collection>
         <data name="output" format="txt" />
     </outputs>
     <tests>
