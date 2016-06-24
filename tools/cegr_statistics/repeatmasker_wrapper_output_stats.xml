@@ -34,6 +34,7 @@
             --history_name "$history_name"
             --tool_id "$tool_id"
             --tool_parameters "$tool_parameters"
+            --output "$output"
         ]]>
     </command>
     <inputs>
@@ -42,9 +43,7 @@
         </param>
     </inputs>
     <outputs>
-        <collection name="repeatmasker_wrapper_output_stats" type="list" label="RepeatMasker statistics on ${on_string}">
-            <discover_datasets pattern="(?P&lt;designation&gt;.*)" directory="output" ext="txt" visible="false" />
-        </collection>
+        <data name="output" format="txt" />
     </outputs>
     <tests>
     </tests>

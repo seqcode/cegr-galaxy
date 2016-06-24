@@ -42,6 +42,7 @@
             --history_name "$history_name"
             --tool_id "$tool_id"
             --tool_parameters "$tool_parameters"
+            --output "$output"
         ]]>
     </command>
     <inputs>
@@ -53,12 +54,7 @@
         </param>
     </inputs>
     <outputs>
-        <collection name="meme_fimo_gff_output_stats" type="list" label="FIMO Gff statistics on ${on_string}">
-            <discover_datasets pattern="(?P&lt;designation&gt;.*)" directory="output_gff" ext="txt" visible="false" />
-        </collection>
-        <collection name="meme_fimo_xml_output_stats" type="list" label="FIMO XML statistics on ${on_string}">
-            <discover_datasets pattern="(?P&lt;designation&gt;.*)" directory="output_xml" ext="txt" visible="false" />
-        </collection>
+        <data name="output" format="txt" />
     </outputs>
     <tests>
     </tests>
