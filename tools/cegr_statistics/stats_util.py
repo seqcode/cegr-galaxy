@@ -30,7 +30,7 @@ MAPPED_CHARS = {'>': '__gt__',
                 '\t': '__tc__',
                 '#': '__pd__'}
 # Maximum value of a signed 32 bit integer (2**31 - 1).
-MAX_CHROM_LEN = 2147483647
+MAX_GENOME_SIZE = 2147483647
 
 
 def check_response(pegr_url, payload, response):
@@ -154,12 +154,19 @@ def get_genome_coverage(file_path, dbkey, chrom_lengths_file):
     """
     lines_in_input = get_number_of_lines(file_path)
     chrom_lengths = get_chrom_lengths(chrom_lengths_file)
-    chrom_length = chrom_lengths.get(dbkey, None)
-    if chrom_length is None:
-        # Throw an exception?
-        chrom_length = MAX_CHROM_LEN
-    genome_coverage = '%.4f' % float(lines_in_input / chrom_length)
+    genome_size = get_genome_size(chrom_lengths)
+    if genome_size == 0:
+        # Use default.
+        genome_size = MAX_GENOME_SIZE
+    genome_coverage = '%.4f' % float(lines_in_input / genome_size)
     return float(genome_coverage)
+
+
+def get_genome_size(chrom_lengths_dict):
+    genome_size = 0
+    for k, v in chrom_lengths_dict.items():
+        genome_size += v
+    return genome_size
 
 
 def get_index_mismatch(file_path):
@@ -426,6 +433,8 @@ def submit(config_file, data):
     defaults = get_config_settings(config_file)
     try:
         return post(defaults['PEGR_API_KEY'], defaults['PEGR_URL'], data)
+    except HTTPError as e:
+        return json.loads(e.read())
     except URLError as e:
         return dict(response_code=None, message=str(e))
     except Exception as e:
