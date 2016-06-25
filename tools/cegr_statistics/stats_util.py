@@ -132,13 +132,13 @@ def get_genome_coverage(file_path, chrom_lengths_file):
     """
     Generate the genomce coverage for the dataset located at file_path.
     """
-    lines_in_input = get_number_of_lines(file_path)
+    lines_in_input = float(get_number_of_lines(file_path))
     chrom_lengths = get_chrom_lengths(chrom_lengths_file)
-    genome_size = get_genome_size(chrom_lengths)
+    genome_size = float(get_genome_size(chrom_lengths))
     if genome_size == 0:
         # Use default.
-        genome_size = MAX_GENOME_SIZE
-    genome_coverage = '%.6f' % float(lines_in_input / genome_size)
+        genome_size = float(MAX_GENOME_SIZE)
+    genome_coverage = '%.4f' % float(lines_in_input / genome_size)
     return float(genome_coverage)
 
 
