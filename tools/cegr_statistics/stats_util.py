@@ -65,18 +65,6 @@ def format_tool_parameters(parameters):
     return params
 
 
-def get_adapter_count(file_path):
-    pass
-
-
-def get_avg_insert_size(file_path):
-    pass
-
-
-def get_bam_file(file_path):
-    pass
-
-
 def get_base_json_dict(config_file, dbkey, history_id, history_name, tool_id, tool_parameters):
     d = {}
     d['genome'] = dbkey
@@ -131,14 +119,6 @@ def get_deduplicated_uniquely_mapped_reads(file_path):
     return get_reads(cmd)
 
 
-def get_fastq_file(file_path):
-    pass
-
-
-def get_fastqc_report(file_path):
-    pass
-
-
 def get_galaxy_instance(api_key, url):
     return galaxy.GalaxyInstance(url=url, key=api_key)
 
@@ -167,10 +147,6 @@ def get_genome_size(chrom_lengths_dict):
     for k, v in chrom_lengths_dict.items():
         genome_size += v
     return genome_size
-
-
-def get_index_mismatch(file_path):
-    pass
 
 
 def get_mapped_reads(file_path):
@@ -204,6 +180,7 @@ def get_peak_stats(file_path):
     stddevs = []
     peak_singleton_scores = []
     scores = []
+    i = 0
     with open(file_path) as fh:
         for i, line in enumerate(fh):
             items = line.split('\t')
@@ -221,18 +198,22 @@ def get_peak_stats(file_path):
                         peak_singleton_scores.append(score)
                     break
     fh.close()
-    # The number of lines in the file is the number of peaks.
-    peak_stats['numberOfPeaks'] = i + 1
-    peak_stats['peakMean'] = numpy.mean(scores)
-    peak_stats['peakMeanStd'] = numpy.mean(stddevs)
-    peak_stats['peakMedian'] = numpy.median(scores)
-    peak_stats['peakMedianStd'] = numpy.median(stddevs)
-    peak_stats['medianTagSingletons'] = numpy.median(peak_singleton_scores)
+    if i > 0:
+        # The number of lines in the file is the number of peaks.
+        peak_stats['numberOfPeaks'] = i + 1
+        peak_stats['peakMean'] = numpy.mean(scores)
+        peak_stats['peakMeanStd'] = numpy.mean(stddevs)
+        peak_stats['peakMedian'] = numpy.median(scores)
+        peak_stats['peakMedianStd'] = numpy.median(stddevs)
+        peak_stats['medianTagSingletons'] = numpy.median(peak_singleton_scores)
+    else:
+        peak_stats['numberOfPeaks'] = 0
+        peak_stats['peakMean'] = 0
+        peak_stats['peakMeanStd'] = 0
+        peak_stats['peakMedian'] = 0
+        peak_stats['peakMedianStd'] = 0
+        peak_stats['medianTagSingletons'] = 0
     return peak_stats
-
-
-def get_pe_histogram(file_path):
-    pass
 
 
 def get_pegr_url(config_file):
@@ -267,27 +248,13 @@ def get_sample_from_history_name(history_name):
     return sample
 
 
-def get_seq_duplication_level(file_path):
-    pass
-
-
 def get_statistics(file_path, stats, **kwd):
     # ['dedupUniquelyMappedReads', 'mappedReads', 'totalReads', 'uniquelyMappedReads']
     s = {}
     try:
         for k in stats:
-            if k == 'adapterCount':
-                s[k] = get_adapter_count(file_path)
-            elif k == 'avgInsertSize':
-                s[k] = get_avg_insert_size(file_path)
-            elif k == 'bamFile':
-                s[k] = get_bam_file(file_path)
-            elif k == 'dedupUniquelyMappedReads':
+            if k == 'dedupUniquelyMappedReads':
                 s[k] = get_deduplicated_uniquely_mapped_reads(file_path)
-            elif k == 'fastqFile':
-                s[k] = get_fastq_file(file_path)
-            elif k == 'fastqcReport':
-                s[k] = get_fastqc_report(file_path)
             elif k == 'genomeCoverage':
                 dbkey = kwd.get('dbkey', None)
                 if dbkey is None:
@@ -296,20 +263,12 @@ def get_statistics(file_path, stats, **kwd):
                 if chrom_lengths_file is None:
                     stop_err('Required chrom_lengths_file parameter not received!')
                 s[k] = get_genome_coverage(file_path, dbkey, chrom_lengths_file)
-            elif k == 'indexMismatch':
-                s[k] = get_index_mismatch(file_path)
             elif k == 'mappedReads':
                 s[k] = get_mapped_reads(file_path)
             elif k == 'peakPairWis':
                 s[k] = get_peak_pair_wis(file_path)
             elif k == 'peakStats':
                 return get_peak_stats(file_path)
-            elif k == 'peHistogram':
-                s[k] = get_pe_histogram(file_path)
-            elif k == 'seqDuplicationLevel':
-                s[k] = get_seq_duplication_level(file_path)
-            elif k == 'stdDevInsertSize':
-                s[k] = get_std_dev_insert_size(file_path)
             elif k == 'totalReads':
                 s[k] = get_total_reads(file_path)
             elif k == 'uniquelyMappedReads':
@@ -317,10 +276,6 @@ def get_statistics(file_path, stats, **kwd):
     except Exception as e:
         stop_err(str(e))
     return s
-
-
-def get_std_dev_insert_size(file_path):
-    pass
 
 
 def get_tmp_filename(dir=None, suffix=None):
