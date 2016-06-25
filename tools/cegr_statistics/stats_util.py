@@ -128,7 +128,7 @@ def get_galaxy_url(config_file):
     return make_url(defaults['GALAXY_API_KEY'], defaults['GALAXY_BASE_URL'])
 
 
-def get_genome_coverage(file_path, dbkey, chrom_lengths_file):
+def get_genome_coverage(file_path, chrom_lengths_file):
     """
     Generate the genomce coverage for the dataset located at file_path.
     """
@@ -138,7 +138,7 @@ def get_genome_coverage(file_path, dbkey, chrom_lengths_file):
     if genome_size == 0:
         # Use default.
         genome_size = MAX_GENOME_SIZE
-    genome_coverage = '%.4f' % float(lines_in_input / genome_size)
+    genome_coverage = '%.6f' % float(lines_in_input / genome_size)
     return float(genome_coverage)
 
 
@@ -262,7 +262,7 @@ def get_statistics(file_path, stats, **kwd):
                 chrom_lengths_file = kwd.get('chrom_lengths_file', None)
                 if chrom_lengths_file is None:
                     stop_err('Required chrom_lengths_file parameter not received!')
-                s[k] = get_genome_coverage(file_path, dbkey, chrom_lengths_file)
+                s[k] = get_genome_coverage(file_path, chrom_lengths_file)
             elif k == 'mappedReads':
                 s[k] = get_mapped_reads(file_path)
             elif k == 'peakPairWis':
