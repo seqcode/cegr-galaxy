@@ -73,6 +73,12 @@ with open(cegr_run_info_file, 'r') as fh:
                 run, sample, indexes_str, wf_config_files, ext, data_lib_desc, data_lib_syn = tup
             else:
                 continue
+        except Exception as e:
+            lh.write("\nError in check_run_info for line %d, exception:\n%s\n" % (i, str(e)))
+            lh.write("Here is the line:\n")
+            lh.write("%s\n" % line)
+            continue
+        try:
             if len(created_library_names) == 0:
                 # Create a data library.
                 if data_lib_desc == '':
@@ -84,11 +90,23 @@ with open(cegr_run_info_file, 'r') as fh:
                 library_id = new_lib_dict['id']
                 lh.write('Created new data library named "%s".\n' % run)
                 created_library_names.append(run)
+        except Exception as e:
+            lh.write("\nError creating a data library for line %d, exception:\n%s\n" % (i, str(e)))
+            lh.write("Here is the line:\n")
+            lh.write("%s\n" % line)
+            continue
+        try:
             if sample not in created_folder_names:
                 new_folder_dict = gi.libraries.create_folder(library_id, sample)[0]
                 folder_id = new_folder_dict['id']
                 lh.write('Created new data library folder named "%s".\n' % sample)
                 created_folder_names.append(sample)
+        except Exception as e:
+            lh.write("\nError creating a folder for line %d, exception:\n%s\n" % (i, str(e)))
+            lh.write("Here is the line:\n")
+            lh.write("%s\n" % line)
+            continue
+        try:
             # Import all datasets contained within prep_directory for the current sample
             # into the sample folder within the data library.  The bcl2fastq step created
             # file names like this: 62401_S1_R1_001.fastq.gz
@@ -104,9 +122,9 @@ with open(cegr_run_info_file, 'r') as fh:
                                                                                     file_type='fastqsanger',
                                                                                     dbkey='?')
                     lh.write("\nResponse from uploading dataset:\n%s\n\n" % str(populate_folder_dict))
-        except Exception, e:
-            lh.write("\nLine %d is invalid, exception: %s" % (i, str(e)))
-            lh.write("Here is the line:")
+        except Exception as e:
+            lh.write("\nError importing datasets into folder for line %d, exception:\n%s\n" % (i, str(e)))
+            lh.write("Here is the line:\n")
             lh.write("%s\n" % line)
 api_util.close_log_file(lh, SCRIPT_NAME)
 # Let everyone know we've finished.
