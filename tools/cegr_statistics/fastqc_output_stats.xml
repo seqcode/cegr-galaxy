@@ -7,12 +7,15 @@
         <![CDATA[
             #import time
             #set non_ready_states = ['new', 'queued', 'running', 'setting_metadata', 'upload']
-            #while $input.dataset.state in $non_ready_states:
+            #while $input_html.dataset.state in $non_ready_states:
                 time.sleep(60)
             #end while
-            #set history_id = $__app__.security.encode_id($input.history.id)
-            #set history_name = $input.history.name
-            #set job = $input.creating_job
+            #while $input_txt.dataset.state in $non_ready_states:
+                time.sleep(60)
+            #end while
+            #set history_id = $__app__.security.encode_id($input_html.history.id)
+            #set history_name = $input_html.history.name
+            #set job = $input_html.creating_job
             #set tool_id = $job.tool_id
             #set tool_parameters = ""
             #for p in $job.parameters:
@@ -21,10 +24,13 @@
             #end for
             python $__tool_directory__/fastqc_output_stats.py
             --config_file $__tool_directory__/stats_config.ini
-            --input "$input"
-            --input_id "$__app__.security.encode_id($input.id)"
-            --input_datatype "$input.ext"
-            --dbkey "$input.metadata.dbkey"
+            --input_html "$input_html"
+            --input_html_id "$__app__.security.encode_id($input_html.id)"
+            --input_html_datatype "$input_html.ext"
+            --input_txt "$input_txt"
+            --input_txt_id "$__app__.security.encode_id($input_txt.id)"
+            --input_txt_datatype "$input_txt.ext"
+            --dbkey "$input_html.metadata.dbkey"
             --history_id "$history_id"
             --history_name "$history_name"
             --tool_id "$tool_id"
@@ -33,7 +39,10 @@
         ]]>
     </command>
     <inputs>
-        <param name="input" type="data" format="html" label="FastQC HTML input" >
+        <param name="input_html" type="data" format="html" label="FastQC HTML input" >
+            <validator type="dataset_ok_validator" />
+        </param>
+        <param name="input_txt" type="data" format="txt" label="FastQC text input" >
             <validator type="dataset_ok_validator" />
         </param>
     </inputs>
