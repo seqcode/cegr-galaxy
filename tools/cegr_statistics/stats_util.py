@@ -295,7 +295,7 @@ def get_total_reads(file_path):
 
 
 def get_uniquely_mapped_reads(file_path):
-    cmd = "samtools view -f 0x40 -F 4 -q 5 -c %s" % file_path
+    cmd = "samtools view -f 0x41 -F 0x404 -q 5 -c %s" % file_path
     return get_reads(cmd)
 
 
@@ -374,7 +374,9 @@ def stop_err(msg):
 
 def store_results(file_path, pegr_url, payload, response):
     with open(file_path, 'w') as fh:
-        fh.write("pegr_url:\n%s\n\n" % str(pegr_url))
+        # Eliminate the API key from the PEGR url.
+        items = pegr_url.split('?')
+        fh.write("pegr_url:\n%s\n\n" % str(items[0]))
         fh.write("payload:\n%s\n\n" % json.dumps(payload))
         fh.write("response:\n%s\n" % str(response))
         fh.close()
