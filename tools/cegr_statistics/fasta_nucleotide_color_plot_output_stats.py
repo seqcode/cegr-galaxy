@@ -18,8 +18,8 @@ args = parser.parse_args()
 # Initialize the payload.
 payload = stats_util.get_base_json_dict(args.config_file, args.dbkey, args.history_id, args.history_name, args.tool_id, args.tool_parameters)
 # Generate the statistics and datasets.
-payload['statistics'] = {}
-payload['datasets'] = stats_util.get_datasets(args.config_file, args.input_id, args.input_datatype)
+payload['statistics'] = [{}]
+payload['datasets'] = [stats_util.get_datasets(args.config_file, args.input_id, args.input_datatype)]
 # Send the payload to PEGR.
 pegr_url = stats_util.get_pegr_url(args.config_file)
 response = stats_util.submit(args.config_file, payload)
