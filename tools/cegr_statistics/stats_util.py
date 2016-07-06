@@ -65,6 +65,26 @@ def format_tool_parameters(parameters):
     return params
 
 
+def get_adapter_dimer_count(file_path):
+    adapter_dimer_count = 0
+    with open(file_path) as fh:
+        in_count_section = False
+        for i, line in enumerate(fh):
+            if line.startswith('>>Overrepresented sequences'):
+                in_count_section = True
+            if in_count_section:
+                if line.startswith('#'):
+                    # Skip comments.
+                    continue
+                line = line.strip()
+                items = line.split('\t')
+                if len(items) > 3 and items[3].startswith('TruSeq Adapter'):
+                    adapter_dimer_count += int(items[1])
+                    in_count_section = False
+    fh.close()
+    return adapter_dimer_count
+
+
 def get_base_json_dict(config_file, dbkey, history_id, history_name, tool_id, tool_parameters):
     d = {}
     d['genome'] = dbkey
@@ -254,7 +274,9 @@ def get_statistics(file_path, stats, **kwd):
     s = {}
     try:
         for k in stats:
-            if k == 'dedupUniquelyMappedReads':
+            if k == 'adapterDimerCount':
+                s[k] = get_adapter_dimer_count(file_path)
+            elif k == 'dedupUniquelyMappedReads':
                 s[k] = get_deduplicated_uniquely_mapped_reads(file_path)
             elif k == 'genomeCoverage':
                 dbkey = kwd.get('dbkey', None)

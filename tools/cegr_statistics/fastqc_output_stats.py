@@ -2,6 +2,8 @@
 import argparse
 import stats_util
 
+STATS = ['adapterDimerCount']
+
 parser = argparse.ArgumentParser()
 parser.add_argument('--config_file', dest='config_file', help='stats_config.ini')
 parser.add_argument('--dbkey', dest='dbkey', help='Input dbkey')
@@ -20,8 +22,14 @@ args = parser.parse_args()
 
 # Initialize the payload.
 payload = stats_util.get_base_json_dict(args.config_file, args.dbkey, args.history_id, args.history_name, args.tool_id, args.tool_parameters)
-# Generate the statistics and datasets.
-payload['statistics'] = {}
+# Each statistics dictionary maps to a dataset in the corresponding list.
+statistics = []
+# The HTML dataset has no statistics.
+statistics.append({})
+# Generate the statistics for the txt dataset.
+statistics.append(stats_util.get_statistics(file_path, STATS))
+payload['statistics'] = statistics
+# Generate teh list of datasets.
 d1 = stats_util.get_datasets(args.config_file, args.input_html_id, args.input_html_datatype)
 d2 = stats_util.get_datasets(args.config_file, args.input_txt_id, args.input_txt_datatype)
 payload['datasets'] = [d1, d2]
