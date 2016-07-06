@@ -109,6 +109,7 @@ def get_datasets(config_file, ids, datatypes):
     defaults = get_config_settings(config_file, section='defaults')
     d = {}
     for i, t in zip(listify(ids), listify(datatypes)):
+        d['id'] = i
         d['type'] = t
         d['uri'] = '%s/datasets/%s/display?preview=True' % (defaults['GALAXY_BASE_URL'], i)
     return d
