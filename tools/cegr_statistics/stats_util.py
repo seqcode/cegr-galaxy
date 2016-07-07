@@ -243,6 +243,20 @@ def get_pegr_url(config_file):
     return make_url(defaults['PEGR_API_KEY'], defaults['PEGR_URL'])
 
 
+def get_read_from_fastqc_file(file_path):
+    read = 0
+    with open(file_path) as fh:
+        for i, line in enumerate(fh):
+            if line.startswith('Filename'):
+                if line.find('R1') > 0:
+                    read = 1
+                elif line.find('R2') > 0:
+                    read = 2
+                break
+    fh.close()
+    return read
+
+
 def get_reads(cmd):
     try:
         reads = '%.2f' % float(subprocess.check_output(shlex.split(cmd)))
@@ -276,6 +290,9 @@ def get_statistics(file_path, stats, **kwd):
     try:
         for k in stats:
             if k == 'adapterDimerCount':
+                # We're dealing with the FastQC report file,
+                # so populate the statistics with the read.
+                s['read'] = get_read_from_fastqc_file(file_path)
                 s[k] = get_adapter_dimer_count(file_path)
             elif k == 'dedupUniquelyMappedReads':
                 s[k] = get_deduplicated_uniquely_mapped_reads(file_path)
