@@ -136,6 +136,12 @@ def close_log_file(lh, script_name):
     lh.close()
 
 
+def copy_local_directory_of_files(src_path, dest_path, lh):
+    cmd = "cp -R %s %s" % (src_path, dest_path)
+    rc = execute_cmd(cmd, lh)
+    return rc
+
+
 def copy_remote_directory_of_files(host, remote_path, local_path, lh):
     cmd = "rsync -avh %s:%s %s" % (host, remote_path, local_path)
     rc = execute_cmd(cmd, lh)
