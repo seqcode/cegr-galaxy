@@ -20,6 +20,7 @@
                  ‘mappedReads’: float,                   # precision is 2 decimal places
                  ‘peHistogram’: ‘string’,
                  ‘seqDuplicationLevel’: float,           # precision is 4 decimal places
+                 'singletons': int,
                  ‘stdDevInsertSize’: float,              # precision is 4 decimal places
                  ‘totalReads’: float,                    # precision is 2 decimal places
                  ‘uniquelyMappedReads’: float,           # precision is 2 decimal places},
