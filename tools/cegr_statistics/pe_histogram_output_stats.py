@@ -21,7 +21,7 @@ args = parser.parse_args()
 # Initialize the payload.
 payload = stats_util.get_base_json_dict(args.config_file, args.dbkey, args.history_id, args.history_name, args.tool_id, args.tool_parameters)
 # Generate the statistics and datasets.
-payload['statistics'] = {}
+payload['statistics'] = [{}, {}]
 d1 = stats_util.get_datasets(args.config_file, args.input_png_id, args.input_png_datatype)
 d2 = stats_util.get_datasets(args.config_file, args.input_tabular_id, args.input_tabular_datatype)
 payload['datasets'] = [d1, d2]
