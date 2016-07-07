@@ -19,8 +19,8 @@
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
-                "left": 131.875, 
-                "top": 537.9375
+                "left": 131.816650390625, 
+                "top": 668.4500274658203
             }, 
             "tool_errors": null, 
             "tool_id": null, 
@@ -51,8 +51,8 @@
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
-                "left": 958.875, 
-                "top": 598.9375
+                "left": 958.88330078125, 
+                "top": 729.4500274658203
             }, 
             "tool_errors": null, 
             "tool_id": null, 
@@ -105,8 +105,8 @@
                 }
             ], 
             "position": {
-                "left": 378.875, 
-                "top": 363.9375
+                "left": 353.833251953125, 
+                "top": 504.4500274658203
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -159,8 +159,8 @@
                 }
             ], 
             "position": {
-                "left": 354.875, 
-                "top": 620.9375
+                "left": 354.86669921875, 
+                "top": 751.4500274658203
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -188,15 +188,23 @@
             "content_id": "fastqc_output_stats", 
             "id": 4, 
             "input_connections": {
-                "input": {
+                "input_html": {
                     "id": 2, 
                     "output_name": "html_file"
+                }, 
+                "input_txt": {
+                    "id": 2, 
+                    "output_name": "text_file"
                 }
             }, 
             "inputs": [
                 {
                     "description": "runtime parameter for tool FastQC output statistics", 
-                    "name": "input"
+                    "name": "input_txt"
+                }, 
+                {
+                    "description": "runtime parameter for tool FastQC output statistics", 
+                    "name": "input_html"
                 }
             ], 
             "label": null, 
@@ -208,21 +216,21 @@
                 }
             ], 
             "position": {
-                "left": 654.875, 
-                "top": 301.765625
+                "left": 661.683349609375, 
+                "top": 485.25
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
             "tool_id": "fastqc_output_stats", 
-            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
+            "tool_state": "{\"input_txt\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"input_html\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
-            "uuid": "02053374-4f07-4c8e-9119-d611bae5cb91", 
+            "uuid": "9611b1ad-d7eb-4e58-a0aa-4709fb39bed0", 
             "workflow_outputs": [
                 {
                     "label": null, 
                     "output_name": "output", 
-                    "uuid": "085e71c4-e196-49c0-bec0-eca0d2614b6c"
+                    "uuid": "215cb936-442b-4117-85e7-a227da343798"
                 }
             ]
         }, 
@@ -255,8 +263,8 @@
                 }
             ], 
             "position": {
-                "left": 387.625, 
-                "top": 747.265625
+                "left": 387.583251953125, 
+                "top": 877.8000030517578
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -313,8 +321,8 @@
                 }
             ], 
             "position": {
-                "left": 698.5, 
-                "top": 661.625
+                "left": 687.433349609375, 
+                "top": 802.1500396728516
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -363,7 +371,7 @@
             ], 
             "position": {
                 "left": 667.5, 
-                "top": 920.125
+                "top": 1050.6500396728516
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -405,8 +413,8 @@
                 }
             ], 
             "position": {
-                "left": 708.875, 
-                "top": 461.9375
+                "left": 710.816650390625, 
+                "top": 660.4333343505859
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -417,7 +425,7 @@
                 "owner": "iuc", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": 0, \"read\": \"\\\"0\\\"\", \"chromInfo\": \"\\\"/gpfs/cyberstar/pughhpc/galaxy-cegr/galaxy/tool-data/shared/ucsc/chrom/sacCer3.len\\\"\", \"__rerun_remap_job_id__\": null, \"min_insert_size\": \"\\\"\\\"\", \"require_proper_mate_pairing\": \"\\\"1\\\"\", \"max_insert_size\": \"\\\"\\\"\", \"input_bam\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
+            "tool_state": "{\"__page__\": 0, \"read\": \"\\\"0\\\"\", \"__rerun_remap_job_id__\": null, \"min_insert_size\": \"\\\"\\\"\", \"require_proper_mate_pairing\": \"\\\"0\\\"\", \"max_insert_size\": \"\\\"\\\"\", \"input_bam\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
             "uuid": "1077a169-ac10-4187-b3bb-634c8192a3a2", 
@@ -454,8 +462,8 @@
                 }
             ], 
             "position": {
-                "left": 1048.84375, 
-                "top": 662.765625
+                "left": 1024.783203125, 
+                "top": 812.3000030517578
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -501,8 +509,8 @@
                 }
             ], 
             "position": {
-                "left": 1007.375, 
-                "top": 856.53125
+                "left": 1007.349853515625, 
+                "top": 987.0500030517578
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -555,8 +563,8 @@
                 }
             ], 
             "position": {
-                "left": 907.046875, 
-                "top": 322.125
+                "left": 907.033203125, 
+                "top": 452.6666717529297
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -598,8 +606,8 @@
                 }
             ], 
             "position": {
-                "left": 953.875, 
-                "top": 457.9375
+                "left": 953.833251953125, 
+                "top": 588.4500274658203
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -655,8 +663,8 @@
                 }
             ], 
             "position": {
-                "left": 1255.15625, 
-                "top": 856.78125
+                "left": 1255.13330078125, 
+                "top": 987.3166656494141
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -693,13 +701,13 @@
             "name": "Genetrack output statistics", 
             "outputs": [
                 {
-                    "name": "genetrack_output_stats", 
-                    "type": "input"
+                    "name": "output", 
+                    "type": "txt"
                 }
             ], 
             "position": {
-                "left": 1199.8125, 
-                "top": 322.9375
+                "left": 1199.816650390625, 
+                "top": 453.45001220703125
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -709,6 +717,11 @@
             "type": "tool", 
             "uuid": "99607a3b-7804-4b46-8fb4-ed24338b94f1", 
             "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output", 
+                    "uuid": "88c4a809-2759-452c-b214-44baf4a84f77"
+                }, 
                 {
                     "label": null, 
                     "output_name": "genetrack_output_stats", 
@@ -749,8 +762,8 @@
                 }
             ], 
             "position": {
-                "left": 1183.875, 
-                "top": 447.9375
+                "left": 1183.88330078125, 
+                "top": 578.4500274658203
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -793,13 +806,13 @@
             "name": "Intersect intervals output statistics", 
             "outputs": [
                 {
-                    "name": "bedtools_intersectbed_output_stats", 
-                    "type": "input"
+                    "name": "output", 
+                    "type": "txt"
                 }
             ], 
             "position": {
-                "left": 1473.875, 
-                "top": 389.203125
+                "left": 1473.849853515625, 
+                "top": 519.7166900634766
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -809,6 +822,11 @@
             "type": "tool", 
             "uuid": "6fd4dd29-2bbf-4a8c-8ce6-20088ef369aa", 
             "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output", 
+                    "uuid": "6fe55f4f-1c9a-4223-897c-8f03e266d20a"
+                }, 
                 {
                     "label": null, 
                     "output_name": "bedtools_intersectbed_output_stats", 
@@ -841,8 +859,8 @@
                 }
             ], 
             "position": {
-                "left": 1499.875, 
-                "top": 557.9375
+                "left": 1499.86669921875, 
+                "top": 688.4500274658203
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -900,8 +918,8 @@
                 }
             ], 
             "position": {
-                "left": 1737.875, 
-                "top": 481.9375
+                "left": 1737.849853515625, 
+                "top": 612.4500274658203
             }, 
             "post_job_actions": {
                 "HideDatasetActionH": {
@@ -965,13 +983,13 @@
             "name": "CWPair2 output statistics", 
             "outputs": [
                 {
-                    "name": "cwpair2_output_stats", 
-                    "type": "input"
+                    "name": "output", 
+                    "type": "txt"
                 }
             ], 
             "position": {
-                "left": 1984.125, 
-                "top": 418.625
+                "left": 1984.13330078125, 
+                "top": 549.1500091552734
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -981,6 +999,11 @@
             "type": "tool", 
             "uuid": "e1e40f3a-9948-4208-8e43-4bcd50617b5e", 
             "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output", 
+                    "uuid": "acc994e7-9bff-433d-9bd6-5da49cbfa003"
+                }, 
                 {
                     "label": null, 
                     "output_name": "cwpair2_output_stats", 
@@ -1013,8 +1036,8 @@
                 }
             ], 
             "position": {
-                "left": 2021.875, 
-                "top": 536.9375
+                "left": 2021.86669921875, 
+                "top": 667.4500274658203
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1056,8 +1079,8 @@
                 }
             ], 
             "position": {
-                "left": 2223.59375, 
-                "top": 522.125
+                "left": 2223.583251953125, 
+                "top": 652.6500091552734
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1105,8 +1128,8 @@
                 }
             ], 
             "position": {
-                "left": 2475.875, 
-                "top": 452.9375
+                "left": 2475.8665771484375, 
+                "top": 583.4500274658203
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1148,8 +1171,8 @@
                 }
             ], 
             "position": {
-                "left": 2919.546875, 
-                "top": 606
+                "left": 2919.5499267578125, 
+                "top": 736.5333404541016
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1197,8 +1220,8 @@
                 }
             ], 
             "position": {
-                "left": 2690.546875, 
-                "top": 460
+                "left": 2690.533203125, 
+                "top": 590.5333404541016
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1262,8 +1285,8 @@
                 }
             ], 
             "position": {
-                "left": 3425.84375, 
-                "top": 531.1875
+                "left": 3425.833251953125, 
+                "top": 661.7000274658203
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput_gff": {
@@ -1327,13 +1350,13 @@
             "name": "Extract Genomic DNA output statistics", 
             "outputs": [
                 {
-                    "name": "extract_genomic_dna_output_stats", 
-                    "type": "input"
+                    "name": "output", 
+                    "type": "txt"
                 }
             ], 
             "position": {
-                "left": 2848.78125, 
-                "top": 254.703125
+                "left": 2848.783203125, 
+                "top": 385.2166748046875
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1343,6 +1366,11 @@
             "type": "tool", 
             "uuid": "b85827fc-ff10-40a0-aec7-a3cd997d4034", 
             "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output", 
+                    "uuid": "3d9acb84-ed8f-4eda-8060-36afd9c63e05"
+                }, 
                 {
                     "label": null, 
                     "output_name": "extract_genomic_dna_output_stats", 
@@ -1391,8 +1419,8 @@
                 }
             ], 
             "position": {
-                "left": 3116.609375, 
-                "top": 345.625
+                "left": 3116.5999755859375, 
+                "top": 476.15000915527344
             }, 
             "post_job_actions": {
                 "HideDatasetActionoutput_gff": {
@@ -1477,14 +1505,14 @@
                 }
             ], 
             "position": {
-                "left": 3386.546875, 
-                "top": 148
+                "left": 3386.5332641601562, 
+                "top": 278.53334045410156
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/meme_meme/meme_meme/4.11.0.1", 
             "tool_shed_repository": {
-                "changeset_revision": "62d1fae3b7d3", 
+                "changeset_revision": "34c794383f81", 
                 "name": "meme_meme", 
                 "owner": "iuc", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
@@ -1496,13 +1524,13 @@
             "workflow_outputs": [
                 {
                     "label": null, 
-                    "output_name": "html_outfile", 
-                    "uuid": "bfa25048-7cb7-46ab-8de5-ae4c764cc989"
+                    "output_name": "txt_outfile", 
+                    "uuid": "a9444b0b-dbd9-455c-9b62-c915ee4576e2"
                 }, 
                 {
                     "label": null, 
-                    "output_name": "txt_outfile", 
-                    "uuid": "a9444b0b-dbd9-455c-9b62-c915ee4576e2"
+                    "output_name": "html_outfile", 
+                    "uuid": "bfa25048-7cb7-46ab-8de5-ae4c764cc989"
                 }, 
                 {
                     "label": null, 
@@ -1531,13 +1559,13 @@
             "name": "RepeatMasker output statistics", 
             "outputs": [
                 {
-                    "name": "repeatmasker_wrapper_output_stats", 
-                    "type": "input"
+                    "name": "output", 
+                    "type": "txt"
                 }
             ], 
             "position": {
-                "left": 3413.28125, 
-                "top": 431.703125
+                "left": 3413.2666015625, 
+                "top": 562.2166900634766
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1547,6 +1575,11 @@
             "type": "tool", 
             "uuid": "dc6b68b0-daf0-482e-95f2-1267087acba1", 
             "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output", 
+                    "uuid": "ca4b64fa-6f68-4ad1-8f84-da5004898724"
+                }, 
                 {
                     "label": null, 
                     "output_name": "repeatmasker_wrapper_output_stats", 
@@ -1559,47 +1592,46 @@
             "content_id": "meme_meme_output_stats", 
             "id": 30, 
             "input_connections": {
-                "input": {
+                "input_html": {
+                    "id": 28, 
+                    "output_name": "html_outfile"
+                }, 
+                "input_txt": {
                     "id": 28, 
                     "output_name": "txt_outfile"
                 }
             }, 
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool Meme output statistics", 
-                    "name": "input"
-                }
-            ], 
+            "inputs": [], 
             "label": null, 
             "name": "Meme output statistics", 
             "outputs": [
                 {
-                    "name": "meme_meme_output_stats", 
-                    "type": "input"
+                    "name": "output", 
+                    "type": "txt"
                 }
             ], 
             "position": {
-                "left": 3623.546875, 
-                "top": 265.40625
+                "left": 3634.4666137695312, 
+                "top": 330.8333435058594
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
             "tool_id": "meme_meme_output_stats", 
-            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
+            "tool_state": "{\"input_txt\": \"null\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"input_html\": \"null\"}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
-            "uuid": "814949aa-22af-4a1d-ad4c-ea0ce558ddb8", 
+            "uuid": "013f7b81-e5e7-4326-9afd-6be87d9a47ee", 
             "workflow_outputs": [
                 {
                     "label": null, 
-                    "output_name": "meme_meme_output_stats", 
-                    "uuid": "b8e0e3a1-0364-4d47-bdb7-0080a5b8f851"
+                    "output_name": "output", 
+                    "uuid": "e81de5ef-c927-4f24-9557-ffb2fc78e21c"
                 }
             ]
         }, 
         "31": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/meme_fimo/meme_fimo/4.11.0.3", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/meme_fimo/meme_fimo/4.11.0.4", 
             "id": 31, 
             "input_connections": {
                 "fasta_type|input_database": {
@@ -1650,52 +1682,52 @@
                 }
             ], 
             "position": {
-                "left": 3732.53125, 
-                "top": 386.765625
+                "left": 3783.4165954589844, 
+                "top": 558.0333404541016
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/meme_fimo/meme_fimo/4.11.0.3", 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/meme_fimo/meme_fimo/4.11.0.4", 
             "tool_shed_repository": {
-                "changeset_revision": "eca84de658b0", 
+                "changeset_revision": "b3f7ff168b9a", 
                 "name": "meme_fimo", 
                 "owner": "iuc", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"input_motifs\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"non_commercial_use\": \"\\\"true\\\"\", \"options_type\": \"{\\\"prior_dist_cond\\\": {\\\"prior_dist_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 0}, \\\"qv_thresh\\\": \\\"false\\\", \\\"psp_cond\\\": {\\\"__current_case__\\\": 0, \\\"psp_selector\\\": \\\"no\\\"}, \\\"options_type_selector\\\": \\\"advanced\\\", \\\"no_qvalue\\\": \\\"true\\\", \\\"output_separate_motifs\\\": \\\"yes\\\", \\\"parse_genomic_coord_cond\\\": {\\\"remove_duplicate_coords\\\": \\\"true\\\", \\\"__current_case__\\\": 0, \\\"parse_genomic_coord\\\": \\\"yes\\\"}, \\\"motifs_cond\\\": {\\\"motifs_selector\\\": \\\"yes\\\", \\\"__current_case__\\\": 0}, \\\"bgfile_type\\\": {\\\"bgfile_type_selector\\\": \\\"default\\\", \\\"__current_case__\\\": 1}, \\\"norc\\\": \\\"false\\\", \\\"max_strand\\\": \\\"false\\\", \\\"thresh\\\": \\\"0.0001\\\", \\\"__current_case__\\\": 1, \\\"max_stored_scores\\\": \\\"100000\\\", \\\"alpha\\\": \\\"1.0\\\", \\\"motif_pseudo\\\": \\\"0.1\\\"}\", \"fasta_type\": \"{\\\"input_database\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"fasta_type_selector\\\": \\\"history\\\", \\\"__current_case__\\\": 1}\"}", 
-            "tool_version": "4.11.0.3", 
+            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"input_motifs\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"non_commercial_use\": \"\\\"true\\\"\", \"options_type\": \"{\\\"prior_dist_cond\\\": {\\\"prior_dist_selector\\\": \\\"no\\\", \\\"__current_case__\\\": 0}, \\\"qv_thresh\\\": \\\"false\\\", \\\"psp_cond\\\": {\\\"__current_case__\\\": 0, \\\"psp_selector\\\": \\\"no\\\"}, \\\"options_type_selector\\\": \\\"advanced\\\", \\\"no_qvalue\\\": \\\"true\\\", \\\"output_separate_motifs\\\": \\\"yes\\\", \\\"parse_genomic_coord_cond\\\": {\\\"remove_duplicate_coords\\\": \\\"yes\\\", \\\"__current_case__\\\": 0, \\\"parse_genomic_coord\\\": \\\"yes\\\"}, \\\"motifs_cond\\\": {\\\"motifs_selector\\\": \\\"yes\\\", \\\"__current_case__\\\": 0}, \\\"bgfile_type\\\": {\\\"bgfile_type_selector\\\": \\\"default\\\", \\\"__current_case__\\\": 1}, \\\"norc\\\": \\\"false\\\", \\\"max_strand\\\": \\\"false\\\", \\\"thresh\\\": \\\"0.0001\\\", \\\"__current_case__\\\": 1, \\\"max_stored_scores\\\": \\\"100000\\\", \\\"alpha\\\": \\\"1.0\\\", \\\"motif_pseudo\\\": \\\"0.1\\\"}\", \"fasta_type\": \"{\\\"input_database\\\": {\\\"__class__\\\": \\\"RuntimeValue\\\"}, \\\"fasta_type_selector\\\": \\\"history\\\", \\\"__current_case__\\\": 1}\"}", 
+            "tool_version": "4.11.0.4", 
             "type": "tool", 
-            "uuid": "b037fc76-09f0-4c16-8391-07fb1af275d3", 
+            "uuid": "fec6306d-86b8-4d9b-90d2-2c24f57bc1bd", 
             "workflow_outputs": [
                 {
                     "label": null, 
                     "output_name": "html_outfile", 
-                    "uuid": "7b54be62-f510-44b6-a830-61e8a218ff1e"
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "txt_outfile", 
-                    "uuid": "85090145-87ad-4499-8751-702746eee310"
-                }, 
-                {
-                    "label": null, 
-                    "output_name": "xml_outfile", 
-                    "uuid": "ee76f578-73f0-4598-a802-5a569a0ec815"
+                    "uuid": "24b3de23-5630-45d2-8341-b415c5e1ce27"
                 }, 
                 {
                     "label": null, 
                     "output_name": "interval_outfile", 
-                    "uuid": "cd826adf-b6a5-4a7d-87eb-cee0a0d64040"
+                    "uuid": "1ef7f1a4-e054-45d2-ba5d-6ce5a4bfa007"
+                }, 
+                {
+                    "label": null, 
+                    "output_name": "xml_outfile", 
+                    "uuid": "c1820b35-904c-402f-aa4a-213f3662535b"
+                }, 
+                {
+                    "label": null, 
+                    "output_name": "txt_outfile", 
+                    "uuid": "40356fa4-5f42-442c-9e46-ed2734270d25"
                 }, 
                 {
                     "label": null, 
                     "output_name": "motifs", 
-                    "uuid": "d2ae9a4d-0dc2-4b9a-92cd-266052cf09ca"
+                    "uuid": "c48f6851-0a03-4407-954d-a02b4d5c8ac6"
                 }, 
                 {
                     "label": null, 
                     "output_name": "gff_outfile", 
-                    "uuid": "76a6636a-1d99-4a48-a562-b82d8c9eb946"
+                    "uuid": "42488fea-0b87-47c4-a737-fd37c83b3dd5"
                 }
             ]
         }, 
@@ -1724,8 +1756,8 @@
                 }
             ], 
             "position": {
-                "left": 4005.25, 
-                "top": 270.34375
+                "left": 4061.2332611083984, 
+                "top": 423.8666687011719
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1750,8 +1782,57 @@
         }, 
         "33": {
             "annotation": "", 
-            "content_id": "meme_fimo_output_stats", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/resize_coordinate_window/resize_coordinate_window/1.0.1", 
             "id": 33, 
+            "input_connections": {
+                "input": {
+                    "id": 31, 
+                    "output_name": "motifs"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Resize coordinate window", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "Resize coordinate window", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "gff"
+                }
+            ], 
+            "position": {
+                "left": 4078.4999389648438, 
+                "top": 760.1333160400391
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/resize_coordinate_window/resize_coordinate_window/1.0.1", 
+            "tool_shed_repository": {
+                "changeset_revision": "0164d2edba9f", 
+                "name": "resize_coordinate_window", 
+                "owner": "iuc", 
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            }, 
+            "tool_state": "{\"__page__\": 0, \"extend_existing\": \"\\\"midpoint\\\"\", \"start_coordinate\": \"\\\"1\\\"\", \"__rerun_remap_job_id__\": null, \"region_boundaries\": \"\\\"discard\\\"\", \"subtract_from_start\": \"\\\"250\\\"\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"add_to_end\": \"\\\"250\\\"\"}", 
+            "tool_version": "1.0.1", 
+            "type": "tool", 
+            "uuid": "7219a4a1-13db-4064-b5de-884d92b47723", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output", 
+                    "uuid": "c7f00d6c-4cf8-40b4-816e-1ba96043f907"
+                }
+            ]
+        }, 
+        "34": {
+            "annotation": "", 
+            "content_id": "meme_fimo_output_stats", 
+            "id": 34, 
             "input_connections": {
                 "input_gff": {
                     "id": 31, 
@@ -1776,17 +1857,13 @@
             "name": "FIMO output statistics", 
             "outputs": [
                 {
-                    "name": "meme_fimo_gff_output_stats", 
-                    "type": "input"
-                }, 
-                {
-                    "name": "meme_fimo_xml_output_stats", 
-                    "type": "input"
+                    "name": "output", 
+                    "type": "txt"
                 }
             ], 
             "position": {
-                "left": 4048.875, 
-                "top": 404
+                "left": 4161.866607666016, 
+                "top": 550.5000152587891
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1803,57 +1880,13 @@
                 }, 
                 {
                     "label": null, 
-                    "output_name": "meme_fimo_xml_output_stats", 
-                    "uuid": "881e6523-d537-42b1-ba6a-a8c95d6491a6"
-                }
-            ]
-        }, 
-        "34": {
-            "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/resize_coordinate_window/resize_coordinate_window/1.0.1", 
-            "id": 34, 
-            "input_connections": {
-                "input": {
-                    "id": 31, 
-                    "output_name": "motifs"
-                }
-            }, 
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool Resize coordinate window", 
-                    "name": "input"
-                }
-            ], 
-            "label": null, 
-            "name": "Resize coordinate window", 
-            "outputs": [
-                {
-                    "name": "output", 
-                    "type": "gff"
-                }
-            ], 
-            "position": {
-                "left": 4035.515625, 
-                "top": 611.609375
-            }, 
-            "post_job_actions": {}, 
-            "tool_errors": null, 
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/resize_coordinate_window/resize_coordinate_window/1.0.1", 
-            "tool_shed_repository": {
-                "changeset_revision": "0164d2edba9f", 
-                "name": "resize_coordinate_window", 
-                "owner": "iuc", 
-                "tool_shed": "toolshed.g2.bx.psu.edu"
-            }, 
-            "tool_state": "{\"__page__\": 0, \"extend_existing\": \"\\\"midpoint\\\"\", \"start_coordinate\": \"\\\"1\\\"\", \"__rerun_remap_job_id__\": null, \"region_boundaries\": \"\\\"discard\\\"\", \"subtract_from_start\": \"\\\"250\\\"\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"add_to_end\": \"\\\"250\\\"\"}", 
-            "tool_version": "1.0.1", 
-            "type": "tool", 
-            "uuid": "7219a4a1-13db-4064-b5de-884d92b47723", 
-            "workflow_outputs": [
+                    "output_name": "output", 
+                    "uuid": "da14690c-44f0-4738-a246-d726b0b977c8"
+                }, 
                 {
                     "label": null, 
-                    "output_name": "output", 
-                    "uuid": "c7f00d6c-4cf8-40b4-816e-1ba96043f907"
+                    "output_name": "meme_fimo_xml_output_stats", 
+                    "uuid": "881e6523-d537-42b1-ba6a-a8c95d6491a6"
                 }
             ]
         }, 
@@ -1882,8 +1915,8 @@
                 }
             ], 
             "position": {
-                "left": 4277.75, 
-                "top": 294.34375
+                "left": 4412.733261108398, 
+                "top": 437.8833465576172
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1912,7 +1945,7 @@
             "id": 36, 
             "input_connections": {
                 "input": {
-                    "id": 34, 
+                    "id": 33, 
                     "output_name": "output"
                 }
             }, 
@@ -1931,8 +1964,8 @@
                 }
             ], 
             "position": {
-                "left": 4339.875, 
-                "top": 597.59375
+                "left": 4412.866607666016, 
+                "top": 698.1166534423828
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1974,8 +2007,8 @@
                 }
             ], 
             "position": {
-                "left": 4533.875, 
-                "top": 311.53125
+                "left": 4682.866607666016, 
+                "top": 502.0500030517578
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -2035,8 +2068,8 @@
                 }
             ], 
             "position": {
-                "left": 4548.703125, 
-                "top": 713.59375
+                "left": 4672.683288574219, 
+                "top": 836.1333160400391
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -2089,8 +2122,8 @@
                 }
             ], 
             "position": {
-                "left": 4825.8125, 
-                "top": 362
+                "left": 4959.7999267578125, 
+                "top": 485.53334045410156
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -2124,6 +2157,10 @@
             "inputs": [
                 {
                     "description": "runtime parameter for tool Tag pileup frequency output statistics", 
+                    "name": "input_heatmaps"
+                }, 
+                {
+                    "description": "runtime parameter for tool Tag pileup frequency output statistics", 
                     "name": "input_tabular"
                 }
             ], 
@@ -2131,22 +2168,18 @@
             "name": "Tag pileup frequency output statistics", 
             "outputs": [
                 {
-                    "name": "heatmap_output_stats", 
-                    "type": "input"
-                }, 
-                {
                     "name": "output", 
                     "type": "txt"
                 }
             ], 
             "position": {
-                "left": 4803.890625, 
-                "top": 630.5
+                "left": 4935.849914550781, 
+                "top": 730.0166778564453
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
             "tool_id": "tag_pileup_frequency_output_stats", 
-            "tool_state": "{\"__page__\": 0, \"input_heatmaps\": \"null\", \"__rerun_remap_job_id__\": null, \"input_tabular\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
+            "tool_state": "{\"__page__\": 0, \"input_heatmaps\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"input_tabular\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
             "uuid": "107aea2c-9903-455a-95b6-17ed083e24b2", 
@@ -2164,5 +2197,5 @@
             ]
         }
     }, 
-    "uuid": "aded7be3-e409-45f1-b8ef-dab6b960cd86"
+    "uuid": "ad18a31e-db9c-488a-9844-e727c91b542b"
 }
