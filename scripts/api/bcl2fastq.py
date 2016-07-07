@@ -16,6 +16,7 @@ SCRIPT_NAME = 'bcl2fastq.py'
 parser = argparse.ArgumentParser(description='Execute the bcl2fastq converter')
 parser.add_argument("-b", "--bcl2fastq_binary", dest="bcl2fastq_binary", default=None, help="Path to bcl2fastq binary")
 parser.add_argument("-c", "--cegr_run_info_file", dest="cegr_run_info_file", default=None, help="File contain run information")
+parser.add_argument("-d", "--bcl2fastq_report_dir", dest="bcl2fastq_report_dir", default=None, help="Path to bcl2fastq reports root directory")
 parser.add_argument("-l", "--log_file", dest="log_file", default=None, help="File for storing logging output")
 parser.add_argument("-p", "--prep_directory", dest="prep_directory", default=None, help="Directory containing datasets produced by cegr_bcl2fastq.py")
 parser.add_argument("-r", "--raw_data_directory", dest="raw_data_directory", default=None, help="Directory containing datasets produced by the sequencer")
@@ -25,6 +26,7 @@ args = parser.parse_args()
 # The bcl2fastq binary must be available on the $PATH.  This is handled
 # via modules on the ICS clusters, so this should not be sent as a path.
 bcl2fastq_binary = api_util.get_value_or_default(args.bcl2fastq_binary, 'BCL2FASTQ_BINARY')
+bcl2fastq_report_dir = api_util.get_value_or_default(args.bcl2fastq_report_dir, 'BCL2FASTQ_REPORT_DIR', is_path=True)
 cegr_run_info_file = api_util.get_value_or_default(args.cegr_run_info_file, 'RUN_INFO_FILE', is_path=True)
 current_run_dir = api_util.get_current_run_directory(cegr_run_info_file)
 current_run_folder = os.path.basename(current_run_dir)
@@ -73,7 +75,13 @@ cmd += '--barcode-mismatches 1'
 
 # Errors will be logged by execute_cmd.
 rc = api_util.execute_cmd(cmd, lh)
+if rc == 0:
+    # Move the bcl2fastq-generated "Reports" directory and its contents to long-term storage.
+    src_path = osp.ath.join(prep_directory, 'Reports')
+    rc = api_util.copy_local_directory_of_files(src_path, bcl2fastq_report_dir, lh)
+
 api_util.close_log_file(lh, SCRIPT_NAME)
+
 if rc == 0:
     # Get the run from the sample sheet.
     run = api_util.get_run_from_sample_sheet(sample_sheet)
