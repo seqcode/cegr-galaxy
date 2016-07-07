@@ -198,10 +198,12 @@ def get_peak_stats(file_path):
                       peakMeanStd=0,
                       peakMedian=0,
                       peakMedianStd=0,
-                      medianTagSingletons=0)
+                      medianTagSingletons=0,
+                      singletons=0)
     stddevs = []
     peak_singleton_scores = []
     scores = []
+    singletons = 0
     i = 0
     with open(file_path) as fh:
         for i, line in enumerate(fh):
@@ -217,6 +219,7 @@ def get_peak_stats(file_path):
                     stddevs.append(val)
                     if val == 0.0:
                         # We have a peakSingleton.
+                        singletons += 1
                         peak_singleton_scores.append(score)
                     break
     fh.close()
@@ -228,13 +231,7 @@ def get_peak_stats(file_path):
         peak_stats['peakMedian'] = numpy.median(scores)
         peak_stats['peakMedianStd'] = numpy.median(stddevs)
         peak_stats['medianTagSingletons'] = numpy.median(peak_singleton_scores)
-    else:
-        peak_stats['numberOfPeaks'] = 0
-        peak_stats['peakMean'] = 0
-        peak_stats['peakMeanStd'] = 0
-        peak_stats['peakMedian'] = 0
-        peak_stats['peakMedianStd'] = 0
-        peak_stats['medianTagSingletons'] = 0
+        peak_stats['singletons'] = singletons
     return peak_stats
 
 
