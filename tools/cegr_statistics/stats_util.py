@@ -66,7 +66,7 @@ def format_tool_parameters(parameters):
 
 
 def get_adapter_dimer_count(file_path):
-    adapter_dimer_count = 0
+    adapter_dimer_count = 0.0
     with open(file_path) as fh:
         in_count_section = False
         for i, line in enumerate(fh):
@@ -79,10 +79,11 @@ def get_adapter_dimer_count(file_path):
                 line = line.strip()
                 items = line.split('\t')
                 if len(items) > 3 and items[3].startswith('TruSeq Adapter'):
-                    adapter_dimer_count += int(items[1])
+                    adapter_dimer_count += float(items[1])
                     in_count_section = False
     fh.close()
-    return adapter_dimer_count
+    adapter_dimer_count = '%.2f' % adapter_dimer_count
+    return float(adapter_dimer_count)
 
 
 def get_base_json_dict(config_file, dbkey, history_id, history_name, tool_id, tool_parameters):
