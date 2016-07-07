@@ -59,7 +59,8 @@ statistics include the following.
 - **peakMeanStd** - mean value of input column 9
 - **peakMedian** - median value of input column 6
 - **peakMedianStd** - median value of input column 9
-- **medioanTagSingletons** - median value of input column 6 where input column 9 has stddev = 0.0
+- **medianTagSingletons** - median value of input column 6 where input column 9 has stddev = 0.0
+  **singletons** - the number of rows where input column 9 has stddev = 0.0
 
 
 A JSON dictionary containing the run, sample and genome reference, along with the above statistics is sent
