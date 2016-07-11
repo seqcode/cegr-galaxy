@@ -13,18 +13,21 @@ parser.add_argument('--tool_id', dest='tool_id', help='Tool that was executed to
 parser.add_argument('--tool_parameters', dest='tool_parameters', help='Tool parameters that were set when producing the input dataset')
 args = parser.parse_args()
 
-payload = stats_util.get_base_json_dict(args.config_file, dbkey, args.history_id, args.history_name, args.tool_id, args.tool_parameters)
+payload_dbkey = None
 statistics = []
 datasets = []
 # Generate the statistics and datasets.
 for input_html in args.input_htmls:
     file_path, hid, input_id, input_datatype, dbkey = input_html
+    if payload_dbkey is None:
+        payload_dbkey = dbkey
     statistics.append({})
     datasets.append(stats_util.get_datasets(args.config_file, input_id, input_datatype))
 for input_txt in args.input_txts:
     file_path, hid, input_id, input_datatype, dbkey = input_txt
     statistics.append({})
     datasets.append(stats_util.get_datasets(args.config_file, input_id, input_datatype))
+payload = stats_util.get_base_json_dict(args.config_file, payload_dbkey, args.history_id, args.history_name, args.tool_id, args.tool_parameters)
 payload['statistics'] = statistics
 payload['datasets'] = datasets
 # Send the payload to PEGR.
