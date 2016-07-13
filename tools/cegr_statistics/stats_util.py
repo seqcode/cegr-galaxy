@@ -56,11 +56,10 @@ def check_samtools():
 def format_tool_parameters(parameters):
     s = parameters.lstrip('__SeP__')
     items = s.split('__SeP__')
-    params = ''
+    params = {}
     param_index = 0
     for i in range(len(items) / 2):
-        param = '%s=%s' % (restore_text(items[param_index]), restore_text(items[param_index + 1]))
-        params = '%s,%s' % (params, param)
+        params[restore_text(items[param_index])] = restore_text(items[param_index + 1])
         param_index += 2
     return params
 
