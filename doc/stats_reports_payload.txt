@@ -29,7 +29,7 @@
  ‘genome’: ‘string’,
  ‘run’: integer,
  ‘sample’: integer,
- 'parameters’: ‘string’,
+ 'parameters’: {'param_name':'param_value', ...},
  ‘toolCategory’: ‘string’,
  ‘toolId’: ‘string’,
  ‘workflowId’: ‘string’,
