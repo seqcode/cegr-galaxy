@@ -81,11 +81,11 @@ if rc == 0:
     rc = api_util.copy_local_directory_of_files(src_path, bcl2fastq_report_dir, lh)
 
 api_util.close_log_file(lh, SCRIPT_NAME)
+# Get the run from the sample sheet.
+run = api_util.get_run_from_sample_sheet(sample_sheet)
+# Archive the sample sheet.
+api_util.archive_file(sample_sheet, run)
 
 if rc == 0:
-    # Get the run from the sample sheet.
-    run = api_util.get_run_from_sample_sheet(sample_sheet)
-    # Archive the sample sheet.
-    api_util.archive_file(sample_sheet, run)
     # Let everyone know we've finished.
     api_util.create_script_complete_file(log_dir, SCRIPT_NAME)
