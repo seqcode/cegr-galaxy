@@ -77,7 +77,7 @@ cmd += '--barcode-mismatches 1'
 rc = api_util.execute_cmd(cmd, lh)
 if rc == 0:
     # Move the bcl2fastq-generated "Reports" directory and its contents to long-term storage.
-    src_path = osp.ath.join(prep_directory, 'Reports')
+    src_path = os.path.join(prep_directory, 'Reports')
     rc = api_util.copy_local_directory_of_files(src_path, bcl2fastq_report_dir, lh)
 
 api_util.close_log_file(lh, SCRIPT_NAME)
