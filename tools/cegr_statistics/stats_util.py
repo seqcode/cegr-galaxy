@@ -136,7 +136,7 @@ def get_datasets(config_file, ids, datatypes):
 
 
 def get_deduplicated_uniquely_mapped_reads(file_path):
-    cmd = "samtools view -f 0x43 -F 0x404 -q 5 -c %s" % file_path
+    cmd = "samtools view -f 0x41 -F 0x404 -q 5 -c %s" % file_path
     return get_reads(cmd)
 
 
