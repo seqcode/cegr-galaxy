@@ -137,7 +137,7 @@ def close_log_file(lh, script_name):
 
 
 def copy_local_directory_of_files(src_path, dest_path, lh):
-    cmd = "cp -n -R %s %s" % (src_path, dest_path)
+    cmd = "cp -R -f -v %s %s" % (src_path, dest_path)
     rc = execute_cmd(cmd, lh)
     return rc
 
