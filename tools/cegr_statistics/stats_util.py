@@ -332,7 +332,7 @@ def get_total_reads(file_path):
 
 
 def get_uniquely_mapped_reads(file_path):
-    cmd = "samtools view -f 0x41 -F 0x404 -q 5 -c %s" % file_path
+    cmd = "samtools view -f 0x40 -F 4 -q 5 -c %s" % file_path
     return get_reads(cmd)
 
 
