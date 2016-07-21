@@ -135,7 +135,7 @@ with open(cegr_run_info_file, 'r') as fh:
             for wf_config_file in wf_config_files:
                 dbkey, params = workflow_util.parse_workflow_config(wf_config_file, lh)
                 if dbkey is None and params is None:
-                    lh.srite('Skipping line %d since workflow config %s is either missing or invalid.\n' % (i, wf_config_file))
+                    lh.write('Skipping line %d since workflow config %s is either missing or invalid.\n' % (i, wf_config_file))
                 if dbkey in NO_INVOCATION_DBKEYS:
                     lh.write('Skipping line %d containing workflow config %s with dbkey %s because workflows are not to be executed for that dbkey.\n' % (i, wf_config_file, dbkey))
                     continue
