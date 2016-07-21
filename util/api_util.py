@@ -276,6 +276,7 @@ def generate_sample_sheet(cegr_run_info_file, sample_sheet_path, lh):
                         number_of_indexes = len(title_line_indexes)
                         for n in range(1, number_of_indexes):
                             title_line += ',index%s' % str(n + 1)
+                        title_line += '\n'
                         sh.write(title_line)
                         title_line_written = True
                     csv_items = [str(index_increment), '%d-%d' % (run, sample), index_str]
