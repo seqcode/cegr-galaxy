@@ -80,7 +80,7 @@ run = api_util.get_run_from_sample_sheet(sample_sheet)
 rc = api_util.execute_cmd(cmd, lh)
 if rc == 0:
     # Move the bcl2fastq-generated "Reports" directory and its contents to long-term storage.
-    src_path = os.path.join(prep_directory, 'Reports')
+    src_path = os.path.join(prep_directory, 'Reports', 'html')
     dest_path = os.path.join(bcl2fastq_report_dir, run)
     rc = api_util.copy_local_directory_of_files(src_path, dest_path, lh)
 
