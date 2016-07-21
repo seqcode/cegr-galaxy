@@ -195,7 +195,8 @@ def generate_sample_sheet(cegr_run_info_file, sample_sheet_path, lh):
     sh = open(sample_sheet_path, 'w')
     with open(cegr_run_info_file, 'r') as fh:
         sh.write('[Data]\n')
-        sh.write('SampleID,SampleName,index\n')
+        title_line = 'SampleID,SampleName,index'
+        title_line_written = False
         index_increment = 0
         for line in fh:
             line = line.strip()
@@ -239,7 +240,7 @@ def generate_sample_sheet(cegr_run_info_file, sample_sheet_path, lh):
             # 2. CGATGTTTAGGC,TTAGGC
             # 3. TTAGGCTGACCA
             # 4. ATCACG-CGATGT
-            # 5.  ATCACG-CGATGT,ACAGTGGCCAAT
+            # 5. ATCACG-CGATGT,ACAGTGGCCAAT
             indexes = indexes_str.split(',')
             # Here are all possible permutations of indexes:
             # 1. ['ATCACG-CGATGT', 'AGTAGA-TTTAGC']
@@ -270,11 +271,17 @@ def generate_sample_sheet(cegr_run_info_file, sample_sheet_path, lh):
                         # 5,200-10712,ATCACG,CGATGT
                         # 5,200-10712,ACAGTGGCCAAT
                         index_str = index
+                    if not title_line_written:
+                        title_line_indexes = index_str.split(',')
+                        number_of_indexes = len(title_line_indexes)
+                        for n in range(1, number_of_indexes):
+                            title_line += ',index%s' % str(n + 1)
+                        sh.write(title_line)
+                        title_line_written = True
                     csv_items = [str(index_increment), '%d-%d' % (run, sample), index_str]
                     csv_str = ','.join(csv_items)
                     sh.write('%s\n' % csv_str)
     sh.close()
-
 
 def get(url):
     try:
