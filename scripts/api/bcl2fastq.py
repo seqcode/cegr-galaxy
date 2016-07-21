@@ -73,16 +73,18 @@ cmd += '-w 24 '
 # Number of allowed mismatches per index multiple entries, default (=1).
 cmd += '--barcode-mismatches 1'
 
+# Get the run from the sample sheet.
+run = api_util.get_run_from_sample_sheet(sample_sheet)
+
 # Errors will be logged by execute_cmd.
 rc = api_util.execute_cmd(cmd, lh)
 if rc == 0:
     # Move the bcl2fastq-generated "Reports" directory and its contents to long-term storage.
     src_path = os.path.join(prep_directory, 'Reports')
-    rc = api_util.copy_local_directory_of_files(src_path, bcl2fastq_report_dir, lh)
+    dest_path = os.path.join(bcl2fastq_report_dir, run)
+    rc = api_util.copy_local_directory_of_files(src_path, dest_path, lh)
 
 api_util.close_log_file(lh, SCRIPT_NAME)
-# Get the run from the sample sheet.
-run = api_util.get_run_from_sample_sheet(sample_sheet)
 # Archive the sample sheet.
 api_util.archive_file(sample_sheet, run)
 
