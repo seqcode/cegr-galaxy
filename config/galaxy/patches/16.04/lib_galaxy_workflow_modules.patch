@@ -1,0 +1,34 @@
+diff --git a/lib/galaxy/workflow/modules.py b/lib/galaxy/workflow/modules.py
+index 1c0dbe6..832b0ac 100644
+--- a/lib/galaxy/workflow/modules.py
++++ b/lib/galaxy/workflow/modules.py
+@@ -774,7 +774,7 @@ class ToolModule( WorkflowModule ):
+             if d.get('tool_version', 'Unspecified') != module.get_tool_version():
+                 message += "%s: using version '%s' instead of version '%s' specified in this workflow." % ( tool_id, module.get_tool_version(), d.get( 'tool_version', 'Unspecified' ) )
+             if message:
+-                log.debug(message)
++                #log.debug(message)
+                 module.version_changes.append(message)
+             if d[ "tool_state" ]:
+                 module.state.decode( d[ "tool_state" ], module.tool, module.trans.app )
+@@ -815,7 +815,7 @@ class ToolModule( WorkflowModule ):
+             if step.tool_version and (step.tool_version != module.tool.version):
+                 message += "<span title=\"tool id '%s'\">Using version '%s' instead of version '%s' specified in this workflow. " % (tool_id, module.tool.version, step.tool_version)
+             if message:
+-                log.debug(message)
++                #log.debug(message)
+                 module.version_changes.append(message)
+             module.recover_state( step.tool_inputs )
+             module.errors = step.tool_errors
+@@ -1330,8 +1330,9 @@ def populate_module_and_state( trans, workflow, param_map, allow_tool_state_corr
+         step_errors = module_injector.inject( step, step_args=step_args )
+         if step.type == 'tool' or step.type is None:
+             if step_errors:
+-                message = "Workflow cannot be run because of validation errors in some steps: %s" % step_errors
+-                raise exceptions.MessageException( message )
++                if 'reference_genome_cond' not in step_errors or 'reference_genome_cond|reference_genome' not in step_errors:
++                    message = "Workflow cannot be run because of validation errors in some steps: %s" % step_errors
++                    raise exceptions.MessageException( message )
+             if step.upgrade_messages:
+                 if allow_tool_state_corrections:
+                     log.debug( 'Workflow step "%i" had upgrade messages: %s', step.id, step.upgrade_messages )

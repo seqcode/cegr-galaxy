@@ -1,0 +1,15 @@
+diff --git a/lib/galaxy/tools/parameters/basic.py b/lib/galaxy/tools/parameters/basic.py
+index f760f73..6aef623 100644
+--- a/lib/galaxy/tools/parameters/basic.py
++++ b/lib/galaxy/tools/parameters/basic.py
+@@ -901,6 +901,10 @@ class SelectToolParameter( ToolParameter ):
+             if isinstance( context_value, RuntimeValue ):
+                 workflow_building_mode = True
+                 break
++        workflow_building_mode = trans.workflow_building_mode
++        for context_value in other_values.itervalues():
++            if isinstance( context_value, RuntimeValue ):
++                workflow_building_mode = True
+         if len( list( legal_values ) ) == 0 and workflow_building_mode:
+             if self.multiple:
+                 # While it is generally allowed that a select value can be '',

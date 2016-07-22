@@ -1,0 +1,13 @@
+diff --git a/lib/galaxy/workflow/run.py b/lib/galaxy/workflow/run.py
+index b5eed82..d45fce3 100644
+--- a/lib/galaxy/workflow/run.py
++++ b/lib/galaxy/workflow/run.py
+@@ -182,7 +182,7 @@ class WorkflowInvoker( object ):
+                 raise
+ 
+             step_verb = "invoked" if not step_delayed else "delayed"
+-            log.debug("Workflow step %s of invocation %s %s %s" % (step.id, workflow_invocation.id, step_verb, step_timer))
++            #log.debug("Workflow step %s of invocation %s %s %s" % (step.id, workflow_invocation.id, step_verb, step_timer))
+ 
+         if delayed_steps:
+             state = model.WorkflowInvocation.states.READY
