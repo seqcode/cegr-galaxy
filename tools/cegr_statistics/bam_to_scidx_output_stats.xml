@@ -5,6 +5,7 @@
     </macros>
     <command>
         <![CDATA[
+            #import time
             #set non_ready_states = ['new', 'queued', 'running', 'setting_metadata', 'upload']
             #while $input.dataset.state in $non_ready_states:
                 time.sleep(60)
