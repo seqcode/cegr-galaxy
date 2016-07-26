@@ -2,6 +2,8 @@
 import argparse
 import stats_util
 
+STATS = ['peHistogram']
+
 parser = argparse.ArgumentParser()
 parser.add_argument('--config_file', dest='config_file', help='stats_config.ini')
 parser.add_argument('--dbkey', dest='dbkey', help='Input dbkey')
@@ -20,8 +22,12 @@ args = parser.parse_args()
 
 # Initialize the payload.
 payload = stats_util.get_base_json_dict(args.config_file, args.dbkey, args.history_id, args.history_name, args.tool_id, args.tool_parameters)
-# Generate the statistics and datasets.
-payload['statistics'] = [{}, {}]
+# Each statistics dictionary maps to a dataset in the corresponding list.
+statistics = []
+# The png dataset has no statistics.
+statistics.append({})
+# Generate the statistics for the tabular dataset.
+statistics.append(stats_util.get_statistics(args.input_tabular, STATS))
 d1 = stats_util.get_datasets(args.config_file, args.input_png_id, args.input_png_datatype)
 d2 = stats_util.get_datasets(args.config_file, args.input_tabular_id, args.input_tabular_datatype)
 payload['datasets'] = [d1, d2]

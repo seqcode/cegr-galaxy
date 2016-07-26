@@ -239,6 +239,28 @@ def get_pegr_url(config_file):
     return make_url(defaults['PEGR_API_KEY'], defaults['PEGR_URL'])
 
 
+def get_pe_histogram_stats(file_path):
+    pe_histogram_stats = dict(avgInsertSize=0,
+                              stdDevInsertSize=0)
+    avg_insert_size_set = False
+    std_dev_insert_size_set = False
+    with open(file_path) as fh:
+        for i, line in enumerate(fh):
+            line = line.strip()
+            if line.startswith('# Average Insert Size'):
+                items = line.split(': ')
+                pe_histogram_stats['avgInsertSize'] = float('%.4f' % float(items[1]))
+                avg_insert_size_set = True
+            elif line.startswith('# Std deviation of Insert Size'):
+                items = line.split(': ')
+                pe_histogram_stats['stdDevInsertSize'] = float('%.4f' % float(items[1]))
+                std_dev_insert_size_set = True
+            if avg_insert_size_set and std_dev_insert_size_set:
+                break
+    fh.close()
+    return pe_histogram_stats
+
+
 def get_read_from_fastqc_file(file_path):
     read = 0
     with open(file_path) as fh:
@@ -306,6 +328,8 @@ def get_statistics(file_path, stats, **kwd):
                 s[k] = get_peak_pair_wis(file_path)
             elif k == 'peakStats':
                 return get_peak_stats(file_path)
+            elif k == 'peHistogram':
+                return get_pe_histogram_stats(file_path)
             elif k == 'totalReads':
                 s[k] = get_total_reads(file_path)
             elif k == 'uniquelyMappedReads':
