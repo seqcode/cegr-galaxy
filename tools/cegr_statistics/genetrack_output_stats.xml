@@ -3,7 +3,6 @@
     <macros>
         <import>macros.xml</import>
     </macros>
-
     <command>
         <![CDATA[
             #import time
