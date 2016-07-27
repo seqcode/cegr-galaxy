@@ -30,7 +30,7 @@
                     #set tool_parameters = $tool_parameters + "__SeP__" + $p.name
                     #set tool_parameters = $tool_parameters + "__SeP__" + $p.value
                 #end for
-                #if $workflow_step_id is None:
+                #if $workflow_step is None:
                     #set pjaas = $job.post_job_actions
                     #for pjaa in $pjaas:
                         #set pja = pjaa.post_job_action
