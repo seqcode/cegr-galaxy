@@ -12,6 +12,8 @@ parser.add_argument('--input', dest='inputs', action='append', nargs=5, help='In
 parser.add_argument('--output', dest='output', help='Output dataset')
 parser.add_argument('--tool_id', dest='tool_id', help='Tool that was executed to produce the input dataset')
 parser.add_argument('--tool_parameters', dest='tool_parameters', help='Tool parameters that were set when producing the input dataset')
+parser.add_argument('--workflow_step_id', dest='workflow_step_id', default=None, help='Workflow step id')
+parser.add_argument('--user_email', dest='user_email', help='Current user email')
 args = parser.parse_args()
 
 payload = None
@@ -22,7 +24,7 @@ for input in args.inputs:
     file_path, hid, input_id, input_datatype, dbkey = input
     if payload is None:
         # Initialize the payload.
-        payload = stats_util.get_base_json_dict(args.config_file, dbkey, args.history_id, args.history_name, args.tool_id, args.tool_parameters)
+        payload = stats_util.get_base_json_dict(args.config_file, args.dbkey, args.history_id, args.history_name, args.tool_id, args.tool_parameters, args.user_email, args.workflow_step_id)
     statistics.append(stats_util.get_statistics(file_path, STATS))
     datasets.append(stats_util.get_datasets(args.config_file, input_id, input_datatype))
 payload['statistics'] = statistics
