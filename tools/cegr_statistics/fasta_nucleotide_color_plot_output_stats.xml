@@ -19,6 +19,13 @@
                 #set tool_parameters = $tool_parameters + "__SeP__" + $p.name
                 #set tool_parameters = $tool_parameters + "__SeP__" + $p.value
             #end for
+            #set workflow_step_id = None
+            #set pjaas = $job.post_job_actions
+            #for pjaa in $pjaas:
+                #set pja = pjaa.post_job_action
+                #set workflow_step = $pja.workflow_step
+                #set workflow_step_id = "$__app__.security.encode_id($workflow_step.id)"
+            #end for
             python $__tool_directory__/fasta_nucleotide_color_plot_output_stats.py
             --config_file $__tool_directory__/stats_config.ini
             --input "$input"
@@ -29,6 +36,10 @@
             --history_name "$history_name"
             --tool_id "$tool_id"
             --tool_parameters "$tool_parameters"
+            --user_email "$__user_email__"
+            #if $workflow_step_id is not None:
+                --workflow_step_id $workflow_step_id
+            #end if
             --output "$output"
         ]]>
     </command>

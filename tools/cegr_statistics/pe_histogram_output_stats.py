@@ -18,10 +18,12 @@ parser.add_argument('--input_tabular_id', dest='input_tabular_id', help='Encoded
 parser.add_argument('--output', dest='output', help='Output dataset')
 parser.add_argument('--tool_id', dest='tool_id', help='Tool that was executed to produce the input dataset')
 parser.add_argument('--tool_parameters', dest='tool_parameters', help='Tool parameters that were set when producing the input dataset')
+parser.add_argument('--workflow_step_id', dest='workflow_step_id', default=None, help='Workflow step id')
+parser.add_argument('--user_email', dest='user_email', help='Current user email')
 args = parser.parse_args()
 
 # Initialize the payload.
-payload = stats_util.get_base_json_dict(args.config_file, args.dbkey, args.history_id, args.history_name, args.tool_id, args.tool_parameters)
+payload = stats_util.get_base_json_dict(args.config_file, args.dbkey, args.history_id, args.history_name, args.tool_id, args.tool_parameters, args.user_email, args.workflow_step_id)
 # Each statistics dictionary maps to a dataset in the corresponding list.
 statistics = []
 # The png dataset has no statistics.
