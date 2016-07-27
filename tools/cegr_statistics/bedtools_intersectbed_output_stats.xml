@@ -10,7 +10,7 @@
             #set non_ready_states = ['new', 'queued', 'running', 'setting_metadata', 'upload']
             #set history_id = None
             #set history_name = None
-            #set workflow_step_id = None
+            #set workflow_step = None
             #for $i in $input:
                 #while $i.dataset.state in $non_ready_states:
                     time.sleep(60)
@@ -35,7 +35,6 @@
                     #for pjaa in $pjaas:
                         #set pja = pjaa.post_job_action
                         #set workflow_step = $pja.workflow_step
-                        #set workflow_step_id = "$__app__.security.encode_id($workflow_step.id)"
                     #end for
                 #end if
             #end for
@@ -45,8 +44,8 @@
             --tool_id "$tool_id"
             --tool_parameters "$tool_parameters"
             --user_email "$__user_email__"
-            #if $workflow_step_id is not None:
-                --workflow_step_id $workflow_step_id
+            #if $workflow_step is not None:
+                --workflow_step_id "$__app__.security.encode_id($workflow_step.id)"
             #end if
             --output "$output"
         ]]>

@@ -17,7 +17,7 @@
             #end while
             #set history_id = $__app__.security.encode_id($input_tabular.history.id)
             #set history_name = $input_tabular.history.name
-            #set workflow_step_id = None
+            #set workflow_step = None
             python $__tool_directory__/tag_pileup_frequency_output_stats.py
             #for $i in $input_heatmaps:
                 --input_heatmap "${i}" "${i.hid}" "$__app__.security.encode_id($i.id)" "$i.ext" "$i.metadata.dbkey"
@@ -32,7 +32,6 @@
                 #for pjaa in $pjaas:
                     #set pja = pjaa.post_job_action
                     #set workflow_step = $pja.workflow_step
-                    #set workflow_step_id = "$__app__.security.encode_id($workflow_step.id)"
                 #end for
             #end for
             --input_tabular "$input_tabular"
@@ -45,8 +44,8 @@
             --tool_id "$tool_id"
             --tool_parameters "$tool_parameters"
             --user_email "$__user_email__"
-            #if $workflow_step_id is not None:
-                --workflow_step_id $workflow_step_id
+            #if $workflow_step is not None:
+                --workflow_step_id "$__app__.security.encode_id($workflow_step.id)"
             #end if
             --output "$output"
         ]]>
