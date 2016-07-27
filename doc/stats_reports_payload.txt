@@ -27,11 +27,13 @@
                  {...},
                  ...],
  ‘genome’: ‘string’,
+ 'historyId': 'string',
+ 'parameters’: {'param_name':'param_value', ...},
  ‘run’: integer,
  ‘sample’: integer,
- 'parameters’: {'param_name':'param_value', ...},
  ‘toolCategory’: ‘string’,
  ‘toolId’: ‘string’,
+ 'userEmail': 'string',
  ‘workflowId’: ‘string’,
- 'historyId': 'string'
+ 'workflowStepId': 'string'
 }
