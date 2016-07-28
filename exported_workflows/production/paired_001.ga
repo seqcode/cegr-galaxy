@@ -19,8 +19,8 @@
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
-                "left": 199.88330078125, 
-                "top": 416.9833221435547
+                "left": 353.734375, 
+                "top": 416.953125
             }, 
             "tool_errors": null, 
             "tool_id": null, 
@@ -51,8 +51,8 @@
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
-                "left": 338.89990234375, 
-                "top": 826
+                "left": 198.734375, 
+                "top": 693
             }, 
             "tool_errors": null, 
             "tool_id": null, 
@@ -83,7 +83,7 @@
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
-                "left": 1356.849853515625, 
+                "left": 1510.703125, 
                 "top": 802
             }, 
             "tool_errors": null, 
@@ -102,8 +102,51 @@
         }, 
         "3": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.65", 
+            "content_id": "input_dataset_output_stats", 
             "id": 3, 
+            "input_connections": {
+                "input": {
+                    "id": 0, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Input dataset output statistics", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "Input dataset output statistics", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 285.609375, 
+                "top": 542.09375
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "input_dataset_output_stats", 
+            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "a9cb175e-125d-4686-a1ad-f1ee3e7d79ad", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output", 
+                    "uuid": "660a8da2-886e-41ee-a3c8-194309a9ccb1"
+                }
+            ]
+        }, 
+        "4": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.65", 
+            "id": 4, 
             "input_connections": {
                 "input_file": {
                     "id": 0, 
@@ -137,10 +180,16 @@
                 }
             ], 
             "position": {
-                "left": 485.816650390625, 
-                "top": 249.84999084472656
+                "left": 639.671875, 
+                "top": 249.84375
             }, 
-            "post_job_actions": {}, 
+            "post_job_actions": {
+                "DeleteIntermediatesActionhtml_file": {
+                    "action_arguments": {}, 
+                    "action_type": "DeleteIntermediatesAction", 
+                    "output_name": "html_file"
+                }
+            }, 
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.65", 
             "tool_shed_repository": {
@@ -149,7 +198,7 @@
                 "owner": "devteam", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": 0, \"limits\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"contaminants\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"chromInfo\": \"\\\"/gpfs/cyberstar/pughhpc/galaxy-cegr/galaxy/tool-data/shared/ucsc/chrom/sacCer3.len\\\"\"}", 
+            "tool_state": "{\"__page__\": 0, \"contaminants\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"limits\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
             "tool_version": "0.65", 
             "type": "tool", 
             "uuid": "320d34d4-9b7f-44a8-b431-50bd45cdbd49", 
@@ -166,10 +215,10 @@
                 }
             ]
         }, 
-        "4": {
+        "5": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.65", 
-            "id": 4, 
+            "id": 5, 
             "input_connections": {
                 "input_file": {
                     "id": 1, 
@@ -203,19 +252,14 @@
                 }
             ], 
             "position": {
-                "left": 493.966552734375, 
+                "left": 647.796875, 
                 "top": 487
             }, 
             "post_job_actions": {
-                "HideDatasetActionhtml_file": {
+                "DeleteIntermediatesActionhtml_file": {
                     "action_arguments": {}, 
-                    "action_type": "HideDatasetAction", 
+                    "action_type": "DeleteIntermediatesAction", 
                     "output_name": "html_file"
-                }, 
-                "HideDatasetActiontext_file": {
-                    "action_arguments": {}, 
-                    "action_type": "HideDatasetAction", 
-                    "output_name": "text_file"
                 }
             }, 
             "tool_errors": null, 
@@ -226,16 +270,70 @@
                 "owner": "devteam", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": 0, \"limits\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"contaminants\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"chromInfo\": \"\\\"/gpfs/cyberstar/pughhpc/galaxy-cegr/galaxy/tool-data/shared/ucsc/chrom/sacCer3.len\\\"\"}", 
+            "tool_state": "{\"__page__\": 0, \"contaminants\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"limits\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input_file\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
             "tool_version": "0.65", 
             "type": "tool", 
             "uuid": "f6c08e47-695a-4fed-ae99-1f828942f7dc", 
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "html_file", 
+                    "uuid": "dc56c5ee-3e55-4f07-8170-fc425a524aa8"
+                }, 
+                {
+                    "label": null, 
+                    "output_name": "text_file", 
+                    "uuid": "c146bac3-24a7-4b58-bbd8-6320a182fc62"
+                }
+            ]
         }, 
-        "5": {
+        "6": {
+            "annotation": "", 
+            "content_id": "input_dataset_output_stats", 
+            "id": 6, 
+            "input_connections": {
+                "input": {
+                    "id": 1, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Input dataset output statistics", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "Input dataset output statistics", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 137.796875, 
+                "top": 865.609375
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "input_dataset_output_stats", 
+            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "98f2d3a4-e37c-4c6f-86b7-6c129d2d689c", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output", 
+                    "uuid": "78074c3d-8a09-441f-80e7-ecebc2104fe1"
+                }
+            ]
+        }, 
+        "7": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.7.12.1", 
-            "id": 5, 
+            "id": 7, 
             "input_connections": {
                 "fastq_input|fastq_input1": {
                     "id": 0, 
@@ -265,8 +363,8 @@
                 }
             ], 
             "position": {
-                "left": 358.783203125, 
-                "top": 997
+                "left": 475.640625, 
+                "top": 1074
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -289,17 +387,17 @@
                 }
             ]
         }, 
-        "6": {
+        "8": {
             "annotation": "", 
             "content_id": "fastqc_output_stats", 
-            "id": 6, 
+            "id": 8, 
             "input_connections": {
                 "input_html": {
-                    "id": 3, 
+                    "id": 4, 
                     "output_name": "html_file"
                 }, 
                 "input_txt": {
-                    "id": 3, 
+                    "id": 4, 
                     "output_name": "text_file"
                 }
             }, 
@@ -322,35 +420,35 @@
                 }
             ], 
             "position": {
-                "left": 805.39990234375, 
-                "top": 259.8833312988281
+                "left": 959.234375, 
+                "top": 259.875
             }, 
-            "post_job_actions": {
-                "HideDatasetActionoutput": {
-                    "action_arguments": {}, 
-                    "action_type": "HideDatasetAction", 
-                    "output_name": "output"
-                }
-            }, 
+            "post_job_actions": {}, 
             "tool_errors": null, 
             "tool_id": "fastqc_output_stats", 
             "tool_state": "{\"input_txt\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"input_html\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
             "uuid": "9c0d7484-d797-4ac3-a229-90571e64e1cb", 
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output", 
+                    "uuid": "d487914c-6790-45de-b4cd-5ddbbc6dd0d6"
+                }
+            ]
         }, 
-        "7": {
+        "9": {
             "annotation": "", 
             "content_id": "fastqc_output_stats", 
-            "id": 7, 
+            "id": 9, 
             "input_connections": {
                 "input_html": {
-                    "id": 4, 
+                    "id": 5, 
                     "output_name": "html_file"
                 }, 
                 "input_txt": {
-                    "id": 4, 
+                    "id": 5, 
                     "output_name": "text_file"
                 }
             }, 
@@ -373,31 +471,31 @@
                 }
             ], 
             "position": {
-                "left": 807.466552734375, 
+                "left": 961.296875, 
                 "top": 421
             }, 
-            "post_job_actions": {
-                "HideDatasetActionoutput": {
-                    "action_arguments": {}, 
-                    "action_type": "HideDatasetAction", 
-                    "output_name": "output"
-                }
-            }, 
+            "post_job_actions": {}, 
             "tool_errors": null, 
             "tool_id": "fastqc_output_stats", 
             "tool_state": "{\"input_txt\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"input_html\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
             "uuid": "61b03b38-362b-4ded-9743-3f7e7d71bb4b", 
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output", 
+                    "uuid": "a64c1436-9b23-43c6-8a7e-97b6f1e642f5"
+                }
+            ]
         }, 
-        "8": {
+        "10": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_MarkDuplicates/1.136.0", 
-            "id": 8, 
+            "id": 10, 
             "input_connections": {
                 "inputFile": {
-                    "id": 5, 
+                    "id": 7, 
                     "output_name": "bam_output"
                 }
             }, 
@@ -420,10 +518,16 @@
                 }
             ], 
             "position": {
-                "left": 622.599853515625, 
-                "top": 983.1166687011719
+                "left": 705.453125, 
+                "top": 1065.109375
             }, 
-            "post_job_actions": {}, 
+            "post_job_actions": {
+                "DeleteIntermediatesActionmetrics_file": {
+                    "action_arguments": {}, 
+                    "action_type": "DeleteIntermediatesAction", 
+                    "output_name": "metrics_file"
+                }
+            }, 
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_MarkDuplicates/1.136.0", 
             "tool_shed_repository": {
@@ -449,13 +553,13 @@
                 }
             ]
         }, 
-        "9": {
+        "11": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/devteam/samtool_filter2/samtool_filter2/1.1.2", 
-            "id": 9, 
+            "id": 11, 
             "input_connections": {
                 "input1": {
-                    "id": 8, 
+                    "id": 10, 
                     "output_name": "outFile"
                 }
             }, 
@@ -478,13 +582,13 @@
                 }
             ], 
             "position": {
-                "left": 635.816650390625, 
-                "top": 740.1166534423828
+                "left": 789.671875, 
+                "top": 740.109375
             }, 
             "post_job_actions": {
-                "HideDatasetActionoutput1": {
+                "DeleteIntermediatesActionoutput1": {
                     "action_arguments": {}, 
-                    "action_type": "HideDatasetAction", 
+                    "action_type": "DeleteIntermediatesAction", 
                     "output_name": "output1"
                 }
             }, 
@@ -500,15 +604,21 @@
             "tool_version": "1.1.2", 
             "type": "tool", 
             "uuid": "1aa4ede4-0e07-4af0-8831-30208e9eceb2", 
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output1", 
+                    "uuid": "7b0f97d0-5e62-4f02-bb92-2fea0cae89ec"
+                }
+            ]
         }, 
-        "10": {
+        "12": {
             "annotation": "", 
             "content_id": "mark_duplicates_bam_output_stats", 
-            "id": 10, 
+            "id": 12, 
             "input_connections": {
                 "input": {
-                    "id": 8, 
+                    "id": 10, 
                     "output_name": "outFile"
                 }
             }, 
@@ -527,8 +637,8 @@
                 }
             ], 
             "position": {
-                "left": 921.75, 
-                "top": 1065.8833312988281
+                "left": 1075.609375, 
+                "top": 1065.875
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -545,13 +655,13 @@
                 }
             ]
         }, 
-        "11": {
+        "13": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/bam_to_scidx/bam_to_scidx/1.0.0", 
-            "id": 11, 
+            "id": 13, 
             "input_connections": {
                 "input_bam": {
-                    "id": 9, 
+                    "id": 11, 
                     "output_name": "output1"
                 }
             }, 
@@ -570,10 +680,16 @@
                 }
             ], 
             "position": {
-                "left": 838.966552734375, 
+                "left": 992.796875, 
                 "top": 567
             }, 
-            "post_job_actions": {}, 
+            "post_job_actions": {
+                "DeleteIntermediatesActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "DeleteIntermediatesAction", 
+                    "output_name": "output"
+                }
+            }, 
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/bam_to_scidx/bam_to_scidx/1.0.0", 
             "tool_shed_repository": {
@@ -594,13 +710,13 @@
                 }
             ]
         }, 
-        "12": {
+        "14": {
             "annotation": "", 
             "content_id": "samtool_filter2_output_stats", 
-            "id": 12, 
+            "id": 14, 
             "input_connections": {
                 "input": {
-                    "id": 9, 
+                    "id": 11, 
                     "output_name": "output1"
                 }
             }, 
@@ -619,8 +735,8 @@
                 }
             ], 
             "position": {
-                "left": 1080.5498046875, 
-                "top": 720.5666656494141
+                "left": 1234.40625, 
+                "top": 720.5625
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -637,13 +753,13 @@
                 }
             ]
         }, 
-        "13": {
+        "15": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/pe_histogram/pe_histogram/1.0.0", 
-            "id": 13, 
+            "id": 15, 
             "input_connections": {
                 "input_bam": {
-                    "id": 9, 
+                    "id": 11, 
                     "output_name": "output1"
                 }
             }, 
@@ -666,10 +782,16 @@
                 }
             ], 
             "position": {
-                "left": 1023.14990234375, 
+                "left": 1176.984375, 
                 "top": 923.25
             }, 
-            "post_job_actions": {}, 
+            "post_job_actions": {
+                "DeleteIntermediatesActionoutput1": {
+                    "action_arguments": {}, 
+                    "action_type": "DeleteIntermediatesAction", 
+                    "output_name": "output1"
+                }
+            }, 
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/pe_histogram/pe_histogram/1.0.0", 
             "tool_shed_repository": {
@@ -695,13 +817,13 @@
                 }
             ]
         }, 
-        "14": {
+        "16": {
             "annotation": "", 
             "content_id": "bam_to_scidx_output_stats", 
-            "id": 14, 
+            "id": 16, 
             "input_connections": {
                 "input": {
-                    "id": 11, 
+                    "id": 13, 
                     "output_name": "output"
                 }
             }, 
@@ -720,8 +842,8 @@
                 }
             ], 
             "position": {
-                "left": 1094.0498046875, 
-                "top": 380.34999084472656
+                "left": 1247.90625, 
+                "top": 380.34375
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -738,13 +860,13 @@
                 }
             ]
         }, 
-        "15": {
+        "17": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/genetrack/genetrack/1.0.0", 
-            "id": 15, 
+            "id": 17, 
             "input_connections": {
                 "input_format_cond|input": {
-                    "id": 11, 
+                    "id": 13, 
                     "output_name": "output"
                 }
             }, 
@@ -763,10 +885,16 @@
                 }
             ], 
             "position": {
-                "left": 1122.91650390625, 
+                "left": 1276.75, 
                 "top": 499
             }, 
-            "post_job_actions": {}, 
+            "post_job_actions": {
+                "DeleteIntermediatesActiongenetrack_output": {
+                    "action_arguments": {}, 
+                    "action_type": "DeleteIntermediatesAction", 
+                    "output_name": "genetrack_output"
+                }
+            }, 
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/genetrack/genetrack/1.0.0", 
             "tool_shed_repository": {
@@ -787,17 +915,17 @@
                 }
             ]
         }, 
-        "16": {
+        "18": {
             "annotation": "", 
             "content_id": "pe_histogram_output_stats", 
-            "id": 16, 
+            "id": 18, 
             "input_connections": {
                 "input_png": {
-                    "id": 13, 
+                    "id": 15, 
                     "output_name": "output1"
                 }, 
                 "input_tabular": {
-                    "id": 13, 
+                    "id": 15, 
                     "output_name": "output2"
                 }
             }, 
@@ -820,8 +948,8 @@
                 }
             ], 
             "position": {
-                "left": 1279.533203125, 
-                "top": 921.7833251953125
+                "left": 1433.390625, 
+                "top": 921.78125
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -838,13 +966,13 @@
                 }
             ]
         }, 
-        "17": {
+        "19": {
             "annotation": "", 
             "content_id": "genetrack_output_stats", 
-            "id": 17, 
+            "id": 19, 
             "input_connections": {
                 "input": {
-                    "id": 15, 
+                    "id": 17, 
                     "output_name": "genetrack_output"
                 }
             }, 
@@ -863,8 +991,8 @@
                 }
             ], 
             "position": {
-                "left": 1371.38330078125, 
-                "top": 431.4499969482422
+                "left": 1525.234375, 
+                "top": 431.421875
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -886,13 +1014,13 @@
                 }
             ]
         }, 
-        "18": {
+        "20": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/bedtools/bedtools_intersectbed/2.24.0", 
-            "id": 18, 
+            "id": 20, 
             "input_connections": {
                 "inputA": {
-                    "id": 15, 
+                    "id": 17, 
                     "output_name": "genetrack_output"
                 }, 
                 "inputB": {
@@ -919,10 +1047,16 @@
                 }
             ], 
             "position": {
-                "left": 1351.949951171875, 
-                "top": 555.9833221435547
+                "left": 1505.78125, 
+                "top": 555.953125
             }, 
-            "post_job_actions": {}, 
+            "post_job_actions": {
+                "DeleteIntermediatesActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "DeleteIntermediatesAction", 
+                    "output_name": "output"
+                }
+            }, 
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/bedtools/bedtools_intersectbed/2.24.0", 
             "tool_shed_repository": {
@@ -943,13 +1077,13 @@
                 }
             ]
         }, 
-        "19": {
+        "21": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/cwpair2/cwpair2/1.0.0", 
-            "id": 19, 
+            "id": 21, 
             "input_connections": {
                 "input": {
-                    "id": 18, 
+                    "id": 20, 
                     "output_name": "output"
                 }
             }, 
@@ -984,10 +1118,16 @@
                 }
             ], 
             "position": {
-                "left": 1695, 
-                "top": 546.9833221435547
+                "left": 1848.859375, 
+                "top": 546.953125
             }, 
-            "post_job_actions": {}, 
+            "post_job_actions": {
+                "DeleteIntermediatesActionH": {
+                    "action_arguments": {}, 
+                    "action_type": "DeleteIntermediatesAction", 
+                    "output_name": "H"
+                }
+            }, 
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/cwpair2/cwpair2/1.0.0", 
             "tool_shed_repository": {
@@ -996,7 +1136,7 @@
                 "owner": "iuc", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"threshold_format_cond\": \"{\\\"relative_threshold\\\": \\\"0.0\\\", \\\"threshold_format\\\": \\\"relative_threshold\\\", \\\"__current_case__\\\": 0}\", \"binsize\": \"\\\"2\\\"\", \"up_distance\": \"\\\"0\\\"\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"down_distance\": \"\\\"80\\\"\", \"chromInfo\": \"\\\"/gpfs/cyberstar/pughhpc/galaxy-cegr/galaxy/tool-data/shared/ucsc/chrom/sacCer3.len\\\"\", \"method\": \"\\\"mode\\\"\", \"output_files\": \"\\\"all\\\"\"}", 
+            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"threshold_format_cond\": \"{\\\"relative_threshold\\\": \\\"0.0\\\", \\\"threshold_format\\\": \\\"relative_threshold\\\", \\\"__current_case__\\\": 0}\", \"binsize\": \"\\\"2\\\"\", \"up_distance\": \"\\\"0\\\"\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"down_distance\": \"\\\"80\\\"\", \"method\": \"\\\"mode\\\"\", \"output_files\": \"\\\"all\\\"\"}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
             "uuid": "65065665-ac75-45b5-b0a1-0d721308779b", 
@@ -1013,8 +1153,8 @@
                 }, 
                 {
                     "label": null, 
-                    "output_name": "MP", 
-                    "uuid": "8334cbf6-0f92-498a-b0c5-2322c380f6fc"
+                    "output_name": "D", 
+                    "uuid": "f2c1b8cb-d663-4d70-87ca-86e6373034f0"
                 }, 
                 {
                     "label": null, 
@@ -1023,18 +1163,18 @@
                 }, 
                 {
                     "label": null, 
-                    "output_name": "D", 
-                    "uuid": "f2c1b8cb-d663-4d70-87ca-86e6373034f0"
+                    "output_name": "MP", 
+                    "uuid": "8334cbf6-0f92-498a-b0c5-2322c380f6fc"
                 }
             ]
         }, 
-        "20": {
+        "22": {
             "annotation": "", 
             "content_id": "bedtools_intersectbed_output_stats", 
-            "id": 20, 
+            "id": 22, 
             "input_connections": {
                 "input": {
-                    "id": 18, 
+                    "id": 20, 
                     "output_name": "output"
                 }
             }, 
@@ -1053,8 +1193,8 @@
                 }
             ], 
             "position": {
-                "left": 1628.25, 
-                "top": 760.3666687011719
+                "left": 1782.109375, 
+                "top": 760.359375
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1076,13 +1216,13 @@
                 }
             ]
         }, 
-        "21": {
+        "23": {
             "annotation": "", 
             "content_id": "cwpair2_output_stats", 
-            "id": 21, 
+            "id": 23, 
             "input_connections": {
                 "input": {
-                    "id": 19, 
+                    "id": 21, 
                     "output_name": "MP"
                 }
             }, 
@@ -1101,7 +1241,7 @@
                 }
             ], 
             "position": {
-                "left": 1949.4832763671875, 
+                "left": 2103.3125, 
                 "top": 472.5
             }, 
             "post_job_actions": {}, 
@@ -1124,13 +1264,13 @@
                 }
             ]
         }, 
-        "22": {
+        "24": {
             "annotation": "", 
             "content_id": "sort1", 
-            "id": 22, 
+            "id": 24, 
             "input_connections": {
                 "input": {
-                    "id": 19, 
+                    "id": 21, 
                     "output_name": "MP"
                 }
             }, 
@@ -1149,13 +1289,19 @@
                 }
             ], 
             "position": {
-                "left": 1967.849853515625, 
+                "left": 2121.703125, 
                 "top": 585
             }, 
-            "post_job_actions": {}, 
+            "post_job_actions": {
+                "DeleteIntermediatesActionout_file1": {
+                    "action_arguments": {}, 
+                    "action_type": "DeleteIntermediatesAction", 
+                    "output_name": "out_file1"
+                }
+            }, 
             "tool_errors": null, 
             "tool_id": "sort1", 
-            "tool_state": "{\"__page__\": 0, \"style\": \"\\\"num\\\"\", \"column\": \"\\\"6\\\"\", \"__rerun_remap_job_id__\": null, \"order\": \"\\\"DESC\\\"\", \"input|__identifier__\": \"\\\"data_MP_mode_f0u0d80_on_data_15.gff\\\"\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"chromInfo\": \"\\\"/gpfs/cyberstar/pughhpc/galaxy-cegr/galaxy/tool-data/tool-data/shared/ucsc/chrom/?.len\\\"\", \"column_set\": \"[]\"}", 
+            "tool_state": "{\"__page__\": 0, \"style\": \"\\\"num\\\"\", \"column\": \"\\\"6\\\"\", \"__rerun_remap_job_id__\": null, \"order\": \"\\\"DESC\\\"\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"column_set\": \"[]\"}", 
             "tool_version": "1.0.3", 
             "type": "tool", 
             "uuid": "c242aaa2-4937-4fcb-a90a-036dd86f97f6", 
@@ -1167,13 +1313,13 @@
                 }
             ]
         }, 
-        "23": {
+        "25": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/resize_coordinate_window/resize_coordinate_window/1.0.1", 
-            "id": 23, 
+            "id": 25, 
             "input_connections": {
                 "input": {
-                    "id": 22, 
+                    "id": 24, 
                     "output_name": "out_file1"
                 }
             }, 
@@ -1192,10 +1338,16 @@
                 }
             ], 
             "position": {
-                "left": 2210.599853515625, 
-                "top": 565.0499877929688
+                "left": 2364.453125, 
+                "top": 565.046875
             }, 
-            "post_job_actions": {}, 
+            "post_job_actions": {
+                "DeleteIntermediatesActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "DeleteIntermediatesAction", 
+                    "output_name": "output"
+                }
+            }, 
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/resize_coordinate_window/resize_coordinate_window/1.0.1", 
             "tool_shed_repository": {
@@ -1216,13 +1368,13 @@
                 }
             ]
         }, 
-        "24": {
+        "26": {
             "annotation": "", 
             "content_id": "Show beginning1", 
-            "id": 24, 
+            "id": 26, 
             "input_connections": {
                 "input": {
-                    "id": 23, 
+                    "id": 25, 
                     "output_name": "output"
                 }
             }, 
@@ -1241,13 +1393,19 @@
                 }
             ], 
             "position": {
-                "left": 2483.8665771484375, 
-                "top": 454.96665954589844
+                "left": 2637.71875, 
+                "top": 454.9375
             }, 
-            "post_job_actions": {}, 
+            "post_job_actions": {
+                "DeleteIntermediatesActionout_file1": {
+                    "action_arguments": {}, 
+                    "action_type": "DeleteIntermediatesAction", 
+                    "output_name": "out_file1"
+                }
+            }, 
             "tool_errors": null, 
             "tool_id": "Show beginning1", 
-            "tool_state": "{\"__page__\": 0, \"__rerun_remap_job_id__\": null, \"lineNum\": \"\\\"500\\\"\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"chromInfo\": \"\\\"/gpfs/cyberstar/pughhpc/galaxy-cegr/galaxy/tool-data/shared/ucsc/chrom/?.len\\\"\", \"input|__identifier__\": \"\\\"data_MP_mode_f0u0d80_on_data_15.gff\\\"\"}", 
+            "tool_state": "{\"__page__\": 0, \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"lineNum\": \"\\\"500\\\"\"}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
             "uuid": "02273cf5-0e23-43db-a63d-ae927bab2ab9", 
@@ -1259,13 +1417,13 @@
                 }
             ]
         }, 
-        "25": {
+        "27": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/extract_genomic_dna/Extract genomic DNA 1/3.0.2", 
-            "id": 25, 
+            "id": 27, 
             "input_connections": {
                 "input": {
-                    "id": 23, 
+                    "id": 25, 
                     "output_name": "output"
                 }
             }, 
@@ -1284,10 +1442,16 @@
                 }
             ], 
             "position": {
-                "left": 2875.349853515625, 
-                "top": 709.5333251953125
+                "left": 3029.203125, 
+                "top": 709.53125
             }, 
-            "post_job_actions": {}, 
+            "post_job_actions": {
+                "DeleteIntermediatesActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "DeleteIntermediatesAction", 
+                    "output_name": "output"
+                }
+            }, 
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/extract_genomic_dna/Extract genomic DNA 1/3.0.2", 
             "tool_shed_repository": {
@@ -1308,13 +1472,13 @@
                 }
             ]
         }, 
-        "26": {
+        "28": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/extract_genomic_dna/Extract genomic DNA 1/3.0.2", 
-            "id": 26, 
+            "id": 28, 
             "input_connections": {
                 "input": {
-                    "id": 24, 
+                    "id": 26, 
                     "output_name": "out_file1"
                 }
             }, 
@@ -1333,10 +1497,16 @@
                 }
             ], 
             "position": {
-                "left": 2694.9998779296875, 
-                "top": 523.8499908447266
+                "left": 2848.859375, 
+                "top": 523.84375
             }, 
-            "post_job_actions": {}, 
+            "post_job_actions": {
+                "DeleteIntermediatesActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "DeleteIntermediatesAction", 
+                    "output_name": "output"
+                }
+            }, 
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/extract_genomic_dna/Extract genomic DNA 1/3.0.2", 
             "tool_shed_repository": {
@@ -1357,13 +1527,56 @@
                 }
             ]
         }, 
-        "27": {
+        "29": {
+            "annotation": "", 
+            "content_id": "extract_genomic_dna_output_stats", 
+            "id": 29, 
+            "input_connections": {
+                "input": {
+                    "id": 27, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Extract Genomic DNA output statistics", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "Extract Genomic DNA output statistics", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 3227.65625, 
+                "top": 852.15625
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "extract_genomic_dna_output_stats", 
+            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "f7f14778-9672-4578-b3eb-25e4a78f1653", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output", 
+                    "uuid": "7e1307eb-9911-4c3f-be77-ac6a9e109b87"
+                }
+            ]
+        }, 
+        "30": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/repeat_masker/repeatmasker_wrapper/0.1.2", 
-            "id": 27, 
+            "id": 30, 
             "input_connections": {
                 "query": {
-                    "id": 25, 
+                    "id": 27, 
                     "output_name": "output"
                 }
             }, 
@@ -1398,10 +1611,15 @@
                 }
             ], 
             "position": {
-                "left": 3373.6165771484375, 
-                "top": 745.3499908447266
+                "left": 3527.46875, 
+                "top": 745.34375
             }, 
             "post_job_actions": {
+                "DeleteIntermediatesActionoutput_std": {
+                    "action_arguments": {}, 
+                    "action_type": "DeleteIntermediatesAction", 
+                    "output_name": "output_std"
+                }, 
                 "HideDatasetActionoutput_gff": {
                     "action_arguments": {}, 
                     "action_type": "HideDatasetAction", 
@@ -1443,13 +1661,13 @@
                 }
             ]
         }, 
-        "28": {
+        "31": {
             "annotation": "", 
             "content_id": "extract_genomic_dna_output_stats", 
-            "id": 28, 
+            "id": 31, 
             "input_connections": {
                 "input": {
-                    "id": 26, 
+                    "id": 28, 
                     "output_name": "output"
                 }
             }, 
@@ -1468,7 +1686,7 @@
                 }
             ], 
             "position": {
-                "left": 2995.2832641601562, 
+                "left": 3149.140625, 
                 "top": 587.25
             }, 
             "post_job_actions": {}, 
@@ -1491,13 +1709,13 @@
                 }
             ]
         }, 
-        "29": {
+        "32": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/repeat_masker/repeatmasker_wrapper/0.1.2", 
-            "id": 29, 
+            "id": 32, 
             "input_connections": {
                 "query": {
-                    "id": 26, 
+                    "id": 28, 
                     "output_name": "output"
                 }
             }, 
@@ -1532,10 +1750,15 @@
                 }
             ], 
             "position": {
-                "left": 3110.6332397460938, 
-                "top": 332.34999084472656
+                "left": 3264.484375, 
+                "top": 332.34375
             }, 
             "post_job_actions": {
+                "DeleteIntermediatesActionoutput_std": {
+                    "action_arguments": {}, 
+                    "action_type": "DeleteIntermediatesAction", 
+                    "output_name": "output_std"
+                }, 
                 "HideDatasetActionoutput_gff": {
                     "action_arguments": {}, 
                     "action_type": "HideDatasetAction", 
@@ -1577,13 +1800,13 @@
                 }
             ]
         }, 
-        "30": {
+        "33": {
             "annotation": "", 
             "content_id": "repeatmasker_wrapper_output_stats", 
-            "id": 30, 
+            "id": 33, 
             "input_connections": {
                 "input": {
-                    "id": 29, 
+                    "id": 30, 
                     "output_name": "output_mask"
                 }
             }, 
@@ -1602,8 +1825,51 @@
                 }
             ], 
             "position": {
-                "left": 3335.7499389648438, 
-                "top": 622.2166595458984
+                "left": 3788.65625, 
+                "top": 945.15625
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "repeatmasker_wrapper_output_stats", 
+            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "13026376-7780-45e5-aca1-f0b0263dd288", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output", 
+                    "uuid": "679e06e1-2761-42db-b791-253b0f66d9bc"
+                }
+            ]
+        }, 
+        "34": {
+            "annotation": "", 
+            "content_id": "repeatmasker_wrapper_output_stats", 
+            "id": 34, 
+            "input_connections": {
+                "input": {
+                    "id": 32, 
+                    "output_name": "output_mask"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool RepeatMasker output statistics", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "RepeatMasker output statistics", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 3489.609375, 
+                "top": 622.1875
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1625,13 +1891,13 @@
                 }
             ]
         }, 
-        "31": {
+        "35": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/meme_meme/meme_meme/4.11.0.1", 
-            "id": 31, 
+            "id": 35, 
             "input_connections": {
                 "input1": {
-                    "id": 29, 
+                    "id": 32, 
                     "output_name": "output_mask"
                 }
             }, 
@@ -1666,14 +1932,20 @@
                 }
             ], 
             "position": {
-                "left": 3400.9832763671875, 
-                "top": 332.84999084472656
+                "left": 3554.8125, 
+                "top": 332.84375
             }, 
-            "post_job_actions": {}, 
+            "post_job_actions": {
+                "DeleteIntermediatesActionhtml_outfile": {
+                    "action_arguments": {}, 
+                    "action_type": "DeleteIntermediatesAction", 
+                    "output_name": "html_outfile"
+                }
+            }, 
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/meme_meme/meme_meme/4.11.0.1", 
             "tool_shed_repository": {
-                "changeset_revision": "34c794383f81", 
+                "changeset_revision": "62d1fae3b7d3", 
                 "name": "meme_meme", 
                 "owner": "iuc", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
@@ -1685,13 +1957,13 @@
             "workflow_outputs": [
                 {
                     "label": null, 
-                    "output_name": "txt_outfile", 
-                    "uuid": "a2a42314-b129-48f7-a2f7-1d2ab591fe96"
+                    "output_name": "html_outfile", 
+                    "uuid": "93c9840e-c150-46c2-8e3b-89d349c536c5"
                 }, 
                 {
                     "label": null, 
-                    "output_name": "html_outfile", 
-                    "uuid": "93c9840e-c150-46c2-8e3b-89d349c536c5"
+                    "output_name": "txt_outfile", 
+                    "uuid": "a2a42314-b129-48f7-a2f7-1d2ab591fe96"
                 }, 
                 {
                     "label": null, 
@@ -1700,21 +1972,30 @@
                 }
             ]
         }, 
-        "32": {
+        "36": {
             "annotation": "", 
             "content_id": "meme_meme_output_stats", 
-            "id": 32, 
+            "id": 36, 
             "input_connections": {
                 "input_html": {
-                    "id": 31, 
+                    "id": 35, 
                     "output_name": "html_outfile"
                 }, 
                 "input_txt": {
-                    "id": 31, 
+                    "id": 35, 
                     "output_name": "txt_outfile"
                 }
             }, 
-            "inputs": [], 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Meme output statistics", 
+                    "name": "input_txt"
+                }, 
+                {
+                    "description": "runtime parameter for tool Meme output statistics", 
+                    "name": "input_html"
+                }
+            ], 
             "label": null, 
             "name": "Meme output statistics", 
             "outputs": [
@@ -1724,13 +2005,13 @@
                 }
             ], 
             "position": {
-                "left": 3635.333251953125, 
+                "left": 3789.1875, 
                 "top": 380.5
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
             "tool_id": "meme_meme_output_stats", 
-            "tool_state": "{\"input_txt\": \"null\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"input_html\": \"null\"}", 
+            "tool_state": "{\"input_txt\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"input_html\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
             "uuid": "616c6e33-b497-4691-922b-e9eb40a3842f", 
@@ -1742,17 +2023,17 @@
                 }
             ]
         }, 
-        "33": {
+        "37": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/meme_fimo/meme_fimo/4.11.0.4", 
-            "id": 33, 
+            "id": 37, 
             "input_connections": {
                 "fasta_type|input_database": {
-                    "id": 27, 
+                    "id": 30, 
                     "output_name": "output_mask"
                 }, 
                 "input_motifs": {
-                    "id": 31, 
+                    "id": 35, 
                     "output_name": "xml_outfile"
                 }
             }, 
@@ -1795,10 +2076,16 @@
                 }
             ], 
             "position": {
-                "left": 3671.833251953125, 
+                "left": 3825.6875, 
                 "top": 647.5
             }, 
-            "post_job_actions": {}, 
+            "post_job_actions": {
+                "DeleteIntermediatesActionmotifs": {
+                    "action_arguments": {}, 
+                    "action_type": "DeleteIntermediatesAction", 
+                    "output_name": "motifs"
+                }
+            }, 
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/meme_fimo/meme_fimo/4.11.0.4", 
             "tool_shed_repository": {
@@ -1844,13 +2131,13 @@
                 }
             ]
         }, 
-        "34": {
+        "38": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/resize_coordinate_window/resize_coordinate_window/1.0.1", 
-            "id": 34, 
+            "id": 38, 
             "input_connections": {
                 "input": {
-                    "id": 33, 
+                    "id": 37, 
                     "output_name": "motifs"
                 }
             }, 
@@ -1869,10 +2156,16 @@
                 }
             ], 
             "position": {
-                "left": 3938.649917602539, 
-                "top": 580.0333251953125
+                "left": 4092.484375, 
+                "top": 580.03125
             }, 
-            "post_job_actions": {}, 
+            "post_job_actions": {
+                "DeleteIntermediatesActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "DeleteIntermediatesAction", 
+                    "output_name": "output"
+                }
+            }, 
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/resize_coordinate_window/resize_coordinate_window/1.0.1", 
             "tool_shed_repository": {
@@ -1893,17 +2186,17 @@
                 }
             ]
         }, 
-        "35": {
+        "39": {
             "annotation": "", 
             "content_id": "meme_fimo_output_stats", 
-            "id": 35, 
+            "id": 39, 
             "input_connections": {
                 "input_gff": {
-                    "id": 33, 
+                    "id": 37, 
                     "output_name": "motifs"
                 }, 
                 "input_xml": {
-                    "id": 33, 
+                    "id": 37, 
                     "output_name": "xml_outfile"
                 }
             }, 
@@ -1926,8 +2219,8 @@
                 }
             ], 
             "position": {
-                "left": 3956.649917602539, 
-                "top": 727.0499877929688
+                "left": 4110.484375, 
+                "top": 727.046875
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1944,13 +2237,13 @@
                 }
             ]
         }, 
-        "36": {
+        "40": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/resize_coordinate_window/resize_coordinate_window/1.0.1", 
-            "id": 36, 
+            "id": 40, 
             "input_connections": {
                 "input": {
-                    "id": 33, 
+                    "id": 37, 
                     "output_name": "motifs"
                 }
             }, 
@@ -1969,10 +2262,16 @@
                 }
             ], 
             "position": {
-                "left": 3933.649917602539, 
-                "top": 889.0333251953125
+                "left": 4087.484375, 
+                "top": 889.03125
             }, 
-            "post_job_actions": {}, 
+            "post_job_actions": {
+                "DeleteIntermediatesActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "DeleteIntermediatesAction", 
+                    "output_name": "output"
+                }
+            }, 
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/resize_coordinate_window/resize_coordinate_window/1.0.1", 
             "tool_shed_repository": {
@@ -1993,13 +2292,13 @@
                 }
             ]
         }, 
-        "37": {
+        "41": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/extract_genomic_dna/Extract genomic DNA 1/3.0.2", 
-            "id": 37, 
+            "id": 41, 
             "input_connections": {
                 "input": {
-                    "id": 34, 
+                    "id": 38, 
                     "output_name": "output"
                 }
             }, 
@@ -2018,10 +2317,16 @@
                 }
             ], 
             "position": {
-                "left": 4236.599914550781, 
-                "top": 563.8833312988281
+                "left": 4390.453125, 
+                "top": 563.875
             }, 
-            "post_job_actions": {}, 
+            "post_job_actions": {
+                "DeleteIntermediatesActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "DeleteIntermediatesAction", 
+                    "output_name": "output"
+                }
+            }, 
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/extract_genomic_dna/Extract genomic DNA 1/3.0.2", 
             "tool_shed_repository": {
@@ -2030,7 +2335,7 @@
                 "owner": "iuc", 
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             }, 
-            "tool_state": "{\"__page__\": 0, \"output_format_cond\": \"{\\\"fasta_header_type_cond\\\": {\\\"fasta_header_type\\\": \\\"bedtools_getfasta_default\\\", \\\"__current_case__\\\": 0}, \\\"output_format\\\": \\\"fasta\\\", \\\"__current_case__\\\": 0}\", \"interpret_features\": \"\\\"yes\\\"\", \"__rerun_remap_job_id__\": null, \"reference_genome_cond\": \"{\\\"reference_genome\\\": \\\"hg19\\\", \\\"reference_genome_source\\\": \\\"cached\\\", \\\"__current_case__\\\": 0}\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
+            "tool_state": "{\"__page__\": 0, \"output_format_cond\": \"{\\\"fasta_header_type_cond\\\": {\\\"fasta_header_type\\\": \\\"bedtools_getfasta_default\\\", \\\"__current_case__\\\": 0}, \\\"output_format\\\": \\\"fasta\\\", \\\"__current_case__\\\": 0}\", \"interpret_features\": \"\\\"no\\\"\", \"__rerun_remap_job_id__\": null, \"reference_genome_cond\": \"{\\\"reference_genome\\\": \\\"hg19\\\", \\\"reference_genome_source\\\": \\\"cached\\\", \\\"__current_case__\\\": 0}\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
             "tool_version": "3.0.2", 
             "type": "tool", 
             "uuid": "e77ada1f-2b6f-4333-b918-925b0dba94e5", 
@@ -2042,13 +2347,13 @@
                 }
             ]
         }, 
-        "38": {
+        "42": {
             "annotation": "", 
             "content_id": "gff2bed1", 
-            "id": 38, 
+            "id": 42, 
             "input_connections": {
                 "input": {
-                    "id": 36, 
+                    "id": 40, 
                     "output_name": "output"
                 }
             }, 
@@ -2067,10 +2372,16 @@
                 }
             ], 
             "position": {
-                "left": 4232.249938964844, 
-                "top": 907.8999938964844
+                "left": 4386.109375, 
+                "top": 907.875
             }, 
-            "post_job_actions": {}, 
+            "post_job_actions": {
+                "DeleteIntermediatesActionout_file1": {
+                    "action_arguments": {}, 
+                    "action_type": "DeleteIntermediatesAction", 
+                    "output_name": "out_file1"
+                }
+            }, 
             "tool_errors": null, 
             "tool_id": "gff2bed1", 
             "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
@@ -2085,13 +2396,56 @@
                 }
             ]
         }, 
-        "39": {
+        "43": {
             "annotation": "", 
-            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/fasta_nucleotide_color_plot/fasta_nucleotide_color_plot/1.0.0", 
-            "id": 39, 
+            "content_id": "extract_genomic_dna_output_stats", 
+            "id": 43, 
             "input_connections": {
                 "input": {
-                    "id": 37, 
+                    "id": 41, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Extract Genomic DNA output statistics", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "Extract Genomic DNA output statistics", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 4458.546875, 
+                "top": 730.484375
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "extract_genomic_dna_output_stats", 
+            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
+            "tool_version": "1.0.0", 
+            "type": "tool", 
+            "uuid": "803b6d75-49c1-4935-a60b-5754970500b4", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output", 
+                    "uuid": "ef20d428-516d-4d9e-8ab2-e602d4889210"
+                }
+            ]
+        }, 
+        "44": {
+            "annotation": "", 
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/fasta_nucleotide_color_plot/fasta_nucleotide_color_plot/1.0.0", 
+            "id": 44, 
+            "input_connections": {
+                "input": {
+                    "id": 41, 
                     "output_name": "output"
                 }
             }, 
@@ -2110,10 +2464,16 @@
                 }
             ], 
             "position": {
-                "left": 4503.666564941406, 
-                "top": 594.2833251953125
+                "left": 4657.5, 
+                "top": 594.28125
             }, 
-            "post_job_actions": {}, 
+            "post_job_actions": {
+                "DeleteIntermediatesActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "DeleteIntermediatesAction", 
+                    "output_name": "output"
+                }
+            }, 
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/fasta_nucleotide_color_plot/fasta_nucleotide_color_plot/1.0.0", 
             "tool_shed_repository": {
@@ -2134,17 +2494,17 @@
                 }
             ]
         }, 
-        "40": {
+        "45": {
             "annotation": "", 
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/tag_pileup_frequency/tag_pileup_frequency/1.0.0", 
-            "id": 40, 
+            "id": 45, 
             "input_connections": {
                 "input1": {
-                    "id": 9, 
+                    "id": 11, 
                     "output_name": "output1"
                 }, 
                 "input2": {
-                    "id": 38, 
+                    "id": 42, 
                     "output_name": "out_file1"
                 }
             }, 
@@ -2171,10 +2531,16 @@
                 }
             ], 
             "position": {
-                "left": 4412.083251953125, 
-                "top": 1049.1166687011719
+                "left": 4565.9375, 
+                "top": 1049.109375
             }, 
-            "post_job_actions": {}, 
+            "post_job_actions": {
+                "DeleteIntermediatesActionheatmaps": {
+                    "action_arguments": {}, 
+                    "action_type": "DeleteIntermediatesAction", 
+                    "output_name": "heatmaps"
+                }
+            }, 
             "tool_errors": null, 
             "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/tag_pileup_frequency/tag_pileup_frequency/1.0.0", 
             "tool_shed_repository": {
@@ -2200,13 +2566,13 @@
                 }
             ]
         }, 
-        "41": {
+        "46": {
             "annotation": "", 
             "content_id": "fasta_nucleotide_color_plot_output_stats", 
-            "id": 41, 
+            "id": 46, 
             "input_connections": {
                 "input": {
-                    "id": 39, 
+                    "id": 44, 
                     "output_name": "output"
                 }
             }, 
@@ -2225,8 +2591,8 @@
                 }
             ], 
             "position": {
-                "left": 4777.2332763671875, 
-                "top": 594.9166564941406
+                "left": 4931.0625, 
+                "top": 594.890625
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -2243,17 +2609,17 @@
                 }
             ]
         }, 
-        "42": {
+        "47": {
             "annotation": "", 
             "content_id": "tag_pileup_frequency_output_stats", 
-            "id": 42, 
+            "id": 47, 
             "input_connections": {
                 "input_heatmaps": {
-                    "id": 40, 
+                    "id": 45, 
                     "output_name": "heatmaps"
                 }, 
                 "input_tabular": {
-                    "id": 40, 
+                    "id": 45, 
                     "output_name": "output1"
                 }
             }, 
@@ -2276,8 +2642,8 @@
                 }
             ], 
             "position": {
-                "left": 4654.833251953125, 
-                "top": 903.6999816894531
+                "left": 4808.6875, 
+                "top": 903.671875
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -2295,5 +2661,5 @@
             ]
         }
     }, 
-    "uuid": "020a1e32-a27f-4d0b-8bc2-fb90681fcc6d"
+    "uuid": "66ea12db-d332-4c47-bff1-1070398c2b02"
 }
