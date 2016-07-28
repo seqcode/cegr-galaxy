@@ -348,8 +348,9 @@ def get_tmp_filename(dir=None, suffix=None):
 
 
 def get_tool_category(config_file, tool_id):
+    lc_tool_id = tool_id.lower()
     category_map = get_config_settings(config_file, section='tool_categories')
-    return category_map.get(tool_id, 'Unknown')
+    return category_map.get(lc_tool_id, 'Unknown')
 
 
 def get_total_reads(file_path):
