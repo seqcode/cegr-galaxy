@@ -1,0 +1,36 @@
+<tool id="input_dataset_output_stats" name="Input dataset output statistics" version="1.0.0">
+    <description></description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <command>
+        <![CDATA[
+            <expand macro="non_ready_states" />
+            <expand macro="single_input_check" />
+            <expand macro="single_input_init" />
+            <expand macro="single_input_cmd_start" />
+            python $__tool_directory__/input_dataset_output_stats.py
+            <expand macro="single_input_cmd_end" />
+        ]]>
+    </command>
+    <inputs>
+        <param name="input" type="data" format="fastqsanger" label="Fastqsanger input" >
+            <validator type="dataset_ok_validator" />
+        </param>
+    </inputs>
+    <outputs>
+        <data name="output" format="txt" />
+    </outputs>
+    <tests>
+    </tests>
+    <help>
+**What it does**
+
+Generates statistics on an input dataset in the **CEGR Galaxy ChIP-exo** pipeline.
+
+A JSON dictionary containing the run, sample and genome reference is sent via a POST
+to the PEGR REST API where the information is stored to support the CEGR ChIP-exo
+statistics reports.
+    </help>
+    <expand macro="citations" />
+</tool>
