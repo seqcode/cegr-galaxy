@@ -6,48 +6,11 @@
 
     <command>
         <![CDATA[
-            #import time
-            #set non_ready_states = ['new', 'queued', 'running', 'setting_metadata', 'upload']
-            #set history_id = None
-            #set history_name = None
-            #set workflow_step = None
-            #for $i in $input:
-                #while $i.dataset.state in $non_ready_states:
-                    time.sleep(60)
-                #end while
-            #end for
+            <expand macro="non_ready_states" />
+            <expand macro="multi_input_check" />
+            <expand macro="multi_input_cmd_start" />
             python $__tool_directory__/bedtools_intersectbed_output_stats.py
-            #for $i in $input:
-                #if $history_id is None:
-                    #set history_id = $__app__.security.encode_id($i.history.id)
-                    #set history_name = $i.history.name
-                #end if
-                --input "${i}" "${i.hid}" "$__app__.security.encode_id($i.id)" "$i.ext" "$i.metadata.dbkey"
-                #set job = $i.creating_job
-                #set tool_id = $job.tool_id
-                #set tool_parameters = ""
-                #for p in $job.parameters:
-                    #set tool_parameters = $tool_parameters + "__SeP__" + $p.name
-                    #set tool_parameters = $tool_parameters + "__SeP__" + $p.value
-                #end for
-                #if $workflow_step is None:
-                    #set pjaas = $job.post_job_actions
-                    #for pjaa in $pjaas:
-                        #set pja = pjaa.post_job_action
-                        #set workflow_step = $pja.workflow_step
-                    #end for
-                #end if
-            #end for
-            --config_file $__tool_directory__/stats_config.ini
-            --history_id "$history_id"
-            --history_name "$history_name"
-            --tool_id "$tool_id"
-            --tool_parameters "$tool_parameters"
-            --user_email "$__user_email__"
-            #if $workflow_step is not None:
-                --workflow_step_id "$__app__.security.encode_id($workflow_step.id)"
-            #end if
-            --output "$output"
+            <expand macro="multi_input_cmd_end" />
         ]]>
     </command>
     <inputs>

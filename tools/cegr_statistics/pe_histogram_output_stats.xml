@@ -5,29 +5,14 @@
     </macros>
     <command>
         <![CDATA[
-            #import time
-            #set non_ready_states = ['new', 'queued', 'running', 'setting_metadata', 'upload']
+            <expand macro="non_ready_states" />
             #while $input_png.dataset.state in $non_ready_states:
                 time.sleep(60)
             #end while
             #while $input_tabular.dataset.state in $non_ready_states:
                 time.sleep(60)
             #end while
-            #set history_id = $__app__.security.encode_id($input_png.history.id)
-            #set history_name = $input_png.history.name
-            #set job = $input_png.creating_job
-            #set tool_id = $job.tool_id
-            #set tool_parameters = ""
-            #for p in $job.parameters:
-                #set tool_parameters = $tool_parameters + "__SeP__" + $p.name
-                #set tool_parameters = $tool_parameters + "__SeP__" + $p.value
-            #end for
-            #set workflow_step = None
-            #set pjaas = $job.post_job_actions
-            #for pjaa in $pjaas:
-                #set pja = pjaa.post_job_action
-                #set workflow_step = $pja.workflow_step
-            #end for
+            <expand macro="single_input_cmd_start" />
             python $__tool_directory__/pe_histogram_output_stats.py
             --config_file $__tool_directory__/stats_config.ini
             --input_png "$input_png"
