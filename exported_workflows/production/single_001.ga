@@ -19,8 +19,8 @@
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
-                "left": 233.515625, 
-                "top": 668.4375
+                "left": 137.515625, 
+                "top": 669.4375
             }, 
             "tool_errors": null, 
             "tool_id": null, 
@@ -142,7 +142,7 @@
         }, 
         "3": {
             "annotation": "", 
-            "content_id": "input_dataset_output_stats", 
+            "content_id": "input_dataset_r1_output_stats", 
             "id": 3, 
             "input_connections": {
                 "input": {
@@ -152,12 +152,12 @@
             }, 
             "inputs": [
                 {
-                    "description": "runtime parameter for tool Input dataset output statistics", 
+                    "description": "runtime parameter for tool Input dataset R1 output statistics", 
                     "name": "input"
                 }
             ], 
             "label": null, 
-            "name": "Input dataset output statistics", 
+            "name": "Input dataset R1 output statistics", 
             "outputs": [
                 {
                     "name": "output", 
@@ -165,21 +165,21 @@
                 }
             ], 
             "position": {
-                "left": 176, 
-                "top": 795.203125
+                "left": 187.5, 
+                "top": 843.875
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
-            "tool_id": "input_dataset_output_stats", 
+            "tool_id": "input_dataset_r1_output_stats", 
             "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
-            "uuid": "1cfc634e-670e-45a6-aa3e-985a0957aa1f", 
+            "uuid": "84773ff5-155a-4efd-bde0-b4d1974bc521", 
             "workflow_outputs": [
                 {
                     "label": null, 
                     "output_name": "output", 
-                    "uuid": "b50034c3-eebc-4e05-af71-b0de34250c8a"
+                    "uuid": "8fe8d94a-18c4-4890-bd08-1e64d14142e0"
                 }
             ]
         }, 
@@ -2495,5 +2495,5 @@
             ]
         }
     }, 
-    "uuid": "a027b85e-cc0a-4ca8-aa05-3414626fee73"
+    "uuid": "bdeaec97-8745-43c4-b4b4-56aa159d4c9c"
 }
