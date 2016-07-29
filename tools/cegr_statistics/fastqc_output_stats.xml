@@ -5,7 +5,8 @@
     </macros>
     <command>
         <![CDATA[
-            <expand macro="non_ready_states" />
+            #import time
+            #set non_ready_states = ['new', 'queued', 'running', 'setting_metadata', 'upload']
             #while $input_html.dataset.state in $non_ready_states:
                 time.sleep(60)
             #end while
@@ -15,7 +16,18 @@
             #set history_id = $__app__.security.encode_id($input_html.history.id)
             #set history_name = $input_html.history.name
             #set job = $input_html.creating_job
-            <expand macro="single_input_cmd_start" />
+            #set tool_id = $job.tool_id
+            #set tool_parameters = ""
+            #for p in $job.parameters:
+                #set tool_parameters = $tool_parameters + "__SeP__" + $p.name
+                #set tool_parameters = $tool_parameters + "__SeP__" + $p.value
+            #end for
+            #set workflow_step = None
+            #set pjaas = $job.post_job_actions
+            #for pjaa in $pjaas:
+                #set pja = pjaa.post_job_action
+                #set workflow_step = $pja.workflow_step
+            #end for
             python $__tool_directory__/fastqc_output_stats.py
             --config_file $__tool_directory__/stats_config.ini
             --input_html "$input_html"

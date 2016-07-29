@@ -5,19 +5,21 @@
     </macros>
     <command>
         <![CDATA[
-            <expand macro="non_ready_states" />
-            #for $i in $input_html:
-                #while $i.dataset.state in $non_ready_states:
-                    time.sleep(60)
-                #end while
-            #end for
+            #import time
+            #set non_ready_states = ['new', 'queued', 'running', 'setting_metadata', 'upload']
+            #set history_id = None
+            #set history_name = None
+            #set workflow_step = None
             #for $i in $input_txt:
                 #while $i.dataset.state in $non_ready_states:
                     time.sleep(60)
                 #end while
             #end for
-            <expand macro="non_ready_states" />
-            <expand macro="multi_input_cmd_start" />
+            #for $i in $input_html:
+                #while $i.dataset.state in $non_ready_states:
+                    time.sleep(60)
+                #end while
+            #end for
             python $__tool_directory__/meme_meme_output_stats.py
             #for $i in $input_txt:
                 #if history_id is None:

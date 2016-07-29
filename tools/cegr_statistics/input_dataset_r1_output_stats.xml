@@ -4,23 +4,24 @@
         <import>macros.xml</import>
     </macros>
     <command>
-        <![CDATA[
-            <expand macro="non_ready_states" />
-            <expand macro="single_input_check" />
-            #set history_id = $__app__.security.encode_id($input.history.id)
-            #set history_name = $input.history.name
-            python $__tool_directory__/input_dataset_output_stats.py
-            --config_file $__tool_directory__/stats_config.ini
-            --input "$input"
-            --input_id "$__app__.security.encode_id($input.id)"
-            --input_datatype "$input.ext"
-            --dbkey "$input.metadata.dbkey"
-            --history_id "$history_id"
-            --history_name "$history_name"
-            --tool_id "input_dataset_r1"
-            --user_email "$__user_email__"
-            --output "$output"
-        ]]>
+        #import time
+        #set non_ready_states = ['new', 'queued', 'running', 'setting_metadata', 'upload']
+        #while $input.dataset.state in $non_ready_states:
+            time.sleep(60)
+        #end while
+        #set history_id = $__app__.security.encode_id($input.history.id)
+        #set history_name = $input.history.name
+        python $__tool_directory__/input_dataset_output_stats.py
+        --config_file $__tool_directory__/stats_config.ini
+        --input "$input"
+        --input_id "$__app__.security.encode_id($input.id)"
+        --input_datatype "$input.ext"
+        --dbkey "$input.metadata.dbkey"
+        --history_id "$history_id"
+        --history_name "$history_name"
+        --tool_id "input_dataset_r1"
+        --user_email "$__user_email__"
+        --output "$output"
     </command>
     <inputs>
         <param name="input" type="data" format="fastqsanger" label="Fastqsanger input" >
