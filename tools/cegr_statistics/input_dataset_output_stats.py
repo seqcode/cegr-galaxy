@@ -16,8 +16,8 @@ parser.add_argument('--user_email', dest='user_email', help='Current user email'
 args = parser.parse_args()
 
 # Initialize the payload.
-tool_parameters = ""
-workflow_step_id = ""
+tool_parameters = None
+workflow_step_id = None
 payload = stats_util.get_base_json_dict(args.config_file, args.dbkey, args.history_id, args.history_name, args.tool_id, tool_parameters, args.user_email, workflow_step_id)
 # Generate the statistics and datasets.
 payload['statistics'] = [{}]
