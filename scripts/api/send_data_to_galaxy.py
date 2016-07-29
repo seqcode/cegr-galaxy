@@ -17,6 +17,7 @@ sys.path.insert(0, '../../util')
 import api_util
 import argparse
 import os
+import time
 # If this Galaxy instance uses a virtual environment,
 # activate it so we can import Galaxy from bioblend.
 api_util.activate_virtual_env('PREP_VIRTUAL_ENV')
@@ -46,6 +47,7 @@ lh = api_util.open_log_file(log_file, SCRIPT_NAME)
 created_library_names = []
 created_folder_names = []
 current_run_dir = None
+uploading_datasets = False
 
 with open(cegr_run_info_file, 'r') as fh:
     for i, line in enumerate(fh):
@@ -122,10 +124,16 @@ with open(cegr_run_info_file, 'r') as fh:
                                                                                     file_type='fastqsanger',
                                                                                     dbkey='?')
                     lh.write("\nResponse from uploading dataset:\n%s\n\n" % str(populate_folder_dict))
+                    if not uploading_datasets:
+                        uploading_datasets = True
         except Exception as e:
             lh.write("\nError importing datasets into folder for line %d, exception:\n%s\n" % (i, str(e)))
             lh.write("Here is the line:\n")
             lh.write("%s\n" % line)
+if uploading_datasets:
+    lh.write('\nSleeping for 30 minutes to make sure the data library upload jobs are finished...\n')
+    time.sleep(1800)
+    lh.write('Awake now...\n')
 api_util.close_log_file(lh, SCRIPT_NAME)
 # Let everyone know we've finished.
 api_util.create_script_complete_file(log_dir, SCRIPT_NAME)
