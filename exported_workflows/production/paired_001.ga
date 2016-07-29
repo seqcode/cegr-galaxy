@@ -51,8 +51,8 @@
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
-                "left": 198.734375, 
-                "top": 693
+                "left": 197.734375, 
+                "top": 707
             }, 
             "tool_errors": null, 
             "tool_id": null, 
@@ -102,7 +102,7 @@
         }, 
         "3": {
             "annotation": "", 
-            "content_id": "input_dataset_output_stats", 
+            "content_id": "input_dataset_r1_output_stats", 
             "id": 3, 
             "input_connections": {
                 "input": {
@@ -112,12 +112,12 @@
             }, 
             "inputs": [
                 {
-                    "description": "runtime parameter for tool Input dataset output statistics", 
+                    "description": "runtime parameter for tool Input dataset R1 output statistics", 
                     "name": "input"
                 }
             ], 
             "label": null, 
-            "name": "Input dataset output statistics", 
+            "name": "Input dataset R1 output statistics", 
             "outputs": [
                 {
                     "name": "output", 
@@ -125,21 +125,21 @@
                 }
             ], 
             "position": {
-                "left": 285.609375, 
-                "top": 542.09375
+                "left": 640.265625, 
+                "top": 138
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
-            "tool_id": "input_dataset_output_stats", 
+            "tool_id": "input_dataset_r1_output_stats", 
             "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
-            "uuid": "a9cb175e-125d-4686-a1ad-f1ee3e7d79ad", 
+            "uuid": "4c55a065-cb1f-4144-993c-1bd062b0d7e1", 
             "workflow_outputs": [
                 {
                     "label": null, 
                     "output_name": "output", 
-                    "uuid": "660a8da2-886e-41ee-a3c8-194309a9ccb1"
+                    "uuid": "42a222c8-ecf4-4a2c-b2b9-1e84bd76b500"
                 }
             ]
         }, 
@@ -289,7 +289,7 @@
         }, 
         "6": {
             "annotation": "", 
-            "content_id": "input_dataset_output_stats", 
+            "content_id": "input_dataset_r2_output_stats", 
             "id": 6, 
             "input_connections": {
                 "input": {
@@ -299,12 +299,12 @@
             }, 
             "inputs": [
                 {
-                    "description": "runtime parameter for tool Input dataset output statistics", 
+                    "description": "runtime parameter for tool Input dataset R2 output statistics", 
                     "name": "input"
                 }
             ], 
             "label": null, 
-            "name": "Input dataset output statistics", 
+            "name": "Input dataset R2 output statistics", 
             "outputs": [
                 {
                     "name": "output", 
@@ -312,21 +312,21 @@
                 }
             ], 
             "position": {
-                "left": 137.796875, 
-                "top": 865.609375
+                "left": 178.875, 
+                "top": 867.5
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
-            "tool_id": "input_dataset_output_stats", 
+            "tool_id": "input_dataset_r2_output_stats", 
             "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
-            "uuid": "98f2d3a4-e37c-4c6f-86b7-6c129d2d689c", 
+            "uuid": "94767ebf-aa7c-4b7f-ba06-01ad586ec106", 
             "workflow_outputs": [
                 {
                     "label": null, 
                     "output_name": "output", 
-                    "uuid": "78074c3d-8a09-441f-80e7-ecebc2104fe1"
+                    "uuid": "7151526f-2b29-4045-a713-ebabcad46533"
                 }
             ]
         }, 
@@ -363,8 +363,8 @@
                 }
             ], 
             "position": {
-                "left": 475.640625, 
-                "top": 1074
+                "left": 537.640625, 
+                "top": 858
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -2661,5 +2661,5 @@
             ]
         }
     }, 
-    "uuid": "66ea12db-d332-4c47-bff1-1070398c2b02"
+    "uuid": "6139a32e-3b1b-468d-9c99-e3757f32a724"
 }
