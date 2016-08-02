@@ -62,7 +62,7 @@
         <param name="input_heatmaps" type="data_collection" collection_type="list" format="tabular" label="Heatmap tabular inputs" >
             <validator type="dataset_ok_validator" />
         </param>
-        <param name="input_tabulars" type="data_collection" collection_type="list" format="tabular" label="Tabular inputs" >
+        <param name="input_tabulars" type="data" format="tabular" label="Tabular input" >
             <validator type="dataset_ok_validator" />
         </param>
     </inputs>
