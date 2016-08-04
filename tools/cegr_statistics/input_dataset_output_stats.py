@@ -17,7 +17,10 @@ args = parser.parse_args()
 
 # Initialize the payload.
 tool_parameters = ""
-workflow_step_id = "input"
+if args.tool_id == 'input_dataset_r1'
+    workflow_step_id = 'input1'
+elif args.tool_di == 'input_dataset_r2'
+    workflow_step_id - 'input2'
 payload = stats_util.get_base_json_dict(args.config_file, args.dbkey, args.history_id, args.history_name, args.tool_id, tool_parameters, args.user_email, workflow_step_id)
 # Generate the statistics and datasets.
 payload['statistics'] = [{}]
