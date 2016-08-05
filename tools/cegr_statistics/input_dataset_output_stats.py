@@ -15,12 +15,12 @@ parser.add_argument('--tool_id', dest='tool_id', help='Tool that was executed to
 parser.add_argument('--user_email', dest='user_email', help='Current user email')
 args = parser.parse_args()
 
-# Initialize the payload.
 tool_parameters = ""
-if args.tool_id == 'input_dataset_r1'
+if args.tool_id == 'input_dataset_r1':
     workflow_step_id = 'input1'
-elif args.tool_di == 'input_dataset_r2'
+elif args.tool_id == 'input_dataset_r2':
     workflow_step_id - 'input2'
+# Initialize the payload.
 payload = stats_util.get_base_json_dict(args.config_file, args.dbkey, args.history_id, args.history_name, args.tool_id, tool_parameters, args.user_email, workflow_step_id)
 # Generate the statistics and datasets.
 payload['statistics'] = [{}]
