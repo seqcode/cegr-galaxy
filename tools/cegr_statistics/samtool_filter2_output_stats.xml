@@ -13,7 +13,7 @@
             #set history_id = $__app__.security.encode_id($input.history.id)
             #set history_name = $input.history.name
             #set job = $input.creating_job
-            #set stderr $job.stderr
+            #set stderr = $job.stderr
             #set tool_id = $job.tool_id
             #set tool_parameters = ""
             #for $p in $job.parameters:
