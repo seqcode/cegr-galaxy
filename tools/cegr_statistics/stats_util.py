@@ -85,7 +85,7 @@ def get_adapter_dimer_count(file_path):
     return float(adapter_dimer_count)
 
 
-def get_base_json_dict(config_file, dbkey, history_id, history_name, tool_id, tool_parameters, user_email, workflow_step_id):
+def get_base_json_dict(config_file, dbkey, history_id, history_name, stderr, tool_id, tool_parameters, user_email, workflow_step_id):
     d = {}
     d['genome'] = dbkey
     d['historyId'] = history_id
@@ -93,6 +93,7 @@ def get_base_json_dict(config_file, dbkey, history_id, history_name, tool_id, to
     d['run'] = get_run_from_history_name(history_name)
     d['sample'] = get_sample_from_history_name(history_name)
     d['toolCategory'] = get_tool_category(config_file, tool_id)
+    d['toolStderr'] = stderr
     d['toolId'] = tool_id
     d['userEmail'] = user_email
     d['workflowId'] = get_workflow_id(config_file, history_name)

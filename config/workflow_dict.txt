@@ -1,0 +1,352 @@
+
+>>> print json.dumps(workflow_dict, sort_keys=True, indent=4, separators=(',', ': '))
+{
+    "annotation": "Initial version of the ChI\nP-exo pipeline for the sacCer3_cegr build.",
+    "deleted": false,
+    "id": "3f5830403180d620",
+    "inputs": {
+        "0": {
+            "label": "R2",
+            "uuid": "3fc8f5fd-5fa6-4eb2-bd3b-8ca8b27afccd",
+            "value": ""
+        },
+        "1": {
+            "label": "blacklist_filter",
+            "uuid": "1691e144-6de9-45f7-a4cf-f7b75a7981bf",
+            "value": ""
+        }
+    },
+    "latest_workflow_uuid": "027b23ef-c065-45bd-b893-d8bc4cc445d0",
+    "model_class": "StoredWorkflow",
+    "name": "dm3_single_001",
+    "owner": "greg",
+    "published": false,
+    "steps": {
+        "0": {
+            "annotation": "Fastq input 2",
+            "id": 0,
+            "input_steps": {},
+            "tool_id": null,
+            "tool_inputs": {
+                "name": "R2"
+            },
+            "tool_version": null,
+            "type": "data_input"
+        },
+        "1": {
+            "annotation": "Blacklist filter",
+            "id": 1,
+            "input_steps": {},
+            "tool_id": null,
+            "tool_inputs": {
+                "name": "blacklist_filter"
+            },
+            "tool_version": null,
+            "type": "data_input"
+        },
+        "10": {
+            "annotation": null,
+            "id": 10,
+            "input_steps": {
+                "input": {
+                    "source_step": 9,
+                    "step_output": "out_file1"
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/resize_coordinate_window/resize_coordinate_window/1.0.1",
+            "tool_inputs": {
+                "add_to_end": "\"30\"",
+                "extend_existing": "\"midpoint\"",
+                "input": "None",
+                "region_boundaries": "\"discard\"",
+                "start_coordinate": "\"1\"",
+                "subtract_from_start": "\"30\""
+            },
+            "tool_version": "1.0.1",
+            "type": "tool"
+        },
+        "11": {
+            "annotation": null,
+            "id": 11,
+            "input_steps": {
+                "input": {
+                    "source_step": 10,
+                    "step_output": "output"
+                }
+            },
+            "tool_id": "Show beginning1",
+            "tool_inputs": {
+                "chromInfo": "\"/nfs/brubeck.bx.psu.edu/scratch5/galaxy-pugh/galaxy/tool-data/shared/ucsc/chrom/?.len\"",
+                "input": "None",
+                "input|__identifier__": "\"data_MP_mode_f0u0d80_on_data_15.gff\"",
+                "lineNum": "\"500\""
+            },
+            "tool_version": "1.0.0",
+            "type": "tool"
+        },
+        "12": {
+            "annotation": null,
+            "id": 12,
+            "input_steps": {
+                "input": {
+                    "source_step": 10,
+                    "step_output": "output"
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/extract_genomic_dna/Extract genomic DNA 1/3.0.1",
+            "tool_inputs": {
+                "input": "None",
+                "interpret_features": "\"yes\"",
+                "output_format": "\"fasta\"",
+                "reference_genome_cond": "{\"reference_genome\": \"dm3\", \"reference_genome_source\": \"cached\", \"__current_case__\": 0}"
+            },
+            "tool_version": "3.0.1",
+            "type": "tool"
+        },
+        "13": {
+            "annotation": null,
+            "id": 13,
+            "input_steps": {
+                "input": {
+                    "source_step": 11,
+                    "step_output": "out_file1"
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/extract_genomic_dna/Extract genomic DNA 1/3.0.1",
+            "tool_inputs": {
+                "input": "None",
+                "interpret_features": "\"yes\"",
+                "output_format": "\"fasta\"",
+                "reference_genome_cond": "{\"reference_genome\": \"dm3\", \"reference_genome_source\": \"cached\", \"__current_case__\": 0}"
+            },
+            "tool_version": "3.0.1",
+            "type": "tool"
+        },
+        "14": {
+            "annotation": null,
+            "id": 14,
+            "input_steps": {
+                "input1": {
+                    "source_step": 13,
+                    "step_output": "output"
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/meme_meme/meme_meme/4.11.0.0",
+            "tool_inputs": {
+                "chromInfo": "\"/nfs/brubeck.bx.psu.edu/scratch5/galaxy-pugh/galaxy/tool-data/shared/ucsc/chrom/sacCer3.len\"",
+                "input1": "None",
+                "input1|__identifier__": "\"data_MP_mode_f0u0d80_on_data_15.gff\"",
+                "non_commercial_use": "\"True\"",
+                "options_type": "{\"distance\": \"0.001\", \"bfile\": None, \"options_type_selector\": \"advanced\", \"maxiter\": \"50\", \"mod_type\": {\"motif_occurrence_type\": {\"motif_occurrence_type_selector\": \"default\", \"__current_case__\": 0}, \"mod_type_selector\": \"zoops\", \"__current_case__\": 1}, \"nmotifs\": \"1\", \"wnsites\": \"0.8\", \"pspfile\": None, \"branching_type\": {\"branching_type_selector\": \"no_x_branch\", \"__current_case__\": 0}, \"__current_case__\": 1, \"motif_width_type\": {\"motif_width_type_selector\": \"range\", \"maxw\": \"50\", \"__current_case__\": 1, \"minw\": \"8\"}, \"motif_trim_type\": {\"wg\": \"11\", \"motif_trim_type_selector\": \"trim\", \"noendgaps\": \"False\", \"ws\": \"1\", \"__current_case__\": 1}, \"alphabet_type\": {\"prior_type\": {\"plib\": None, \"prior_b\": \"0.01\", \"prior_type_selector\": \"dirichlet\", \"__current_case__\": 0}, \"__current_case__\": 1, \"revcomp\": \"True\", \"spmap_type\": {\"spfuzz\": \"0.5\", \"spmap_type_selector\": \"uni\", \"__current_case__\": 0}, \"pal\": \"False\", \"alphabet_type_selector\": \"dna\"}, \"evt\": \"0.0\", \"sf\": \"Galaxy FASTA Input\"}"
+            },
+            "tool_version": "4.11.0.0",
+            "type": "tool"
+        },
+        "15": {
+            "annotation": null,
+            "id": 15,
+            "input_steps": {
+                "fasta_type|input_database": {
+                    "source_step": 12,
+                    "step_output": "output"
+                },
+                "input_motifs": {
+                    "source_step": 14,
+                    "step_output": "xml_outfile"
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/meme_fimo/meme_fimo/4.11.0.1",
+            "tool_inputs": {
+                "chromInfo": "\"/nfs/brubeck.bx.psu.edu/scratch5/galaxy-pugh/galaxy/tool-data/shared/ucsc/chrom/sacCer3.len\"",
+                "fasta_type": "{\"input_database\": None, \"fasta_type_selector\": \"history\", \"__current_case__\": 1}",
+                "input_database|__identifier__": "\"data_MP_mode_f0u0d80_on_data_15.gff\"",
+                "input_motifs": "None",
+                "input_motifs|__identifier__": "\"data_MP_mode_f0u0d80_on_data_15.gff\"",
+                "non_commercial_use": "\"True\"",
+                "options_type": "{\"prior_dist_cond\": {\"prior_dist_selector\": \"no\", \"__current_case__\": 0}, \"psp_cond\": {\"__current_case__\": 0, \"psp_selector\": \"no\"}, \"options_type_selector\": \"advanced\", \"no_qvalue\": \"True\", \"qv_thresh\": \"False\", \"motifs_cond\": {\"motifs_selector\": \"yes\", \"__current_case__\": 0}, \"bgfile_type\": {\"bgfile_type_selector\": \"default\", \"__current_case__\": 1}, \"norc\": \"False\", \"max_strand\": \"False\", \"thresh\": \"0.0001\", \"__current_case__\": 1, \"max_stored_scores\": \"100000\", \"alpha\": \"1.0\", \"motif_pseudo\": \"0.1\", \"parse_genomic_coord\": \"False\"}"
+            },
+            "tool_version": "4.11.0.1",
+            "type": "tool"
+        },
+        "2": {
+            "annotation": null,
+            "id": 2,
+            "input_steps": {
+                "input_file": {
+                    "source_step": 0,
+                    "step_output": "output"
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.64",
+            "tool_inputs": {
+                "chromInfo": "\"/nfs/brubeck.bx.psu.edu/scratch5/galaxy-pugh/galaxy/tool-data/shared/ucsc/chrom/sacCer3.len\"",
+                "contaminants": "None",
+                "input_file": "None",
+                "limits": "None"
+            },
+            "tool_version": "0.64",
+            "type": "tool"
+        },
+        "3": {
+            "annotation": null,
+            "id": 3,
+            "input_steps": {
+                "fastq_input|fastq_input1": {
+                    "source_step": 0,
+                    "step_output": "output"
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.4.2",
+            "tool_inputs": {
+                "analysis_type": "{\"analysis_type_selector\": \"full\", \"algorithmic_options\": {\"algorithmic_options_selector\": \"do_not_set\", \"__current_case__\": 1}, \"io_options\": {\"a\": \"False\", \"C\": \"False\", \"__current_case__\": 0, \"h\": \"5\", \"M\": \"True\", \"T\": \"30\", \"io_options_selector\": \"set\", \"V\": \"False\", \"Y\": \"False\"}, \"__current_case__\": 2, \"scoring_options\": {\"scoring_options_selector\": \"do_not_set\", \"__current_case__\": 1}}",
+                "fastq_input": "{\"fastq_input_selector\": \"single\", \"__current_case__\": 1, \"fastq_input1\": None}",
+                "reference_source": "{\"ref_file\": \"dm3\", \"reference_source_selector\": \"cached\", \"__current_case__\": 0}",
+                "rg": "{\"rg_selector\": \"do_not_set\", \"__current_case__\": 3}"
+            },
+            "tool_version": "0.4.2",
+            "type": "tool"
+        },
+        "4": {
+            "annotation": null,
+            "id": 4,
+            "input_steps": {
+                "input_bam": {
+                    "source_step": 3,
+                    "step_output": "bam_output"
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/bam_to_scidx/bam_to_scidx/1.0.0",
+            "tool_inputs": {
+                "chromInfo": "\"/nfs/brubeck.bx.psu.edu/scratch5/galaxy-pugh/galaxy/tool-data/shared/ucsc/chrom/sacCer3.len\"",
+                "input_bam": "None",
+                "max_insert_size": "\"\"",
+                "min_insert_size": "\"\"",
+                "read": "\"0\"",
+                "require_proper_mate_pairing": "\"1\""
+            },
+            "tool_version": "1.0.0",
+            "type": "tool"
+        },
+        "5": {
+            "annotation": null,
+            "id": 5,
+            "input_steps": {
+                "input_format_cond|input": {
+                    "source_step": 4,
+                    "step_output": "output"
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/genetrack/genetrack/1.0.0",
+            "tool_inputs": {
+                "chromInfo": "\"/nfs/brubeck.bx.psu.edu/scratch5/galaxy-pugh/galaxy/tool-data/shared/ucsc/chrom/sacCer3.len\"",
+                "down_width": "\"10\"",
+                "exclusion": "\"10\"",
+                "filter": "\"0\"",
+                "input_format_cond": "{\"input\": None, \"input_format\": \"scidx\", \"__current_case__\": 0}",
+                "sigma": "\"5\"",
+                "up_width": "\"10\""
+            },
+            "tool_version": "1.0.0",
+            "type": "tool"
+        },
+        "6": {
+            "annotation": null,
+            "id": 6,
+            "input_steps": {
+                "inputA": {
+                    "source_step": 5,
+                    "step_output": "genetrack_output"
+                },
+                "inputB": {
+                    "source_step": 1,
+                    "step_output": "output"
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/bedtools/bedtools_intersectbed/2.22.0",
+            "tool_inputs": {
+                "count": "\"False\"",
+                "fraction": "\"\"",
+                "header": "\"False\"",
+                "inputA": "None",
+                "inputB": "None",
+                "invert": "\"True\"",
+                "once": "\"False\"",
+                "overlap_mode": "[\"-wa\"]",
+                "reciprocal": "\"False\"",
+                "split": "\"False\"",
+                "strand": "\"\""
+            },
+            "tool_version": "2.22.0",
+            "type": "tool"
+        },
+        "7": {
+            "annotation": null,
+            "id": 7,
+            "input_steps": {
+                "input": {
+                    "source_step": 6,
+                    "step_output": "output"
+                }
+            },
+            "tool_id": "Filter1",
+            "tool_inputs": {
+                "chromInfo": "\"/nfs/brubeck.bx.psu.edu/scratch5/galaxy-pugh/galaxy/tool-data/shared/ucsc/chrom/sacCer3.len\"",
+                "cond": "\"c9 != 'stddev=0.0'\"",
+                "header_lines": "\"0\"",
+                "input": "None",
+                "input|__identifier__": "\"s5e10u10d10F0_on_data_10\""
+            },
+            "tool_version": "1.1.0",
+            "type": "tool"
+        },
+        "8": {
+            "annotation": null,
+            "id": 8,
+            "input_steps": {
+                "input": {
+                    "source_step": 7,
+                    "step_output": "out_file1"
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/cwpair2/cwpair2/1.0.0",
+            "tool_inputs": {
+                "binsize": "\"2\"",
+                "chromInfo": "\"/nfs/brubeck.bx.psu.edu/scratch5/galaxy-pugh/galaxy/tool-data/shared/ucsc/chrom/sacCer3.len\"",
+                "down_distance": "\"80\"",
+                "input": "None",
+                "method": "\"mode\"",
+                "output_files": "\"all\"",
+                "threshold_format_cond": "{\"relative_threshold\": \"0.0\", \"threshold_format\": \"relative_threshold\", \"__current_case__\": 0}",
+                "up_distance": "\"0\""
+            },
+            "tool_version": "1.0.0",
+            "type": "tool"
+        },
+        "9": {
+            "annotation": null,
+            "id": 9,
+            "input_steps": {
+                "input": {
+                    "source_step": 8,
+                    "step_output": "MP"
+                }
+            },
+            "tool_id": "sort1",
+            "tool_inputs": {
+                "chromInfo": "\"/nfs/brubeck.bx.psu.edu/scratch5/galaxy-pugh/galaxy/tool-data/shared/ucsc/chrom/?.len\"",
+                "column": "\"6\"",
+                "column_set": "[]",
+                "input": "None",
+                "input|__identifier__": "\"data_MP_mode_f0u0d80_on_data_15.gff\"",
+                "order": "\"DESC\"",
+                "style": "\"num\""
+            },
+            "tool_version": "1.0.3",
+            "type": "tool"
+        }
+    },
+    "tags": [],
+    "url": "/api/workflows/3f5830403180d620"
+}
+
+{u'3904': {'reference_genome': 'sacCer3'}, u'3906': {'chromInfo': '/nfs/brubeck.bx.psu.edu/scratch5/galaxy-pugh/galaxy/tool-data/shared/ucsc/chrom/sacCer3.len'}, u'3900': {'chromInfo': '/nfs/brubeck.bx.psu.edu/scratch5/galaxy-pugh/galaxy/tool-data/shared/ucsc/chrom/sacCer3.len'}, u'3902': {'chromInfo': '/nfs/brubeck.bx.psu.edu/scratch5/galaxy-pugh/galaxy/tool-data/shared/ucsc/chrom/sacCer3.len'}, u'3903': {'reference_genome': 'sacCer3'}, u'3898': {'chromInfo': '/nfs/brubeck.bx.psu.edu/scratch5/galaxy-pugh/galaxy/tool-data/shared/ucsc/chrom/sacCer3.len'}, u'3899': {'chromInfo': '/nfs/brubeck.bx.psu.edu/scratch5/galaxy-pugh/galaxy/tool-data/shared/ucsc/chrom/sacCer3.len'}, u'3892': {'chromInfo': '/nfs/brubeck.bx.psu.edu/scratch5/galaxy-pugh/galaxy/tool-data/shared/ucsc/chrom/sacCer3.len'}, u'3893': {'chromInfo': '/nfs/brubeck.bx.psu.edu/scratch5/galaxy-pugh/galaxy/tool-data/shared/ucsc/chrom/sacCer3.len'}, u'3896': {'chromInfo': '/nfs/brubeck.bx.psu.edu/scratch5/galaxy-pugh/galaxy/tool-data/shared/ucsc/chrom/sacCer3.len'}, u'3894': {'ref_file': 'sacCer3'}, u'3895': {'chromInfo': '/nfs/brubeck.bx.psu.edu/scratch5/galaxy-pugh/galaxy/tool-data/shared/ucsc/chrom/sacCer3.len'}}
