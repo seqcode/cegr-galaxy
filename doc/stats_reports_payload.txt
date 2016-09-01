@@ -33,6 +33,7 @@
  ‘sample’: integer,
  ‘toolCategory’: ‘string’,
  ‘toolId’: ‘string’,
+ 'toolStderr': 'string',
  'userEmail': 'string',
  ‘workflowId’: ‘string’,
  'workflowStepId': 'string'
