@@ -30,7 +30,10 @@ statistics = []
 # The png dataset has no statistics.
 statistics.append({})
 # Generate the statistics for the tabular dataset.
-statistics.append(stats_util.get_statistics(args.input_tabular, STATS))
+if len(args.stderr) == 0:
+    statistics.append(stats_util.get_statistics(args.input_tabular, STATS))
+else:
+    statistics.append({})
 payload['statistics'] = statistics
 d1 = stats_util.get_datasets(args.config_file, args.input_png_id, args.input_png_datatype)
 d2 = stats_util.get_datasets(args.config_file, args.input_tabular_id, args.input_tabular_datatype)

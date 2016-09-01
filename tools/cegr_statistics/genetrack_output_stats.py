@@ -26,7 +26,10 @@ for input in args.inputs:
     if payload is None:
         # Initialize the payload.
         payload = stats_util.get_base_json_dict(args.config_file, dbkey, args.history_id, args.history_name, args.stderr, args.tool_id, args.tool_parameters, args.user_email, args.workflow_step_id)
-    statistics.append(stats_util.get_statistics(file_path, STATS))
+    if len(args.stderr) == 0:
+        statistics.append(stats_util.get_statistics(file_path, STATS))
+    else:
+        statistics.append({})
     datasets.append(stats_util.get_datasets(args.config_file, input_id, input_datatype))
 payload['statistics'] = statistics
 payload['datasets'] = datasets

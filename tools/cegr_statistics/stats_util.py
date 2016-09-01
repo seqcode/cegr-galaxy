@@ -179,10 +179,13 @@ def get_mapped_reads(file_path):
 
 
 def get_number_of_lines(file_path):
+    i = 0
     with open(file_path) as fh:
         for i, l in enumerate(fh):
             pass
     fh.close()
+    if i == 0:
+        return i
     return i + 1
 
 
