@@ -44,9 +44,7 @@
         ]]>
     </command>
     <inputs>
-        <param name="input" type="data" format="scidx" label="ScIdx input" >
-            <validator type="dataset_ok_validator" />
-        </param>
+        <param name="input" type="data" format="scidx" label="ScIdx input" />
     </inputs>
     <outputs>
         <data name="output" format="txt" />

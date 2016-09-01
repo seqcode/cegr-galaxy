@@ -51,9 +51,7 @@
         ]]>
     </command>
     <inputs>
-        <param name="input" type="data" format="gff" multiple="true" label="Gff input">
-            <validator type="dataset_ok_validator" />
-        </param>
+        <param name="input" type="data" format="gff" multiple="true" label="Gff input" />
     </inputs>
     <outputs>
         <data name="output" format="txt" />

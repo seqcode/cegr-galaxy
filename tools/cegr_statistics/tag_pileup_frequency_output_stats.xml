@@ -51,12 +51,8 @@
         ]]>
     </command>
     <inputs>
-        <param name="input_heatmaps" type="data_collection" collection_type="list" format="tabular" label="Tabular inputs" >
-            <validator type="dataset_ok_validator" />
-        </param>
-        <param name="input_tabular" type="data" format="tabular" label="Tabular input" >
-            <validator type="dataset_ok_validator" />
-        </param>
+        <param name="input_heatmaps" type="data_collection" collection_type="list" format="tabular" label="Tabular inputs" />
+        <param name="input_tabular" type="data" format="tabular" label="Tabular input" />
     </inputs>
     <outputs>
         <data name="output" format="txt" />

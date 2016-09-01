@@ -58,12 +58,8 @@
         ]]>
     </command>
     <inputs>
-        <param name="input_gff" type="data_collection" collection_type="list" format="gff" label="Gff input" >
-            <validator type="dataset_ok_validator" />
-        </param>
-        <param name="input_xml" type="data" multiple="true" format="cisml" label="XML (cisml) input" >
-            <validator type="dataset_ok_validator" />
-        </param>
+        <param name="input_gff" type="data_collection" collection_type="list" format="gff" label="Gff input" />
+        <param name="input_xml" type="data" multiple="true" format="cisml" label="XML (cisml) input" />
     </inputs>
     <outputs>
         <data name="output" format="txt" />

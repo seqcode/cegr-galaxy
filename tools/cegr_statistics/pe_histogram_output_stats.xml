@@ -49,12 +49,8 @@
         ]]>
     </command>
     <inputs>
-        <param name="input_png" type="data" format="png" label="PNG input" >
-            <validator type="dataset_ok_validator" />
-        </param>
-        <param name="input_tabular" type="data" format="tabular" label="Tabular input" >
-            <validator type="dataset_ok_validator" />
-        </param>
+        <param name="input_png" type="data" format="png" label="PNG input" />
+        <param name="input_tabular" type="data" format="tabular" label="Tabular input" />
     </inputs>
     <outputs>
         <data name="output" format="txt" />
