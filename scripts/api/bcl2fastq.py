@@ -37,57 +37,61 @@ prep_directory = os.path.join(api_util.get_value_or_default(args.prep_directory,
 raw_data_directory = os.path.join(api_util.get_value_or_default(args.raw_data_directory, 'RAW_DATA_DIR', is_path=True), current_run_folder)
 sample_sheet = api_util.get_value_or_default(args.sample_sheet, 'SAMPLE_SHEET', is_path=True)
 
-# Generate the sample sheet required by the Illumina bec2fastq binary.
-api_util.generate_sample_sheet(cegr_run_info_file, sample_sheet, lh)
-# Build the command.
-cmd = '%s ' % bcl2fastq_binary
-# Minimum log level, recognized values: NONE, FATAL, ERROR, WARNING, INFO, DEBUG, TRACE.
-cmd += '-l ERROR '
-# Path to input directory, default (=<runfolder-dir>/Data/Intensities/BaseCalls/).
-cmd += '-i %s/Data/Intensities/BaseCalls ' % raw_data_directory
-# Path to runfolder directory, default (=./).
-cmd += '-R %s ' % raw_data_directory
-# Path to demultiplexed output, default (=<input-dir>)
-cmd += '-o %s ' % prep_directory
-# Path to demultiplexing statistics directory, default (=<runfolder-dir>/InterOp/).
-cmd += '--interop-dir %s/InterOp ' % raw_data_directory
-# Path to human-readable demultiplexing statistics directory, default (=<output-dir>/Stats/).
-cmd += '--stats-dir %s/Stats ' % prep_directory
-# Path to reporting directory, default (=<output-dir>/Reports/).
-cmd += '--reports-dir %s/Reports ' % prep_directory
-# Do not split fastq files by lane.
-cmd += '--no-lane-splitting '
-# Path to the sample sheet.
-cmd += '--sample-sheet %s ' % sample_sheet
-# Tiles aggregation flag  determining structure of input files, recognized values: AUTO, YES, NO.
-# cmd += '--aggregated-tiles AUTO '
-# Number of threads used for loading BCL data.
-cmd += '-r 24 '
-# Number of threads used for demultiplexing.
-cmd += '-d 24 '
-# Number of threads used for processing demultiplexed data.
-cmd += '-p 24 '
-# number of threads used for writing FASTQ data this must not be higher than number of samples.
-cmd += '-w 24 '
-# Additional options not used here...
-# Number of allowed mismatches per index multiple entries, default (=1).
-cmd += '--barcode-mismatches 1'
-
-# Get the run from the sample sheet.
-run = api_util.get_run_from_sample_sheet(sample_sheet)
-
-# Errors will be logged by execute_cmd.
-rc = api_util.execute_cmd(cmd, lh)
+# If we are processing run 209 or earlier, we'll need to copy the raw data directory
+# from the old location to the new location.
+rc = copy_raw_data_if_necessary(current_run_dir, raw_data_directory, lh)
 if rc == 0:
-    # Move the bcl2fastq-generated "Reports" directory and its contents to long-term storage.
-    src_path = os.path.join(prep_directory, 'Reports', 'html')
-    dest_path = os.path.join(bcl2fastq_report_dir, run)
-    rc = api_util.copy_local_directory_of_files(src_path, dest_path, lh)
-
-api_util.close_log_file(lh, SCRIPT_NAME)
-# Archive the sample sheet.
-api_util.archive_file(sample_sheet, run)
-
-if rc == 0:
-    # Let everyone know we've finished.
-    api_util.create_script_complete_file(log_dir, SCRIPT_NAME)
+    # Generate the sample sheet required by the Illumina bec2fastq binary.
+    api_util.generate_sample_sheet(cegr_run_info_file, sample_sheet, lh)
+    # Build the command.
+    cmd = '%s ' % bcl2fastq_binary
+    # Minimum log level, recognized values: NONE, FATAL, ERROR, WARNING, INFO, DEBUG, TRACE.
+    cmd += '-l ERROR '
+    # Path to input directory, default (=<runfolder-dir>/Data/Intensities/BaseCalls/).
+    cmd += '-i %s/Data/Intensities/BaseCalls ' % raw_data_directory
+    # Path to runfolder directory, default (=./).
+    cmd += '-R %s ' % raw_data_directory
+    # Path to demultiplexed output, default (=<input-dir>)
+    cmd += '-o %s ' % prep_directory
+    # Path to demultiplexing statistics directory, default (=<runfolder-dir>/InterOp/).
+    cmd += '--interop-dir %s/InterOp ' % raw_data_directory
+    # Path to human-readable demultiplexing statistics directory, default (=<output-dir>/Stats/).
+    cmd += '--stats-dir %s/Stats ' % prep_directory
+    # Path to reporting directory, default (=<output-dir>/Reports/).
+    cmd += '--reports-dir %s/Reports ' % prep_directory
+    # Do not split fastq files by lane.
+    cmd += '--no-lane-splitting '
+    # Path to the sample sheet.
+    cmd += '--sample-sheet %s ' % sample_sheet
+    # Tiles aggregation flag  determining structure of input files, recognized values: AUTO, YES, NO.
+    # cmd += '--aggregated-tiles AUTO '
+    # Number of threads used for loading BCL data.
+    cmd += '-r 24 '
+    # Number of threads used for demultiplexing.
+    cmd += '-d 24 '
+    # Number of threads used for processing demultiplexed data.
+    cmd += '-p 24 '
+    # number of threads used for writing FASTQ data this must not be higher than number of samples.
+    cmd += '-w 24 '
+    # Additional options not used here...
+    # Number of allowed mismatches per index multiple entries, default (=1).
+    cmd += '--barcode-mismatches 1'
+    
+    # Get the run from the sample sheet.
+    run = api_util.get_run_from_sample_sheet(sample_sheet)
+    
+    # Errors will be logged by execute_cmd.
+    rc = api_util.execute_cmd(cmd, lh)
+    if rc == 0:
+        # Move the bcl2fastq-generated "Reports" directory and its contents to long-term storage.
+        src_path = os.path.join(prep_directory, 'Reports', 'html')
+        dest_path = os.path.join(bcl2fastq_report_dir, run)
+        rc = api_util.copy_local_directory_of_files(src_path, dest_path, lh)
+    
+    api_util.close_log_file(lh, SCRIPT_NAME)
+    # Archive the sample sheet.
+    api_util.archive_file(sample_sheet, run)
+    
+    if rc == 0:
+        # Let everyone know we've finished.
+        api_util.create_script_complete_file(log_dir, SCRIPT_NAME)
