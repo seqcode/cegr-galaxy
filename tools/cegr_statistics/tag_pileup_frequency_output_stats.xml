@@ -22,9 +22,10 @@
             #for $i in $input_heatmaps:
                 --input_heatmap "${i}" "${i.hid}" "$__app__.security.encode_id($i.id)" "$i.ext" "$i.metadata.dbkey"
                 #set job = $i.creating_job
+                #set stderr = $job.stderr
                 #set tool_id = $job.tool_id
                 #set tool_parameters = ""
-                #for p in $job.parameters:
+                #for $p in $job.parameters:
                     #set tool_parameters = $tool_parameters + "__SeP__" + $p.name
                     #set tool_parameters = $tool_parameters + "__SeP__" + $p.value
                 #end for
@@ -41,6 +42,7 @@
             --config_file $__tool_directory__/stats_config.ini
             --history_id "$history_id"
             --history_name "$history_name"
+            --stderr "$stderr"
             --tool_id "$tool_id"
             --tool_parameters "$tool_parameters"
             --user_email "$__user_email__"

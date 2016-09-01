@@ -14,9 +14,10 @@
             #set history_id = $__app__.security.encode_id($input.history.id)
             #set history_name = $input.history.name
             #set job = $input.creating_job
+            #set stderr = $job.stderr
             #set tool_id = $job.tool_id
             #set tool_parameters = ""
-            #for p in $job.parameters:
+            #for $p in $job.parameters:
                 #set tool_parameters = $tool_parameters + "__SeP__" + $p.name
                 #set tool_parameters = $tool_parameters + "__SeP__" + $p.value
             #end for
@@ -34,6 +35,7 @@
             --dbkey "$input.metadata.dbkey"
             --history_id "$history_id"
             --history_name "$history_name"
+            --stderr "$stderr"
             --tool_id "$tool_id"
             --tool_parameters "$tool_parameters"
             --user_email "$__user_email__"
