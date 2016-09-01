@@ -137,9 +137,29 @@ def close_log_file(lh, script_name):
 
 
 def copy_local_directory_of_files(src_path, dest_path, lh):
+    lh.write('Copying directory\n%s\nto path\n%s\n\n' % (src_path, dest_path))
     cmd = "cp -R -f -v %s %s" % (src_path, dest_path)
     rc = execute_cmd(cmd, lh)
     return rc
+
+
+def copy_raw_data_if_necessary(src_path, dest_path, lh):
+    # For runs starting at run 209 and all earlier runs, we
+    # will copy the raw data from the old long-term storage
+    # location to the new long-term storage location.
+    if src_path.startswith('/gpfs') and os.path.isdir(src_path) and len(os.listdir(src_path)) > 0:
+        copy_necessary = True
+        # Copy data from the old long-term storage location,
+        # but make sure we have not already done so in some
+        # previous execution.
+        if os.path.isdir(dest_path):
+            if len(os.listdir(dest_path)) > 0:
+                # The directory must have been previously copied.
+                copy_necessary = False
+        if copy_necessary:
+            rc = copy_local_directory_of_files(src_path, dest_path, lh)
+            return rc
+    return 0
 
 
 def copy_remote_directory_of_files(host, remote_path, local_path, lh):
