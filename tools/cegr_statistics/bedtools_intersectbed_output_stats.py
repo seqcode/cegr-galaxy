@@ -29,7 +29,7 @@ for input in args.inputs:
     if len(args.stderr) == 0:
         statistics.append(stats_util.get_statistics(file_path, STATS))
     else:
-        statists.append({})
+        statistics.append({})
     datasets.append(stats_util.get_datasets(args.config_file, input_id, input_datatype))
 payload['statistics'] = statistics
 payload['datasets'] = datasets
