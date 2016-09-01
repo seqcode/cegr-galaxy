@@ -30,7 +30,10 @@ statistics = []
 # The HTML dataset has no statistics.
 statistics.append({})
 # Generate the statistics for the txt dataset.
-statistics.append(stats_util.get_statistics(args.input_txt, STATS))
+if len(args.stderr) == 0:
+    statistics.append(stats_util.get_statistics(args.input_txt, STATS))
+else:
+    statistics.append({})
 payload['statistics'] = statistics
 # Generate the list of datasets.
 d1 = stats_util.get_datasets(args.config_file, args.input_html_id, args.input_html_datatype)

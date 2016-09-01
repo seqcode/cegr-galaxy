@@ -25,7 +25,10 @@ args = parser.parse_args()
 # Initialize the payload.
 payload = stats_util.get_base_json_dict(args.config_file, args.dbkey, args.history_id, args.history_name, args.stderr, args.tool_id, args.tool_parameters, args.user_email, args.workflow_step_id)
 # Generate the statistics and datasets.
-payload['statistics'] = [stats_util.get_statistics(args.input, STATS)]
+if len(args.stderr) == 0:
+    payload['statistics'] = [stats_util.get_statistics(args.input, STATS)]
+else:
+    payload['statistics'] = [{}]
 payload['datasets'] = [stats_util.get_datasets(args.config_file, args.input_id, args.input_datatype)]
 # Send the payload to PEGR.
 pegr_url = stats_util.get_pegr_url(args.config_file)
