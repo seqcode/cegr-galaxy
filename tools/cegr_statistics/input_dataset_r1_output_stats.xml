@@ -24,9 +24,7 @@
         --output "$output"
     </command>
     <inputs>
-        <param name="input" type="data" format="fastqsanger" label="Fastqsanger input" >
-            <validator type="dataset_ok_validator" />
-        </param>
+        <param name="input" type="data" format="fastqsanger" label="Fastqsanger input" />
     </inputs>
     <outputs>
         <data name="output" format="txt" />

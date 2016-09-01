@@ -49,12 +49,8 @@
         ]]>
     </command>
     <inputs>
-        <param name="input_html" type="data" format="html" label="FastQC HTML input" >
-            <validator type="dataset_ok_validator" />
-        </param>
-        <param name="input_txt" type="data" format="txt" label="FastQC text input" >
-            <validator type="dataset_ok_validator" />
-        </param>
+        <param name="input_html" type="data" format="html" label="FastQC HTML input" />
+        <param name="input_txt" type="data" format="txt" label="FastQC text input" />
     </inputs>
     <outputs>
         <data name="output" format="txt" />

@@ -58,12 +58,8 @@
         ]]>
     </command>
     <inputs>
-        <param name="input_txt" type="data_collection" collection_type="list" format="txt" label="Text input" >
-            <validator type="dataset_ok_validator" />
-        </param>
-        <param name="input_html" type="data_collection" collection_type="list" format="html" label="HTML input" >
-            <validator type="dataset_ok_validator" />
-        </param>
+        <param name="input_txt" type="data_collection" collection_type="list" format="txt" label="Text input" />
+        <param name="input_html" type="data_collection" collection_type="list" format="html" label="HTML input" />
     </inputs>
     <outputs>
         <data name="output" format="txt" />

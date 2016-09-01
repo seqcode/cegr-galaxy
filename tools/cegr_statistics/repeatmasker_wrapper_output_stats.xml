@@ -50,9 +50,7 @@
         ]]>
     </command>
     <inputs>
-        <param name="input" type="data_collection" collection_type="list" format="fasta" label="Fasta input" >
-            <validator type="dataset_ok_validator" />
-        </param>
+        <param name="input" type="data_collection" collection_type="list" format="fasta" label="Fasta input" />
     </inputs>
     <outputs>
         <data name="output" format="txt" />
