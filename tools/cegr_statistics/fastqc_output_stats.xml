@@ -17,7 +17,7 @@
             #set history_name = $input_html.history.name
             #set job = $input_html.creating_job
             #set job_state = $job.state
-            #if job.state == 'error':
+            #if $job_state == 'error':
                 #set stderr = $job.stderr
             #else:
                 #set stderr = ''

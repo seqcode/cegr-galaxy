@@ -29,7 +29,7 @@
                 --input_txt "${i}" "${i.hid}" "$__app__.security.encode_id($i.id)" "$i.ext" "$i.metadata.dbkey"
                 #set job = $i.creating_job
                 #set job_state = $job.state
-                #if job.state == 'error':
+                #if $job_state == 'error':
                     #set stderr = $job.stderr
                 #else:
                     #set stderr = ''
