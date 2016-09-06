@@ -17,7 +17,7 @@
             #set history_name = $input_png.history.name
             #set job = $input_png.creating_job
             #set job_state = $job.state
-            #if job.state == 'error':
+            #if $job_state == 'error':
                 #set stderr = $job.stderr
             #else:
                 #set stderr = ''
