@@ -39,7 +39,7 @@ sample_sheet = api_util.get_value_or_default(args.sample_sheet, 'SAMPLE_SHEET', 
 
 # If we are processing run 209 or earlier, we'll need to copy the raw data directory
 # from the old location to the new location.
-rc = copy_raw_data_if_necessary(current_run_dir, raw_data_directory, lh)
+rc = api_util.copy_raw_data_if_necessary(current_run_dir, raw_data_directory, lh)
 if rc == 0:
     # Generate the sample sheet required by the Illumina bec2fastq binary.
     api_util.generate_sample_sheet(cegr_run_info_file, sample_sheet, lh)
