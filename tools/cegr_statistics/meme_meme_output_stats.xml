@@ -28,7 +28,12 @@
                 #end if
                 --input_txt "${i}" "${i.hid}" "$__app__.security.encode_id($i.id)" "$i.ext" "$i.metadata.dbkey"
                 #set job = $i.creating_job
-                #set stderr = $job.stderr
+                #set job_state = $job.state
+                #if job.state == 'error':
+                    #set stderr = $job.stderr
+                #else:
+                    #set stderr = ''
+                #end if
                 #set tool_id = $job.tool_id
                 #set tool_parameters = ""
                 #for $p in $job.parameters:
