@@ -66,13 +66,13 @@ if rc == 0:
     # Tiles aggregation flag  determining structure of input files, recognized values: AUTO, YES, NO.
     # cmd += '--aggregated-tiles AUTO '
     # Number of threads used for loading BCL data.
-    cmd += '-r 24 '
+    cmd += '-r 4 '
     # Number of threads used for demultiplexing.
-    cmd += '-d 24 '
+    cmd += '-d 4 '
     # Number of threads used for processing demultiplexed data.
-    cmd += '-p 24 '
+    cmd += '-p 4 '
     # number of threads used for writing FASTQ data this must not be higher than number of samples.
-    cmd += '-w 24 '
+    cmd += '-w 4 '
     # Additional options not used here...
     # Number of allowed mismatches per index multiple entries, default (=1).
     cmd += '--barcode-mismatches 1'
