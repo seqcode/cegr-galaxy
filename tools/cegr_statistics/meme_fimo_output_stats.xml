@@ -9,6 +9,7 @@
             #set non_ready_states = ['new', 'queued', 'running', 'setting_metadata', 'upload']
             #set history_id = None
             #set history_name = None
+            #set stderr = ''
             #set workflow_step = None
             #for $i in $input_gff:
                 #while $i.dataset.state in $non_ready_states:
@@ -31,8 +32,6 @@
                 #set job_state = $job.state
                 #if $job_state == 'error':
                     #set stderr = $job.stderr
-                #else:
-                    #set stderr = ''
                 #end if
                 #set tool_id = $job.tool_id
                 #set tool_parameters = ""
