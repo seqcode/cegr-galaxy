@@ -19,6 +19,7 @@
             #set history_name = $input_tabular.history.name
             #set stderr = ''
             #set tool_id = 'unknown'
+            #set tool_parameters = ''
             #set workflow_step = None
             python $__tool_directory__/tag_pileup_frequency_output_stats.py
             #for $i in $input_heatmaps:
