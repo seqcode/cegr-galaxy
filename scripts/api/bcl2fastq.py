@@ -9,6 +9,7 @@ import sys
 sys.path.insert(0, '../../util')
 import api_util
 import argparse
+import glob
 import os
 
 SCRIPT_NAME = 'bcl2fastq.py'
@@ -17,6 +18,7 @@ parser = argparse.ArgumentParser(description='Execute the bcl2fastq converter')
 parser.add_argument("-b", "--bcl2fastq_binary", dest="bcl2fastq_binary", default=None, help="Path to bcl2fastq binary")
 parser.add_argument("-c", "--cegr_run_info_file", dest="cegr_run_info_file", default=None, help="File contain run information")
 parser.add_argument("-d", "--bcl2fastq_report_dir", dest="bcl2fastq_report_dir", default=None, help="Path to bcl2fastq reports root directory")
+parser.add_argument("-f", "--fastq_validator_binary", dest="fastq_validator_binary", default=None, help="Path to fastQValidator binary")
 parser.add_argument("-l", "--log_file", dest="log_file", default=None, help="File for storing logging output")
 parser.add_argument("-p", "--prep_directory", dest="prep_directory", default=None, help="Directory containing datasets produced by cegr_bcl2fastq.py")
 parser.add_argument("-r", "--raw_data_directory", dest="raw_data_directory", default=None, help="Directory containing datasets produced by the sequencer")
@@ -30,6 +32,7 @@ bcl2fastq_report_dir = api_util.get_value_or_default(args.bcl2fastq_report_dir, 
 cegr_run_info_file = api_util.get_value_or_default(args.cegr_run_info_file, 'RUN_INFO_FILE', is_path=True)
 current_run_dir = api_util.get_current_run_directory(cegr_run_info_file)
 current_run_folder = os.path.basename(current_run_dir)
+fastq_validator_binary = api_util.get_value_or_default(args.fastq_validator_binary, 'FASTQ_VALIDATOR_BINARY')
 log_dir = api_util.get_value_or_default(None, 'ANALYSIS_PREP_LOG_FILE_DIR', is_path=True, create_dir=True)
 log_file = api_util.get_value_or_default(args.log_file, 'ANALYSIS_PREP_LOG_FILE', is_path=True)
 lh = api_util.open_log_file(log_file, SCRIPT_NAME)
@@ -76,22 +79,28 @@ if rc == 0:
     # Additional options not used here...
     # Number of allowed mismatches per index multiple entries, default (=1).
     cmd += '--barcode-mismatches 1'
-    
-    # Get the run from the sample sheet.
-    run = api_util.get_run_from_sample_sheet(sample_sheet)
-    
     # Errors will be logged by execute_cmd.
     rc = api_util.execute_cmd(cmd, lh)
+    # Get the run from the sample sheet.
+    run = api_util.get_run_from_sample_sheet(sample_sheet)
     if rc == 0:
+        # Check the files produced by bcl2fastq to make sure they are valid fastq.
+        match_str = '%s*.fastq.gz' % str(run)
+        fastq_files = os.path.join(prep_directory, match_str)
+        for fastq_file in glob.glob(fastq_files):
+            rc = api_util.is_valid_fastq(fastq_validator_binary, fastq_file, lh)
+            if rc != 0:
+                msg = 'Exiting bclfastq.py because the following file is an invalid fastq file.\n%s\n' % f
+                lh.write('%s\n' % msg)
+                api_util.close_log_file(lh, SCRIPT_NAME)
+                api_util.stop_err(msg)
         # Move the bcl2fastq-generated "Reports" directory and its contents to long-term storage.
         src_path = os.path.join(prep_directory, 'Reports', 'html')
         dest_path = os.path.join(bcl2fastq_report_dir, run)
         rc = api_util.copy_local_directory_of_files(src_path, dest_path, lh)
-    
     api_util.close_log_file(lh, SCRIPT_NAME)
     # Archive the sample sheet.
     api_util.archive_file(sample_sheet, run)
-    
     if rc == 0:
         # Let everyone know we've finished.
         api_util.create_script_complete_file(log_dir, SCRIPT_NAME)

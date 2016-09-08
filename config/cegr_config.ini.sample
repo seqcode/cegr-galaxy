@@ -12,6 +12,8 @@ BCL2FASTQ_BINARY = /Users/gvk/work/bcl2fastq_binary
 BCL2FASTQ_REPORT_DIR = /Users/gvk/work/bcl2fastq_reports
 BLACKLIST_FILTER_LIBRARY_NAME = Blacklist Filter
 
+FASTQ_VALIDATOR_BINARY = /Users/gvk/work/fastQValidator
+
 GALAXY_BASE_URL = http://localhost:8763
 GALAXY_HOME = /Users/gvk/work/git_workspace/galaxy
 
