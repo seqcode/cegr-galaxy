@@ -20,7 +20,8 @@ payload = None
 statistics = []
 datasets = []
 # Generate the statistics and datasets.
-for input in args.input_gffs:
+input_gffs = args.input_gffs or []
+for input in input_gffs:
     file_path, hid, input_id, input_datatype, dbkey = input
     if payload is None:
         # Initialize the payload.
@@ -28,7 +29,8 @@ for input in args.input_gffs:
     statistics.append({})
     datasets.append(stats_util.get_datasets(args.config_file, input_id, input_datatype))
 
-for input in args.input_xmls:
+input_xmls = args.input_xmls or []
+for input in input_xmls:
     file_path, hid, input_id, input_datatype, dbkey = input
     statistics.append({})
     datasets.append(stats_util.get_datasets(args.config_file, input_id, input_datatype))

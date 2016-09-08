@@ -21,7 +21,8 @@ payload = None
 statistics = []
 datasets = []
 # Generate the statistics and datasets.
-for input in args.inputs:
+inputs = args.inputs or []
+for input in inputs:
     file_path, hid, input_id, input_datatype, dbkey = input
     if payload is None:
         # Initialize the payload.
