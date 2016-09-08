@@ -11,6 +11,7 @@
             #set history_id = None
             #set history_name = None
             #set stderr = ''
+            #set tool_id = 'unknown'
             #set workflow_step = None
             #for $i in $input:
                 #while $i.dataset.state in $non_ready_states:
