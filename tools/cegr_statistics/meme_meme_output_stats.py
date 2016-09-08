@@ -20,13 +20,15 @@ payload_dbkey = None
 statistics = []
 datasets = []
 # Generate the statistics and datasets.
-for input_html in args.input_htmls:
+input_htmls = args.input_htmls or []
+for input_html in input_htmls:
     file_path, hid, input_id, input_datatype, dbkey = input_html
     if payload_dbkey is None:
         payload_dbkey = dbkey
     statistics.append({})
     datasets.append(stats_util.get_datasets(args.config_file, input_id, input_datatype))
-for input_txt in args.input_txts:
+input_txts = args.input_txts or []
+for input_txt in input_txts:
     file_path, hid, input_id, input_datatype, dbkey = input_txt
     statistics.append({})
     datasets.append(stats_util.get_datasets(args.config_file, input_id, input_datatype))

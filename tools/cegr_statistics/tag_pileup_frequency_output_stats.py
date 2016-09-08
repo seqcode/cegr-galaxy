@@ -25,7 +25,8 @@ statistics = []
 datasets = []
 
 # Generate statistics for heatmap dataset collection.
-for input in args.input_heatmaps:
+input_heatmaps = args.input_heatmaps or []
+for input in input_heatmaps:
     file_path, hid, input_id, input_datatype, dbkey = input
     statistics.append({})
     datasets.append(stats_util.get_datasets(args.config_file, input_id, input_datatype))
