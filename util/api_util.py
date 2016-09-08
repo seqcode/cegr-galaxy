@@ -304,6 +304,7 @@ def generate_sample_sheet(cegr_run_info_file, sample_sheet_path, lh):
                     sh.write('%s\n' % csv_str)
     sh.close()
 
+
 def get(url):
     try:
         return json.loads(urlopen(url).read())
@@ -432,6 +433,11 @@ def get_value_or_default(value, default, is_path=False, create_dir=False):
                 os.makedirs(value)
         return os.path.abspath(value)
     return value
+
+
+def is_valid_fastq(fastq_validator_binary, file_name, lh):
+    cmd = '%s --noeof --file %s' % (fastq_validator_binary, file_name)
+    return execute_cmd(cmd, lh)
 
 
 def listify(item, do_strip=True):
