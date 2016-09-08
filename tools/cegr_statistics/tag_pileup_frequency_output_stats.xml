@@ -18,6 +18,7 @@
             #set history_id = $__app__.security.encode_id($input_tabular.history.id)
             #set history_name = $input_tabular.history.name
             #set stderr = ''
+            #set tool_id = 'unknown'
             #set workflow_step = None
             python $__tool_directory__/tag_pileup_frequency_output_stats.py
             #for $i in $input_heatmaps:
