@@ -16,22 +16,24 @@ parser.add_argument('--workflow_step_id', dest='workflow_step_id', default=None,
 parser.add_argument('--user_email', dest='user_email', help='Current user email')
 args = parser.parse_args()
 
-payload_dbkey = None
+payload_dbkey = 'unknown'
 statistics = []
 datasets = []
 # Generate the statistics and datasets.
 input_htmls = args.input_htmls or []
 for input_html in input_htmls:
     file_path, hid, input_id, input_datatype, dbkey = input_html
-    if payload_dbkey is None:
+    if payload_dbkey == 'unknown':
         payload_dbkey = dbkey
     statistics.append({})
     datasets.append(stats_util.get_datasets(args.config_file, input_id, input_datatype))
+
 input_txts = args.input_txts or []
 for input_txt in input_txts:
     file_path, hid, input_id, input_datatype, dbkey = input_txt
     statistics.append({})
     datasets.append(stats_util.get_datasets(args.config_file, input_id, input_datatype))
+
 payload = stats_util.get_base_json_dict(args.config_file, dbkey, args.history_id, args.history_name, args.stderr, args.tool_id, args.tool_parameters, args.user_email, args.workflow_step_id)
 payload['statistics'] = statistics
 payload['datasets'] = datasets

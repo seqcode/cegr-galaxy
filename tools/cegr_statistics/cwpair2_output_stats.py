@@ -21,14 +21,16 @@ payload = None
 statistics = []
 datasets = []
 # Generate the statistics and datasets.
-inputs = args.inputs or []
-for input in inputs:
-    file_path, hid, input_id, input_datatype, dbkey = input
-    if payload is None:
-        # Initialize the payload.
-        payload = stats_util.get_base_json_dict(args.config_file, dbkey, args.history_id, args.history_name, args.stderr, args.tool_id, args.tool_parameters, args.user_email, args.workflow_step_id)
-    statistics.append(stats_util.get_statistics(file_path, STATS))
-    datasets.append(stats_util.get_datasets(args.config_file, input_id, input_datatype))
+if args.inputs is None:
+    payload = stats_util.get_base_json_dict(args.config_file, 'unknown', args.history_id, args.history_name, args.stderr, args.tool_id, args.tool_parameters, args.user_email, args.workflow_step_id)
+else:
+    for input in inputs:
+        file_path, hid, input_id, input_datatype, dbkey = input
+        if payload is None:
+            # Initialize the payload.
+            payload = stats_util.get_base_json_dict(args.config_file, dbkey, args.history_id, args.history_name, args.stderr, args.tool_id, args.tool_parameters, args.user_email, args.workflow_step_id)
+        statistics.append(stats_util.get_statistics(file_path, STATS))
+        datasets.append(stats_util.get_datasets(args.config_file, input_id, input_datatype))
 payload['statistics'] = statistics
 payload['datasets'] = datasets
 # Send the payload to PEGR.
