@@ -89,6 +89,7 @@ if rc == 0:
         fastq_files = os.path.join(prep_directory, match_str)
         for fastq_file in glob.glob(fastq_files):
             rc = api_util.is_valid_fastq(fastq_validator_binary, fastq_file, lh)
+            lh.write('Validation exit code: %s\n' % str(rc))
             if rc != 0:
                 msg = 'Exiting bclfastq.py because the following file is an invalid fastq file.\n%s\n' % f
                 lh.write('%s\n' % msg)
