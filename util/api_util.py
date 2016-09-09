@@ -436,6 +436,7 @@ def get_value_or_default(value, default, is_path=False, create_dir=False):
 
 
 def is_valid_fastq(fastq_validator_binary, file_name, lh):
+    lh.write('Validating file: %s\n' % file_name)
     cmd = '%s --noeof --file %s' % (fastq_validator_binary, file_name)
     return execute_cmd(cmd, lh)
 
