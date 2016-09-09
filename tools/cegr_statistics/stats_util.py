@@ -289,22 +289,26 @@ def get_reads(cmd):
         stop_err('Error getting reads: %s' % str(e))
 
 
-def get_run_from_history_name(history_name):
+def get_run_from_history_name(history_name, exit_on_error=False):
     # Example: paired_001-199-10749.001
     try:
         run = int(history_name.split('-')[1])
     except Exception as e:
-        stop_err('History name is likely invalid, it does not contain a run: %s' % str(e))
+        if exit_on_error:
+            stop_err('History name is likely invalid, it does not contain a run: %s' % str(e))
+        return 'unknown'
     return run
 
 
-def get_sample_from_history_name(history_name):
+def get_sample_from_history_name(history_name, exit_on_error=False):
     # Example: paired_001-199-10749.001
     items = history_name.split('-')
     try:
         sample = int(items[2].split('.')[0])
     except Exception as e:
-        stop_err('History name is likely invalid, it does not contain a sample: %s' % str(e))
+        if exit_on_error:
+            stop_err('History name is likely invalid, it does not contain a sample: %s' % str(e))
+        return 'unknown'
     return sample
 
 
@@ -321,9 +325,6 @@ def get_statistics(file_path, stats, **kwd):
             elif k == 'dedupUniquelyMappedReads':
                 s[k] = get_deduplicated_uniquely_mapped_reads(file_path)
             elif k == 'genomeCoverage':
-                dbkey = kwd.get('dbkey', None)
-                if dbkey is None:
-                    stop_err('Required dbkey parameter not received!')
                 chrom_lengths_file = kwd.get('chrom_lengths_file', None)
                 if chrom_lengths_file is None:
                     stop_err('Required chrom_lengths_file parameter not received!')
@@ -369,22 +370,26 @@ def get_uniquely_mapped_reads(file_path):
 
 def get_workflow_id(config_file, history_name):
     workflow_name = get_workflow_name_from_history_name(history_name)
+    if workflow_name == 'unknown':
+        return 'unknown'
     defaults = get_config_settings(config_file)
     gi = get_galaxy_instance(defaults['GALAXY_API_KEY'], defaults['GALAXY_BASE_URL'])
     workflow_info_dicts = gi.workflows.get_workflows(name=workflow_name)
     if len(workflow_info_dicts) == 0:
-        return None
+        return 'unknown'
     wf_info_dict = workflow_info_dicts[0]
     return wf_info_dict['id']
 
 
-def get_workflow_name_from_history_name(history_name):
+def get_workflow_name_from_history_name(history_name, exit_on_error=False):
     # Example: paired_001-199-10749.001
     items = history_name.split('-')
     try:
         workflow_name = items[0]
     except Exception as e:
-        stop_err('History name is likely invalid, it does not contain a workflow name: %s' % str(e))
+        if exit_on_error:
+            stop_err('History name is likely invalid, it does not contain a workflow name: %s' % str(e))
+        return 'unknown'
     return workflow_name
 
 
