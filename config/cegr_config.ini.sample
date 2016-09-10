@@ -16,7 +16,7 @@ BLACKLIST_FILTER_LIBRARY_NAME = Blacklist Filter
 # http://genome.sph.umich.edu/w/images/2/20/FastQValidatorLibStatGen.0.1.1a.tgz
 # Due to the way bcl2fastq compresses files (it does not include an end of file block),
 # this enhancement was added manually to the ~/src/FastQValidator.cpp file: 
-# https://github.com/statgen/fastQValidator/commit/0b7decb8b502cd8d9d6bf27dbd9e319ed8478b53,
+# https://github.com/statgen/fastQValidator/commit/0b7decb8b502cd8d9d6bf27dbd9e319ed8478b53.
 # The package was then compiled normally.
 FASTQ_VALIDATOR_BINARY = /Users/gvk/work/fastQValidator
 
