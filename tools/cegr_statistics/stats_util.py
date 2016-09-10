@@ -40,11 +40,18 @@ def check_response(pegr_url, payload, response):
         if response_code not in ['200']:
             err_msg = 'Error sending statistics to PEGR!\n\nPEGR URL:\n%s\n\n' % str(pegr_url)
             err_msg += 'Payload:\n%s\n\nResponse:\n%s\n' % (s, str(response))
-            stop_err(err_msg)
+            if response_code in ['500']:
+                # The payload may not have included all items
+                # required by PEGR, so write the error but
+                # don't exit.
+                sys.stderr.write(err_msg)
+            else:
+                # PEGR is likely unavailable, so exit.
+                stop_err(err_msg)
     except Exception as e:
         err_msg = 'Error handling response from PEGR!\n\nException:\n%s\n\n' % str(e)
         err_msg += 'PEGR URL:\n%s\n\nPayload:\n%s\n\nResponse:\n%s\n' % (pegr_url, s, str(response))
-        stop_err(err_msg)
+        sys.stderr.write(err_msg)
 
 
 def check_samtools():
