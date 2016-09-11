@@ -88,13 +88,15 @@ if rc == 0:
         match_str = '%s*.fastq.gz' % str(run)
         fastq_files = os.path.join(prep_directory, match_str)
         for fastq_file in glob.glob(fastq_files):
-            rc = api_util.is_valid_fastq(fastq_validator_binary, fastq_file, lh)
-            lh.write('Validation exit code: %s\n' % str(rc))
-            if rc != 0:
-                msg = 'Exiting bclfastq.py because the following file is an invalid fastq file.\n%s\n' % f
-                lh.write('%s\n' % msg)
-                api_util.close_log_file(lh, SCRIPT_NAME)
-                api_util.stop_err(msg)
+            # bcl2fastq regularly generates empty files.
+            if os.path.getsize(fastq_file) > 0:
+                rc = api_util.is_valid_fastq(fastq_validator_binary, fastq_file, lh)
+                lh.write('Validation exit code: %s\n' % str(rc))
+                if rc != 0:
+                    msg = 'Exiting bclfastq.py because the following file is an invalid fastq file.\n%s\n' % f
+                    lh.write('%s\n' % msg)
+                    api_util.close_log_file(lh, SCRIPT_NAME)
+                    api_util.stop_err(msg)
         # Move the bcl2fastq-generated "Reports" directory and its contents to long-term storage.
         src_path = os.path.join(prep_directory, 'Reports', 'html')
         dest_path = os.path.join(bcl2fastq_report_dir, run)
