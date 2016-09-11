@@ -49,9 +49,11 @@ if len(FASTQ_FILES) == 0:
     sys.exit(1)
 
 for fastq_file in FASTQ_FILES:
-    rc = is_valid_fastq(FASTQ_VALIDATOR, fastq_file)
-    if rc != 0:
-        ALL_VALID = False
-        print 'This file is invalid, response code is %d:\n%s\n' % (rc, str(fastq_file))
+    # bcl2fastq regularly generates empty files.
+    if os.path.getsize(fastq_file) > 0:
+        rc = is_valid_fastq(FASTQ_VALIDATOR, fastq_file)
+        if rc != 0:
+            ALL_VALID = False
+            print 'This file is invalid, response code is %d:\n%s\n' % (rc, str(fastq_file))
 if ALL_VALID:
     print 'All files are valid!'
