@@ -23,7 +23,7 @@ datasets = []
 if args.input_gffs is None:
     payload = stats_util.get_base_json_dict(args.config_file, 'unknown', args.history_id, args.history_name, args.stderr, args.tool_id, args.tool_parameters, args.user_email, args.workflow_step_id)
 else:
-    for input in input_gffs:
+    for input in args.input_gffs:
         file_path, hid, input_id, input_datatype, dbkey = input
         if payload is None:
             # Initialize the payload.

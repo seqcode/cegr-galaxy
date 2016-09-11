@@ -107,3 +107,7 @@ if rc == 0:
     if rc == 0:
         # Let everyone know we've finished.
         api_util.create_script_complete_file(log_dir, SCRIPT_NAME)
+else:
+    lh.write('\nError copying directory\n%s\nto\n%s\n.\nResponse code: %s' % (current_run_dir, raw_data_directory, str(rc)))
+    api_util.close_log_file(lh, SCRIPT_NAME)
+    sys.exit(1)
