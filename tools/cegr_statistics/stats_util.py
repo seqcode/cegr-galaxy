@@ -145,8 +145,11 @@ def get_datasets(config_file, ids, datatypes):
     return d
 
 
-def get_deduplicated_uniquely_mapped_reads(file_path):
-    cmd = "samtools view -f 0x41 -F 0x404 -q 5 -c %s" % file_path
+def get_deduplicated_uniquely_mapped_reads(file_path, single=False):
+    if single:
+        cmd = "samtools view -F 4 -q 5 -c %s" % file_path
+    else:
+        cmd = "samtools view -f 0x41 -F 0x404 -q 5 -c %s" % file_path
     return get_reads(cmd)
 
 
@@ -180,8 +183,11 @@ def get_genome_size(chrom_lengths_dict):
     return genome_size
 
 
-def get_mapped_reads(file_path):
-    cmd = "samtools view -f 0x40 -F 4 -c %s" % file_path
+def get_mapped_reads(file_path, single=False):
+    if single:
+        cmd = "samtools view -F 4 -c %s" % file_path
+    else:
+        cmd = "samtools view -f 0x40 -F 4 -c %s" % file_path
     return get_reads(cmd)
 
 
@@ -331,6 +337,8 @@ def get_statistics(file_path, stats, **kwd):
                 s[k] = get_adapter_dimer_count(file_path)
             elif k == 'dedupUniquelyMappedReads':
                 s[k] = get_deduplicated_uniquely_mapped_reads(file_path)
+            elif k == 'dedupUniquelyMappedReadsSingle':
+                s[k] = get_deduplicated_uniquely_mapped_reads(file_path, single=True)
             elif k == 'genomeCoverage':
                 chrom_lengths_file = kwd.get('chrom_lengths_file', None)
                 if chrom_lengths_file is None:
@@ -338,6 +346,8 @@ def get_statistics(file_path, stats, **kwd):
                 s[k] = get_genome_coverage(file_path, chrom_lengths_file)
             elif k == 'mappedReads':
                 s[k] = get_mapped_reads(file_path)
+            elif k == 'mappedReadsSingle':
+                s[k] = get_mapped_reads(file_path, single=True)
             elif k == 'peakPairWis':
                 s[k] = get_peak_pair_wis(file_path)
             elif k == 'peakStats':
@@ -346,8 +356,12 @@ def get_statistics(file_path, stats, **kwd):
                 return get_pe_histogram_stats(file_path)
             elif k == 'totalReads':
                 s[k] = get_total_reads(file_path)
+            elif k == 'totalReadsSingle':
+                s[k] = get_total_reads(file_path, single=True)
             elif k == 'uniquelyMappedReads':
                 s[k] = get_uniquely_mapped_reads(file_path)
+            elif k == 'uniquelyMappedReadsSingle':
+                s[k] = get_uniquely_mapped_reads(file_path, single=True)
     except Exception as e:
         stop_err(str(e))
     return s
@@ -365,13 +379,19 @@ def get_tool_category(config_file, tool_id):
     return category_map.get(lc_tool_id, 'Unknown')
 
 
-def get_total_reads(file_path):
-    cmd = "samtools view -f 0x40 -c %s" % file_path
+def get_total_reads(file_path, single=False):
+    if single:
+        cmd = "samtools view -c %s" % file_path
+    else:
+        cmd = "samtools view -f 0x40 -c %s" % file_path
     return get_reads(cmd)
 
 
-def get_uniquely_mapped_reads(file_path):
-    cmd = "samtools view -f 0x40 -F 4 -q 5 -c %s" % file_path
+def get_uniquely_mapped_reads(file_path, single=False):
+    if single:
+        cmd = "samtools view -F 4 -q 5 -c %s" % file_path
+    else:
+        cmd = "samtools view -f 0x40 -F 4 -q 5 -c %s" % file_path
     return get_reads(cmd)
 
 
