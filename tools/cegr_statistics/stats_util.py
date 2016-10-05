@@ -338,7 +338,7 @@ def get_statistics(file_path, stats, **kwd):
             elif k == 'dedupUniquelyMappedReads':
                 s[k] = get_deduplicated_uniquely_mapped_reads(file_path)
             elif k == 'dedupUniquelyMappedReadsSingle':
-                s[k] = get_deduplicated_uniquely_mapped_reads(file_path, single=True)
+                s['dedupUniquelyMappedReads'] = get_deduplicated_uniquely_mapped_reads(file_path, single=True)
             elif k == 'genomeCoverage':
                 chrom_lengths_file = kwd.get('chrom_lengths_file', None)
                 if chrom_lengths_file is None:
@@ -347,7 +347,7 @@ def get_statistics(file_path, stats, **kwd):
             elif k == 'mappedReads':
                 s[k] = get_mapped_reads(file_path)
             elif k == 'mappedReadsSingle':
-                s[k] = get_mapped_reads(file_path, single=True)
+                s['mappedReads'] = get_mapped_reads(file_path, single=True)
             elif k == 'peakPairWis':
                 s[k] = get_peak_pair_wis(file_path)
             elif k == 'peakStats':
@@ -357,11 +357,11 @@ def get_statistics(file_path, stats, **kwd):
             elif k == 'totalReads':
                 s[k] = get_total_reads(file_path)
             elif k == 'totalReadsSingle':
-                s[k] = get_total_reads(file_path, single=True)
+                s['totalReads'] = get_total_reads(file_path, single=True)
             elif k == 'uniquelyMappedReads':
                 s[k] = get_uniquely_mapped_reads(file_path)
             elif k == 'uniquelyMappedReadsSingle':
-                s[k] = get_uniquely_mapped_reads(file_path, single=True)
+                s['uniquelyMappedReads'] = get_uniquely_mapped_reads(file_path, single=True)
     except Exception as e:
         stop_err(str(e))
     return s
