@@ -47,6 +47,7 @@
             --config_file $__tool_directory__/stats_config.ini
             --history_id "$history_id"
             --history_name "$history_name"
+            --stats_tool_id "extract_genomic_dna_output_stats"
             --stderr "$stderr"
             --tool_id "$tool_id"
             --tool_parameters "$tool_parameters"

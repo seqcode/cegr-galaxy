@@ -1,4 +1,4 @@
-<tool id="repeatmasker_wrapper_output_stats" name="RepeatMasker output statistics" version="1.0.0">
+<tool id="repeatmasker_wrapper_output_stats2" name="RepeatMasker output statistics" version="1.0.0">
     <description></description>
     <macros>
         <import>macros.xml</import>
@@ -47,7 +47,7 @@
             --config_file $__tool_directory__/stats_config.ini
             --history_id "$history_id"
             --history_name "$history_name"
-            --stats_tool_id "repeatmasker_wrapper_output_stats"
+            --stats_tool_id "repeatmasker_wrapper_output_stats2"
             --stderr "$stderr"
             --tool_id "$tool_id"
             --tool_parameters "$tool_parameters"

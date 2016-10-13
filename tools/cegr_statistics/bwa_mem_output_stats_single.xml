@@ -39,6 +39,7 @@
             --dbkey "$input.metadata.dbkey"
             --history_id "$history_id"
             --history_name "$history_name"
+            --stats_tool_id "bwa_mem_output_stats_single"
             --stderr "$stderr"
             --tool_id "$tool_id"
             --tool_parameters "$tool_parameters"

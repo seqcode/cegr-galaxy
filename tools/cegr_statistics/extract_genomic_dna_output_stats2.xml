@@ -1,4 +1,4 @@
-<tool id="repeatmasker_wrapper_output_stats" name="RepeatMasker output statistics" version="1.0.0">
+<tool id="extract_genomic_dna_output_stats2" name="Extract Genomic DNA output statistics" version="1.0.0">
     <description></description>
     <macros>
         <import>macros.xml</import>
@@ -18,7 +18,7 @@
                     time.sleep(60)
                 #end while
             #end for
-            python $__tool_directory__/repeatmasker_wrapper_output_stats.py
+            python $__tool_directory__/extract_genomic_dna_output_stats.py
             #for $i in $input:
                 #if history_id is None:
                     #set history_id = $__app__.security.encode_id($i.history.id)
@@ -47,7 +47,7 @@
             --config_file $__tool_directory__/stats_config.ini
             --history_id "$history_id"
             --history_name "$history_name"
-            --stats_tool_id "repeatmasker_wrapper_output_stats"
+            --stats_tool_id "extract_genomic_dna_output_stats2"
             --stderr "$stderr"
             --tool_id "$tool_id"
             --tool_parameters "$tool_parameters"
@@ -69,9 +69,9 @@
     <help>
 **What it does**
 
-Gets the display URI for the HTML output of the **RepeatMasker** tool in the **CEGR Galaxy ChIP-exo** pipeline.
-A JSON dictionary containing the run, sample and this URI is sent via a POST to the PEGR REST API where the
-information is stored to support the CEGR ChIP-exo statistics reports.
+Gets the display URI for the HTML output of the **Extract Genomic DNA** tool in the **CEGR Galaxy ChIP-exo**
+pipeline.  A JSON dictionary containing the run, sample and this URI is sent via a POST to the PEGR REST API
+where the information is stored to support the CEGR ChIP-exo statistics reports.
     </help>
     <expand macro="citations" />
 </tool>
