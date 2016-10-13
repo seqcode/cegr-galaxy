@@ -40,6 +40,7 @@
             --chrom_len_file ${chromInfo}
             --history_id "$history_id"
             --history_name "$history_name"
+            --stats_tool_id "bam_to_scidx_output_stats"
             --stderr "$stderr"
             --tool_id "$tool_id"
             --tool_parameters "$tool_parameters"

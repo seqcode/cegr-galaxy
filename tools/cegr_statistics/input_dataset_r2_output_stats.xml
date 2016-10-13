@@ -19,6 +19,7 @@
         --dbkey "$input.metadata.dbkey"
         --history_id "$history_id"
         --history_name "$history_name"
+        --stats_tool_id "input_dataset_r2_output_stats"
         --tool_id "input_dataset_r2"
         --user_email "$__user_email__"
         --output "$output"
