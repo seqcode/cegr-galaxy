@@ -19,8 +19,8 @@
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
-                "left": 353.734375, 
-                "top": 416.953125
+                "left": 353.7333984375, 
+                "top": 416.9499969482422
             }, 
             "tool_errors": null, 
             "tool_id": null, 
@@ -51,7 +51,7 @@
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
-                "left": 197.734375, 
+                "left": 197.7333984375, 
                 "top": 707
             }, 
             "tool_errors": null, 
@@ -83,7 +83,7 @@
             "name": "Input dataset", 
             "outputs": [], 
             "position": {
-                "left": 1510.703125, 
+                "left": 1510.7000122070312, 
                 "top": 802
             }, 
             "tool_errors": null, 
@@ -125,7 +125,7 @@
                 }
             ], 
             "position": {
-                "left": 640.265625, 
+                "left": 640.2667236328125, 
                 "top": 138
             }, 
             "post_job_actions": {}, 
@@ -180,8 +180,8 @@
                 }
             ], 
             "position": {
-                "left": 639.671875, 
-                "top": 249.84375
+                "left": 639.666748046875, 
+                "top": 249.85000610351562
             }, 
             "post_job_actions": {
                 "DeleteIntermediatesActionhtml_file": {
@@ -252,7 +252,7 @@
                 }
             ], 
             "position": {
-                "left": 647.796875, 
+                "left": 647.800048828125, 
                 "top": 487
             }, 
             "post_job_actions": {
@@ -312,7 +312,7 @@
                 }
             ], 
             "position": {
-                "left": 178.875, 
+                "left": 178.88330078125, 
                 "top": 867.5
             }, 
             "post_job_actions": {}, 
@@ -363,7 +363,7 @@
                 }
             ], 
             "position": {
-                "left": 537.640625, 
+                "left": 537.63330078125, 
                 "top": 858
             }, 
             "post_job_actions": {}, 
@@ -420,8 +420,8 @@
                 }
             ], 
             "position": {
-                "left": 959.234375, 
-                "top": 259.875
+                "left": 959.2333984375, 
+                "top": 259.8833312988281
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -440,7 +440,7 @@
         }, 
         "9": {
             "annotation": "", 
-            "content_id": "fastqc_output_stats", 
+            "content_id": "fastqc_output_stats2", 
             "id": 9, 
             "input_connections": {
                 "input_html": {
@@ -454,16 +454,16 @@
             }, 
             "inputs": [
                 {
-                    "description": "runtime parameter for tool FastQC output statistics", 
+                    "description": "runtime parameter for tool FastQC output statistics 2", 
                     "name": "input_txt"
                 }, 
                 {
-                    "description": "runtime parameter for tool FastQC output statistics", 
+                    "description": "runtime parameter for tool FastQC output statistics 2", 
                     "name": "input_html"
                 }
             ], 
             "label": null, 
-            "name": "FastQC output statistics", 
+            "name": "FastQC output statistics 2", 
             "outputs": [
                 {
                     "name": "output", 
@@ -471,21 +471,21 @@
                 }
             ], 
             "position": {
-                "left": 961.296875, 
-                "top": 421
+                "left": 960, 
+                "top": 416
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
-            "tool_id": "fastqc_output_stats", 
+            "tool_id": "fastqc_output_stats2", 
             "tool_state": "{\"input_txt\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"input_html\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
-            "uuid": "61b03b38-362b-4ded-9743-3f7e7d71bb4b", 
+            "uuid": "98eb9cbc-fc9c-476d-acb5-4a8d3fc72446", 
             "workflow_outputs": [
                 {
                     "label": null, 
                     "output_name": "output", 
-                    "uuid": "a64c1436-9b23-43c6-8a7e-97b6f1e642f5"
+                    "uuid": "307a7ac1-2273-4b1e-bab1-d18a9c7065ab"
                 }
             ]
         }, 
@@ -518,8 +518,8 @@
                 }
             ], 
             "position": {
-                "left": 705.453125, 
-                "top": 1065.109375
+                "left": 705.449951171875, 
+                "top": 1065.11669921875
             }, 
             "post_job_actions": {
                 "DeleteIntermediatesActionmetrics_file": {
@@ -582,8 +582,8 @@
                 }
             ], 
             "position": {
-                "left": 789.671875, 
-                "top": 740.109375
+                "left": 789.666748046875, 
+                "top": 740.11669921875
             }, 
             "post_job_actions": {
                 "DeleteIntermediatesActionoutput1": {
@@ -637,8 +637,8 @@
                 }
             ], 
             "position": {
-                "left": 1075.609375, 
-                "top": 1065.875
+                "left": 1075.61669921875, 
+                "top": 1065.88330078125
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -680,7 +680,7 @@
                 }
             ], 
             "position": {
-                "left": 992.796875, 
+                "left": 992.800048828125, 
                 "top": 567
             }, 
             "post_job_actions": {
@@ -735,8 +735,8 @@
                 }
             ], 
             "position": {
-                "left": 1234.40625, 
-                "top": 720.5625
+                "left": 1234.4000244140625, 
+                "top": 720.566650390625
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -782,7 +782,7 @@
                 }
             ], 
             "position": {
-                "left": 1176.984375, 
+                "left": 1176.9833984375, 
                 "top": 923.25
             }, 
             "post_job_actions": {
@@ -842,8 +842,8 @@
                 }
             ], 
             "position": {
-                "left": 1247.90625, 
-                "top": 380.34375
+                "left": 1247.9000244140625, 
+                "top": 380.3500061035156
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -948,8 +948,8 @@
                 }
             ], 
             "position": {
-                "left": 1433.390625, 
-                "top": 921.78125
+                "left": 1433.3833618164062, 
+                "top": 921.7833251953125
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -991,8 +991,8 @@
                 }
             ], 
             "position": {
-                "left": 1525.234375, 
-                "top": 431.421875
+                "left": 1525.2333374023438, 
+                "top": 431.4166717529297
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1047,8 +1047,8 @@
                 }
             ], 
             "position": {
-                "left": 1505.78125, 
-                "top": 555.953125
+                "left": 1505.7833251953125, 
+                "top": 555.9500122070312
             }, 
             "post_job_actions": {
                 "DeleteIntermediatesActionoutput": {
@@ -1118,8 +1118,8 @@
                 }
             ], 
             "position": {
-                "left": 1848.859375, 
-                "top": 546.953125
+                "left": 1848.86669921875, 
+                "top": 546.9500122070312
             }, 
             "post_job_actions": {
                 "DeleteIntermediatesActionH": {
@@ -1153,8 +1153,8 @@
                 }, 
                 {
                     "label": null, 
-                    "output_name": "D", 
-                    "uuid": "f2c1b8cb-d663-4d70-87ca-86e6373034f0"
+                    "output_name": "MP", 
+                    "uuid": "8334cbf6-0f92-498a-b0c5-2322c380f6fc"
                 }, 
                 {
                     "label": null, 
@@ -1163,8 +1163,8 @@
                 }, 
                 {
                     "label": null, 
-                    "output_name": "MP", 
-                    "uuid": "8334cbf6-0f92-498a-b0c5-2322c380f6fc"
+                    "output_name": "D", 
+                    "uuid": "f2c1b8cb-d663-4d70-87ca-86e6373034f0"
                 }
             ]
         }, 
@@ -1193,8 +1193,8 @@
                 }
             ], 
             "position": {
-                "left": 1782.109375, 
-                "top": 760.359375
+                "left": 1782.11669921875, 
+                "top": 760.36669921875
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1241,7 +1241,7 @@
                 }
             ], 
             "position": {
-                "left": 2103.3125, 
+                "left": 2103.316680908203, 
                 "top": 472.5
             }, 
             "post_job_actions": {}, 
@@ -1289,7 +1289,7 @@
                 }
             ], 
             "position": {
-                "left": 2121.703125, 
+                "left": 2121.7000122070312, 
                 "top": 585
             }, 
             "post_job_actions": {
@@ -1338,8 +1338,8 @@
                 }
             ], 
             "position": {
-                "left": 2364.453125, 
-                "top": 565.046875
+                "left": 2364.4500122070312, 
+                "top": 565.0499877929688
             }, 
             "post_job_actions": {
                 "DeleteIntermediatesActionoutput": {
@@ -1393,8 +1393,8 @@
                 }
             ], 
             "position": {
-                "left": 2637.71875, 
-                "top": 454.9375
+                "left": 2637.7166748046875, 
+                "top": 454.933349609375
             }, 
             "post_job_actions": {
                 "DeleteIntermediatesActionout_file1": {
@@ -1442,8 +1442,8 @@
                 }
             ], 
             "position": {
-                "left": 3029.203125, 
-                "top": 709.53125
+                "left": 3029.2000122070312, 
+                "top": 709.5333251953125
             }, 
             "post_job_actions": {
                 "DeleteIntermediatesActionoutput": {
@@ -1497,8 +1497,8 @@
                 }
             ], 
             "position": {
-                "left": 2848.859375, 
-                "top": 523.84375
+                "left": 2848.86669921875, 
+                "top": 523.8500061035156
             }, 
             "post_job_actions": {
                 "DeleteIntermediatesActionoutput": {
@@ -1529,7 +1529,7 @@
         }, 
         "29": {
             "annotation": "", 
-            "content_id": "extract_genomic_dna_output_stats", 
+            "content_id": "extract_genomic_dna_output_stats2", 
             "id": 29, 
             "input_connections": {
                 "input": {
@@ -1537,14 +1537,9 @@
                     "output_name": "output"
                 }
             }, 
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool Extract Genomic DNA output statistics", 
-                    "name": "input"
-                }
-            ], 
+            "inputs": [], 
             "label": null, 
-            "name": "Extract Genomic DNA output statistics", 
+            "name": "Extract Genomic DNA output statistics 2", 
             "outputs": [
                 {
                     "name": "output", 
@@ -1552,21 +1547,21 @@
                 }
             ], 
             "position": {
-                "left": 3227.65625, 
-                "top": 852.15625
+                "left": 3238.1666870117188, 
+                "top": 857.5
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
-            "tool_id": "extract_genomic_dna_output_stats", 
-            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
+            "tool_id": "extract_genomic_dna_output_stats2", 
+            "tool_state": "{\"input\": \"null\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
-            "uuid": "f7f14778-9672-4578-b3eb-25e4a78f1653", 
+            "uuid": "91a56227-91e8-46ca-9882-fbb386780741", 
             "workflow_outputs": [
                 {
                     "label": null, 
                     "output_name": "output", 
-                    "uuid": "7e1307eb-9911-4c3f-be77-ac6a9e109b87"
+                    "uuid": "5abe9800-02d2-4fc7-8ea6-1db5bfbe5fdf"
                 }
             ]
         }, 
@@ -1611,8 +1606,8 @@
                 }
             ], 
             "position": {
-                "left": 3527.46875, 
-                "top": 745.34375
+                "left": 3527.4666748046875, 
+                "top": 745.3499755859375
             }, 
             "post_job_actions": {
                 "DeleteIntermediatesActionoutput_std": {
@@ -1686,7 +1681,7 @@
                 }
             ], 
             "position": {
-                "left": 3149.140625, 
+                "left": 3149.1333618164062, 
                 "top": 587.25
             }, 
             "post_job_actions": {}, 
@@ -1750,8 +1745,8 @@
                 }
             ], 
             "position": {
-                "left": 3264.484375, 
-                "top": 332.34375
+                "left": 3264.4833374023438, 
+                "top": 332.3500061035156
             }, 
             "post_job_actions": {
                 "DeleteIntermediatesActionoutput_std": {
@@ -1802,7 +1797,7 @@
         }, 
         "33": {
             "annotation": "", 
-            "content_id": "repeatmasker_wrapper_output_stats", 
+            "content_id": "repeatmasker_wrapper_output_stats2", 
             "id": 33, 
             "input_connections": {
                 "input": {
@@ -1810,14 +1805,9 @@
                     "output_name": "output_mask"
                 }
             }, 
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool RepeatMasker output statistics", 
-                    "name": "input"
-                }
-            ], 
+            "inputs": [], 
             "label": null, 
-            "name": "RepeatMasker output statistics", 
+            "name": "RepeatMasker output statistics 2", 
             "outputs": [
                 {
                     "name": "output", 
@@ -1825,21 +1815,21 @@
                 }
             ], 
             "position": {
-                "left": 3788.65625, 
-                "top": 945.15625
+                "left": 3802.2333984375, 
+                "top": 943
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
-            "tool_id": "repeatmasker_wrapper_output_stats", 
-            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
+            "tool_id": "repeatmasker_wrapper_output_stats2", 
+            "tool_state": "{\"input\": \"null\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
-            "uuid": "13026376-7780-45e5-aca1-f0b0263dd288", 
+            "uuid": "017a4cdc-4606-4e28-b62d-8d8afa9233e1", 
             "workflow_outputs": [
                 {
                     "label": null, 
                     "output_name": "output", 
-                    "uuid": "679e06e1-2761-42db-b791-253b0f66d9bc"
+                    "uuid": "064ce597-bebc-4f7e-bb86-115eb0d69c59"
                 }
             ]
         }, 
@@ -1868,8 +1858,8 @@
                 }
             ], 
             "position": {
-                "left": 3489.609375, 
-                "top": 622.1875
+                "left": 3489.61669921875, 
+                "top": 622.183349609375
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -1932,8 +1922,8 @@
                 }
             ], 
             "position": {
-                "left": 3554.8125, 
-                "top": 332.84375
+                "left": 3554.816650390625, 
+                "top": 332.8500061035156
             }, 
             "post_job_actions": {
                 "DeleteIntermediatesActionhtml_outfile": {
@@ -1957,13 +1947,13 @@
             "workflow_outputs": [
                 {
                     "label": null, 
-                    "output_name": "html_outfile", 
-                    "uuid": "93c9840e-c150-46c2-8e3b-89d349c536c5"
+                    "output_name": "txt_outfile", 
+                    "uuid": "a2a42314-b129-48f7-a2f7-1d2ab591fe96"
                 }, 
                 {
                     "label": null, 
-                    "output_name": "txt_outfile", 
-                    "uuid": "a2a42314-b129-48f7-a2f7-1d2ab591fe96"
+                    "output_name": "html_outfile", 
+                    "uuid": "93c9840e-c150-46c2-8e3b-89d349c536c5"
                 }, 
                 {
                     "label": null, 
@@ -2005,7 +1995,7 @@
                 }
             ], 
             "position": {
-                "left": 3789.1875, 
+                "left": 3789.183349609375, 
                 "top": 380.5
             }, 
             "post_job_actions": {}, 
@@ -2076,7 +2066,7 @@
                 }
             ], 
             "position": {
-                "left": 3825.6875, 
+                "left": 3825.683349609375, 
                 "top": 647.5
             }, 
             "post_job_actions": {
@@ -2156,8 +2146,8 @@
                 }
             ], 
             "position": {
-                "left": 4092.484375, 
-                "top": 580.03125
+                "left": 4092.4833984375, 
+                "top": 580.0333251953125
             }, 
             "post_job_actions": {
                 "DeleteIntermediatesActionoutput": {
@@ -2219,8 +2209,8 @@
                 }
             ], 
             "position": {
-                "left": 4110.484375, 
-                "top": 727.046875
+                "left": 4110.4833984375, 
+                "top": 727.0499877929688
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -2262,8 +2252,8 @@
                 }
             ], 
             "position": {
-                "left": 4087.484375, 
-                "top": 889.03125
+                "left": 4087.4833984375, 
+                "top": 889.0333251953125
             }, 
             "post_job_actions": {
                 "DeleteIntermediatesActionoutput": {
@@ -2317,8 +2307,8 @@
                 }
             ], 
             "position": {
-                "left": 4390.453125, 
-                "top": 563.875
+                "left": 4390.449951171875, 
+                "top": 563.8833312988281
             }, 
             "post_job_actions": {
                 "DeleteIntermediatesActionoutput": {
@@ -2372,8 +2362,8 @@
                 }
             ], 
             "position": {
-                "left": 4386.109375, 
-                "top": 907.875
+                "left": 4386.11669921875, 
+                "top": 907.88330078125
             }, 
             "post_job_actions": {
                 "DeleteIntermediatesActionout_file1": {
@@ -2398,7 +2388,7 @@
         }, 
         "43": {
             "annotation": "", 
-            "content_id": "extract_genomic_dna_output_stats", 
+            "content_id": "extract_genomic_dna_output_stats3", 
             "id": 43, 
             "input_connections": {
                 "input": {
@@ -2406,14 +2396,9 @@
                     "output_name": "output"
                 }
             }, 
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool Extract Genomic DNA output statistics", 
-                    "name": "input"
-                }
-            ], 
+            "inputs": [], 
             "label": null, 
-            "name": "Extract Genomic DNA output statistics", 
+            "name": "Extract Genomic DNA output statistics 3", 
             "outputs": [
                 {
                     "name": "output", 
@@ -2421,21 +2406,21 @@
                 }
             ], 
             "position": {
-                "left": 4458.546875, 
-                "top": 730.484375
+                "left": 4538.550048828125, 
+                "top": 733.5
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
-            "tool_id": "extract_genomic_dna_output_stats", 
-            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
+            "tool_id": "extract_genomic_dna_output_stats3", 
+            "tool_state": "{\"input\": \"null\", \"__rerun_remap_job_id__\": null, \"__page__\": 0}", 
             "tool_version": "1.0.0", 
             "type": "tool", 
-            "uuid": "803b6d75-49c1-4935-a60b-5754970500b4", 
+            "uuid": "d8e614d6-5a34-4a7d-9ee0-23024aeb96dd", 
             "workflow_outputs": [
                 {
                     "label": null, 
                     "output_name": "output", 
-                    "uuid": "ef20d428-516d-4d9e-8ab2-e602d4889210"
+                    "uuid": "9d09eba5-35ff-4e96-90a6-40c9d2eb4d5a"
                 }
             ]
         }, 
@@ -2465,7 +2450,7 @@
             ], 
             "position": {
                 "left": 4657.5, 
-                "top": 594.28125
+                "top": 594.2833251953125
             }, 
             "post_job_actions": {
                 "DeleteIntermediatesActionoutput": {
@@ -2531,8 +2516,8 @@
                 }
             ], 
             "position": {
-                "left": 4565.9375, 
-                "top": 1049.109375
+                "left": 4565.933349609375, 
+                "top": 1049.11669921875
             }, 
             "post_job_actions": {
                 "DeleteIntermediatesActionheatmaps": {
@@ -2591,8 +2576,8 @@
                 }
             ], 
             "position": {
-                "left": 4931.0625, 
-                "top": 594.890625
+                "left": 4931.066650390625, 
+                "top": 594.8833312988281
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -2642,8 +2627,8 @@
                 }
             ], 
             "position": {
-                "left": 4808.6875, 
-                "top": 903.671875
+                "left": 4808.683349609375, 
+                "top": 903.6666870117188
             }, 
             "post_job_actions": {}, 
             "tool_errors": null, 
@@ -2661,5 +2646,5 @@
             ]
         }
     }, 
-    "uuid": "6139a32e-3b1b-468d-9c99-e3757f32a724"
+    "uuid": "ba5e880d-0835-4402-b9da-05f6092d69e8"
 }
