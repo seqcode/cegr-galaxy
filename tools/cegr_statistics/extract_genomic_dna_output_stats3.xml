@@ -1,4 +1,4 @@
-<tool id="extract_genomic_dna_output_stats3" name="Extract Genomic DNA output statistics" version="1.0.0">
+<tool id="extract_genomic_dna_output_stats3" name="Extract Genomic DNA output statistics 3" version="1.0.0">
     <description></description>
     <macros>
         <import>macros.xml</import>
