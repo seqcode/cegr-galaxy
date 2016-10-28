@@ -43,13 +43,14 @@
         <handler id="trackster_handler"/>
         -->
     </handlers>
-    <destinations default="pbs">
+    <destinations default="pbs_avgmem">
         <!-- Destinations define details about remote resources and how jobs
              should be executed on those remote resources.
          -->
         <destination id="local" runner="local">
             <env file="/gpfs/cyberstar/pughhpc/galaxy-cegr/galaxy/.venv/bin/activate" />
             <param id="Resource_List">walltime=1:00:00,ncpus=4</param>
+            <env id="_JAVA_OPTIONS">-Djava.io.tmpdir=/gpfs/cyberstar/pughhpc/galaxy-cegr/files/tmp -Xmx7680m -Xms256m</env>
         </destination>
         <destination id="multicore_local" runner="local">
           <param id="local_slots">4</param> <!-- Specify GALAXY_SLOTS for local jobs. -->
@@ -69,17 +70,20 @@
                elements. This empty block will simply disable job metrics for the
                corresponding destination. -->
         </destination>
-        <destination id="pbs" runner="pbs" tags="mycluster">
+        <destination id="pbs_avgmem" runner="pbs" tags="avgmem">
             <env file="/gpfs/cyberstar/pughhpc/galaxy-cegr/galaxy/.venv/bin/activate" />
-            <param id="Resource_List">walltime=4:00:00,ncpus=4</param>
+            <env id="TEMP">/gpfs/cyberstar/pughhpc/galaxy-cegr/files/tmp</env>
+            <env id="TMPDIR">/gpfs/cyberstar/pughhpc/galaxy-cegr/files/tmp</env>
+            <param id="Resource_List">walltime=48:00:00,ncpus=4,mem=8gb</param>
             <param id="-q">lionxg-pughhpc@lionxg.rcc.psu.edu</param>
         </destination>
-        <destination id="pbs_longjobs" runner="pbs" tags="mycluster,longjobs">
-            <!-- Define parameters that are native to the job runner plugin. -->
+        <destination id="pbs_highmem" runner="pbs" tags="highmem">
             <env file="/gpfs/cyberstar/pughhpc/galaxy-cegr/galaxy/.venv/bin/activate" />
-            <param id="Resource_List">walltime=8:00:00,ncpus=4</param>
+            <env id="TEMP">/gpfs/cyberstar/pughhpc/galaxy-cegr/files/tmp</env>
+            <env id="TMPDIR">/gpfs/cyberstar/pughhpc/galaxy-cegr/files/tmp</env>
+            <env id="_JAVA_OPTIONS">-Djava.io.tmpdir=/gpfs/cyberstar/pughhpc/galaxy-cegr/files/tmp -Xmx15872m -Xms256m</env>
+            <param id="Resource_List">walltime=48:00:00,ncpus=4,mem=16gb</param>
             <param id="-q">lionxg-pughhpc@lionxg.rcc.psu.edu</param>
-            <!-- <param id="-p">128</param> -->
         </destination>
         <destination id="dynamic" runner="dynamic">
             <!-- A destination that represents a method in the dynamic runner. -->
@@ -121,7 +125,7 @@
             <param id="job_plugin">Torque</param>
             <param id="shell_username">foo</param>
             <param id="shell_hostname">foo.example.org</param>
-            <param id="job_Resource_List">walltime=24:00:00,ncpus=4</param>
+            <param id="job_Resource_List">walltime=48:00:00,ncpus=4</param>
         </destination>
 
         <!-- Jobs that hit the walltime on one destination can be automatically
@@ -175,6 +179,9 @@
              and pass to dynamic destination (as resource_params argument). -->
         <!-- <tool id="longbar" destination="dynamic" resources="all" /> -->
         <!-- <tool id="baz" handler="special_handlers" destination="bigmem"/> -->
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/bwa/bwa_mem/0.7.12.1" destination="pbs_highmem" resources="all"/>
+        <tool id="toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_MarkDuplicates/1.136.0" destination="pbs_highmem" resources="all"/>
+        <tool id="toolshed.g2.bx.psu.edu/repos/bgruening/repeat_masker/repeatmasker_wrapper/0.1.2" destination="pbs_highmem" resources="all"/>
     </tools>
     <limits>
         <!-- Certain limits can be defined. The 'concurrent_jobs' limits all
@@ -201,28 +208,26 @@
                 destination, or across all destinations identified by the
                 specified tag. (formerly: concurrent_jobs)
         -->
-        <limit type="destination_user_concurrent_jobs" id="local">20</limit>
-        <limit type="destination_user_concurrent_jobs" tag="mycluster">50</limit>
-        <limit type="destination_user_concurrent_jobs" tag="longjobs">20</limit>
+        <limit type="destination_user_concurrent_jobs" tag="avgmem">50</limit>
+        <limit type="destination_user_concurrent_jobs" tag="highmem">20</limit>
         <!-- destination_total_concurrent_jobs:
                 The number of jobs that can be active in the specified
                 destination (or across all destinations identified by the
                 specified tag) by any/all users.
         -->
-        <limit type="destination_total_concurrent_jobs" id="local">100</limit>
-        <limit type="destination_total_concurrent_jobs" tag="longjobs">20</limit>
+        <limit type="destination_total_concurrent_jobs" tag="highmem">20</limit>
         <!-- walltime:
                 Amount of time a job can run (in any destination) before it
                 will be terminated by Galaxy.
          -->
-        <limit type="walltime">24:00:00</limit>
+        <limit type="walltime">48:00:00</limit>
         <!-- output_size:
                 Size that any defined tool output can grow to before the job
                 will be terminated. This does not include temporary files
                 created by the job. Format is flexible, e.g.:
                 '10GB' = '10g' = '10240 Mb' = '10737418240'
         -->
-        <limit type="output_size">100GB</limit>
+        <limit type="output_size">500GB</limit>
     </limits>
     <macros>
         <xml name="foohost_destination" tokens="id,walltime,ncpus">
