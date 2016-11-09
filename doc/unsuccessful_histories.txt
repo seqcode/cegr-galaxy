@@ -1,0 +1,8 @@
+# Run 212 - RepeatMasker memory
+paired_001-212-11554.001
+paired_001-212-11555.001
+
+# Run 199 - RepeatMasker memory
+paired_001-199-11049.001
+paired_001-199-11065.001
+
