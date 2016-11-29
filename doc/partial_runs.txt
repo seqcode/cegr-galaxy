@@ -1,0 +1,6 @@
+Run       Steps Completed                Reason not completed
+193       copy_raw_data                  failed run, bcl2fastq step produces all empty datasets
+
+192       copy_raw_data                  Missing required blacklist filter dataset for genome osaIRGSP
+          bcl2fastq
+          send_data_to_galaxy
