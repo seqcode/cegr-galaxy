@@ -2,3 +2,4 @@ Run       Steps Completed                Reason not completed
 193       copy_raw_data                  failed run, bcl2fastq step produces all empty datasets
 190       copy_raw_data                  failed run, bcl2fastq step produces all empty datasets
 184       copy_raw_data                  failed run, Repeated Sequence Identifier
+182       copy_raw_data                  failed run, bcl2fastq stepproduces Validation exit code: -9
