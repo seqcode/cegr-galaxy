@@ -1,5 +1,10 @@
 # Run 227 - RepeatMasker memory
 paired_001-227-12289.001    SampleID 12289
+paired_001-227-12286.001    SampleID 12286 
+paired_001-227-12294.001    SampleID 12294
+paired_001-227-12295.001    SampleID 12295
+paired_001-227-12296.001    SampleID 12296
+    
 
 # Run 212 - RepeatMasker memory
 paired_001-212-11554.001
