@@ -259,7 +259,7 @@ extension
 
 d. Get the name of the directory that contains the raw sequenced files for the
 old run.  The file that associates the directory name with the run is
-~/doc/run_id_map.txt.  FOr example, if you are processing run 156, the
+~/doc/run_id_map.txt.  For example, if you are processing run 156, the
 directory that contains that run is 150423_NS500168_0070_AH7J2MBGXX.
 
 e. cdoldraw
