@@ -205,27 +205,39 @@ be executed.  Here are the general steps for manually processing new runs
 (i.e., cron is not being used) after logging into the system.
 
 a. cdcegr
+
 b. cd log
+
 c. If you want to execute each step while not allowing any downstream steps to
 execute, make sure a .complete file exists for each downstream step:
  - ~/log/bcl2fastq.py.complete
  - ~/log/send_data_to_galaxy.py.complete
  - ~/log/start_workflows.py.complete
+ 
 d. sh start_processing.sh and wait for the ~/scripts/api/copy_raw_data.py
 script to finish
+
 e. Check the log for the current day to make sure there were no errors
+
 f. Delete the ~/log/bcl2fastq.py.complete file (3 .complete files should
 remain)
+
 g. sh start_processing.sh and wait for the ~/scripts/api/bcl2fastq.py script
 to finish
+
 h. Check the log for the current day to make sure there were no errors
+
 i. Delete the ~/log/send_data_to_galaxy.py.complete file (3 .complete files
 should remain)
+
 j. sh start_processing.sh and wait for the ~/scripts/api/send_data_to_galaxy.py
 script to finish
+
 k. Check the log for the current day to make sure there were no errors
+
 l. Delete the ~/log/start_workflows.py.complete file (3 .complete files
 should remain)
+
 m. sh start_processing.sh and wait for the ~/scripts/api/start_workflows.py
 script to finish
 
@@ -238,22 +250,34 @@ general steps for manually processing runs that occurred in the past after
 logging into the system.
 
 a. cdcegr
+
 b. cd config
+
 c. Make sure there is not a cegr_run_info.txt file in this directory.  If there
 is one, move it to ~/config/archive, nameing it with the correct .<run>.complete
 extension
+
 d. Get the name of the directory that contains the raw sequenced files for the
 old run.  The file that associates the directory name with the run is
 ~/doc/run_id_map.txt.  FOr example, if you are processing run 156, the
 directory that contains that run is 150423_NS500168_0070_AH7J2MBGXX.
+
 e. cdoldraw
+
 f. cd to the directory determine in b (e.g., cd 150423_NS500168_0070_AH7J2MBGXX).
+
 g. copy the full path to the current directory into your clipboard.
+
 h. cdcegr
+
 i. cd config
+
 j. cp <paste clipboard>/cegr_run_info.txt .
+
 k. cd ~/log
+
 l. Make sure that the ~/log/copy_raw_data.py.complete file exists.
+
 m. If you want to execute each step while not allowing any downstream steps to
 execute, make sure a .complete file exists (in addition to the
 copy_raw_data.py.complete file, which must always exist for these old runs) for
@@ -261,18 +285,26 @@ each downstream step:
  - ~/log/copy_raw_data.py.complete
  - ~/log/send_data_to_galaxy.py.complete
  - ~/log/start_workflows.py.complete
+ 
 n. sh start_processing.sh and wait for the ~/scripts/api/bcl2fastq.py
 script to finish
+
 o. Check the log for the current day to make sure there were no errors
+
 p. Delete the ~/log/send_data_to_galaxy.py.complete file (3 .complete files
 should remain)
+
 q. sh start_processing.sh and wait for the ~/scripts/api/send_data_to_galaxy.py
 script to finish
+
 r. Check the log for the current day to make sure there were no errors
+
 s. Delete the ~/log/start_workflows.py.complete file (3 .complete files
 should remain)
+
 t. sh start_processing.sh and wait for the ~/scripts/api/start_workflows.py
 script to finish
+
 u. When all of the scripts have completed successfully, delete the directory
 containing the old raw data files.
 
