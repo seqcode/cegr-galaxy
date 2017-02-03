@@ -34,70 +34,70 @@ These configuration settings are used by each of the components of the
 pipeline, and we'll categorize these components as follows.
 
 1. Remote server configuration settings for retrieving the raw sequenced data.
-The following settings are used primarly by the copy_raw_data.py script.  The
-exception is the REMOTE_WORKFLOW_CONFIG_DIR_NAME setting, which is used by the
-start_workflows.py script.
+  The following settings are used primarly by the copy_raw_data.py script.  The
+  exception is the REMOTE_WORKFLOW_CONFIG_DIR_NAME setting, which is used by the
+  start_workflows.py script.
 
-RAW_DATA_LOGIN - the login information for the remote server.
+  RAW_DATA_LOGIN - the login information for the remote server.
 
-RAW_DATA_DIR - the location for retrieving the raw sequenced data from the
-remote server.
+  RAW_DATA_DIR - the location for retrieving the raw sequenced data from the
+  remote server.
 
-REMOTE_RUN_COMPLETE_FILE - The file named RunCompletionStatus.xml, which
-is produced by the Illumina sequencer.  This file name configuration setting
-can be changed if different sequencers are used over time.
+  REMOTE_RUN_COMPLETE_FILE - The file named RunCompletionStatus.xml, which
+  is produced by the Illumina sequencer.  This file name configuration setting
+  can be changed if different sequencers are used over time.
 
-REMOTE_RUN_INFO_FILE - the full path to the cegr_run_info.txt on the remote
-server.  This file is produced for each run, and is the configuration engine
-used by the pipeline for each run.  This file is retrieved from the remote
-server by the copy_raw_data.py script and stored locally within the ~/config
-directory.
+  REMOTE_RUN_INFO_FILE - the full path to the cegr_run_info.txt on the remote
+  server.  This file is produced for each run, and is the configuration engine
+  used by the pipeline for each run.  This file is retrieved from the remote
+  server by the copy_raw_data.py script and stored locally within the ~/config
+  directory.
 
-REMOTE_WORKFLOW_CONFIG_DIR_NAME - This is the name of the directory that
-contains the XML files for each run.  This value cannot be a full path, but
-must be restricted to the directory name (e.g., cegr_config).
+  REMOTE_WORKFLOW_CONFIG_DIR_NAME - This is the name of the directory that
+  contains the XML files for each run.  This value cannot be a full path, but
+  must be restricted to the directory name (e.g., cegr_config).
 
 2. Local file system configuration settings.  The follwoing settings are used
-primarly by the bcl2fastq.py and the send_data_to_galaxy.py scripts.
+  primarily by the bcl2fastq.py and the send_data_to_galaxy.py scripts.
 
-ANALYSIS_PREP_LOG_FILE_DIR - the local directory where the pre-processing
-pipeline will generate and store all log files.  This is typically ~/log
+  ANALYSIS_PREP_LOG_FILE_DIR - the local directory where the pre-processing
+  pipeline will generate and store all log files.  This is typically ~/log
 
-BCL2FASTQ_BINARY - the name of the bcl2fastq package - this cannot be a full
-path.
+  BCL2FASTQ_BINARY - the name of the bcl2fastq package - this cannot be a full
+  path.
 
-BCL2FASTQ_REPORT_DIR - the full path to the location that the bcl2fastq
-package will generate its reports.
+  BCL2FASTQ_REPORT_DIR - the full path to the location that the bcl2fastq
+  package will generate its reports.
 
-FASTQ_VALIDATOR_BINARY - the full path to the installed fastQValidator package.
-The fastQValidator package is available here:
-http://genome.sph.umich.edu/w/images/2/20/FastQValidatorLibStatGen.0.1.1a.tgz
-Due to the way bcl2fastq compresses files (it does not include an end of file
-block), this enhancement was added manually to the ~/src/FastQValidator.cpp
-file: 
-https://github.com/statgen/fastQValidator/commit/0b7decb8b502cd8d9d6bf27dbd9e319ed8478b53.
-The package was then compiled normally.
+  FASTQ_VALIDATOR_BINARY - the full path to the installed fastQValidator package.
+  The fastQValidator package is available here:
+  http://genome.sph.umich.edu/w/images/2/20/FastQValidatorLibStatGen.0.1.1a.tgz
+  Due to the way bcl2fastq compresses files (it does not include an end of file
+  block), this enhancement was added manually to the ~/src/FastQValidator.cpp
+  file: 
+  https://github.com/statgen/fastQValidator/commit/0b7decb8b502cd8d9d6bf27dbd9e319ed8478b53.
+  The package was then compiled normally.
 
-RUN_INFO_FILE - the full path to the local cegr_run_info.txt file.
+  RUN_INFO_FILE - the full path to the local cegr_run_info.txt file.
 
-SAMPLE_SHEET - the full path to the sample sheet file produced by the
-bcl2fastq.py script.
+  SAMPLE_SHEET - the full path to the sample sheet file produced by the
+  bcl2fastq.py script.
 
-LIBRARY_PREP_DIR - the full path to the files that have been converted by the
-bcl2fastq. py script into fastqsanger data format.  This path is used by the
-send_data_to_galaxy.py script to import the files into Galaxy data libraries.
+  LIBRARY_PREP_DIR - the full path to the files that have been converted by the
+  bcl2fastq. py script into fastqsanger data format.  This path is used by the
+  send_data_to_galaxy.py script to import the files into Galaxy data libraries.
 
-BLACKLIST_FILTER_LIBRARY_NAME - the name of the Galaxy data library that
-contains all of the blacklist filter datasets used by the ChIP-exo workflows.
+  BLACKLIST_FILTER_LIBRARY_NAME - the name of the Galaxy data library that
+  contains all of the blacklist filter datasets used by the ChIP-exo workflows.
 
 3. Galaxy ChIP-exo instance and bioblend API configuration settings.
 
-GALAXY_HOME - the full path to the Galaxy installation root directory.
+  GALAXY_HOME - the full path to the Galaxy installation root directory.
 
-GALAXY_BASE_URL - the Galaxy URL, including port.
+  GALAXY_BASE_URL - the Galaxy URL, including port.
 
-API_KEY - the Galaxy api key associated with the user that executes the
-ChIP-exo workflows for each run.
+  API_KEY - the Galaxy api key associated with the user that executes the
+  ChIP-exo workflows for each run.
 
 The pipeline's four custom programs
 ===================================
@@ -344,6 +344,9 @@ Author
 ======
 
 Greg Von Kuster
+
 R & D Engineer
+
 Institute for CyberScience
+
 Penn State University
