@@ -1,3 +1,6 @@
+# Run 231 - cluster errors & sample re-run
+samples #12422;  12428;  12437;  12440
+
 # Run 212 - RepeatMasker memory
 paired_001-212-11554.001
 paired_001-212-11555.001
