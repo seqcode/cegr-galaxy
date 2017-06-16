@@ -1,5 +1,4 @@
 import api_util
-import json
 import os
 import xml_util
 
@@ -167,7 +166,8 @@ def update_workflow_params(dbkey, workflow_dict, original_parameters, lh):
         if tool_id.find('bwa_mem') > 0:
             reference_source_dict = tool_inputs_dict['reference_source']
             # Convert from flattend.
-            reference_source_dict = json.loads(reference_source_dict)
+            # Discovered this is no longer necessary when upgraded to 17.05.
+            #reference_source_dict = json.loads(reference_source_dict)
             reference_source_selector = reference_source_dict['reference_source_selector']
             if reference_source_selector == 'cached':
                 updated_step_dict = parameter_updates.get(step_id, {})
@@ -180,7 +180,8 @@ def update_workflow_params(dbkey, workflow_dict, original_parameters, lh):
             # Extract genomic DNA 1
             reference_genome_cond_dict = tool_inputs_dict['reference_genome_cond']
             # Convert from flattened.
-            reference_genome_cond_dict = json.loads(reference_genome_cond_dict)
+            # Discovered this is no longer necessary when upgraded to 17.05.
+            #reference_genome_cond_dict = json.loads(reference_genome_cond_dict)
             reference_genome_source = reference_genome_cond_dict['reference_genome_source']
             if reference_genome_source == 'cached':
                 updated_step_dict = parameter_updates.get(step_id, {})
