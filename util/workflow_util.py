@@ -38,20 +38,20 @@ def get_workflow_input_datasets(gi, history_name, history_input_datasets, workfl
     if steps_dict is not None:
         for step_index, step_dict in steps_dict.items():
             inputs = step_dict.get('inputs', None)
-            if inputs is not None:
-                # inputs is a list.
-                for input_dict in inputs:
-                    name = input_dict.get('name', None)
-                    if name is not None:
-                        for input_hda_name, input_hda_dict in history_input_datasets.items():
-                            # This requires the workflow input dataset label to be a string
-                            # (e.g., R1) that is contained in the name of the input dataset
-                            # (e.g., 60642_R1.fq).  The blacklist filter dataset must have
-                            # the exact label "blacklist" (without the quotes).
-                            if input_hda_name.find(name) >= 0 or (name == 'blacklist' and input_hda_name.find(dbkey) >= 0):
-                                workflow_inputs[step_index] = {'src': 'hda', 'id': input_hda_dict['id']}
-                                lh.write('Mapped dataset %s from history to workflow input dataset with name %s.\n' % (input_hda_name, name))
-                                break
+            if inputs is not None and len(inputs) == 0:
+                # inputs is a list and workflow input datasets
+                # have no inputs.
+                label = input_dict.get('label', None)
+                if label is not None:
+                    for input_hda_name, input_hda_dict in history_input_datasets.items():
+                        # This requires the workflow input dataset label to be a string
+                        # (e.g., R1) that is contained in the name of the input dataset
+                        # (e.g., 60642_R1.fq).  The blacklist filter dataset must have
+                        # the exact label "blacklist" (without the quotes).
+                        if input_hda_name.find(label) >= 0 or (label == 'blacklist' and input_hda_name.find(dbkey) >= 0):
+                            workflow_inputs[step_index] = {'src': 'hda', 'id': input_hda_dict['id']}
+                            lh.write('Mapped dataset %s from history to workflow input dataset with label %s.\n' % (input_hda_name, label))
+                            break
     return workflow_inputs
 
 
