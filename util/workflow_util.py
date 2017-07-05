@@ -41,7 +41,7 @@ def get_workflow_input_datasets(gi, history_name, history_input_datasets, workfl
             if inputs is not None and len(inputs) == 0:
                 # inputs is a list and workflow input datasets
                 # have no inputs.
-                label = input_dict.get('label', None)
+                label = step_dict.get('label', None)
                 if label is not None:
                     for input_hda_name, input_hda_dict in history_input_datasets.items():
                         # This requires the workflow input dataset label to be a string
