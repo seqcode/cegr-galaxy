@@ -146,6 +146,13 @@ def get_datasets(config_file, ids, datatypes):
     return d
 
 
+# This function is written based on history url format in Galaxy 19.05 and it is server agnostic.
+def get_history_url(config_file, historyId):
+    # http://hermes.vmhost.psu.edu:8080/histories/view?id=1e8ab44153008be8
+    defaults = get_config_settings(config_file, section='defaults')
+    return '%s/histories/view?id=%s' % (defaults['GALAXY_BASE_URL'],historyId)
+
+
 def get_deduplicated_uniquely_mapped_reads(file_path, single=False):
     if single:
         cmd = "samtools view -F 4 -q 5 -c %s" % file_path

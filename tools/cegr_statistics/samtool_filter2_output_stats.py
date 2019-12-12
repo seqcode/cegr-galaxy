@@ -24,6 +24,7 @@ payload = stats_util.get_base_json_dict(args.config_file, args.dbkey, args.histo
 # Generate the statistics and datasets.
 payload['statistics'] = [{}]
 payload['datasets'] = [stats_util.get_datasets(args.config_file, args.input_id, args.input_datatype)]
+payload['history_url'] = stats_util.get_history_url(args.config_file, args.history_id)
 # Send the payload to PEGR.
 pegr_url = stats_util.get_pegr_url(args.config_file)
 response = stats_util.submit(args.config_file, payload)
