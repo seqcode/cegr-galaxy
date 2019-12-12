@@ -11,7 +11,7 @@ PEGR_URL = http://localhost:8090/pegr/api/stats
 GALAXY_API_KEY = somekey
 GALAXY_BASE_URL = http://localhost:8763
 
-
+# Left hand side of the lines in "[tool_categories]" should be extracted from "Galaxy Tool ID" of each upstream tool
 [tool_categories]
 
 upload1 = testOne

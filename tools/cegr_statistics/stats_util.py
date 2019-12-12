@@ -142,7 +142,7 @@ def get_datasets(config_file, ids, datatypes):
     for i, t in zip(listify(ids), listify(datatypes)):
         d['id'] = i
         d['type'] = t
-        d['uri'] = '%s/datasets/%s/display?preview=True' % (defaults['GALAXY_BASE_URL'], i)
+        d['uri'] = '%s/datasets/%s/display?preview=False' % (defaults['GALAXY_BASE_URL'], i)
     return d
 
 
