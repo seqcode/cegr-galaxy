@@ -136,7 +136,7 @@ def get_config_settings(config_file, section='defaults'):
 
 
 def get_datasets(config_file, ids, datatypes):
-    # http://localhost:8763/datasets/eca0af6fb47bf90c/display/?preview=True
+    # URL sample: http://localhost:8763/datasets/eca0af6fb47bf90c/display/?preview=True
     defaults = get_config_settings(config_file, section='defaults')
     d = {}
     for i, t in zip(listify(ids), listify(datatypes)):
@@ -148,7 +148,7 @@ def get_datasets(config_file, ids, datatypes):
 
 # This function is written based on history url format in Galaxy 19.05 and it is server agnostic.
 def get_history_url(config_file, historyId):
-    # http://hermes.vmhost.psu.edu:8080/histories/view?id=1e8ab44153008be8
+    # URL sample: http://hermes.vmhost.psu.edu:8080/histories/view?id=1e8ab44153008be8
     defaults = get_config_settings(config_file, section='defaults')
     return '%s/histories/view?id=%s' % (defaults['GALAXY_BASE_URL'],historyId)
 
