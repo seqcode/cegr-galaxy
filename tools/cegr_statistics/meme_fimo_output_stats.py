@@ -40,6 +40,7 @@ for input in input_xmls:
 
 payload['statistics'] = statistics
 payload['datasets'] = datasets
+payload['history_url'] = stats_util.get_history_url(args.config_file, args.history_id)
 # Send the payload to PEGR.
 pegr_url = stats_util.get_pegr_url(args.config_file)
 response = stats_util.submit(args.config_file, payload)

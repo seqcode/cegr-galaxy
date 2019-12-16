@@ -37,6 +37,7 @@ payload['statistics'] = statistics
 d1 = stats_util.get_datasets(args.config_file, args.input_html_id, args.input_html_datatype)
 d2 = stats_util.get_datasets(args.config_file, args.input_txt_id, args.input_txt_datatype)
 payload['datasets'] = [d1, d2]
+payload['history_url'] = stats_util.get_history_url(args.config_file, args.history_id)
 # Send the payload to PEGR.
 pegr_url = stats_util.get_pegr_url(args.config_file)
 response = stats_util.submit(args.config_file, payload)
