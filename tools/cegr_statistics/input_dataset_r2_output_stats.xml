@@ -25,7 +25,7 @@
         --output "$output"
     </command>
     <inputs>
-        <param name="input" type="data" format="fastqsanger" label="Fastqsanger input" />
+        <param name="input" type="data" format="fastqsanger.gz" label="Fastqsanger.gz input" />
     </inputs>
     <outputs>
         <data name="output" format="txt" />
