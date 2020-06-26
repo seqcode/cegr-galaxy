@@ -28,15 +28,16 @@ args = parser.parse_args()
 payload = stats_util.get_base_json_dict(args.config_file, args.dbkey, args.history_id, args.history_name, args.stats_tool_id, args.stderr, args.tool_id, args.tool_parameters, args.user_email, args.workflow_step_id)
 # Each statistics dictionary maps to a dataset in the corresponding list.
 statistics = []
+datasets=[]
 # The HTML dataset has no statistics.
 statistics.append({})
 # Generate the statistics for the txt dataset.
 statistics.append(stats_util.get_statistics(args.input_txt, STATS))
 payload['statistics'] = statistics
 # Generate the list of datasets.
-d1 = stats_util.get_datasets(args.config_file, args.input_html_id, args.input_html_datatype)
-d2 = stats_util.get_datasets(args.config_file, args.input_txt_id, args.input_txt_datatype)
-payload['datasets'] = [d1, d2]
+datasets.append(stats_util.get_datasets_v2(args.config_file, args.input_html_id, args.input_html_datatype))
+datasets.append(stats_util.get_datasets_v2(args.config_file, args.input_txt_id, args.input_txt_datatype))
+payload['datasets'] = stats_util.polish_datasets_for_pegr(datasets)
 payload['history_url'] = stats_util.get_history_url(args.config_file, args.history_id)
 # Send the payload to PEGR.
 pegr_url = stats_util.get_pegr_url(args.config_file)

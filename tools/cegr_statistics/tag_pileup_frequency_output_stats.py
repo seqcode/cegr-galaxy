@@ -30,12 +30,12 @@ input_heatmaps = args.input_heatmaps or []
 for input in input_heatmaps:
     file_path, hid, input_id, input_datatype, dbkey = input
     statistics.append({})
-    datasets.append(stats_util.get_datasets(args.config_file, input_id, input_datatype))
+    datasets.append(stats_util.get_datasets_v2(args.config_file, input_id, input_datatype))
 # Generate statistics for tabular dataset.
 statistics.append({})
-datasets.append(stats_util.get_datasets(args.config_file, args.input_tabular_id, args.input_tabular_datatype))
+datasets.append(stats_util.get_datasets_v2(args.config_file, args.input_tabular_id, args.input_tabular_datatype))
 payload['statistics'] = statistics
-payload['datasets'] = datasets
+payload['datasets'] = stats_util.polish_datasets_for_pegr(datasets)
 payload['history_url'] = stats_util.get_history_url(args.config_file, args.history_id)
 # Send the payload to PEGR.
 pegr_url = stats_util.get_pegr_url(args.config_file)

@@ -19,11 +19,13 @@ parser.add_argument('--workflow_step_id', dest='workflow_step_id', default=None,
 parser.add_argument('--user_email', dest='user_email', help='Current user email')
 args = parser.parse_args()
 
+datasets=[]
 # Initialize the payload.
 payload = stats_util.get_base_json_dict(args.config_file, args.dbkey, args.history_id, args.history_name, args.stats_tool_id, args.stderr, args.tool_id, args.tool_parameters, args.user_email, args.workflow_step_id)
 # Generate the statistics and datasets.
 payload['statistics'] = [{}]
-payload['datasets'] = [stats_util.get_datasets(args.config_file, args.input_id, args.input_datatype)]
+datasets.append(stats_util.get_datasets_v2(args.config_file, args.input_id, args.input_datatype))
+payload['datasets'] = stats_util.polish_datasets_for_pegr(datasets) 
 payload['history_url'] = stats_util.get_history_url(args.config_file, args.history_id)
 # Send the payload to PEGR.
 pegr_url = stats_util.get_pegr_url(args.config_file)

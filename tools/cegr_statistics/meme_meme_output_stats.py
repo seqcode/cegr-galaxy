@@ -27,17 +27,17 @@ for input_html in input_htmls:
     if payload_dbkey == 'unknown':
         payload_dbkey = dbkey
     statistics.append({})
-    datasets.append(stats_util.get_datasets(args.config_file, input_id, input_datatype))
+    datasets.append(stats_util.get_datasets_v2(args.config_file, input_id, input_datatype))
 
 input_txts = args.input_txts or []
 for input_txt in input_txts:
     file_path, hid, input_id, input_datatype, dbkey = input_txt
     statistics.append({})
-    datasets.append(stats_util.get_datasets(args.config_file, input_id, input_datatype))
+    datasets.append(stats_util.get_datasets_v2(args.config_file, input_id, input_datatype))
 
 payload = stats_util.get_base_json_dict(args.config_file, dbkey, args.history_id, args.history_name, args.stats_tool_id, args.stderr, args.tool_id, args.tool_parameters, args.user_email, args.workflow_step_id)
 payload['statistics'] = statistics
-payload['datasets'] = datasets
+payload['datasets'] = stats_util.polish_datasets_for_pegr(datasets)
 payload['history_url'] = stats_util.get_history_url(args.config_file, args.history_id)
 # Send the payload to PEGR.
 pegr_url = stats_util.get_pegr_url(args.config_file)

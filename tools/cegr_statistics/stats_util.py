@@ -145,6 +145,23 @@ def get_datasets(config_file, ids, datatypes):
         d['uri'] = '%s/datasets/%s/display?preview=False' % (defaults['GALAXY_BASE_URL'], i)
     return d
 
+def get_datasets_v2(config_file, ids, datatypes):
+    # URL sample: http://localhost:8763/datasets/eca0af6fb47bf90c/display/?preview=True
+    defaults = get_config_settings(config_file, section='defaults')
+    d = {}
+    for i, t in zip(listify(ids), listify(datatypes)):
+        #d['id'] = i
+        #d['type'] = t
+        d["output." + t + "_url"] = '%s/datasets/%s/display?preview=False' % (defaults['GALAXY_BASE_URL'], i)
+    return d
+
+def polish_datasets_for_pegr (datasets):
+    polished_datasets={}
+    for dataset in datasets:
+        for key, value in dataset.items():
+            polished_datasets.setdefault(key, []).append(value)
+    return polished_datasets        
+
 
 # This function is written based on history url format in Galaxy 19.05 and it is server agnostic.
 def get_history_url(config_file, historyId):
