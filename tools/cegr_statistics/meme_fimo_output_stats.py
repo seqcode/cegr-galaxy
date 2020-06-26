@@ -39,8 +39,7 @@ for input in input_xmls:
     datasets.append(stats_util.get_datasets(args.config_file, input_id, input_datatype))
 
 payload['statistics'] = statistics
-datasets_polished = stats_util.polish_dataset_for_pegr(datasets)
-payload['datasets'] =datasets_polished 
+payload['datasets'] = stats_util.polish_dataset_for_pegr(datasets)
 payload['history_url'] = stats_util.get_history_url(args.config_file, args.history_id)
 # Send the payload to PEGR.
 pegr_url = stats_util.get_pegr_url(args.config_file)

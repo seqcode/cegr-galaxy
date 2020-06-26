@@ -155,8 +155,8 @@ def get_datasets_v2(config_file, ids, datatypes):
         d["output." + t + "_url"] = '%s/datasets/%s/display?preview=False' % (defaults['GALAXY_BASE_URL'], i)
     return d
 
-def polish_datasets_for_pegr (datasets):
-    polished_datasets={}
+def polish_datasets_for_pegr(datasets):
+    polished_datasets = {}
     for dataset in datasets:
         for key, value in dataset.items():
             polished_datasets.setdefault(key, []).append(value)
