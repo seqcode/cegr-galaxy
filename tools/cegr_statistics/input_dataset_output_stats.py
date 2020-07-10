@@ -26,7 +26,7 @@ elif args.tool_id == 'input_dataset_r2':
 stderr = ''
 payload = stats_util.get_base_json_dict(args.config_file, args.dbkey, args.history_id, args.history_name, args.stats_tool_id, stderr, args.tool_id, tool_parameters, args.user_email, workflow_step_id)
 # Generate the statistics and datasets.
-payload['statistics'] = [{}]
+payload['statistics'] = stats_util.polish_statistics_for_pegr([{}])
 datasets.append(stats_util.get_datasets_v2(args.config_file, args.input_id, args.input_datatype))
 payload['datasets'] = stats_util.polish_datasets_for_pegr(datasets)
 payload['history_url'] = stats_util.get_history_url(args.config_file, args.history_id)

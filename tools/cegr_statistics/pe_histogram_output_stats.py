@@ -33,7 +33,7 @@ datasets = []
 statistics.append({})
 # Generate the statistics for the tabular dataset.
 statistics.append(stats_util.get_statistics(args.input_tabular, STATS))
-payload['statistics'] = statistics
+Payload['statistics'] = stats_util.polish_statistics_for_pegr(statistics)
 datasets.append(stats_util.get_datasets_v2(args.config_file, args.input_png_id, args.input_png_datatype))
 datasets.append(stats_util.get_datasets_v2(args.config_file, args.input_tabular_id, args.input_tabular_datatype))
 payload['datasets'] = stats_util.polish_datasets_for_pegr(datasets)

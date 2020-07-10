@@ -33,7 +33,7 @@ datasets=[]
 statistics.append({})
 # Generate the statistics for the txt dataset.
 statistics.append(stats_util.get_statistics(args.input_txt, STATS))
-payload['statistics'] = statistics
+payload['statistics'] = stats_util.polish_statistics_for_pegr(statistics)
 # Generate the list of datasets.
 datasets.append(stats_util.get_datasets_v2(args.config_file, args.input_html_id, args.input_html_datatype))
 datasets.append(stats_util.get_datasets_v2(args.config_file, args.input_txt_id, args.input_txt_datatype))

@@ -96,7 +96,7 @@ def get_base_json_dict(config_file, dbkey, history_id, history_name, stats_tool_
     d = {}
     d['genome'] = dbkey
     d['historyId'] = history_id
-    d['parameters'] = format_tool_parameters(tool_parameters)
+    d['parameters'] = polish_parameters_for_pegr(format_tool_parameters(tool_parameters))
     d['run'] = get_run_from_history_name(history_name)
     d['sample'] = get_sample_from_history_name(history_name)
     d['statsToolId'] = stats_tool_id
@@ -161,6 +161,17 @@ def polish_datasets_for_pegr(datasets):
         for key, value in dataset.items():
             polished_datasets.setdefault(key, []).append(value)
     return polished_datasets        
+
+def polish_statistics_for_pegr(statistics):
+    return str(statistics)[1:-1]        
+
+def polish_parameters_for_pegr(parameters):
+    str_parameters = str(parameters)
+    str_parameters2 = str_parameters.replace('"', '')
+    return (str_parameters2)
+
+            
+
 
 
 # This function is written based on history url format in Galaxy 19.05 and it is server agnostic.
