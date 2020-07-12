@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import argparse
 import stats_util
-
+import json
 parser = argparse.ArgumentParser()
 parser.add_argument('--config_file', dest='config_file', help='stats_config.ini')
 parser.add_argument('--history_id', dest='history_id', help='History id')
@@ -36,6 +36,7 @@ for input_txt in input_txts:
     datasets.append(stats_util.get_datasets_v2(args.config_file, input_id, input_datatype))
 
 payload = stats_util.get_base_json_dict(args.config_file, dbkey, args.history_id, args.history_name, args.stats_tool_id, args.stderr, args.tool_id, args.tool_parameters, args.user_email, args.workflow_step_id)
+
 payload['statistics'] = stats_util.polish_statistics_for_pegr(statistics)
 payload['datasets'] = stats_util.polish_datasets_for_pegr(datasets)
 payload['history_url'] = stats_util.get_history_url(args.config_file, args.history_id)

@@ -7,6 +7,7 @@ import string
 import subprocess
 import sys
 import tempfile
+import ast
 
 from ConfigParser import ConfigParser
 from six.moves.urllib.error import HTTPError, URLError
@@ -68,6 +69,7 @@ def format_tool_parameters(parameters):
     for i in range(len(items) / 2):
         params[restore_text(items[param_index])] = restore_text(items[param_index + 1])
         param_index += 2
+    
     return params
 
 
@@ -163,12 +165,33 @@ def polish_datasets_for_pegr(datasets):
     return polished_datasets        
 
 def polish_statistics_for_pegr(statistics):
-    return str(statistics)[1:-1]        
+    return statistics    
 
 def polish_parameters_for_pegr(parameters):
-    str_parameters = str(parameters)
-    str_parameters2 = str_parameters.replace('"', '')
-    return (str_parameters2)
+    
+    for key, value in parameters.items():
+        #print ("before edit")
+        #print (value)
+        if (value[0] == '{'):
+            #print ('value tries to be a dict, parsing is required')
+            try:
+                value =ast.literal_eval(value)
+                #print ( "Parsing string type for conversion to dict type  was successful")
+                parameters[key] = value
+                #print (type(value))
+            except:
+                #print ( "Parsing string type for conversion to dict type was not successful.")
+                #print ( "So, useless, double quotes which makes complication for pegr are removed")
+                value = value.replace('"','')
+                parameters[key] = value
+                pass
+        else:
+            value = value.replace('"','')
+            #print ("after edit")
+            #print (value)
+            parameters[key] = value
+
+    return (parameters)
 
             
 
@@ -491,6 +514,7 @@ def make_url(api_key, url, args=None):
 def post(api_key, url, data):
     url = make_url(api_key, url)
     response = Request(url, headers={'Content-Type': 'application/json'}, data=json.dumps(data))
+    #response = Request(url, headers={'Content-Type': 'application/json'}, data= data)
     return json.loads(urlopen(response).read())
 
 
