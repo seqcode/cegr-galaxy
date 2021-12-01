@@ -1,3 +1,5 @@
+# No longer in production use. Archived here for historical purpose.
+
 Galaxy ChIP-exo - The Center for Eukaryotic Gene Regulation
 ===========================================================
 
